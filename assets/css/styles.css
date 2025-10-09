@@ -1029,3 +1029,83 @@ ul {
   box-shadow: 0 0 0 4px rgba(34,211,238,0.35);
   border-color: var(--primary-2);
 }
+
+/* === PATCH rápido: estilos do Diagnóstico Rápido focados e com alta especificidade === */
+#diagnostico { padding: var(--section-padding) 0; position: relative; }
+
+#diagnostico .section__title { margin-bottom: .5rem; }
+#diagnostico .section__subtitle { margin-bottom: 2rem; }
+
+/* card com brilho */
+#diagnostico .glow-card{
+  position:relative;
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--ring-light);
+  border-radius:18px;
+  padding:2rem;
+  box-shadow:0 0 0 1px var(--ring-light), 0 0 40px rgba(59,130,246,0.10);
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  /* TESTE visual (remova depois): */
+  outline:1px dashed rgba(34,211,238,.35);
+}
+#diagnostico .glow-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--ring);
+  box-shadow:0 0 0 1px var(--ring), 0 12px 50px rgba(59,130,246,0.18), 0 0 80px rgba(34,211,238,0.10);
+}
+
+/* grid coluna perguntas + preview */
+#diagnostico .diagnostic__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;}
+@media (max-width:1024px){#diagnostico .diagnostic__grid{grid-template-columns:1fr;}}
+
+/* barra de progresso */
+#diagnostico .diagnostic__progress{height:8px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden;margin-bottom:1.25rem;border:1px solid var(--ring-light);}
+#diagnostico .diagnostic__progress-bar{width:0%;height:100%;background:var(--gradient-primary);transition:width .4s ease;}
+
+/* steps & perguntas */
+#diagnostico .diag-step{border:0;padding:0;margin:0;}
+#diagnostico .diag-step[hidden]{display:none !important;}
+#diagnostico .diag-question{font-weight:700;font-family:var(--font-heading);margin-bottom:.75rem;font-size:1.1rem;}
+
+/* chips */
+#diagnostico .chips{display:flex;flex-wrap:wrap;gap:.75rem;}
+#diagnostico .chip{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.65rem .9rem;border-radius:999px;
+  background:rgba(255,255,255,0.04);border:1px solid var(--ring-light);color:var(--text);
+  cursor:pointer;user-select:none;
+  transition:transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+#diagnostico .chip:hover{transform:translateY(-2px);border-color:var(--ring);box-shadow:0 8px 24px rgba(59,130,246,0.18);}
+#diagnostico .chip.chip--selected{background:var(--gradient-primary);border-color:transparent;box-shadow:0 8px 26px rgba(59,130,246,0.28),0 0 0 2px rgba(255,255,255,0.06) inset;}
+
+/* input "outro" */
+#diagnostico .diag-input{margin-top:.75rem;}
+#diagnostico .diag-input--hidden{display:none;}
+#diagnostico .diag-text{
+  width:100%;padding:.9rem 1rem;border-radius:10px;background:rgba(255,255,255,0.04);
+  border:1px solid var(--ring-light);color:var(--text);outline:none;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+#diagnostico .diag-text:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(59,130,246,0.15);}
+
+/* ações */
+#diagnostico .diag-actions{display:flex;gap:.75rem;margin-top:1.25rem;}
+#diagnostico .diag-actions .btn[disabled]{opacity:.6;cursor:not-allowed;transform:none !important;}
+@media (max-width:767px){#diagnostico .diag-actions{flex-direction:column;}}
+
+/* preview/resultados */
+#diagnostico .diag-result{display:grid;gap:1rem;}
+#diagnostico .diag-result__title{font-family:var(--font-heading);font-size:1.35rem;font-weight:700;}
+#diagnostico .diag-plan__name{font-size:1.15rem;font-weight:700;margin-bottom:.5rem;}
+#diagnostico .diag-plan__bullets{display:grid;gap:.35rem;padding-left:1.1rem;list-style:disc;color:var(--muted);}
+#diagnostico #diag-primary-cta{margin-top:.25rem;filter:drop-shadow(0 10px 20px rgba(59,130,246,0.25));}
+
+/* focos acessíveis */
+#diagnostico .chip:focus-visible,
+#diagnostico .btn:focus-visible,
+#diagnostico .diag-text:focus-visible{
+  outline:2px solid transparent;
+  box-shadow:0 0 0 4px rgba(34,211,238,0.35);
+  border-color:var(--primary-2);
+}
+
