@@ -160,7 +160,7 @@ ul {
 /* ===== HEADER ===== */
 .header {
   position: fixed;
-  top: 5%;
+  top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
@@ -258,6 +258,7 @@ ul {
   align-items: center;
   position: relative;
   overflow: hidden;
+  top: 5%;
 }
 
 .hero__bg {
