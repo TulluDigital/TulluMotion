@@ -258,7 +258,6 @@ ul {
   align-items: center;
   position: relative;
   overflow: hidden;
-  top: 5%;
 }
 
 .hero__bg {
@@ -948,3 +947,20 @@ ul {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ==== FIX: header/hero overlap (mobile) ==== */
+:root { --header-h: 88px; }                 /* altura aproximada do header */
+@media (max-width: 767px) { :root { --header-h: 72px; } }
+
+.header { z-index: 9999; }                  /* garante o header acima de tudo */
+
+.main { padding-top: var(--header-h); }     /* empurra o conteúdo abaixo do header */
+
+.hero {
+  min-height: calc(100vh - var(--header-h));/* corrige altura do hero */
+  padding-top: 8px;                          /* respiro opcional */
+  top: auto;                                 /* remove deslocamento */
+}
+
+.hero__bg { top: 0; }                        /* mantém o fundo ancorado no topo */
+
