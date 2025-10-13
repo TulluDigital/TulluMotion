@@ -8,10 +8,19 @@
   overflow: hidden;
 }
 
+/* Mostrar por padrão (fallback se JS não carregar) */
 .hero--branch .hero__logo,
 .hero--branch .hero__title,
 .hero--branch .hero__subtitle,
 .hero--branch .hero__cta {
+  opacity: 1;
+}
+
+/* Esconder apenas se JS estiver pronto para animar */
+.js-ready .hero--branch:not(.reveal-in) .hero__logo,
+.js-ready .hero--branch:not(.reveal-in) .hero__title,
+.js-ready .hero--branch:not(.reveal-in) .hero__subtitle,
+.js-ready .hero--branch:not(.reveal-in) .hero__cta {
   opacity: 0;
 }
 
