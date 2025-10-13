@@ -1062,7 +1062,8 @@ ul {
 #diagnostico .diagnostic__progress{height:8px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden;margin-bottom:1.25rem;border:1px solid var(--ring-light);}
 #diagnostico .diagnostic__progress-bar{width:0%;height:100%;background:var(--gradient-primary);transition:width .4s ease;}
 
-/* steps & perguntas */
+/* formulário e steps */
+#diagnostico .diagnostic__form[hidden]{display:none !important;}
 #diagnostico .diag-step{border:0;padding:0;margin:0;}
 #diagnostico .diag-step[hidden]{display:none !important;}
 #diagnostico .diag-question{font-weight:700;font-family:var(--font-heading);margin-bottom:.75rem;font-size:1.1rem;}
@@ -1098,6 +1099,7 @@ ul {
 
 /* preview/resultados */
 #diagnostico .diag-result{display:grid;gap:1rem;}
+#diagnostico .diag-result[hidden]{display:none !important;}
 #diagnostico .diag-result__title{font-family:var(--font-heading);font-size:1.35rem;font-weight:700;}
 #diagnostico .diag-plan__name{font-size:1.15rem;font-weight:700;margin-bottom:.5rem;}
 #diagnostico .diag-plan__bullets{display:grid;gap:.35rem;padding-left:1.1rem;list-style:disc;color:var(--muted);}
