@@ -422,9 +422,9 @@
     transparent 360deg
   );
   border-radius: inherit;
-  animation: rotateBorder 3s linear infinite;
+  animation: rotateBorder 4s linear infinite;
   z-index: -1;
-  filter: blur(8px);
+  filter: blur(12px);
   opacity: 1;
 }
 
@@ -445,7 +445,7 @@
 .hero--branch .btn--primary:hover::before {
   animation-play-state: paused;
   background: linear-gradient(
-    135deg,
+    200deg,
     rgba(34, 211, 238, 0.6) 0%,
     rgba(59, 130, 246, 0.5) 50%,
     rgba(34, 211, 238, 0.6) 100%
