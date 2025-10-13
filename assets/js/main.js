@@ -1,4 +1,4 @@
-/* ===== MAIN JAVASCRIPT FILE (atualizado) ===== */
+/* ===== MAIN JAVASCRIPT FILE (CORRIGIDO) ===== */
 
 /* ---------- Seletores básicos ---------- */
 const header = document.getElementById('header');
@@ -126,7 +126,7 @@ function createScrollProgress(){
 }
 
 /* ===================================================================== */
-/* ====================== DIAGNÓSTICO RÁPIDO ============================ */
+/* ====================== DIAGNÓSTICO RÁPIDO (CORRIGIDO) =============== */
 /* ===================================================================== */
 
 const DIAG_KEY = 'tullu_diag_state_v1';
@@ -136,34 +136,37 @@ function getDiagEls(){
   if(!root) return null;
   return {
     root,
+    form: root.querySelector('#diagnostic-form'),
     progress: root.querySelector('.diagnostic__progress-bar'),
-    steps:    [...root.querySelectorAll('.diag-step')],
-    btnNext:  root.querySelector('[data-diag="next"]'),
-    btnPrev:  root.querySelector('[data-diag="prev"]'),
-    btnReset: root.querySelector('[data-diag="reset"]'),
-    chipsWraps: [...root.querySelectorAll('[data-diag-group]')],
+    steps: [...root.querySelectorAll('.diag-step')],
     // Resultado
-    resultWrap: root.querySelector('.diag-result'),
-    planName:   root.querySelector('.diag-plan__name'),
-    planList:   root.querySelector('.diag-plan__bullets'),
-    primaryCta: root.querySelector('#diag-primary-cta'),
-    secondaryCta: root.querySelector('#diag-secondary-cta')
+    resultWrap: root.querySelector('#diag-result'),
+    planContainer: root.querySelector('#diag-plan'),
+    primaryCta: root.querySelector('#diag-primary-cta')
   };
 }
 
 /* ---- Estado e persistência ---- */
-function loadState(){ try{ return JSON.parse(sessionStorage.getItem(DIAG_KEY)) || { step:1, answers:{} }; }catch{ return {step:1,answers:{}}; } }
-function saveState(state){ try{ sessionStorage.setItem(DIAG_KEY, JSON.stringify(state)); }catch{} }
+function loadState(){ 
+  try{ 
+    return JSON.parse(sessionStorage.getItem(DIAG_KEY)) || { step:1, answers:{} }; 
+  }catch{ 
+    return {step:1,answers:{}}; 
+  } 
+}
+function saveState(state){ 
+  try{ 
+    sessionStorage.setItem(DIAG_KEY, JSON.stringify(state)); 
+  }catch{} 
+}
 
-/* ---- Regras simples de recomendação ---- */
+/* ---- Regras de recomendação ---- */
 function computeRecommendation(answers){
-  // answers: { q1, q2, q3, outro? }
-  const a1 = (answers.q1||'').toLowerCase();
-  const a2 = (answers.q2||'').toLowerCase();
-  const a3 = (answers.q3||'').toLowerCase();
+  const q1 = (answers.q1||'').toLowerCase();
+  const q2 = (answers.q2||'').toLowerCase();
+  const q3 = (answers.q3||'').toLowerCase();
 
-  // Baseado principalmente na prioridade (q1), refinado por q2/q3
-  if(a1.includes('site')) {
+  if(q1.includes('site') || q1.includes('rapido')){
     return {
       name:'WebLab — site rápido que cresce com você',
       bullets:[
@@ -171,10 +174,10 @@ function computeRecommendation(answers){
         'Infra + SEO técnico prontos',
         'Biblioteca de seções evolutivas'
       ],
-      u: 'weblab'
+      plan: 'weblab'
     };
   }
-  if(a1.includes('leads') || a1.includes('vendas')){
+  if(q1.includes('leads') || q1.includes('vendas')){
     return {
       name:'Growth — tráfego pago e CRO guiados por dados',
       bullets:[
@@ -182,10 +185,10 @@ function computeRecommendation(answers){
         'Testes A/B contínuos no funil',
         'Painel de métricas com foco em ROI'
       ],
-      u: 'growth'
+      plan: 'growth'
     };
   }
-  if(a1.includes('automat') || a2.includes('escala') || a3.includes('atendimento')){
+  if(q1.includes('automat') || q1.includes('processos')){
     return {
       name:'Cobra — automação de atendimento e operações',
       bullets:[
@@ -193,10 +196,10 @@ function computeRecommendation(answers){
         'Integração com CRM e automações',
         'Redução de ciclo de vendas'
       ],
-      u: 'cobra'
+      plan: 'cobra'
     };
   }
-  if(a1.includes('estratég') || a1.includes('plano')){
+  if(q1.includes('estratég') || q1.includes('plano') || q1.includes('ia')){
     return {
       name:'AI Studio — soluções sob medida com IA',
       bullets:[
@@ -204,10 +207,10 @@ function computeRecommendation(answers){
         'Protótipos rápidos e validação com dados',
         'Roadmap tático dos próximos 90 dias'
       ],
-      u: 'aistudio'
+      plan: 'aistudio'
     };
   }
-  // fallback se o usuário digitar algo diferente
+  // fallback
   return {
     name:'Diagnóstico com especialista',
     bullets:[
@@ -215,65 +218,77 @@ function computeRecommendation(answers){
       'Definição do próximo passo de maior impacto',
       'Roteiro claro e mensurável'
     ],
-    u: 'diagnostico'
+    plan: 'diagnostico'
   };
 }
 
 /* ---- Render do resultado + CTAs ---- */
 function renderResult(els, rec, answers){
-  if(!els.resultWrap) return;
-  if(els.planName)  els.planName.textContent = rec.name;
-  if(els.planList){
-    els.planList.innerHTML = '';
-    rec.bullets.forEach(b=>{
-      const li=document.createElement('li'); li.textContent=b; els.planList.appendChild(li);
-    });
-  }
+  if(!els.resultWrap || !els.planContainer) return;
+  
+  // Montar o HTML do plano
+  const bulletsHTML = rec.bullets.map(b => `<li>${b}</li>`).join('');
+  els.planContainer.innerHTML = `
+    <h4 class="diag-plan__name">${rec.name}</h4>
+    <ul class="diag-plan__bullets">${bulletsHTML}</ul>
+  `;
+  
   // CTA primário personalizado para WhatsApp
-  const baseMsg =
-    `Olá! Vim pelo site da Tullu Motion.%0A`+
-    `Quero alavancar meu negócio e recebi a recomendação: ${encodeURIComponent(rec.name)}.%0A`+
-    `Resumo das respostas: ${encodeURIComponent(JSON.stringify(answers))}`;
+  const baseMsg = `Olá! Vim pelo site da Tullu Motion.%0AQuero alavancar meu negócio e recebi a recomendação: ${encodeURIComponent(rec.name)}.`;
   if(els.primaryCta){
     els.primaryCta.href = `https://wa.me/5511959029428?text=${baseMsg}`;
   }
-  if(els.secondaryCta){
-    // Aponta para a seção de serviços e fecha menu caso aberto
-    els.secondaryCta.addEventListener('click', (e)=>{
-      e.preventDefault();
-      const target = document.querySelector('#servicos');
-      if(!target) return;
-      const offset = header?.offsetHeight ? header.offsetHeight+12 : 72;
-      const top = Math.max(0, target.getBoundingClientRect().top + window.pageYOffset - offset);
-      window.scrollTo({ top, behavior:'smooth' });
-    }, { once:true });
-  }
+  
+  // Mostrar resultado
   els.resultWrap.removeAttribute('hidden');
+  
+  // Esconder formulário
+  if(els.form) els.form.setAttribute('hidden', '');
 }
 
 /* ---- Progresso visual ---- */
-function setProgress(els, step, total){
+function setProgress(els, step){
+  const total = els.steps.length;
   const pct = Math.max(0, Math.min(100, Math.round(((step-1)/(total-1))*100)));
-  if(els.progress) els.progress.style.width = pct + '%';
+  if(els.progress) {
+    els.progress.style.width = pct + '%';
+    els.progress.setAttribute('data-progress', pct);
+  }
 }
 
 /* ---- Mostrar etapa ---- */
 function showStep(els, step){
   els.steps.forEach((s,i)=>{
-    if(i===step-1) s.removeAttribute('hidden'); else s.setAttribute('hidden','');
+    if(i===step-1) {
+      s.removeAttribute('hidden');
+      s.style.display = 'block';
+    } else {
+      s.setAttribute('hidden','');
+      s.style.display = 'none';
+    }
   });
-  setProgress(els, step, els.steps.length);
-  // Botões
-  if(els.btnPrev) els.btnPrev.disabled = step===1;
-  if(els.btnNext) els.btnNext.disabled = !canAdvanceFrom(els, step);
+  setProgress(els, step);
+  
+  // Atualizar botões
+  const currentStep = els.steps[step-1];
+  if(!currentStep) return;
+  
+  const btnPrev = currentStep.querySelector('[data-prev]');
+  const btnNext = currentStep.querySelector('[data-next]');
+  const btnSubmit = currentStep.querySelector('.diag-submit');
+  
+  if(btnPrev) btnPrev.disabled = step === 1;
+  if(btnNext) btnNext.disabled = !canAdvanceFrom(els, step);
+  if(btnSubmit) btnSubmit.disabled = !canAdvanceFrom(els, step);
 }
 
-/* ---- Pode avançar? (precisa de uma resposta na etapa atual) ---- */
+/* ---- Pode avançar? ---- */
 function canAdvanceFrom(els, step){
   const cur = els.steps[step-1];
   if(!cur) return false;
-  const selected = cur.querySelector('.chip.chip--selected');
-  // Se “Outro” estiver selecionado, exige texto
+  const selected = cur.querySelector('.chip--selected');
+  
+  // Se "Outro" estiver selecionado, exige texto
   if(selected?.dataset?.value === 'outro'){
     const txt = cur.querySelector('.diag-text');
     return !!(txt && txt.value.trim().length>0);
@@ -285,11 +300,12 @@ function canAdvanceFrom(els, step){
 function collectAnswers(els){
   const ans={};
   els.steps.forEach((s,idx)=>{
-    const sel = s.querySelector('.chip.chip--selected');
+    const sel = s.querySelector('.chip--selected');
     if(sel){
       const v = sel.dataset.value || sel.textContent.trim();
       if(v==='outro'){
-        const t = s.querySelector('.diag-text'); ans['q'+(idx+1)] = (t?.value?.trim()||'Outro');
+        const t = s.querySelector('.diag-text'); 
+        ans['q'+(idx+1)] = (t?.value?.trim()||'Outro');
       }else{
         ans['q'+(idx+1)] = v;
       }
@@ -300,15 +316,20 @@ function collectAnswers(els){
 
 /* ---- Eventos de chips (delegation) ---- */
 function setupChips(els){
-  els.chipsWraps.forEach(group=>{
-    group.addEventListener('click', (e)=>{
-      const chip = e.target.closest('.chip'); if(!chip) return;
+  els.steps.forEach(step => {
+    const chipsContainer = step.querySelector('.diag-chips');
+    if(!chipsContainer) return;
+    
+    chipsContainer.addEventListener('click', (e)=>{
+      const chip = e.target.closest('.chip'); 
+      if(!chip) return;
+      
       // alterna seleção exclusiva dentro do grupo
-      group.querySelectorAll('.chip').forEach(c=>c.classList.remove('chip--selected'));
+      chipsContainer.querySelectorAll('.chip').forEach(c=>c.classList.remove('chip--selected'));
       chip.classList.add('chip--selected');
 
       // campo "Outro"
-      const otherInput = group.closest('.diag-step')?.querySelector('.diag-input');
+      const otherInput = step.querySelector('.diag-input');
       if(otherInput){
         const textField = otherInput.querySelector('.diag-text');
         if(chip.dataset.value==='outro'){
@@ -319,86 +340,105 @@ function setupChips(els){
           if(textField) textField.value='';
         }
       }
+      
       // habilita botão avançar se possível
       const state = loadState();
-      const stepIndex = parseInt(group.closest('.diag-step')?.dataset?.step || '1',10);
-      if(canAdvanceFrom(els, stepIndex)) els.btnNext.disabled=false;
-
-      // feedback visual leve: rolar chips um pouquinho pra cima (evita “grudar”)
-      group.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'nearest' });
+      const stepIndex = parseInt(step.dataset.step || '1',10);
+      const btnNext = step.querySelector('[data-next]');
+      const btnSubmit = step.querySelector('.diag-submit');
+      
+      if(canAdvanceFrom(els, stepIndex)) {
+        if(btnNext) btnNext.disabled = false;
+        if(btnSubmit) btnSubmit.disabled = false;
+      }
     });
   });
 }
 
 /* ---- Navegação entre steps ---- */
 function setupStepNav(els){
-  if(els.btnNext){
-    els.btnNext.addEventListener('click', ()=>{
-      const state=loadState();
-      if(!canAdvanceFrom(els, state.step)) return;
+  els.steps.forEach((step, idx) => {
+    const stepNum = idx + 1;
+    const btnNext = step.querySelector('[data-next]');
+    const btnPrev = step.querySelector('[data-prev]');
+    const btnSubmit = step.querySelector('.diag-submit');
+    
+    if(btnNext){
+      btnNext.addEventListener('click', ()=>{
+        const state=loadState();
+        if(!canAdvanceFrom(els, stepNum)) return;
 
-      // salva resposta atual
-      state.answers = collectAnswers(els);
-      state.step = Math.min(state.step+1, els.steps.length);
-      saveState(state);
+        // salva resposta atual
+        state.answers = collectAnswers(els);
+        state.step = Math.min(stepNum+1, els.steps.length);
+        saveState(state);
 
-      showStep(els, state.step);
+        showStep(els, state.step);
 
-      // se último step, calcula recomendação
-      if(state.step===els.steps.length){
+        // rolar a seção pro topo após avançar
+        const offset = header?.offsetHeight ? header.offsetHeight + 12 : 72;
+        const top = Math.max(0, els.root.getBoundingClientRect().top + window.pageYOffset - offset);
+        window.scrollTo({ top, behavior:'smooth' });
+      });
+    }
+    
+    if(btnPrev){
+      btnPrev.addEventListener('click', ()=>{
+        const state=loadState();
+        state.step = Math.max(1, stepNum-1);
+        saveState(state);
+        showStep(els, state.step);
+      });
+    }
+    
+    if(btnSubmit){
+      btnSubmit.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const state=loadState();
+        if(!canAdvanceFrom(els, stepNum)) return;
+        
+        state.answers = collectAnswers(els);
+        saveState(state);
+        
         const rec = computeRecommendation(state.answers);
         renderResult(els, rec, state.answers);
-      }
-
-      // rolar a seção pro topo após avançar
-      const offset = header?.offsetHeight ? header.offsetHeight + 12 : 72;
-      const top = Math.max(0, els.root.getBoundingClientRect().top + window.pageYOffset - offset);
-      window.scrollTo({ top, behavior:'smooth' });
-    });
-  }
-  if(els.btnPrev){
-    els.btnPrev.addEventListener('click', ()=>{
-      const state=loadState();
-      state.step = Math.max(1, state.step-1);
-      saveState(state);
-      showStep(els, state.step);
-    });
-  }
-  if(els.btnReset){
-    els.btnReset.addEventListener('click', ()=>{
-      const state={ step:1, answers:{} };
-      saveState(state);
-      // limpa seleções
-      els.root.querySelectorAll('.chip').forEach(c=>c.classList.remove('chip--selected'));
-      els.root.querySelectorAll('.diag-text').forEach(t=>t.value='');
-      els.root.querySelectorAll('.diag-input').forEach(i=>i.classList.add('diag-input--hidden'));
-      if(els.resultWrap) els.resultWrap.setAttribute('hidden','');
-      showStep(els, 1);
-    });
-  }
+        
+        // rolar para o resultado
+        const offset = header?.offsetHeight ? header.offsetHeight + 12 : 72;
+        const top = Math.max(0, els.root.getBoundingClientRect().top + window.pageYOffset - offset);
+        window.scrollTo({ top, behavior:'smooth' });
+      });
+    }
+  });
 }
 
 /* ---- Restaurar do sessionStorage ---- */
 function restoreDiagUI(els){
   const state = loadState();
+  
   // re-marcar seleções
   const qKeys = ['q1','q2','q3'];
   els.steps.forEach((step, idx)=>{
     const val = state.answers[qKeys[idx]];
     if(!val) return;
+    
     let found = null;
     step.querySelectorAll('.chip').forEach(c=>{
       const vv = (c.dataset.value||c.textContent.trim());
-      if(!found && (vv===val || (vv==='outro' && val!=='Outro'))){ found = c; }
+      if(!found && (vv===val || (vv==='outro' && val!=='Outro'))){ 
+        found = c; 
+      }
     });
+    
     if(found){
-      // marcar
       step.querySelectorAll('.chip').forEach(c=>c.classList.remove('chip--selected'));
       found.classList.add('chip--selected');
-      // se “outro”, reexibe input e repõe texto
+      
       if(found.dataset.value==='outro'){
-        const inputWrap = step.querySelector('.diag-input'); inputWrap?.classList.remove('diag-input--hidden');
-        const txt = step.querySelector('.diag-text'); if(txt && val && val!=='Outro') txt.value = val;
+        const inputWrap = step.querySelector('.diag-input'); 
+        inputWrap?.classList.remove('diag-input--hidden');
+        const txt = step.querySelector('.diag-text'); 
+        if(txt && val && val!=='Outro') txt.value = val;
       }
     }
   });
@@ -406,33 +446,39 @@ function restoreDiagUI(els){
   // mostra etapa certa
   if(state.step<1 || state.step>els.steps.length) state.step=1;
   showStep(els, state.step);
-
-  // se já estava no final, re-renderiza resultado
-  if(state.step===els.steps.length){
-    const rec = computeRecommendation(state.answers);
-    renderResult(els, rec, state.answers);
-  }
 }
 
 /* ---- Inicialização do diagnóstico ---- */
 function initDiagnostico(){
   const els = getDiagEls();
-  if(!els) return; // não existe a seção
+  if(!els) return;
+
+  // Limpar estado ao carregar (sempre começar do zero)
+  sessionStorage.removeItem(DIAG_KEY);
+  const freshState = { step: 1, answers: {} };
+  saveState(freshState);
 
   setupChips(els);
   setupStepNav(els);
-  restoreDiagUI(els);
+  showStep(els, 1);
 
-  // Habilita/Desabilita “Avançar” dinamicamente quando digitar no “Outro”
+  // Habilita/Desabilita "Avançar" dinamicamente quando digitar no "Outro"
   els.root.addEventListener('input', (e)=>{
     if(!(e.target instanceof HTMLElement)) return;
     if(!e.target.classList.contains('diag-text')) return;
     const step = parseInt(e.target.closest('.diag-step')?.dataset?.step || '1',10);
     const state=loadState();
-    if(step===state.step && els.btnNext) els.btnNext.disabled = !canAdvanceFrom(els, step);
+    if(step===state.step) {
+      const currentStep = els.steps[step-1];
+      const btnNext = currentStep?.querySelector('[data-next]');
+      const btnSubmit = currentStep?.querySelector('.diag-submit');
+      const canAdvance = canAdvanceFrom(els, step);
+      if(btnNext) btnNext.disabled = !canAdvance;
+      if(btnSubmit) btnSubmit.disabled = !canAdvance;
+    }
   });
 
-  // Link do menu “Contato Rápido” deve ir para a seção e abrir step atual
+  // Link do menu "Contato Rápido" deve ir para a seção
   document.querySelectorAll('a[href="#diagnostico"]').forEach(a=>{
     a.addEventListener('click', smoothScrollToAnchor);
   });
@@ -470,7 +516,7 @@ function init(){
   // tracking
   setupCTATracking();
 
-  console.log('Tullu Motion — inicializado.');
+  console.log('✅ Tullu Motion — inicializado com sucesso.');
 }
 
 /* ---- load ---- */
@@ -481,3 +527,4 @@ else init();
 if(typeof module!=='undefined' && module.exports){
   module.exports = { handleHeaderScroll, toggleMobileMenu, smoothScrollToAnchor, animateCounter, trackEvent, initDiagnostico };
 }
+
