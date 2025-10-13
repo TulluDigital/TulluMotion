@@ -414,12 +414,14 @@
   right: -2px;
   bottom: -2px;
   background: conic-gradient(
-    from 0deg,
+   from 0deg,
     transparent 0deg,
-    transparent 270deg,
-    rgba(34, 211, 238, 0.8) 300deg,
+    transparent 210deg,           /* ← Começar bem mais cedo */
+    rgba(34, 211, 238, 0.8) 240deg,
     rgba(59, 130, 246, 0.6) 330deg,
+    rgba(34, 211, 238, 0.4) 360deg,
     transparent 360deg
+
   );
   border-radius: inherit;
   animation: rotateBorder 4s linear infinite;
