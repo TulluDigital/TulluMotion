@@ -1,0 +1,530 @@
+/* ===== MAIN JAVASCRIPT FILE (CORRIGIDO) ===== */
+
+/* ---------- Seletores básicos ---------- */
+const header = document.getElementById('header');
+const navToggle = document.getElementById('nav-toggle');
+const navMenu   = document.getElementById('nav-menu');
+
+/* ---------- Header on scroll ---------- */
+function handleHeaderScroll() {
+  if (window.scrollY >= 50) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+}
+
+/* ---------- Mobile menu ---------- */
+function toggleMobileMenu() {
+  navMenu.classList.toggle('active');
+  navToggle.classList.toggle('active');
+  document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+}
+function closeMobileMenu() {
+  navMenu.classList.remove('active');
+  navToggle.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ---------- Smooth scroll anchors ---------- */
+function smoothScrollToAnchor(e) {
+  const href = e.currentTarget.getAttribute('href');
+  if (!href || !href.startsWith('#')) return;
+  e.preventDefault();
+  const el = document.querySelector(href);
+  if (!el) return;
+  const offset = header?.offsetHeight ? header.offsetHeight + 12 : 72;
+  const top = Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - offset);
+  window.scrollTo({ top, behavior: 'smooth' });
+  closeMobileMenu();
+}
+
+/* ---------- Util: throttle/debounce ---------- */
+function throttle(fn, limit=16){let t;return (...a)=>{if(!t){fn(...a);t=setTimeout(()=>t=null,limit)}}}
+function debounce(fn, wait=250){let to;return(...a)=>{clearTimeout(to);to=setTimeout(()=>fn(...a),wait)}}
+
+/* ---------- Contadores métricas ---------- */
+function animateCounter(el, target, duration=2000){
+  let cur=0, step=target/(duration/16);
+  const id=setInterval(()=>{cur+=step;el.textContent=Math.floor(cur);if(cur>=target){el.textContent=target;clearInterval(id)}},16);
+}
+
+/* ---------- Observers (cards/testemunhos/etc) ---------- */
+function createIntersectionObserver(){
+  const obs=new IntersectionObserver((entries,o)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('animate');
+      if(entry.target.classList.contains('metric-card')){
+        const n=entry.target.querySelector('.metric-card__number');
+        const tgt=parseInt(n?.getAttribute('data-target')||'0',10);
+        if(tgt && !n.classList.contains('animated')){ n.classList.add('animated'); animateCounter(n,tgt); }
+      }
+      o.unobserve(entry.target);
+    });
+  },{threshold:.1, rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.scroll-animate, .metric-card, .service-card, .process-step, .feature').forEach(el=>obs.observe(el));
+}
+
+/* ---------- BG anim/parallax ---------- */
+function createBackgroundAnimation(){
+  const bg=document.querySelector('.hero__bg');
+  if(!bg) return;
+  let raf, t=0;
+  const loop=()=>{ t+=0.01; bg.style.transform=`translate(${Math.sin(t)*10}px, ${Math.cos(t*.8)*15}px)`; raf=requestAnimationFrame(loop); };
+  loop();
+  document.addEventListener('visibilitychange',()=>{ if(document.hidden) cancelAnimationFrame(raf); else loop(); });
+}
+function handleParallax(){
+  const sc=window.pageYOffset;
+  document.querySelectorAll('.hero__bg').forEach(el=>{ el.style.transform=`translateY(${sc*0.5}px)`; });
+}
+
+/* ---------- Performance ---------- */
+function optimizePerformance(){
+  ['assets/img/tullu.png','assets/img/cobra.png.png','assets/img/weblab.png.png','assets/img/growth.png.png','assets/img/aistudio.png.png']
+  .forEach(src=>{const l=document.createElement('link');l.rel='preload';l.as='image';l.href=src;document.head.appendChild(l);});
+}
+
+/* ---------- Acessibilidade ---------- */
+function enhanceAccessibility(){
+  if(navToggle){
+    navToggle.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleMobileMenu();}
+    });
+  }
+  if(navMenu){
+    navMenu.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeMobileMenu(); navToggle?.focus(); }});
+  }
+  // Skip link
+  const skip=document.createElement('a');
+  skip.href='#hero'; skip.textContent='Pular para o conteúdo principal';
+  skip.className='skip-link';
+  skip.style.cssText='position:absolute;top:-40px;left:6px;background:var(--primary);color:#fff;padding:8px;border-radius:4px;z-index:1001;transition:top .3s;';
+  skip.addEventListener('focus',()=>skip.style.top='6px');
+  skip.addEventListener('blur', ()=>skip.style.top='-40px');
+  document.body.insertBefore(skip, document.body.firstChild);
+}
+
+/* ---------- Analytics ---------- */
+function trackEvent(name, data={}) { if(typeof gtag!=='undefined') gtag('event',name,data); }
+
+/* ---------- CTA tracking ---------- */
+function setupCTATracking(){
+  document.querySelectorAll('.btn--primary').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const section = btn.closest('section')?.id || 'unknown';
+      trackEvent('cta_click',{section,button_text:btn.textContent.trim(),url:btn.href});
+    });
+  });
+}
+
+/* ---------- Scroll progress ---------- */
+function createScrollProgress(){
+  const bar=document.createElement('div');
+  bar.style.cssText='position:fixed;top:0;left:0;width:0%;height:3px;background:var(--gradient-primary);z-index:1002;transition:width .1s ease;';
+  document.body.appendChild(bar);
+  const update=()=>{ const h=document.documentElement.scrollHeight-window.innerHeight; bar.style.width = (h? (window.pageYOffset/h)*100:0)+'%'; };
+  window.addEventListener('scroll', throttle(update, 16));
+}
+
+/* ===================================================================== */
+/* ====================== DIAGNÓSTICO RÁPIDO (CORRIGIDO) =============== */
+/* ===================================================================== */
+
+const DIAG_KEY = 'tullu_diag_state_v1';
+
+function getDiagEls(){
+  const root = document.getElementById('diagnostico');
+  if(!root) return null;
+  return {
+    root,
+    form: root.querySelector('#diagnostic-form'),
+    progress: root.querySelector('.diagnostic__progress-bar'),
+    steps: [...root.querySelectorAll('.diag-step')],
+    // Resultado
+    resultWrap: root.querySelector('#diag-result'),
+    planContainer: root.querySelector('#diag-plan'),
+    primaryCta: root.querySelector('#diag-primary-cta')
+  };
+}
+
+/* ---- Estado e persistência ---- */
+function loadState(){ 
+  try{ 
+    return JSON.parse(sessionStorage.getItem(DIAG_KEY)) || { step:1, answers:{} }; 
+  }catch{ 
+    return {step:1,answers:{}}; 
+  } 
+}
+function saveState(state){ 
+  try{ 
+    sessionStorage.setItem(DIAG_KEY, JSON.stringify(state)); 
+  }catch{} 
+}
+
+/* ---- Regras de recomendação ---- */
+function computeRecommendation(answers){
+  const q1 = (answers.q1||'').toLowerCase();
+  const q2 = (answers.q2||'').toLowerCase();
+  const q3 = (answers.q3||'').toLowerCase();
+
+  if(q1.includes('site') || q1.includes('rapido')){
+    return {
+      name:'WebLab — site rápido que cresce com você',
+      bullets:[
+        'Landing page moderna em 5–10 dias',
+        'Infra + SEO técnico prontos',
+        'Biblioteca de seções evolutivas'
+      ],
+      plan: 'weblab'
+    };
+  }
+  if(q1.includes('leads') || q1.includes('vendas')){
+    return {
+      name:'Growth — tráfego pago e CRO guiados por dados',
+      bullets:[
+        'Estrutura de campanhas Meta/Google orientadas a conversão',
+        'Testes A/B contínuos no funil',
+        'Painel de métricas com foco em ROI'
+      ],
+      plan: 'growth'
+    };
+  }
+  if(q1.includes('automat') || q1.includes('processos')){
+    return {
+      name:'Cobra — automação de atendimento e operações',
+      bullets:[
+        'Bots de qualificação e follow-up',
+        'Integração com CRM e automações',
+        'Redução de ciclo de vendas'
+      ],
+      plan: 'cobra'
+    };
+  }
+  if(q1.includes('estratég') || q1.includes('plano') || q1.includes('ia')){
+    return {
+      name:'AI Studio — soluções sob medida com IA',
+      bullets:[
+        'Mapeamento de oportunidades de IA por área',
+        'Protótipos rápidos e validação com dados',
+        'Roadmap tático dos próximos 90 dias'
+      ],
+      plan: 'aistudio'
+    };
+  }
+  // fallback
+  return {
+    name:'Diagnóstico com especialista',
+    bullets:[
+      'Entendimento rápido do contexto',
+      'Definição do próximo passo de maior impacto',
+      'Roteiro claro e mensurável'
+    ],
+    plan: 'diagnostico'
+  };
+}
+
+/* ---- Render do resultado + CTAs ---- */
+function renderResult(els, rec, answers){
+  if(!els.resultWrap || !els.planContainer) return;
+  
+  // Montar o HTML do plano
+  const bulletsHTML = rec.bullets.map(b => `<li>${b}</li>`).join('');
+  els.planContainer.innerHTML = `
+    <h4 class="diag-plan__name">${rec.name}</h4>
+    <ul class="diag-plan__bullets">${bulletsHTML}</ul>
+  `;
+  
+  // CTA primário personalizado para WhatsApp
+  const baseMsg = `Olá! Vim pelo site da Tullu Motion.%0AQuero alavancar meu negócio e recebi a recomendação: ${encodeURIComponent(rec.name)}.`;
+  if(els.primaryCta){
+    els.primaryCta.href = `https://wa.me/5511959029428?text=${baseMsg}`;
+  }
+  
+  // Mostrar resultado
+  els.resultWrap.removeAttribute('hidden');
+  
+  // Esconder formulário
+  if(els.form) els.form.setAttribute('hidden', '');
+}
+
+/* ---- Progresso visual ---- */
+function setProgress(els, step){
+  const total = els.steps.length;
+  const pct = Math.max(0, Math.min(100, Math.round(((step-1)/(total-1))*100)));
+  if(els.progress) {
+    els.progress.style.width = pct + '%';
+    els.progress.setAttribute('data-progress', pct);
+  }
+}
+
+/* ---- Mostrar etapa ---- */
+function showStep(els, step){
+  els.steps.forEach((s,i)=>{
+    if(i===step-1) {
+      s.removeAttribute('hidden');
+      s.style.display = 'block';
+    } else {
+      s.setAttribute('hidden','');
+      s.style.display = 'none';
+    }
+  });
+  setProgress(els, step);
+  
+  // Atualizar botões
+  const currentStep = els.steps[step-1];
+  if(!currentStep) return;
+  
+  const btnPrev = currentStep.querySelector('[data-prev]');
+  const btnNext = currentStep.querySelector('[data-next]');
+  const btnSubmit = currentStep.querySelector('.diag-submit');
+  
+  if(btnPrev) btnPrev.disabled = step === 1;
+  if(btnNext) btnNext.disabled = !canAdvanceFrom(els, step);
+  if(btnSubmit) btnSubmit.disabled = !canAdvanceFrom(els, step);
+}
+
+/* ---- Pode avançar? ---- */
+function canAdvanceFrom(els, step){
+  const cur = els.steps[step-1];
+  if(!cur) return false;
+  const selected = cur.querySelector('.chip--selected');
+  
+  // Se "Outro" estiver selecionado, exige texto
+  if(selected?.dataset?.value === 'outro'){
+    const txt = cur.querySelector('.diag-text');
+    return !!(txt && txt.value.trim().length>0);
+  }
+  return !!selected;
+}
+
+/* ---- Coletar respostas do DOM ---- */
+function collectAnswers(els){
+  const ans={};
+  els.steps.forEach((s,idx)=>{
+    const sel = s.querySelector('.chip--selected');
+    if(sel){
+      const v = sel.dataset.value || sel.textContent.trim();
+      if(v==='outro'){
+        const t = s.querySelector('.diag-text'); 
+        ans['q'+(idx+1)] = (t?.value?.trim()||'Outro');
+      }else{
+        ans['q'+(idx+1)] = v;
+      }
+    }
+  });
+  return ans;
+}
+
+/* ---- Eventos de chips (delegation) ---- */
+function setupChips(els){
+  els.steps.forEach(step => {
+    const chipsContainer = step.querySelector('.diag-chips');
+    if(!chipsContainer) return;
+    
+    chipsContainer.addEventListener('click', (e)=>{
+      const chip = e.target.closest('.chip'); 
+      if(!chip) return;
+      
+      // alterna seleção exclusiva dentro do grupo
+      chipsContainer.querySelectorAll('.chip').forEach(c=>c.classList.remove('chip--selected'));
+      chip.classList.add('chip--selected');
+
+      // campo "Outro"
+      const otherInput = step.querySelector('.diag-input');
+      if(otherInput){
+        const textField = otherInput.querySelector('.diag-text');
+        if(chip.dataset.value==='outro'){
+          otherInput.classList.remove('diag-input--hidden');
+          setTimeout(()=>textField?.focus(),10);
+        }else{
+          otherInput.classList.add('diag-input--hidden');
+          if(textField) textField.value='';
+        }
+      }
+      
+      // habilita botão avançar se possível
+      const state = loadState();
+      const stepIndex = parseInt(step.dataset.step || '1',10);
+      const btnNext = step.querySelector('[data-next]');
+      const btnSubmit = step.querySelector('.diag-submit');
+      
+      if(canAdvanceFrom(els, stepIndex)) {
+        if(btnNext) btnNext.disabled = false;
+        if(btnSubmit) btnSubmit.disabled = false;
+      }
+    });
+  });
+}
+
+/* ---- Navegação entre steps ---- */
+function setupStepNav(els){
+  els.steps.forEach((step, idx) => {
+    const stepNum = idx + 1;
+    const btnNext = step.querySelector('[data-next]');
+    const btnPrev = step.querySelector('[data-prev]');
+    const btnSubmit = step.querySelector('.diag-submit');
+    
+    if(btnNext){
+      btnNext.addEventListener('click', ()=>{
+        const state=loadState();
+        if(!canAdvanceFrom(els, stepNum)) return;
+
+        // salva resposta atual
+        state.answers = collectAnswers(els);
+        state.step = Math.min(stepNum+1, els.steps.length);
+        saveState(state);
+
+        showStep(els, state.step);
+
+        // rolar a seção pro topo após avançar
+        const offset = header?.offsetHeight ? header.offsetHeight + 12 : 72;
+        const top = Math.max(0, els.root.getBoundingClientRect().top + window.pageYOffset - offset);
+        window.scrollTo({ top, behavior:'smooth' });
+      });
+    }
+    
+    if(btnPrev){
+      btnPrev.addEventListener('click', ()=>{
+        const state=loadState();
+        state.step = Math.max(1, stepNum-1);
+        saveState(state);
+        showStep(els, state.step);
+      });
+    }
+    
+    if(btnSubmit){
+      btnSubmit.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const state=loadState();
+        if(!canAdvanceFrom(els, stepNum)) return;
+        
+        state.answers = collectAnswers(els);
+        saveState(state);
+        
+        const rec = computeRecommendation(state.answers);
+        renderResult(els, rec, state.answers);
+        
+        // rolar para o resultado
+        const offset = header?.offsetHeight ? header.offsetHeight + 12 : 72;
+        const top = Math.max(0, els.root.getBoundingClientRect().top + window.pageYOffset - offset);
+        window.scrollTo({ top, behavior:'smooth' });
+      });
+    }
+  });
+}
+
+/* ---- Restaurar do sessionStorage ---- */
+function restoreDiagUI(els){
+  const state = loadState();
+  
+  // re-marcar seleções
+  const qKeys = ['q1','q2','q3'];
+  els.steps.forEach((step, idx)=>{
+    const val = state.answers[qKeys[idx]];
+    if(!val) return;
+    
+    let found = null;
+    step.querySelectorAll('.chip').forEach(c=>{
+      const vv = (c.dataset.value||c.textContent.trim());
+      if(!found && (vv===val || (vv==='outro' && val!=='Outro'))){ 
+        found = c; 
+      }
+    });
+    
+    if(found){
+      step.querySelectorAll('.chip').forEach(c=>c.classList.remove('chip--selected'));
+      found.classList.add('chip--selected');
+      
+      if(found.dataset.value==='outro'){
+        const inputWrap = step.querySelector('.diag-input'); 
+        inputWrap?.classList.remove('diag-input--hidden');
+        const txt = step.querySelector('.diag-text'); 
+        if(txt && val && val!=='Outro') txt.value = val;
+      }
+    }
+  });
+
+  // mostra etapa certa
+  if(state.step<1 || state.step>els.steps.length) state.step=1;
+  showStep(els, state.step);
+}
+
+/* ---- Inicialização do diagnóstico ---- */
+function initDiagnostico(){
+  const els = getDiagEls();
+  if(!els) return;
+
+  // Limpar estado ao carregar (sempre começar do zero)
+  sessionStorage.removeItem(DIAG_KEY);
+  const freshState = { step: 1, answers: {} };
+  saveState(freshState);
+
+  setupChips(els);
+  setupStepNav(els);
+  showStep(els, 1);
+
+  // Habilita/Desabilita "Avançar" dinamicamente quando digitar no "Outro"
+  els.root.addEventListener('input', (e)=>{
+    if(!(e.target instanceof HTMLElement)) return;
+    if(!e.target.classList.contains('diag-text')) return;
+    const step = parseInt(e.target.closest('.diag-step')?.dataset?.step || '1',10);
+    const state=loadState();
+    if(step===state.step) {
+      const currentStep = els.steps[step-1];
+      const btnNext = currentStep?.querySelector('[data-next]');
+      const btnSubmit = currentStep?.querySelector('.diag-submit');
+      const canAdvance = canAdvanceFrom(els, step);
+      if(btnNext) btnNext.disabled = !canAdvance;
+      if(btnSubmit) btnSubmit.disabled = !canAdvance;
+    }
+  });
+
+  // Link do menu "Contato Rápido" deve ir para a seção
+  document.querySelectorAll('a[href="#diagnostico"]').forEach(a=>{
+    a.addEventListener('click', smoothScrollToAnchor);
+  });
+}
+
+/* ===================================================================== */
+/* =========================== INIT GERAL =============================== */
+/* ===================================================================== */
+
+function init(){
+  // performance & segurança
+  optimizePerformance();
+
+  // visuais e UX base
+  createIntersectionObserver();
+  createBackgroundAnimation();
+  enhanceAccessibility();
+  createScrollProgress();
+
+  // listeners globais
+  window.addEventListener('scroll', throttle(()=>{ handleHeaderScroll(); handleParallax(); }, 16));
+  window.addEventListener('resize', debounce(()=>{}, 250));
+
+  navToggle?.addEventListener('click', toggleMobileMenu);
+  document.querySelectorAll('a[href^="#"]').forEach(l=>l.addEventListener('click', smoothScrollToAnchor));
+  document.addEventListener('click', (e)=>{ if(!navMenu?.contains(e.target) && !navToggle?.contains(e.target)) closeMobileMenu(); });
+
+  // marcar elementos para animação on scroll
+  document.querySelectorAll('.service-card, .process-step, .feature, .metric-card')
+    .forEach(el=>el.classList.add('scroll-animate'));
+
+  // diagnóstico rápido
+  initDiagnostico();
+
+  // tracking
+  setupCTATracking();
+
+  console.log('✅ Tullu Motion — inicializado com sucesso.');
+}
+
+/* ---- load ---- */
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
+else init();
+
+/* ---- export p/ testes ---- */
+if(typeof module!=='undefined' && module.exports){
+  module.exports = { handleHeaderScroll, toggleMobileMenu, smoothScrollToAnchor, animateCounter, trackEvent, initDiagnostico };
+}
+
