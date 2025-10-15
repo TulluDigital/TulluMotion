@@ -1394,12 +1394,12 @@ fieldset > legend.sr-only { position: absolute !important; }
 
 /* Hover: para a animação e mostra contorno completo */
 .hero__cta .btn--primary.btn--large:hover::before {
-  animation-play-state: paused;
-  background: linear-gradient(
+  
+    background: linear-gradient(
     200deg,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.6) 100%
+    rgba(34, 211, 238, 0.6) 0%,
+    rgba(59, 130, 246, 0.5) 50%,
+    rgba(34, 211, 238, 0.6) 100%
   );
   filter: blur(6px);
 }
