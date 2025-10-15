@@ -8,12 +8,23 @@
   overflow: hidden;
 }
 
-/* Mostrar por padrão (fallback se JS não carregar) */
+/* Esconde imediatamente todos os elementos ao carregar */
 .hero--branch .hero__logo,
 .hero--branch .hero__title,
 .hero--branch .hero__subtitle,
 .hero--branch .hero__cta {
+  opacity: 0;                       /* começa invisível */
+  transform: translateY(14px);      /* leve deslocamento inicial */
+  transition: opacity 2s ease, transform 2s ease; /* suaviza entrada */
+}
+
+/* Quando a classe .reveal-in for adicionada, aparecem suavemente */
+.hero--branch.reveal-in .hero__logo,
+.hero--branch.reveal-in .hero__title,
+.hero--branch.reveal-in .hero__subtitle,
+.hero--branch.reveal-in .hero__cta {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* Esconder apenas se JS estiver pronto para animar */
