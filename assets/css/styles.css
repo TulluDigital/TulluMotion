@@ -1348,11 +1348,14 @@ fieldset > legend.sr-only { position: absolute !important; }
 
 .hero__cta .btn--primary.btn--large {
   position: relative;
-  overflow: visible;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text);
+  overflow: hidden;
   z-index: 1;
 }
 
-/* Feixe luminoso BRANCO animado */
+/* Feixe luminoso BRANCO animado (borda que gira) */
 .hero__cta .btn--primary.btn--large::before {
   content: '';
   position: absolute;
@@ -1363,19 +1366,20 @@ fieldset > legend.sr-only { position: absolute !important; }
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 240deg,
-    rgba(255, 255, 255, 0.8) 270deg,
+    transparent 210deg,
+    rgba(255, 255, 255, 0.8) 240deg,
     rgba(255, 255, 255, 0.6) 330deg,
+    rgba(255, 255, 255, 0.4) 360deg,
     transparent 360deg
   );
   border-radius: inherit;
-  animation: rotateBorder 3s linear infinite;
+  animation: rotateBorder 4s linear infinite;
   z-index: -1;
-  filter: blur(10px);
+  filter: blur(12px);
   opacity: 1;
 }
 
-/* Fundo interno do botão (preserva o gradiente) */
+/* Fundo interno do botão (esconde o gradiente no meio) */
 .hero__cta .btn--primary.btn--large::after {
   content: '';
   position: absolute;
@@ -1388,41 +1392,39 @@ fieldset > legend.sr-only { position: absolute !important; }
   z-index: -1;
 }
 
-/* Hover: parar animação e mostrar feixe completo */
+/* Hover: para a animação e mostra contorno completo */
 .hero__cta .btn--primary.btn--large:hover::before {
   animation-play-state: paused;
-  background: conic-gradient(
-    from 0deg,
-    rgba(255, 255, 255, 0.6) 0deg,
-    rgba(255, 255, 255, 0.8) 90deg,
-    rgba(255, 255, 255, 0.6) 180deg,
-    rgba(255, 255, 255, 0.8) 270deg,
-    rgba(255, 255, 255, 0.6) 360deg
+  background: linear-gradient(
+    200deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.6) 100%
   );
-  filter: blur(14px);
+  filter: blur(6px);
 }
 
+/* Glow externo no hover */
 .hero__cta .btn--primary.btn--large:hover {
   box-shadow: 
-    0 0 30px rgba(255, 255, 255, 0.4),
-    0 0 60px rgba(255, 255, 255, 0.2),
-    0 0 30px rgba(59, 130, 246, 0.5);
+    0 0 20px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.2),
+    0 0 60px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
 }
 
-/* Garantir que o texto fique acima */
-.hero__cta .btn--primary.btn--large {
-  position: relative;
-  z-index: 1;
-}
 /* ========== FEIXE LUMINOSO CIANO - BOTÕES DOS CARDS ========== */
 
 .service-card .btn--secondary {
   position: relative;
-  overflow: visible;
+  background: transparent;
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: var(--text);
+  overflow: hidden;
   z-index: 1;
 }
 
-/* Feixe luminoso CIANO animado */
+/* Feixe luminoso CIANO animado (borda que gira) */
 .service-card .btn--secondary::before {
   content: '';
   position: absolute;
@@ -1433,19 +1435,20 @@ fieldset > legend.sr-only { position: absolute !important; }
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 240deg,
-    rgba(34, 211, 238, 0.8) 270deg,
+    transparent 210deg,
+    rgba(34, 211, 238, 0.8) 240deg,
     rgba(59, 130, 246, 0.6) 330deg,
+    rgba(34, 211, 238, 0.4) 360deg,
     transparent 360deg
   );
   border-radius: inherit;
-  animation: rotateBorder 3s linear infinite;
+  animation: rotateBorder 4s linear infinite;
   z-index: -1;
-  filter: blur(8px);
+  filter: blur(12px);
   opacity: 1;
 }
 
-/* Fundo interno do botão */
+/* Fundo interno do botão (esconde o gradiente no meio) */
 .service-card .btn--secondary::after {
   content: '';
   position: absolute;
@@ -1453,34 +1456,33 @@ fieldset > legend.sr-only { position: absolute !important; }
   left: 1px;
   right: 1px;
   bottom: 1px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--ring);
+  background: rgba(9, 9, 11, 0.95);
   border-radius: inherit;
   z-index: -1;
 }
 
-/* Hover: parar animação e mostrar feixe completo */
+/* Hover: para a animação e mostra contorno completo */
 .service-card .btn--secondary:hover::before {
   animation-play-state: paused;
-  background: conic-gradient(
-    from 0deg,
-    rgba(34, 211, 238, 0.6) 0deg,
-    rgba(59, 130, 246, 0.8) 90deg,
-    rgba(34, 211, 238, 0.6) 180deg,
-    rgba(59, 130, 246, 0.8) 270deg,
-    rgba(34, 211, 238, 0.6) 360deg
+  background: linear-gradient(
+    200deg,
+    rgba(34, 211, 238, 0.6) 0%,
+    rgba(59, 130, 246, 0.5) 50%,
+    rgba(34, 211, 238, 0.6) 100%
   );
-  filter: blur(12px);
+  filter: blur(6px);
 }
 
+/* Glow externo no hover */
 .service-card .btn--secondary:hover {
   box-shadow: 
-    0 0 30px rgba(34, 211, 238, 0.4),
-    0 0 60px rgba(59, 130, 246, 0.2),
-    inset 0 0 20px rgba(34, 211, 238, 0.1);
+    0 0 20px rgba(34, 211, 238, 0.4),
+    0 0 40px rgba(34, 211, 238, 0.2),
+    0 0 60px rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
 }
 
-/* Animação de rotação (compartilhada) */
+/* Animação de rotação do feixe */
 @keyframes rotateBorder {
   0% {
     transform: rotate(0deg);
@@ -1490,12 +1492,6 @@ fieldset > legend.sr-only { position: absolute !important; }
   }
 }
 
-/* Garantir que o texto fique acima */
-.service-card .btn--secondary span {
-  position: relative;
-  z-index: 1;
-}
-
 /* Prefers Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   .hero__cta .btn--primary.btn--large::before,
@@ -1503,3 +1499,4 @@ fieldset > legend.sr-only { position: absolute !important; }
     animation: none;
   }
 }
+
