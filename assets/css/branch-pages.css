@@ -624,3 +624,11 @@
 .showcase-card:hover::after {
   opacity: 1;
 }
+.showcase-frame iframe {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Edge antigo */
+}
+
+.showcase-frame iframe::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
