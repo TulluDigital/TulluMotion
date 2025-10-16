@@ -534,3 +534,93 @@
     animation: none !important;
   }
 }
+
+/* ===== SEÇÃO: ÚLTIMAS ENTREGAS DO WEBLAB ===== */
+
+.weblab-showcase {
+  padding: var(--section-padding) 0;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  perspective: 1000px;
+}
+
+.showcase-card {
+  background: rgba(10, 10, 12, 0.6);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.showcase-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 12px 40px rgba(59, 130, 246, 0.25),
+    0 0 20px rgba(34, 211, 238, 0.1);
+}
+
+.showcase-frame {
+  position: relative;
+  width: 100%;
+  height: 220px; /* altura base */
+  background: #09090b;
+  overflow: hidden;
+}
+
+.showcase-frame iframe {
+  width: 100%;
+  height: 1000px; /* altura real do site */
+  transform: scale(0.35);
+  transform-origin: top left;
+  pointer-events: none;
+  border: none;
+}
+
+/* responsividade */
+@media (min-width: 1024px) {
+  .showcase-frame {
+    height: 280px;
+  }
+}
+
+@media (max-width: 767px) {
+  .showcase-frame {
+    height: 180px;
+  }
+}
+
+/* título */
+.weblab-showcase .section__title {
+  text-align: center;
+}
+
+.weblab-showcase .section__subtitle {
+  text-align: center;
+  color: var(--muted);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* hover luminoso sutil */
+.showcase-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 100%, rgba(59,130,246,0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.showcase-card:hover::after {
+  opacity: 1;
+}
