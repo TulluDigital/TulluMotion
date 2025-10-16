@@ -168,10 +168,11 @@
     <div class="showcase__grid">
       <!-- Card 1: Artes da Si -->
       <div class="showcase-card" onclick="window.open('https://artesdasi.github.io/acesse/', '_blank')">
-        <div class="showcase-frame">
-          <iframe src="https://artesdasi.github.io/acesse/" loading="lazy"></iframe>
-        </div>
-      </div>
+  <div class="showcase-frame">
+    <iframe src="https://artesdasi.github.io/acesse/" loading="lazy"></iframe>
+  </div>
+</div>
+
 
       <!-- Card 2: Site fictício (exemplo 1) -->
       <div class="showcase-card" onclick="window.open('https://rhyan1207.github.io/exemplo-site1/', '_blank')">
@@ -310,6 +311,41 @@
     <!-- JavaScript -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/branch-animations.js"></script>
+    <script>
+  (function () {
+    const BASE_W = 1280;  // deve bater com o CSS
+    const BASE_H = 800;   // “janela” que você quer mostrar no preview
+
+    function fitShowcases() {
+      document.querySelectorAll('.showcase-frame').forEach(frame => {
+        const iframe = frame.querySelector('iframe');
+        if (!iframe) return;
+
+        // scale para o iframe caber na largura do frame
+        const scale = frame.clientWidth / BASE_W;
+
+        // aplica escala no iframe
+        iframe.style.transform = `scale(${scale})`;
+
+        // define a altura do frame proporcional para não sobrar/ficar preto
+        frame.style.height = Math.round(BASE_H * scale) + 'px';
+      });
+    }
+
+    // quando o iframe terminar de carregar, mostra com fade
+    document.querySelectorAll('.showcase-frame iframe').forEach(iframe => {
+      iframe.addEventListener('load', () => {
+        iframe.classList.add('is-ready');
+      }, { once: true });
+      // evita barras de rolagem internas no Chrome
+      iframe.setAttribute('scrolling', 'no');
+    });
+
+    window.addEventListener('load', fitShowcases);
+    window.addEventListener('resize', fitShowcases);
+  })();
+</script>
+
 </body>
 </html>
 
