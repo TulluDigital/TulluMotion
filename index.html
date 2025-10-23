@@ -250,5 +250,125 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("diagnostic-form");
+  const steps = form.querySelectorAll(".diag-step");
+  const progressBar = document.querySelector(".diagnostic__progress-bar");
+  const resultSection = document.getElementById("diag-result");
+  const planContainer = document.getElementById("diag-plan");
+  const primaryCTA = document.getElementById("diag-primary-cta");
+  let currentStep = 0;
+  const totalSteps = steps.length;
+
+  function updateProgress() {
+    const percent = ((currentStep) / (totalSteps - 1)) * 100;
+    progressBar.style.width = percent + "%";
+  }
+
+  function showStep(index) {
+    steps.forEach((step, i) => {
+      step.hidden = i !== index;
+    });
+    updateProgress();
+  }
+
+  form.addEventListener("click", (e) => {
+    const chip = e.target.closest(".chip");
+    if (chip) {
+      const name = chip.dataset.name;
+      const value = chip.dataset.value;
+      const all = form.querySelectorAll(`.chip[data-name='${name}']`);
+      all.forEach(c => c.classList.remove("chip--selected"));
+      chip.classList.add("chip--selected");
+
+      // Mostrar input "outro"
+      const input = form.querySelector(`[data-input-for='${value}']`);
+      form.querySelectorAll(".diag-input").forEach(i => i.classList.add("diag-input--hidden"));
+      if (input) input.classList.remove("diag-input--hidden");
+    }
+
+    if (e.target.matches("[data-next]")) {
+      e.preventDefault();
+      if (currentStep < totalSteps - 1) currentStep++;
+      showStep(currentStep);
+    }
+
+    if (e.target.matches("[data-prev]")) {
+      e.preventDefault();
+      if (currentStep > 0) currentStep--;
+      showStep(currentStep);
+    }
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Coleta dados
+    const answers = {};
+    form.querySelectorAll(".chip--selected").forEach(chip => {
+      answers[chip.dataset.name] = chip.dataset.value;
+    });
+
+    // Define plano com base nas respostas
+    let plan = "";
+    if (answers.prioridade === "site_rapido") {
+      plan = "weblab";
+      planContainer.innerHTML = `
+        <h4 class="diag-plan__name">Plano WebLab</h4>
+        <ul class="diag-plan__bullets">
+          <li>Site moderno entregue em até 10 dias.</li>
+          <li>Onboarding automatizado pelo WhatsApp.</li>
+          <li>Hospedagem e integração técnica inclusas.</li>
+        </ul>`;
+      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20um%20site%20express%20da%20Tullu%20WebLab.";
+      primaryCTA.textContent = "Falar sobre WebLab";
+    } 
+    else if (answers.prioridade === "mais_leads") {
+      plan = "growth";
+      planContainer.innerHTML = `
+        <h4 class="diag-plan__name">Plano Growth</h4>
+        <ul class="diag-plan__bullets">
+          <li>Tráfego pago orientado por dados.</li>
+          <li>Testes rápidos com foco em ROI.</li>
+          <li>Integração com funil automatizado.</li>
+        </ul>`;
+      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20crescer%20com%20Tullu%20Growth.";
+      primaryCTA.textContent = "Falar sobre Growth";
+    } 
+    else if (answers.prioridade === "automatizar" || answers.prioridade === "estrategia_ia") {
+      plan = "cobra";
+      planContainer.innerHTML = `
+        <h4 class="diag-plan__name">Plano Cobra</h4>
+        <ul class="diag-plan__bullets">
+          <li>Consultoria com IA para mapear gargalos.</li>
+          <li>Automação de processos e atendimento.</li>
+          <li>Fluxos integrados com WhatsApp e CRM.</li>
+        </ul>`;
+      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20automatizar%20minha%20empresa%20com%20a%20Tullu%20Cobra.";
+      primaryCTA.textContent = "Falar sobre Cobra";
+    } 
+    else {
+      plan = "ai_studio";
+      planContainer.innerHTML = `
+        <h4 class="diag-plan__name">Tullu AI Studio</h4>
+        <ul class="diag-plan__bullets">
+          <li>Agentes inteligentes plug-and-play.</li>
+          <li>Automação de WhatsApp e CRM sem código.</li>
+          <li>Modelos SaaS prontos para clínicas e negócios.</li>
+        </ul>`;
+      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20um%20agente%20inteligente%20da%20Tullu%20AI%20Studio.";
+      primaryCTA.textContent = "Explorar AI Studio";
+    }
+
+    resultSection.hidden = false;
+    form.hidden = true;
+    updateProgress();
+  });
+
+  showStep(currentStep);
+});
+</script>
+
 </body>
 </html>
