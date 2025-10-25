@@ -393,111 +393,182 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
-  <script>
-  // Diagnóstico rápido — JS corrigido
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("diagnostic-form");
-    if (!form) return;
+<script>
+/* Diagnóstico rápido — versão robusta */
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("diagnostic-form");
+  const progressBar = document.querySelector(".diagnostic__progress-bar");
+  const resultSection = document.getElementById("diag-result");
+  const planContainer = document.getElementById("diag-plan");
+  const primaryCTA = document.getElementById("diag-primary-cta");
 
-    const steps = form.querySelectorAll(".diag-step");
-    const progressBar = document.querySelector(".diagnostic__progress-bar");
-    const resultSection = document.getElementById("diag-result");
-    const planContainer = document.getElementById("diag-plan");
-    const primaryCTA = document.getElementById("diag-primary-cta");
-    let currentStep = 0;
-    const totalSteps = steps.length;
+  if (!form || !progressBar || !resultSection || !planContainer || !primaryCTA) {
+    console.warn("[Diagnóstico] Elementos obrigatórios não encontrados.");
+    return;
+  }
 
-    function updateProgress() {
-      const percent = Math.round((currentStep) / (totalSteps - 1) * 100);
-      if (progressBar) progressBar.style.width = percent + "%";
-    }
-    function showStep(index) {
-      steps.forEach((step, i) => step.hidden = i !== index);
-      updateProgress();
-    }
-    function selectInStep(name, value) {
-      const all = form.querySelectorAll(\`.chip[data-name="\${name}"]\`);
-      all.forEach(c => c.classList.remove("chip--selected"));
-      const chosen = form.querySelector(\`.chip[data-name="\${name}"][data-value="\${value}"]\`);
-      if (chosen) chosen.classList.add("chip--selected");
-    }
+  const steps = [...form.querySelectorAll(".diag-step")];
+  let currentStep = 0;
+  const totalSteps = steps.length;
 
-    form.addEventListener("click", (e) => {
-      const chip = e.target.closest(".chip");
-      if (chip) {
-        selectInStep(chip.dataset.name, chip.dataset.value);
-      }
-      if (e.target.matches("[data-next]")) {
-        e.preventDefault();
-        if (currentStep < totalSteps - 1) currentStep++;
-        showStep(currentStep);
-      }
-      if (e.target.matches("[data-prev]")) {
-        e.preventDefault();
-        if (currentStep > 0) currentStep--;
-        showStep(currentStep);
-      }
+  // Utilidades
+  const scrollInto = (el) => {
+    try { el.scrollIntoView({ behavior: "smooth", block: "start" }); } catch {}
+  };
+
+  function updateProgress() {
+    const percent = totalSteps > 1 ? Math.round((currentStep) / (totalSteps - 1) * 100) : 100;
+    progressBar.style.width = percent + "%";
+  }
+
+  function showStep(index) {
+    steps.forEach((step, i) => {
+      step.hidden = i !== index;
+      if (!step.hidden) step.setAttribute("aria-current", "step");
+      else step.removeAttribute("aria-current");
     });
+    updateProgress();
+    scrollInto(form.closest(".diagnostic__wrap") || form);
+    // Foco acessível no primeiro item clicável do step
+    const firstChip = steps[index].querySelector(".chip");
+    if (firstChip) firstChip.focus({ preventScroll: true });
+  }
 
-    form.addEventListener("submit", (e) => {
+  function selectInStep(name, value) {
+    const group = form.querySelectorAll(`.chip[data-name="${name}"]`);
+    group.forEach(c => c.classList.remove("chip--selected"));
+    const chosen = form.querySelector(`.chip[data-name="${name}"][data-value="${value}"]`);
+    if (chosen) {
+      chosen.classList.add("chip--selected");
+      // marca step como respondido
+      chosen.closest(".diag-step")?.setAttribute("data-answered", "true");
+    }
+  }
+
+  function stepHasAnswer(stepEl) {
+    return !!stepEl.querySelector(".chip.chip--selected");
+  }
+
+  // Delegação de eventos
+  form.addEventListener("click", (e) => {
+    const chip = e.target.closest(".chip");
+    if (chip && form.contains(chip)) {
       e.preventDefault();
-      // coleta respostas
-      const answers = {};
-      form.querySelectorAll(".chip--selected").forEach(chip => {
-        answers[chip.dataset.name] = chip.dataset.value;
-      });
+      selectInStep(chip.dataset.name, chip.dataset.value);
+      return;
+    }
 
-      // regra simples de roteamento
-      if (answers.prioridade === "site_rapido") {
-        planContainer.innerHTML = `
-          <h4 class="diag-plan__name">Plano WebLab</h4>
-          <ul class="diag-plan__bullets">
-            <li>Site moderno entregue em até 10 dias.</li>
-            <li>Conexão direta com agente e CRM.</li>
-            <li>Onboarding automatizado via WhatsApp.</li>
-          </ul>`;
-        primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20um%20site%20express%20com%20integra%C3%A7%C3%A3o%20ao%20agente.";
-        primaryCTA.textContent = "Falar sobre WebLab";
-      } else if (answers.prioridade === "mais_leads") {
-        planContainer.innerHTML = `
-          <h4 class="diag-plan__name">Plano Growth</h4>
-          <ul class="diag-plan__bullets">
-            <li>Tráfego pago orientado por dados.</li>
-            <li>Testes rápidos com foco em ROI.</li>
-            <li>Integração com funil automatizado.</li>
-          </ul>`;
-        primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20crescer%20com%20tr%C3%A1fego%20e%20CRO.";
-        primaryCTA.textContent = "Falar sobre Growth";
-      } else if (answers.prioridade === "automatizar" || answers.prioridade === "estrategia_ia") {
-        planContainer.innerHTML = `
-          <h4 class="diag-plan__name">Plano de Automação</h4>
-          <ul class="diag-plan__bullets">
-            <li>Agente de IA plugado ao WhatsApp.</li>
-            <li>Agendamento automático + CRM.</li>
-            <li>Fluxos e integrações sob medida.</li>
-          </ul>`;
-        primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20automatizar%20atendimento%20e%20agendamentos.";
-        primaryCTA.textContent = "Ativar automação";
-      } else {
-        planContainer.innerHTML = `
-          <h4 class="diag-plan__name">Solução AI Studio</h4>
-          <ul class="diag-plan__bullets">
-            <li>Agente inteligente pronto para uso.</li>
-            <li>WhatsApp + CRM com histórico.</li>
-            <li>Escalável e sem fricção.</li>
-          </ul>`;
-        primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20entender%20a%20Solu%C3%A7%C3%A3o%20AI%20Studio.";
-        primaryCTA.textContent = "Explorar AI Studio";
+    if (e.target.closest("[data-next]")) {
+      e.preventDefault();
+      // exige resposta do passo atual
+      const curEl = steps[currentStep];
+      if (!stepHasAnswer(curEl)) {
+        curEl.classList.add("shake-warn");
+        setTimeout(() => curEl.classList.remove("shake-warn"), 400);
+        return;
       }
+      if (currentStep < totalSteps - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+      return;
+    }
 
-      resultSection.hidden = false;
-      form.hidden = true;
-      updateProgress();
+    if (e.target.closest("[data-prev]")) {
+      e.preventDefault();
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+      return;
+    }
+  });
+
+  // Enter navega como "próximo" quando um chip está focado
+  form.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const activeChip = document.activeElement?.classList?.contains("chip");
+      if (activeChip) {
+        e.preventDefault();
+        const curEl = steps[currentStep];
+        if (!stepHasAnswer(curEl)) return; // precisa selecionar primeiro (com clique)
+        if (currentStep < totalSteps - 1) {
+          currentStep++;
+          showStep(currentStep);
+        }
+      }
+    }
+  });
+
+  // Submit
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // garante resposta no último passo
+    if (!stepHasAnswer(steps[currentStep])) {
+      steps[currentStep].classList.add("shake-warn");
+      setTimeout(() => steps[currentStep].classList.remove("shake-warn"), 400);
+      return;
+    }
+
+    // coleta respostas
+    const answers = {};
+    form.querySelectorAll(".chip--selected").forEach(chip => {
+      answers[chip.dataset.name] = chip.dataset.value;
     });
 
-    // inicia
-    showStep(currentStep);
+    // roteamento
+    if (answers.prioridade === "site_rapido") {
+      planContainer.innerHTML = `
+        <h4 class="diag-plan__name">Plano WebLab</h4>
+        <ul class="diag-plan__bullets">
+          <li>Site moderno entregue em até 10 dias.</li>
+          <li>Conexão direta com agente e CRM.</li>
+          <li>Onboarding automatizado via WhatsApp.</li>
+        </ul>`;
+      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20um%20site%20express%20com%20integra%C3%A7%C3%A3o%20ao%20agente.";
+      primaryCTA.textContent = "Falar sobre WebLab";
+    } else if (answers.prioridade === "mais_leads") {
+      planContainer.innerHTML = `
+        <h4 class="diag-plan__name">Plano Growth</h4>
+        <ul class="diag-plan__bullets">
+          <li>Tráfego pago orientado por dados.</li>
+          <li>Testes rápidos com foco em ROI.</li>
+          <li>Integração com funil automatizado.</li>
+        </ul>`;
+      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20crescer%20com%20tr%C3%A1fego%20e%20CRO.";
+      primaryCTA.textContent = "Falar sobre Growth";
+    } else if (answers.prioridade === "automatizar" || answers.prioridade === "estrategia_ia") {
+      planContainer.innerHTML = `
+        <h4 class="diag-plan__name">Plano de Automação</h4>
+        <ul class="diag-plan__bullets">
+          <li>Agente de IA plugado ao WhatsApp.</li>
+          <li>Agendamento automático + CRM.</li>
+          <li>Fluxos e integrações sob medida.</li>
+        </ul>`;
+      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20automatizar%20atendimento%20e%20agendamentos.";
+      primaryCTA.textContent = "Ativar automação";
+    } else {
+      planContainer.innerHTML = `
+        <h4 class="diag-plan__name">Solução AI Studio</h4>
+        <ul class="diag-plan__bullets">
+          <li>Agente inteligente pronto para uso.</li>
+          <li>WhatsApp + CRM com histórico.</li>
+          <li>Escalável e sem fricção.</li>
+        </ul>`;
+      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20entender%20a%20Solu%C3%A7%C3%A3o%20AI%20Studio.";
+      primaryCTA.textContent = "Explorar AI Studio";
+    }
+
+    resultSection.hidden = false;
+    form.hidden = true;
+    updateProgress();
+    scrollInto(resultSection);
   });
-  </script>
+
+  // inicia
+  showStep(currentStep);
+});
+</script>
 </body>
 </html>
