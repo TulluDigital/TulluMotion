@@ -395,6 +395,10 @@
   <script src="assets/js/main.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  // garante que a página abra no topo quando NÃO houver hash
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (!location.hash) { try { window.scrollTo(0, 0); } catch {} }
+
   const form = document.getElementById("diagnostic-form");
   const progressBar = document.querySelector(".diagnostic__progress-bar");
   const resultSection = document.getElementById("diag-result");
@@ -406,10 +410,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentStep = 0;
 
   const getNextBtn = () => steps[currentStep].querySelector("[data-next]");
-  const getPrevBtn = () => steps[currentStep].querySelector("[data-prev]");
   const answered = (stepEl) => !!stepEl.querySelector(".chip.chip--selected");
 
-  const scrollInto = (el) => { try { el.scrollIntoView({behavior:"smooth", block:"start"});} catch{} };
+  const scrollInto = (el) => {
+    try { el.scrollIntoView({ behavior: "smooth", block: "start" }); } catch {}
+  };
 
   function updateProgress() {
     const pct = steps.length > 1 ? Math.round((currentStep)/(steps.length-1)*100) : 100;
@@ -423,13 +428,16 @@ document.addEventListener("DOMContentLoaded", () => {
     nextBtn.setAttribute("aria-disabled", String(nextBtn.disabled));
   }
 
-  function showStep(idx){
+  // 🔧 NÃO rola nem foca na inicialização
+  function showStep(idx, {doScroll=false, doFocus=false} = {}){
     steps.forEach((s,i)=>{ s.hidden = i!==idx; s.toggleAttribute("aria-current", i===idx); });
     updateProgress();
     setNextState();
-    scrollInto(form.closest(".diagnostic__wrap") || form);
-    const focusable = steps[idx].querySelector(".chip, [data-next], [data-prev]");
-    if (focusable) focusable.focus({preventScroll:true});
+    if (doScroll) scrollInto(form.closest(".diagnostic__wrap") || form);
+    if (doFocus) {
+      const focusable = steps[idx].querySelector(".chip, [data-next], [data-prev]");
+      if (focusable) focusable.focus({ preventScroll: true });
+    }
   }
 
   function selectInStep(name, value){
@@ -440,11 +448,10 @@ document.addEventListener("DOMContentLoaded", () => {
       chosen.classList.add("chip--selected");
       chosen.setAttribute("aria-pressed","true");
       chosen.closest(".diag-step")?.setAttribute("data-answered","true");
-      setNextState(); // habilita o botão imediatamente
+      setNextState();
     }
   }
 
-  // Delegação
   form.addEventListener("click", (e)=>{
     const chip = e.target.closest(".chip");
     if (chip && form.contains(chip)){
@@ -455,33 +462,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (e.target.closest("[data-next]")){
       e.preventDefault();
-      if (!answered(steps[currentStep])){
+      if (!answered(steps[currentStep])) {
         steps[currentStep].classList.add("shake-warn");
         setTimeout(()=>steps[currentStep].classList.remove("shake-warn"), 380);
         return;
       }
-      if (currentStep < steps.length-1){ currentStep++; showStep(currentStep); }
+      if (currentStep < steps.length-1){
+        currentStep++;
+        showStep(currentStep, { doScroll:true, doFocus:true }); // ⟵ só rola após interação
+      }
       return;
     }
 
     if (e.target.closest("[data-prev]")){
       e.preventDefault();
-      if (currentStep>0){ currentStep--; showStep(currentStep); }
+      if (currentStep>0){
+        currentStep--;
+        showStep(currentStep, { doScroll:true, doFocus:true }); // ⟵ idem
+      }
       return;
     }
   });
 
-  // Enter avança se já houver seleção
   form.addEventListener("keydown",(e)=>{
     if (e.key==="Enter" && document.activeElement?.classList?.contains("chip")){
       e.preventDefault();
       if (answered(steps[currentStep]) && currentStep < steps.length-1){
-        currentStep++; showStep(currentStep);
+        currentStep++;
+        showStep(currentStep, { doScroll:true, doFocus:true });
       }
     }
   });
 
-  // Submit
   form.addEventListener("submit",(e)=>{
     e.preventDefault();
     if (!answered(steps[currentStep])){
@@ -490,11 +502,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Coleta
     const answers = {};
     form.querySelectorAll(".chip--selected").forEach(ch => { answers[ch.dataset.name] = ch.dataset.value; });
 
-    // Roteamento
     if (answers.prioridade === "site_rapido") {
       planContainer.innerHTML = `
         <h4 class="diag-plan__name">Plano WebLab</h4>
@@ -540,16 +550,18 @@ document.addEventListener("DOMContentLoaded", () => {
     resultSection.hidden = false;
     form.hidden = true;
     updateProgress();
-    scrollInto(resultSection);
+    scrollInto(resultSection); // rola só ao mostrar o resultado
   });
 
-  // Inicializa: garante botões como type="button" se não vierem no HTML
+  // evita submit acidental nos botões de navegação
   form.querySelectorAll("[data-next],[data-prev]").forEach(b=>{
     if (!b.hasAttribute("type")) b.setAttribute("type","button");
   });
 
-  showStep(currentStep);
+  // 🔑 inicialização sem scroll/focus
+  showStep(currentStep, { doScroll:false, doFocus:false });
 });
 </script>
+
 </body>
 </html>
