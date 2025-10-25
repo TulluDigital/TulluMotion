@@ -1968,3 +1968,84 @@ body::after {
 /* estreita o espaçamento abaixo da header em cada seção nova */
 .demo .section__header,
 .showcase .section__header{ margin-bottom: 1.25rem; }
+
+/* ============================
+   DEMO (VÍDEO + CTA) — POLISH MOBILE
+   - Chama decorativa fora do texto (bg/absolute)
+   - Espaçamentos/margens mais folgados no mobile
+   - Tag "mais vendida" não estica em 100%
+   ============================ */
+
+/* Tira a chama inline do fluxo do título */
+.demo .emoji-flame{ display:none !important; }
+
+/* Chama decorativa como elemento de fundo (não afeta a tipografia) */
+.demo__header{ position: relative; }
+.demo__header::before{
+  content:"🔥";
+  position:absolute;
+  top:-6px;
+  left:0;
+  font-size: clamp(22px, 3.8vw, 30px);
+  line-height:1;
+  pointer-events:none;
+  filter: drop-shadow(0 0 8px rgba(245,158,11,.55));
+  animation: flame-flicker 1.4s ease-in-out infinite;
+  transform-origin: 50% 60%;
+}
+
+/* Título/subtítulo com respiro e melhor leitura */
+#demo .section__title{
+  margin-bottom: .75rem;
+  line-height: 1.2;
+  letter-spacing: .2px;
+  font-weight: 800;
+  text-wrap: balance;
+}
+#demo .section__subtitle{
+  max-width: 44rem;
+  margin: 0 auto 1rem;
+  text-wrap: pretty;
+}
+
+/* Tag de destaque: largura pelo conteúdo e centralizada */
+#demo .tag{
+  display: inline-flex;
+  width: max-content;
+  margin: .25rem auto 0;
+  white-space: nowrap;
+  padding: .5rem .9rem;
+  border-radius: 999px;
+}
+
+/* Espaços entre blocos da seção */
+.demo__video{ margin: 1rem auto .9rem; }
+.demo__cta{ margin-top: .75rem; gap: .5rem; }
+.demo__subtags{ margin-top: .6rem; }
+
+/* Botão accent ocupa largura total no mobile (melhor toque) */
+@media (max-width: 767px){
+  #demo .section__title{
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
+    padding: 0 8px;
+  }
+  #demo .section__subtitle{ padding: 0 10px; }
+  .demo__header{ padding-top: 10px; }
+  .demo__header::before{ left: 12px; top: -2px; font-size: 28px; }
+  .demo__video{ margin-left: var(--container-padding); margin-right: var(--container-padding); }
+  .demo__cta .btn--accent{ width: 100%; }
+  .demo__note{ font-size: .95rem; }
+  .demo__subtags .tag{ font-size: .88rem; }
+}
+
+/* Animação da chama (reusável) */
+@keyframes flame-flicker{
+  0%,100%{ transform: translateY(0) rotate(0deg) scale(1); filter: drop-shadow(0 0 6px rgba(245,158,11,.45)); }
+  40%   { transform: translateY(-1px) rotate(-3deg) scale(1.04); filter: drop-shadow(0 0 10px rgba(245,158,11,.7)); }
+  70%   { transform: translateY(1px)  rotate(2deg)  scale(.98);  filter: drop-shadow(0 0 7px rgba(245,158,11,.55)); }
+}
+
+/* Respeita usuários com redução de movimento */
+@media (prefers-reduced-motion: reduce){
+  .demo__header::before{ animation:none; }
+}
