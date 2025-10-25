@@ -1681,4 +1681,80 @@ body::after {
     opacity: 0;
   }
 }
+/* ============================
+   HERO – partículas corrigidas
+   ============================ */
 
+/* cria camada isolada p/ evitar pausa de animação por transform no ancestral */
+.hero { isolation: isolate; }
+
+/* camada das partículas: só leitura e otimizada */
+.hero__bubbles{
+  position:absolute; inset:0;
+  pointer-events:none;
+  z-index:0;
+  will-change: transform;
+  /* força aceleração (Safari/iOS/desktop) */
+  transform: translateZ(0);
+}
+
+/* partículas pequenas + brilho suave */
+.hero__bubbles span{
+  position:absolute;
+  display:block;
+  width: clamp(4px, 0.55vw, 8px);
+  height: clamp(4px, 0.55vw, 8px);
+  border-radius:50%;
+  /* brilho radial + leve transparência */
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.65) 0%,
+                              rgba(59,130,246,0.35) 55%,
+                              rgba(59,130,246,0.00) 70%);
+  filter: drop-shadow(0 0 6px rgba(59,130,246,0.55));
+  opacity: .85;
+
+  /* anima só via transform (não usa top/bottom -> evita layout/jank) */
+  animation: dot-drift var(--dur, 18s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  animation-play-state: running !important;
+  will-change: transform, opacity;
+  transform: translate3d(var(--x0, 0), var(--y0, 0), 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* remove tamanhos antigos maiores */
+.hero__bubbles span:nth-child(n){
+  width: clamp(4px, 0.55vw, 8px) !important;
+  height: clamp(4px, 0.55vw, 8px) !important;
+  background: inherit !important;
+}
+
+/* movimento suave em loop (vai e volta) só com transform */
+@keyframes dot-drift{
+  0%   { transform: translate3d(var(--x0,0), var(--y0,0), 0) scale(var(--s,1)); opacity:.50; }
+  50%  { transform: translate3d(calc(var(--x0,0) + var(--dx,24px)),
+                                calc(var(--y0,0) + var(--dy,18px)), 0)
+                    scale(calc(var(--s,1) * 1.06)); opacity:.95; }
+  100% { transform: translate3d(var(--x0,0), var(--y0,0), 0) scale(var(--s,1)); opacity:.50; }
+}
+
+/* posições/velocidades – usa as <span> que você já tem */
+.hero__bubbles span:nth-child(1){  --x0:10vw; --y0:65vh; --dx:28px;  --dy:-22px; --dur:20s; --delay:-2s;  --s:1;   }
+.hero__bubbles span:nth-child(2){  --x0:22vw; --y0:40vh; --dx:-24px; --dy:18px;  --dur:17s; --delay:-6s;  --s:.95; }
+.hero__bubbles span:nth-child(3){  --x0:35vw; --y0:70vh; --dx:30px;  --dy:-26px; --dur:21s; --delay:-10s; --s:1.05;}
+.hero__bubbles span:nth-child(4){  --x0:52vw; --y0:30vh; --dx:-18px; --dy:22px;  --dur:19s; --delay:-4s;  --s:.9;  }
+.hero__bubbles span:nth-child(5){  --x0:68vw; --y0:60vh; --dx:26px;  --dy:-20px; --dur:23s; --delay:-8s;  --s:1;   }
+.hero__bubbles span:nth-child(6){  --x0:80vw; --y0:35vh; --dx:-22px; --dy:18px;  --dur:18s; --delay:-12s; --s:.95; }
+.hero__bubbles span:nth-child(7){  --x0:15vw; --y0:25vh; --dx:20px;  --dy:20px;  --dur:22s; --delay:-14s; --s:.9;  }
+.hero__bubbles span:nth-child(8){  --x0:44vw; --y0:50vh; --dx:-26px; --dy:-18px; --dur:24s; --delay:-5s;  --s:1.1; }
+
+/* iOS/Safari: garante camada própria (evita pausa ao entrar na viewport) */
+@supports (-webkit-touch-callout: none){
+  .hero, .hero__bubbles { transform: translateZ(0); }
+}
+
+/* respeita usuários com redução de movimento */
+@media (prefers-reduced-motion: reduce){
+  .hero__bubbles span{ animation: none !important; opacity:.35; }
+}
