@@ -1,374 +1,503 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tullu Motion</title>
-    <meta name="description" content="A Tullu instala inteligência no seu negócio. Agentes de IA para automatizar atendimentos, agendamentos e processos, reduzindo custos e aumentando a conversão.">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tullumotion.com/">
-    <meta property="og:title" content="Tullu Motion - Instale inteligência no seu negócio">
-    <meta property="og:description" content="Automatize atendimentos, agendamentos e processos com agentes de IA que trabalham 24 horas por dia.">
-    <meta property="og:image" content="assets/img/tu.png.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tullu Motion</title>
+  <meta name="description" content="A Tullu instala inteligência no seu negócio. Agentes de IA para automatizar atendimentos, agendamentos e processos, reduzindo custos e aumentando a conversão."/>
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://tullumotion.com/">
-    <meta property="twitter:title" content="Tullu Motion - Instale inteligência no seu negócio">
-    <meta property="twitter:description" content="Automatize atendimentos, agendamentos e processos com agentes de IA que trabalham 24 horas por dia.">
-    <meta property="twitter:image" content="assets/img/tu.png.png">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://tullumotion.com/"/>
+  <meta property="og:title" content="Tullu Motion - Instale inteligência no seu negócio"/>
+  <meta property="og:description" content="Automatize atendimentos, agendamentos e processos com agentes de IA que trabalham 24 horas por dia."/>
+  <meta property="og:image" content="assets/img/tu.png.png"/>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/img/tu.png.png">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:url" content="https://tullumotion.com/"/>
+  <meta property="twitter:title" content="Tullu Motion - Instale inteligência no seu negócio"/>
+  <meta property="twitter:description" content="Automatize atendimentos, agendamentos e processos com agentes de IA que trabalham 24 horas por dia."/>
+  <meta property="twitter:image" content="assets/img/tu.png.png"/>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/img/tu.png.png"/>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <div class="nav__logo">
-                <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
-                <span class="nav__logo-text">Motion</span>
-            </div>
-            
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#servicos" class="nav__link">Recursos</a></li>
-                    <li class="nav__item"><a href="#como-funciona" class="nav__link">Como funciona</a></li>
-                    <li class="nav__item"><a href="#cases" class="nav__link">Resultados</a></li>
-                </ul>
-                <a href="#diagnostico" class="btn btn--primary nav__cta">Diagnóstico rápido</a>
-            </div>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <div class="nav__logo">
+        <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img"/>
+        <span class="nav__logo-text">Motion</span>
+      </div>
 
-            <div class="nav__toggle" id="nav-toggle"><span></span><span></span><span></span></div>
-        </nav>
-    </header>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#servicos" class="nav__link">Recursos</a></li>
+          <li class="nav__item"><a href="#como-funciona" class="nav__link">Como funciona</a></li>
+          <li class="nav__item"><a href="#cases" class="nav__link">Resultados</a></li>
+        </ul>
+        <a href="#diagnostico" class="btn btn--primary nav__cta">Diagnóstico rápido</a>
+      </div>
 
-    <main class="main">
+      <div class="nav__toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+    </nav>
+  </header>
 
-        <!-- HERO -->
-        <section class="hero" id="hero">
-            <div class="hero__bg"></div>
-            <div class="hero__bubbles">
-  <span></span><span></span><span></span><span></span><span></span>
-</div>
+  <main class="main">
 
-            <div class="container">
-                <div class="hero__content">
-                    <p class="hero__tagline">Chega de perder vendas por falha no atendimento</p>
-                    <h1 class="hero__title">
-                        Instalamos <span class="gradient-text">inteligência real</span> no seu negócio
-                    </h1>
-                    <p class="hero__subtitle">
-                        Agentes de IA que automatizam atendimento, agendamento e follow-up, funcionando 24h por dia dentro do seu WhatsApp.
-                    </p>
-                    <div class="hero__cta">
-                        <a href="https://wa.me/5511959029428?text=Ol%C3%A1!%20Quero%20ver%20como%20a%20Tullu%20pode%20automatizar%20meu%20atendimento." class="btn btn--primary btn--large" target="_blank">Ver agente em ação</a>
-                        <a href="#como-funciona" class="btn btn--outline btn--large">Entender como funciona</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__bg"></div>
+      <div class="hero__bubbles">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
 
-        <!-- CREDIBILIDADE -->
-        <section class="credibility" id="cred">
-            <div class="container">
-                <div class="credibility__content">
-                    <div class="credibility__text">
-                        <h3 class="credibility__title">Sua empresa não precisa de mais gente, precisa de inteligência que trabalha por você</h3>
-                        <p class="credibility__description">
-                            A Tullu cria agentes de IA personalizados que atendem, agendam e organizam processos. Um sistema que reduz custos e mantém o atendimento sempre ativo, mesmo quando sua equipe não está online.
-                        </p>
-                    </div>
-                    
-                    <div class="credibility__features">
-                        <div class="feature">
-                            <div class="feature__icon">⚙️</div>
-                            <div class="feature__content">
-                                <h4 class="feature__title">Atendimento 24h</h4>
-                                <p class="feature__text">Seu WhatsApp funcionando o tempo todo, sem perda de leads</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature__icon">🤖</div>
-                            <div class="feature__content">
-                                <h4 class="feature__title">Agendamento automático</h4>
-                                <p class="feature__text">O agente entende o cliente e marca horários sozinho</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature__icon">📈</div>
-                            <div class="feature__content">
-                                <h4 class="feature__title">Mais conversões</h4>
-                                <p class="feature__text">Transforme atendimentos em vendas com respostas instantâneas</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DIAGNÓSTICO -->
-        <section class="diagnostic" id="diagnostico">
-            <div class="container">
-                <div class="diagnostic__wrap glow-card">
-                    <header class="section__header">
-                        <h2 class="section__title">Diagnóstico rápido</h2>
-                        <p class="section__subtitle">Responda 3 perguntas e descubra qual solução inteligente sua empresa precisa ativar primeiro</p>
-                    </header>
-
-                    <!-- (mantém estrutura do formulário original) -->
-                    <!-- ... -->
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVIÇOS -->
-        <section class="services" id="servicos">
-            <div class="container">
-                <div class="section__header">
-                    <h2 class="section__title">Camadas de Inteligência</h2>
-                    <p class="section__subtitle">
-                        Cada braço da Tullu foi criado para resolver um tipo de gargalo. Juntos, eles formam um ecossistema que transforma processos manuais em operações inteligentes.
-                    </p>
-                </div>
-                
-                <div class="services__grid">
-                    <div class="service-card">
-                        <div class="service-card__icon"><img src="assets/img/weblab.png.png" alt="Tullu WebLab"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">WebLab</h3>
-                            <p class="service-card__tagline">Sites inteligentes que captam leads e dados</p>
-                            <p class="service-card__description">Páginas modernas entregues em até 10 dias, já prontas para se conectar aos agentes de IA da Tullu</p>
-                            <a href="weblab.html" class="btn btn--secondary">Criar meu site inteligente</a>
-                        </div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-card__icon"><img src="assets/img/cobra.png.png" alt="Tullu Cobra"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Cobra</h3>
-                            <p class="service-card__tagline">Consultoria e automação operacional</p>
-                            <p class="service-card__description">Mapeamos gargalos, conectamos dados e automatizamos rotinas para liberar tempo e reduzir erros</p>
-                            <a href="cobra.html" class="btn btn--secondary">Otimizar minha operação</a>
-                        </div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-card__icon"><img src="assets/img/growth.png.png" alt="Tullu Growth"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Growth</h3>
-                            <p class="service-card__tagline">Tráfego e conversão sob controle da IA</p>
-                            <p class="service-card__description">Anúncios que aprendem e otimizam resultados com base nos dados reais do seu funil</p>
-                            <a href="growth.html" class="btn btn--secondary">Aumentar conversões</a>
-                        </div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-card__icon"><img src="assets/img/aistudio.png.png" alt="Tullu AI Studio"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">AI Studio</h3>
-                            <p class="service-card__tagline">Agentes de IA personalizados para empresas</p>
-                            <p class="service-card__description">Desenvolvemos sistemas conversacionais prontos para atendimento, agendamento e follow-up. Tudo integrado ao WhatsApp e CRM.</p>
-                            <a href="aistudio.html" class="btn btn--secondary">Ativar agente inteligente</a>
-                        </div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-card__icon"><img src="assets/img/playlab.png" alt="Tullu PlayLab"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">PlayLab</h3>
-                            <p class="service-card__tagline">Experiências que geram engajamento real</p>
-                            <p class="service-card__description">Ativações, jogos e campanhas que capturam leads e alimentam seu funil automaticamente</p>
-                            <a href="playlab.html" class="btn btn--secondary">Ver demonstração</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- COMO FUNCIONA -->
-        <section class="process" id="como-funciona">
-            <div class="container">
-                <div class="section__header">
-                    <h2 class="section__title">Como funciona</h2>
-                    <p class="section__subtitle">
-                        Nosso método transforma o que antes dependia de pessoas em processos que operam de forma autônoma e previsível.
-                    </p>
-                </div>
-                
-                <div class="process__steps">
-                    <div class="process-step"><div class="process-step__number">1</div><div class="process-step__content"><h3>Diagnóstico</h3><p>Entendemos o ponto exato em que sua operação está travando</p></div></div>
-                    <div class="process-step"><div class="process-step__number">2</div><div class="process-step__content"><h3>Implantação</h3><p>Instalamos a camada de automação e conectamos seus canais e sistemas</p></div></div>
-                    <div class="process-step"><div class="process-step__number">3</div><div class="process-step__content"><h3>Otimização</h3><p>O agente aprende com dados reais e melhora continuamente</p></div></div>
-                    <div class="process-step"><div class="process-step__number">4</div><div class="process-step__content"><h3>Resultados</h3><p>Você acompanha métricas e ROI direto no painel</p></div></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA FINAL -->
-        <section class="cta-final" id="cta">
-            <div class="cta-final__bg"></div>
-            <div class="container">
-                <div class="cta-final__content">
-                    <h2 class="cta-final__title">Pronto para automatizar seu atendimento e aumentar suas vendas</h2>
-                    <p class="cta-final__subtitle">Em até 7 dias sua empresa pode ter um sistema inteligente operando dentro do WhatsApp, agendando e respondendo sem erro.</p>
-                    <div class="cta-final__actions">
-                        <a href="https://wa.me/5511959029428?text=Ol%C3%A1!%20Quero%20automatizar%20meu%20atendimento%20com%20a%20Tullu%20Motion." class="btn btn--primary btn--large" target="_blank">Ativar agente agora</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__content">
-                <div class="footer__brand">
-                    <div class="footer__logo">
-                        <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
-                    </div>
-                    <p class="footer__description">A Tullu é a camada inteligente que transforma processos manuais em operações automáticas e escaláveis.</p>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <p class="footer__copyright">© 2025 Tullu Motion, todos os direitos reservados.</p>
-            </div>
+      <div class="container">
+        <div class="hero__content">
+          <p class="hero__tagline">Chega de perder vendas por falha no atendimento</p>
+          <h1 class="hero__title">
+            Instalamos <span class="gradient-text">inteligência real</span> no seu negócio
+          </h1>
+          <p class="hero__subtitle">
+            Agentes de IA que automatizam atendimento, agendamento e follow-up, funcionando 24h por dia dentro do seu WhatsApp.
+          </p>
+          <div class="hero__cta">
+            <a href="https://wa.me/5511959029428?text=Ol%C3%A1!%20Quero%20ver%20como%20a%20Tullu%20pode%20automatizar%20meu%20atendimento." class="btn btn--primary btn--large" target="_blank">Ver agente em ação</a>
+            <a href="#como-funciona" class="btn btn--outline btn--large">Entender como funciona</a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script src="assets/js/main.js"></script>
-    <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("diagnostic-form");
-  const steps = form.querySelectorAll(".diag-step");
-  const progressBar = document.querySelector(".diagnostic__progress-bar");
-  const resultSection = document.getElementById("diag-result");
-  const planContainer = document.getElementById("diag-plan");
-  const primaryCTA = document.getElementById("diag-primary-cta");
-  let currentStep = 0;
-  const totalSteps = steps.length;
+    <!-- DEMO — VÍDEO (solução mais quente) -->
+    <section id="demo" class="demo">
+      <div class="container">
+        <header class="demo__header section__header">
+          <h2 class="section__title">
+            <span class="emoji-flame" aria-hidden="true">🔥</span>
+            A solução mais quente do momento
+          </h2>
+          <p class="section__subtitle">
+            Agente de IA personalizado + CRM de agendamentos e atendimentos — visualize tudo em um painel e deixe o WhatsApp trabalhar por você.
+          </p>
+          <div class="tag tag--hot" aria-label="rótulo de destaque">
+            Esta é a solução mais vendida — <strong>uma solução AI Studio</strong>
+          </div>
+        </header>
 
-  function updateProgress() {
-    const percent = ((currentStep) / (totalSteps - 1)) * 100;
-    progressBar.style.width = percent + "%";
-  }
+        <!-- Vídeo MP4 local (assets/img) -->
+        <div class="demo__video" role="region" aria-label="Demonstração do agente e CRM">
+          <video
+            class="demo__video-el"
+            controls
+            playsinline
+            preload="metadata"
+            poster="assets/img/poster-demo.jpg"
+            title="Demonstração: agente atendendo e CRM funcionando ao vivo">
+            <source src="assets/img/demo-crm.mp4" type="video/mp4"/>
+            Seu navegador não suporta o vídeo. <a href="assets/img/demo-crm.mp4">Baixe aqui</a>.
+          </video>
+        </div>
 
-  function showStep(index) {
-    steps.forEach((step, i) => {
-      step.hidden = i !== index;
-    });
-    updateProgress();
-  }
+        <div class="demo__cta">
+          <!-- CTA destacado com cor diferente (btn--accent) -->
+          <a href="#diagnostico" class="btn btn--accent btn--large">Quero testar gratuitamente</a>
+          <small class="demo__note">É só plugar o WhatsApp!</small>
+          <div class="demo__subtags">
+            <span class="tag">Atendimento 24/7</span>
+            <span class="tag">Agendamento automático</span>
+            <span class="tag">Dashboard de CRM</span>
+          </div>
+        </div>
 
-  form.addEventListener("click", (e) => {
-    const chip = e.target.closest(".chip");
-    if (chip) {
-      const name = chip.dataset.name;
-      const value = chip.dataset.value;
-      const all = form.querySelectorAll(`.chip[data-name='${name}']`);
+        <div class="demo__footnote">
+          <p class="section__subtitle">
+            Isso é o carro-chefe. Mas não é tudo: integramos site, tráfego pago, automações operacionais e experiências interativas para fechar o ciclo de aquisição → atendimento → conversão.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOWCASE — PRINT DO PAINEL / WHITE LABEL -->
+    <section id="showcase" class="showcase">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Veja o painel em tempo real</h2>
+          <p class="section__subtitle">
+            Visualize agendamentos, conversas, status e resultados em um só lugar. Sem atrito, sem planilhas soltas.
+          </p>
+          <div class="tag tag--ai">Uma solução AI Studio</div>
+        </header>
+
+        <figure class="showcase__frame">
+          <!-- troque a imagem abaixo pelo print do seu White Label -->
+          <img src="assets/img/print-whitelabel.jpg" alt="Print do painel de CRM e agente em funcionamento" class="showcase__img"/>
+          <figcaption class="sr-only">Exemplo do painel com agendamentos e conversas integradas ao WhatsApp</figcaption>
+        </figure>
+
+        <div class="showcase__cta">
+          <a href="#diagnostico" class="btn btn--accent btn--large">Quero testar gratuitamente</a>
+          <small class="demo__note">É só plugar o WhatsApp!</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDIBILIDADE -->
+    <section class="credibility" id="cred">
+      <div class="container">
+        <div class="credibility__content">
+          <div class="credibility__text">
+            <h3 class="credibility__title">Sua empresa não precisa de mais gente, precisa de inteligência que trabalha por você</h3>
+            <p class="credibility__description">
+              A Tullu cria agentes de IA personalizados que atendem, agendam e organizam processos. Um sistema que reduz custos e mantém o atendimento sempre ativo, mesmo quando sua equipe não está online.
+            </p>
+          </div>
+
+          <div class="credibility__features">
+            <div class="feature">
+              <div class="feature__icon">⚙️</div>
+              <div class="feature__content">
+                <h4 class="feature__title">Atendimento 24h</h4>
+                <p class="feature__text">Seu WhatsApp funcionando o tempo todo, sem perda de leads</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <div class="feature__icon">🤖</div>
+              <div class="feature__content">
+                <h4 class="feature__title">Agendamento automático</h4>
+                <p class="feature__text">O agente entende o cliente e marca horários sozinho</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <div class="feature__icon">📈</div>
+              <div class="feature__content">
+                <h4 class="feature__title">Mais conversões</h4>
+                <p class="feature__text">Transforme atendimentos em vendas com respostas instantâneas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAGNÓSTICO (corrigido e funcional) -->
+    <section class="diagnostic" id="diagnostico">
+      <div class="container">
+        <div class="diagnostic__wrap glow-card">
+          <header class="section__header">
+            <h2 class="section__title">Diagnóstico rápido</h2>
+            <p class="section__subtitle">Responda 3 perguntas e eu te digo qual solução ativar primeiro.</p>
+          </header>
+
+          <!-- Barra de progresso -->
+          <div class="diagnostic__progress" aria-hidden="true">
+            <div class="diagnostic__progress-bar"></div>
+          </div>
+
+          <!-- FORM -->
+          <form id="diagnostic-form" class="diagnostic__form" novalidate>
+            <!-- Passo 1 -->
+            <fieldset class="diag-step" aria-label="Objetivo principal">
+              <legend class="sr-only">Objetivo principal</legend>
+              <h3 class="diag-question">Qual seu objetivo imediato?</h3>
+              <div class="chips">
+                <button type="button" class="chip" data-name="prioridade" data-value="site_rapido">Lançar um site rápido</button>
+                <button type="button" class="chip" data-name="prioridade" data-value="mais_leads">Gerar mais leads</button>
+                <button type="button" class="chip" data-name="prioridade" data-value="automatizar">Automatizar atendimento</button>
+                <button type="button" class="chip" data-name="prioridade" data-value="estrategia_ia">Estratégia com IA</button>
+              </div>
+              <div class="diag-actions">
+                <button class="btn btn--secondary" data-next>Próximo</button>
+              </div>
+            </fieldset>
+
+            <!-- Passo 2 -->
+            <fieldset class="diag-step" hidden aria-label="Canal prioritário">
+              <legend class="sr-only">Canal prioritário</legend>
+              <h3 class="diag-question">Onde o agente deve atuar primeiro?</h3>
+              <div class="chips">
+                <button type="button" class="chip" data-name="canal" data-value="whatsapp">WhatsApp</button>
+                <button type="button" class="chip" data-name="canal" data-value="site">Site / Landing page</button>
+                <button type="button" class="chip" data-name="canal" data-value="instagram">Instagram / Direct</button>
+              </div>
+              <div class="diag-actions">
+                <button class="btn btn--secondary" data-prev>Voltar</button>
+                <button class="btn btn--secondary" data-next>Próximo</button>
+              </div>
+            </fieldset>
+
+            <!-- Passo 3 -->
+            <fieldset class="diag-step" hidden aria-label="Volume">
+              <legend class="sr-only">Volume</legend>
+              <h3 class="diag-question">Qual seu volume médio de atendimentos/dia?</h3>
+              <div class="chips">
+                <button type="button" class="chip" data-name="volume" data-value="baixo">Até 20</button>
+                <button type="button" class="chip" data-name="volume" data-value="medio">20–100</button>
+                <button type="button" class="chip" data-name="volume" data-value="alto">100+</button>
+              </div>
+              <div class="diag-actions">
+                <button class="btn btn--secondary" data-prev>Voltar</button>
+                <button class="btn btn--primary" type="submit">Ver recomendação</button>
+              </div>
+            </fieldset>
+          </form>
+
+          <!-- RESULTADO -->
+          <section id="diag-result" class="diag-result" hidden aria-live="polite">
+            <div class="diag-card">
+              <div class="diag-card__head">
+                <h3 class="diag-card__title">Recomendação inicial</h3>
+                <p class="diag-card__why">Com base nas suas respostas, comece por aqui:</p>
+              </div>
+              <div id="diag-plan" class="diag-card__body">
+                <!-- conteúdo preenchido via JS -->
+              </div>
+              <div class="diag-card__cta">
+                <a id="diag-primary-cta" class="btn btn--primary btn--large" href="#" target="_blank">Falar agora no WhatsApp</a>
+              </div>
+              <div class="diag-card__trust">
+                <span class="diag-badge">Implantação em até 7 dias</span>
+                <span class="diag-badge">Sem amarras — cancele quando quiser</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="services" id="servicos">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Camadas de Inteligência</h2>
+          <p class="section__subtitle">
+            Este demo é o destaque — mas o ecossistema completo conecta site, tráfego, automação e experiências interativas para acelerar o funil.
+          </p>
+        </div>
+
+        <div class="services__grid">
+          <div class="service-card">
+            <div class="service-card__icon"><img src="assets/img/weblab.png.png" alt="Tullu WebLab"></div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">WebLab</h3>
+              <p class="service-card__tagline">Sites inteligentes que captam leads e dados</p>
+              <p class="service-card__description">Páginas modernas entregues em até 10 dias, prontas para conectar ao agente.</p>
+              <a href="weblab.html" class="btn btn--secondary">Criar meu site inteligente</a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-card__icon"><img src="assets/img/cobra.png.png" alt="Tullu Cobra"></div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Cobra</h3>
+              <p class="service-card__tagline">Consultoria e automação operacional</p>
+              <p class="service-card__description">Mapeamos gargalos, conectamos dados e automatizamos rotinas.</p>
+              <a href="cobra.html" class="btn btn--secondary">Otimizar minha operação</a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-card__icon"><img src="assets/img/growth.png.png" alt="Tullu Growth"></div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Growth</h3>
+              <p class="service-card__tagline">Tráfego e conversão sob controle da IA</p>
+              <p class="service-card__description">Anúncios guiados por dados reais do seu funil.</p>
+              <a href="growth.html" class="btn btn--secondary">Aumentar conversões</a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-card__icon"><img src="assets/img/aistudio.png.png" alt="Tullu AI Studio"></div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">AI Studio</h3>
+              <p class="service-card__tagline">Agentes de IA personalizados para empresas</p>
+              <p class="service-card__description">Atendimento, agendamento e follow-up integrados ao WhatsApp e CRM.</p>
+              <a href="aistudio.html" class="btn btn--secondary">Ativar agente inteligente</a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-card__icon"><img src="assets/img/playlab.png" alt="Tullu PlayLab"></div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">PlayLab</h3>
+              <p class="service-card__tagline">Experiências que geram engajamento real</p>
+              <p class="service-card__description">Ativações e jogos que capturam leads e alimentam seu funil automaticamente.</p>
+              <a href="playlab.html" class="btn btn--secondary">Ver demonstração</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="process" id="como-funciona">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Como funciona</h2>
+          <p class="section__subtitle">
+            Nosso método transforma o que antes dependia de pessoas em processos que operam de forma autônoma e previsível.
+          </p>
+        </div>
+
+        <div class="process__steps">
+          <div class="process-step"><div class="process-step__number">1</div><div class="process-step__content"><h3>Diagnóstico</h3><p>Entendemos o ponto exato em que sua operação está travando</p></div></div>
+          <div class="process-step"><div class="process-step__number">2</div><div class="process-step__content"><h3>Implantação</h3><p>Instalamos a camada de automação e conectamos seus canais e sistemas</p></div></div>
+          <div class="process-step"><div class="process-step__number">3</div><div class="process-step__content"><h3>Otimização</h3><p>O agente aprende com dados reais e melhora continuamente</p></div></div>
+          <div class="process-step"><div class="process-step__number">4</div><div class="process-step__content"><h3>Resultados</h3><p>Você acompanha métricas e ROI direto no painel</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final" id="cta">
+      <div class="cta-final__bg"></div>
+      <div class="container">
+        <div class="cta-final__content">
+          <h2 class="cta-final__title">Pronto para automatizar seu atendimento e aumentar suas vendas</h2>
+          <p class="cta-final__subtitle">Em até 7 dias sua empresa pode ter um sistema inteligente operando dentro do WhatsApp, agendando e respondendo sem erro.</p>
+          <div class="cta-final__actions">
+            <a href="https://wa.me/5511959029428?text=Ol%C3%A1!%20Quero%20automatizar%20meu%20atendimento%20com%20a%20Tullu%20Motion." class="btn btn--primary btn--large" target="_blank">Ativar agente agora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img"/>
+          </div>
+          <p class="footer__description">A Tullu é a camada inteligente que transforma processos manuais em operações automáticas e escaláveis.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2025 Tullu Motion, todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+  // Diagnóstico rápido — JS corrigido
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("diagnostic-form");
+    if (!form) return;
+
+    const steps = form.querySelectorAll(".diag-step");
+    const progressBar = document.querySelector(".diagnostic__progress-bar");
+    const resultSection = document.getElementById("diag-result");
+    const planContainer = document.getElementById("diag-plan");
+    const primaryCTA = document.getElementById("diag-primary-cta");
+    let currentStep = 0;
+    const totalSteps = steps.length;
+
+    function updateProgress() {
+      const percent = Math.round((currentStep) / (totalSteps - 1) * 100);
+      if (progressBar) progressBar.style.width = percent + "%";
+    }
+    function showStep(index) {
+      steps.forEach((step, i) => step.hidden = i !== index);
+      updateProgress();
+    }
+    function selectInStep(name, value) {
+      const all = form.querySelectorAll(\`.chip[data-name="\${name}"]\`);
       all.forEach(c => c.classList.remove("chip--selected"));
-      chip.classList.add("chip--selected");
-
-      // Mostrar input "outro"
-      const input = form.querySelector(`[data-input-for='${value}']`);
-      form.querySelectorAll(".diag-input").forEach(i => i.classList.add("diag-input--hidden"));
-      if (input) input.classList.remove("diag-input--hidden");
+      const chosen = form.querySelector(\`.chip[data-name="\${name}"][data-value="\${value}"]\`);
+      if (chosen) chosen.classList.add("chip--selected");
     }
 
-    if (e.target.matches("[data-next]")) {
-      e.preventDefault();
-      if (currentStep < totalSteps - 1) currentStep++;
-      showStep(currentStep);
-    }
-
-    if (e.target.matches("[data-prev]")) {
-      e.preventDefault();
-      if (currentStep > 0) currentStep--;
-      showStep(currentStep);
-    }
-  });
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    // Coleta dados
-    const answers = {};
-    form.querySelectorAll(".chip--selected").forEach(chip => {
-      answers[chip.dataset.name] = chip.dataset.value;
+    form.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (chip) {
+        selectInStep(chip.dataset.name, chip.dataset.value);
+      }
+      if (e.target.matches("[data-next]")) {
+        e.preventDefault();
+        if (currentStep < totalSteps - 1) currentStep++;
+        showStep(currentStep);
+      }
+      if (e.target.matches("[data-prev]")) {
+        e.preventDefault();
+        if (currentStep > 0) currentStep--;
+        showStep(currentStep);
+      }
     });
 
-    // Define plano com base nas respostas
-    let plan = "";
-    if (answers.prioridade === "site_rapido") {
-      plan = "weblab";
-      planContainer.innerHTML = `
-        <h4 class="diag-plan__name">Plano WebLab</h4>
-        <ul class="diag-plan__bullets">
-          <li>Site moderno entregue em até 10 dias.</li>
-          <li>Onboarding automatizado pelo WhatsApp.</li>
-          <li>Hospedagem e integração técnica inclusas.</li>
-        </ul>`;
-      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20um%20site%20express%20da%20Tullu%20WebLab.";
-      primaryCTA.textContent = "Falar sobre WebLab";
-    } 
-    else if (answers.prioridade === "mais_leads") {
-      plan = "growth";
-      planContainer.innerHTML = `
-        <h4 class="diag-plan__name">Plano Growth</h4>
-        <ul class="diag-plan__bullets">
-          <li>Tráfego pago orientado por dados.</li>
-          <li>Testes rápidos com foco em ROI.</li>
-          <li>Integração com funil automatizado.</li>
-        </ul>`;
-      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20crescer%20com%20Tullu%20Growth.";
-      primaryCTA.textContent = "Falar sobre Growth";
-    } 
-    else if (answers.prioridade === "automatizar" || answers.prioridade === "estrategia_ia") {
-      plan = "cobra";
-      planContainer.innerHTML = `
-        <h4 class="diag-plan__name">Plano Cobra</h4>
-        <ul class="diag-plan__bullets">
-          <li>Consultoria com IA para mapear gargalos.</li>
-          <li>Automação de processos e atendimento.</li>
-          <li>Fluxos integrados com WhatsApp e CRM.</li>
-        </ul>`;
-      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20automatizar%20minha%20empresa%20com%20a%20Tullu%20Cobra.";
-      primaryCTA.textContent = "Falar sobre Cobra";
-    } 
-    else {
-      plan = "ai_studio";
-      planContainer.innerHTML = `
-        <h4 class="diag-plan__name">Tullu AI Studio</h4>
-        <ul class="diag-plan__bullets">
-          <li>Agentes inteligentes plug-and-play.</li>
-          <li>Automação de WhatsApp e CRM sem código.</li>
-          <li>Modelos SaaS prontos para clínicas e negócios.</li>
-        </ul>`;
-      primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20um%20agente%20inteligente%20da%20Tullu%20AI%20Studio.";
-      primaryCTA.textContent = "Explorar AI Studio";
-    }
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      // coleta respostas
+      const answers = {};
+      form.querySelectorAll(".chip--selected").forEach(chip => {
+        answers[chip.dataset.name] = chip.dataset.value;
+      });
 
-    resultSection.hidden = false;
-    form.hidden = true;
-    updateProgress();
+      // regra simples de roteamento
+      if (answers.prioridade === "site_rapido") {
+        planContainer.innerHTML = `
+          <h4 class="diag-plan__name">Plano WebLab</h4>
+          <ul class="diag-plan__bullets">
+            <li>Site moderno entregue em até 10 dias.</li>
+            <li>Conexão direta com agente e CRM.</li>
+            <li>Onboarding automatizado via WhatsApp.</li>
+          </ul>`;
+        primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20um%20site%20express%20com%20integra%C3%A7%C3%A3o%20ao%20agente.";
+        primaryCTA.textContent = "Falar sobre WebLab";
+      } else if (answers.prioridade === "mais_leads") {
+        planContainer.innerHTML = `
+          <h4 class="diag-plan__name">Plano Growth</h4>
+          <ul class="diag-plan__bullets">
+            <li>Tráfego pago orientado por dados.</li>
+            <li>Testes rápidos com foco em ROI.</li>
+            <li>Integração com funil automatizado.</li>
+          </ul>`;
+        primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20crescer%20com%20tr%C3%A1fego%20e%20CRO.";
+        primaryCTA.textContent = "Falar sobre Growth";
+      } else if (answers.prioridade === "automatizar" || answers.prioridade === "estrategia_ia") {
+        planContainer.innerHTML = `
+          <h4 class="diag-plan__name">Plano de Automação</h4>
+          <ul class="diag-plan__bullets">
+            <li>Agente de IA plugado ao WhatsApp.</li>
+            <li>Agendamento automático + CRM.</li>
+            <li>Fluxos e integrações sob medida.</li>
+          </ul>`;
+        primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20automatizar%20atendimento%20e%20agendamentos.";
+        primaryCTA.textContent = "Ativar automação";
+      } else {
+        planContainer.innerHTML = `
+          <h4 class="diag-plan__name">Solução AI Studio</h4>
+          <ul class="diag-plan__bullets">
+            <li>Agente inteligente pronto para uso.</li>
+            <li>WhatsApp + CRM com histórico.</li>
+            <li>Escalável e sem fricção.</li>
+          </ul>`;
+        primaryCTA.href = "https://wa.me/5511959029428?text=Quero%20entender%20a%20Solu%C3%A7%C3%A3o%20AI%20Studio.";
+        primaryCTA.textContent = "Explorar AI Studio";
+      }
+
+      resultSection.hidden = false;
+      form.hidden = true;
+      updateProgress();
+    });
+
+    // inicia
+    showStep(currentStep);
   });
-
-  showStep(currentStep);
-});
-</script>
-
+  </script>
 </body>
 </html>
