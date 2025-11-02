@@ -2127,314 +2127,336 @@ body::before{
    Se quiser tudo 100% estático, descomente a linha abaixo. */
 /* .hero__bubbles span{ animation: none !important; } */
 
-/* ============================
-   INDEX – SEÇÕES ADICIONADAS
-   (pains, how-cards, value-cards, fit, plans, sticky-cta)
-   ============================ */
+/* =========================================================
+   INDEX – SEÇÕES NOVAS (Tullu Motion)
+   Problemas/Chips • 3 Passos • Faixa de Benefícios • Planos • Showcase
+   Usa as variáveis já existentes no arquivo (cores/gradientes).
+   ========================================================= */
 
-/* ---- Helpers de seção ---- */
-.section--tight { padding: calc(var(--section-padding) - 30px) 0; }
-.pains, .how-cards, .value-cards, .fit-section, .plans {
+/* ---------- Temas de fundo para intercalar visual ---------- */
+.section.theme-radial{
   position: relative;
-  overflow: hidden;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(59,130,246,.08) 0%, transparent 60%),
+    radial-gradient(circle at 75% 70%, rgba(34,211,238,.07) 0%, transparent 62%);
+}
+.section.theme-grid{
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+}
+.section.theme-dark{
+  position: relative;
+  background:
+    radial-gradient(80% 120% at 20% 0%, rgba(59,130,246,.10) 0%, transparent 50%),
+    radial-gradient(80% 120% at 100% 80%, rgba(34,211,238,.08) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.65));
+  border-top: 1px solid var(--ring-light);
+  border-bottom: 1px solid var(--ring-light);
 }
 
-/* halos suaves alternados entre seções p/ quebrar monotonia */
-.pains::before,
-.how-cards::before,
-.value-cards::before,
-.fit-section::before,
-.plans::before{
-  content:"";
-  position:absolute; inset:-10% -5% auto -5%;
-  height: 60%;
-  pointer-events:none;
+/* =========================================================
+   1) O QUE TRAVA O CRESCIMENTO (chips de problemas)
+   Estrutura: .insights  >  .problems-chips  >  li.problem-chip
+   ========================================================= */
+.insights{ padding: var(--section-padding) 0; }
+.insights .section__header{ margin-bottom: 1.25rem; }
+
+.problems-chips{
+  display: grid;
+  gap: .6rem;
+  max-width: 860px;
+  margin: 0 auto 1.25rem;
+}
+.problem-chip{
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .65rem .85rem;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #0B1220;
+  background: linear-gradient(180deg, #E7F1FF, #DFF4FF);
+  border: 1px solid rgba(59,130,246,.35);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.6) inset,
+    0 6px 18px rgba(59,130,246,.15);
+}
+.problem-chip:nth-child(2){
+  background: linear-gradient(180deg, #E8FFF4, #DFFCF6);
+  border-color: rgba(34,211,238,.35);
+}
+.problem-chip:nth-child(3){
+  background: linear-gradient(180deg, #E9F0FF, #E3EBFF);
+  border-color: rgba(59,130,246,.30);
+}
+.problem-chip:nth-child(4){
+  background: linear-gradient(180deg, #FFEDE7, #FFE4D9);
+  border-color: rgba(245,158,11,.35);
+}
+.problem-chip .chip-emoji{
+  width: 24px; height: 24px; display: grid; place-items: center;
   border-radius: 50%;
-  filter: blur(1px);
-  z-index:-1;
-}
-.pains::before        { background: radial-gradient(circle at 25% 35%, rgba(59,130,246,.08), transparent 60%); }
-.how-cards::before    { background: radial-gradient(circle at 70% 30%, rgba(34,211,238,.09), transparent 60%); }
-.value-cards::before  { background: radial-gradient(circle at 30% 70%, rgba(59,130,246,.07), transparent 60%); }
-.fit-section::before  { background: radial-gradient(circle at 75% 65%, rgba(34,211,238,.08), transparent 60%); }
-.plans::before        { background: radial-gradient(circle at 50% 20%, rgba(59,130,246,.09), transparent 65%); }
-
-/* leve textura em blocos claros */
-.pains,
-.how-cards,
-.value-cards,
-.fit-section,
-.plans {
-  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 70%);
+  background: rgba(255,255,255,.75);
+  box-shadow: 0 1px 0 rgba(0,0,0,.08) inset;
+  font-size: .95rem;
 }
 
-/* ============================
-   PAINS (cards de dores)
-   ============================ */
-.pains__grid{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 1rem;
+/* CTA stack abaixo dos chips */
+.insights .cta-stack{
+  display: grid; gap: .8rem; justify-items: start; max-width: 860px; margin: .5rem auto 0;
 }
-@media (max-width: 767px){ .pains__grid{ grid-template-columns: 1fr; } }
-
-.pain-card{
-  width:100%;
-  text-align:left;
-  display:flex;
-  align-items:center;
-  gap:.9rem;
-  padding:1.1rem 1.25rem;
-  border-radius:16px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--ring-light);
-  color: var(--text);
-  cursor:pointer;
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
-  box-shadow: 0 0 0 1px var(--ring-light);
+.insights .cta-stack .btn--primary{ min-width: 280px; }
+.insights .cta-stack .btn--secondary{
+  padding: 14px 22px;
+  border: 1px solid rgba(59,130,246,.25);
+  box-shadow: 0 0 0 1px rgba(59,130,246,.18);
 }
-.pain-card:hover{
-  transform: translateY(-3px);
-  border-color: var(--ring);
-  background: rgba(255,255,255,0.05);
-  box-shadow:
-    0 0 0 1px var(--ring),
-    0 14px 36px rgba(0,0,0,.25);
-}
-.pain-card__icon{
-  display:inline-grid; place-items:center;
-  width:42px; height:42px; border-radius:12px;
-  background: var(--gradient-primary);
-  font-weight:700;
-}
-.pain-card__text{ font-size:1.05rem; line-height:1.5; }
-
-/* CTA centrado da seção */
-.pains__cta{
-  display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;
-  margin-top:1.25rem;
+@media (max-width: 767px){
+  .problem-chip{ font-size: .95rem; }
+  .insights .cta-stack{ justify-items: stretch; }
 }
 
-/* ============================
-   HOW CARDS (como executa)
-   ============================ */
-.how-cards__grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap:1.5rem;
-}
-@media (max-width: 1023px){ .how-cards__grid{ grid-template-columns: 1fr 1fr; } }
-@media (max-width: 767px){ .how-cards__grid{ grid-template-columns: 1fr; } }
+/* =========================================================
+   2) 3 PASSOS (Diagnóstico • Implantação • Resultados)
+   Estrutura: .three-step > .three-step__grid > .step
+   ========================================================= */
+.three-step{ padding: var(--section-padding) 0; }
+.three-step .section__header{ margin-bottom: 1.75rem; }
 
-.how-card{
-  position:relative;
-  padding:1.75rem;
-  border-radius:16px;
-  background: rgba(255,255,255,0.02);
-  border:1px solid var(--ring-light);
-  box-shadow:0 0 0 1px var(--ring-light);
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease;
-  display:flex; flex-direction:column; gap:.65rem;
-}
-.how-card:hover{
-  transform: translateY(-6px);
-  background: rgba(255,255,255,0.05);
-  border-color: var(--ring);
-  box-shadow:
-    0 0 0 1px var(--ring),
-    0 18px 48px rgba(0,0,0,.22);
-}
-.how-card__number{
-  width:48px; height:48px; border-radius:50%;
-  display:grid; place-items:center;
-  background: var(--gradient-primary);
-  font-family: var(--font-heading);
-  font-weight:700;
-  margin-bottom:.25rem;
-}
-.how-card__title{ font-family:var(--font-heading); font-size:1.25rem; font-weight:700; }
-.how-card__text{ color:var(--muted); margin-bottom:.35rem; }
-
-/* ============================
-   VALUE CARDS (o que recebe)
-   ============================ */
-.value-cards__grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
+.three-step__grid{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
   gap: 1.25rem;
 }
-@media (max-width: 1023px){ .value-cards__grid{ grid-template-columns: 1fr 1fr; } }
-@media (max-width: 767px){ .value-cards__grid{ grid-template-columns: 1fr; } }
+@media (max-width: 1023px){ .three-step__grid{ grid-template-columns: 1fr; } }
 
-.value-card{
-  position:relative;
-  padding:1.5rem 1.4rem;
-  border-radius:16px;
-  background: rgba(255,255,255,0.02);
-  border:1px solid var(--ring-light);
-  box-shadow:0 0 0 1px var(--ring-light);
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease;
+.step{
+  position: relative;
+  padding: 1.5rem 1.25rem 1.4rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--ring-light);
+  box-shadow: 0 0 0 1px var(--ring-light);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  display: grid; gap: .6rem;
 }
-.value-card:hover{
-  transform: translateY(-5px);
-  background: rgba(255,255,255,0.05);
+.step:hover{
+  transform: translateY(-6px);
   border-color: var(--ring);
-  box-shadow: 0 0 0 1px var(--ring), 0 16px 44px rgba(0,0,0,.22);
+  box-shadow:
+    0 0 0 1px var(--ring),
+    0 18px 44px rgba(0,0,0,.18);
 }
-.value-card__tick{
-  display:inline-grid; place-items:center;
-  width:28px; height:28px; border-radius:8px;
+.step__num{
+  width: 64px; height: 64px; border-radius: 50%;
+  display: grid; place-items: center;
+  font: 700 1.25rem var(--font-heading);
+  color: #0B0B0C;
   background: var(--gradient-primary);
-  margin-bottom:.6rem;
-  font-weight:700;
+  box-shadow: 0 6px 20px rgba(59,130,246,.35);
+  margin-bottom: .25rem;
 }
-.value-card__title{ font-family:var(--font-heading); font-weight:700; margin-bottom:.25rem; }
-.value-card__text{ color:var(--muted); }
+.step__title{
+  font: 700 1.25rem var(--font-heading);
+}
+.step__text{ color: var(--muted); }
 
-/* ============================
-   FIT (pra quem é)
-   ============================ */
-.fit-grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap:1.25rem;
+/* linha conectora no desktop */
+@media (min-width: 1024px){
+  .three-step__grid{ counter-reset: tstep; }
+  .step{ padding-top: 1.25rem; }
+  .step::after{
+    content:'';
+    position:absolute; top: 32px; right:-.6rem; width: 40px; height: 2px;
+    background: var(--gradient-primary); opacity: .35;
+  }
+  .step:last-child::after{ display: none; }
 }
-@media (max-width: 1023px){ .fit-grid{ grid-template-columns: 1fr 1fr; } }
-@media (max-width: 767px){ .fit-grid{ grid-template-columns: 1fr; } }
 
-.fit-item{
-  padding:1.4rem;
-  border-radius:16px;
-  border:1px solid var(--ring-light);
-  background: rgba(255,255,255,0.02);
-  box-shadow:0 0 0 1px var(--ring-light);
-  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease, background .28s ease;
+/* =========================================================
+   3) FAIXA DE BENEFÍCIOS (badges roláveis)
+   Estrutura: .benefits-strip > .benefits-strip__rail > .benefit-badge
+   ========================================================= */
+.benefits-strip{
+  position: relative;
+  padding: 28px 0;
+  border-top: 1px solid var(--ring-light);
+  border-bottom: 1px solid var(--ring-light);
+  background:
+    radial-gradient(100% 140% at 15% 50%, rgba(59,130,246,.08) 0%, transparent 55%),
+    radial-gradient(100% 140% at 85% 50%, rgba(34,211,238,.08) 0%, transparent 55%),
+    rgba(255,255,255,.01);
+  overflow: hidden;
 }
-.fit-item:hover{
-  transform: translateY(-4px);
-  border-color: var(--ring);
-  background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 0 1px var(--ring), 0 14px 38px rgba(0,0,0,.2);
+.benefits-strip__rail{
+  display: flex; gap: .75rem; align-items: center;
+  white-space: nowrap;
+  animation: rail-marquee 22s linear infinite;
 }
-.fit-item__icon{
-  display:inline-grid; place-items:center;
-  width:40px; height:40px; border-radius:12px;
-  background: var(--gradient-primary);
-  margin-bottom:.5rem;
+@keyframes rail-marquee{
+  from{ transform: translateX(0); }
+  to  { transform: translateX(-50%); }
 }
-.fit-item__title{ font-family:var(--font-heading); font-weight:700; margin-bottom:.2rem; }
-.fit-item__text{ color:var(--muted); }
+.benefit-badge{
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .55rem .9rem; border-radius: 999px;
+  font-weight: 600;
+  color: var(--text);
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--ring-light);
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset;
+}
+.benefit-badge .dot{
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 10px rgba(59,130,246,.6);
+}
 
-/* ============================
-   PLANS (níveis de suporte)
-   ============================ */
+/* reduz movimentos para acessibilidade */
+@media (prefers-reduced-motion: reduce){
+  .benefits-strip__rail{ animation: none; }
+}
+
+/* =========================================================
+   4) PLANOS / NÍVEIS DE SUPORTE
+   Estrutura: .plans > .plans__grid > .plan-card
+   ========================================================= */
+.plans{ padding: var(--section-padding) 0; }
+.plans .section__header{ margin-bottom: 1.75rem; }
+.plans .section__subtitle{ color: var(--muted); }
+
 .plans__grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap:1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1.25rem;
+  align-items: stretch;
 }
-@media (max-width: 1023px){ .plans__grid{ grid-template-columns: 1fr; } }
+@media (max-width:1023px){ .plans__grid{ grid-template-columns: 1fr; } }
 
 .plan-card{
-  position:relative;
-  padding:1.75rem 1.5rem;
-  border-radius:18px;
-  background: rgba(255,255,255,0.02);
-  border:1px solid var(--ring-light);
-  box-shadow:0 0 0 1px var(--ring-light);
-  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease, background .35s ease;
-  display:flex; flex-direction:column; gap:1rem;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: .8rem;
+  min-height: 380px;
+  padding: 1.6rem 1.35rem 1.25rem;
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--ring-light);
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px var(--ring-light);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .plan-card:hover{
   transform: translateY(-8px);
   border-color: var(--ring);
-  background: rgba(255,255,255,0.05);
   box-shadow:
     0 0 0 1px var(--ring),
-    0 24px 60px rgba(0,0,0,.25);
+    0 24px 60px rgba(0,0,0,.18);
 }
 .plan-card--featured{
-  background: linear-gradient(180deg, rgba(59,130,246,.08), rgba(34,211,238,.06));
+  background:
+    linear-gradient(180deg, rgba(59,130,246,.10), rgba(34,211,238,.06));
+  border-color: var(--ring);
   box-shadow:
     0 0 0 1px var(--ring),
-    0 28px 70px rgba(59,130,246,.18);
-  border-color: var(--ring);
+    0 28px 70px rgba(59,130,246,.20);
 }
-.plan-card__head{ text-align:left; }
+
 .plan-card__name{
-  font-family:var(--font-heading); font-size:1.35rem; font-weight:800;
+  font: 700 1.25rem var(--font-heading);
+  letter-spacing: .2px;
 }
-.plan-card__tagline{ color:var(--muted); }
-.plan-card__bullets{
-  display:grid; gap:.5rem; padding-left:1.2rem; list-style:disc; color:var(--muted);
+.plan-card__tagline{ color: var(--muted); }
+.plan-card__list{
+  display: grid; gap: .45rem; color: var(--muted);
+  padding-left: 1.1rem; list-style: disc;
 }
-.plan-card__cta{ display:flex; gap:.75rem; flex-wrap:wrap; }
+.plan-card__actions{ display: grid; gap: .6rem; margin-top: .25rem; }
+.plan-card__actions .btn{ width: 100%; }
 
-.plans__foot-cta{
-  margin-top:1.25rem;
-  display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;
+/* variações de botão p/ destacar exatamente como no print */
+.btn--accent{
+  background: linear-gradient(135deg, #F59E0B, #FBBF24);
+  color: #0B0B0C;
+  border: 1px solid rgba(245,158,11,.45);
+  box-shadow:
+    0 0 0 1px rgba(245,158,11,.22),
+    0 12px 40px rgba(245,158,11,.35);
+}
+.btn--accent:hover{
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(245,158,11,.55),
+    0 18px 60px rgba(245,158,11,.45);
+  filter: saturate(1.06);
 }
 
-/* ============================
-   STICKY CTA (barra flutuante)
-   ============================ */
-.sticky-cta{
-  position: fixed; left:0; right:0; bottom:0;
-  z-index: 9998;
-  padding: .65rem .75rem;
-  background: rgba(9,9,11,.75);
-  border-top: 1px solid var(--ring-light);
-  backdrop-filter: blur(12px);
+/* CTA “Fazer diagnóstico” em azul cheio */
+.btn--diagnostic{
+  background: linear-gradient(120deg, #3B82F6, #22D3EE);
+  color: var(--text);
+  border: 1px solid rgba(59,130,246,.55);
+  box-shadow:
+    0 0 0 1px rgba(59,130,246,.25),
+    0 14px 36px rgba(59,130,246,.35);
 }
-.sticky-cta__inner{
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  display:flex; gap:.6rem; justify-content:center; align-items:center;
+.btn--diagnostic:hover{
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(59,130,246,.65),
+    0 18px 52px rgba(59,130,246,.45);
 }
-.sticky-cta__close{
-  position:absolute; right:.5rem; top:.25rem;
-  background: transparent; color:#fff; border:0; font-size:1.4rem; cursor:pointer;
-  opacity:.7;
-}
-.sticky-cta__close:hover{ opacity:1; }
 
-/* mobile: botões em largura total */
+/* =========================================================
+   5) SHOWCASE (print/hero secundário)
+   Estrutura: .showcase > .showcase__frame > img.showcase__img
+   ========================================================= */
+.showcase{ padding: calc(var(--section-padding) - 20px) 0; }
+.showcase__frame{
+  max-width: 1100px; margin: 0 auto 1rem;
+  border-radius: 18px; overflow: hidden;
+  border: 1px solid var(--ring-light);
+  background: rgba(255,255,255,.02);
+  box-shadow:
+    0 0 0 1px var(--ring-light),
+    0 24px 70px rgba(0,0,0,.28);
+}
+.showcase__img{
+  width:100%; height:auto; display:block; transform: translateZ(0);
+  transition: transform .6s ease;
+}
+.showcase__frame:hover .showcase__img{ transform: scale(1.02); }
+.showcase__cta{ display:flex; flex-direction: column; align-items:center; gap:.35rem; margin-top:1rem; }
+
+/* =========================================================
+   Responsivo fino (apenas para as novas seções)
+   ========================================================= */
+@media (max-width: 1279px){
+  .plans .section__title,
+  .three-step .section__title,
+  .insights .section__title{ font-size: 2.25rem; }
+}
 @media (max-width: 767px){
-  .sticky-cta__inner .btn{ flex:1 1 auto; }
+  .insights{ padding: var(--section-padding-mobile) 0; }
+  .three-step{ padding: var(--section-padding-mobile) 0; }
+  .plans{ padding: var(--section-padding-mobile) 0; }
+  .showcase{ padding: calc(var(--section-padding-mobile) - 10px) 0; }
+
+  .problem-chip{ padding: .6rem .78rem; }
+  .three-step__grid{ gap: 1rem; }
+  .plan-card{ min-height: auto; }
+  .benefits-strip{ padding: 22px 0; }
 }
 
-/* ============================
-   MICRO-ANIMAÇÃO: borda ativa
-   ============================ */
-.pain-card:hover::after,
-.how-card:hover::after,
-.value-card:hover::after,
-.fit-item:hover::after,
-.plan-card:hover::after{
-  content:"";
-  position:absolute; inset:0; border-radius:inherit;
-  pointer-events:none;
-  background: conic-gradient(from 0deg,
-    rgba(59,130,246,.0) 0deg,
-    rgba(59,130,246,.35) 110deg,
-    rgba(34,211,238,.35) 220deg,
-    rgba(59,130,246,.0) 360deg
-  );
-  filter: blur(12px);
-  opacity:.45;
-  animation: rotateBorder 6s linear infinite;
-  z-index:-1;
+/* =========================================================
+   Microefeitos coerentes com o site (sem excesso de motion)
+   ========================================================= */
+.problem-chip,
+.step,
+.plan-card{
+  will-change: transform, box-shadow, border-color;
+  backface-visibility: hidden;
 }
 
-/* honra prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce){
-  .pain-card:hover::after,
-  .how-card:hover::after,
-  .value-card:hover::after,
-  .fit-item:hover::after,
-  .plan-card:hover::after{ animation:none; }
-}
-
-/* ============================
-   FIM – INDEX SEÇÕES NOVAS
-   ============================ */
+  
