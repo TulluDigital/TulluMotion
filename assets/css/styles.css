@@ -443,3 +443,155 @@ ul{ list-style:none; }
   padding:0 !important; margin:-1px !important; overflow:hidden !important;
   clip:rect(0 0 0 0) !important; white-space:nowrap !important; border:0 !important;
 }
+/* =========================
+   LUMI-LIKE BACKGROUND PATCH
+   ========================= */
+
+/* Camada base — halos azuis/ciano (Tullu) */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background:
+    radial-gradient(1200px 900px at 20% 15%, rgba(59,130,246,.25) 0%, rgba(59,130,246,0) 60%),
+    radial-gradient(1100px 800px at 85% 70%, rgba(34,211,238,.22) 0%, rgba(34,211,238,0) 60%),
+    radial-gradient(1600px 1200px at 50% 110%, rgba(59,130,246,.10) 0%, rgba(59,130,246,0) 65%);
+  z-index:-3;
+  filter: saturate(1.05);
+  animation: lumiFade .8s ease-out both;
+}
+
+/* Faixa diagonal (sweep) — aparece rápido e fica estática */
+body::after{
+  content:"";
+  position:fixed; inset:-20% -10% -10% -20%;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    conic-gradient(from 210deg at 10% 15%,
+      rgba(59,130,246,0) 0turn,
+      rgba(59,130,246,.55) .08turn,
+      rgba(34,211,238,.45) .16turn,
+      rgba(255,255,255,.20) .19turn,
+      rgba(34,211,238,.28) .23turn,
+      rgba(59,130,246,0) .30turn);
+  filter: blur(60px);
+  opacity:.85;
+  animation: sweepIn .9s cubic-bezier(.22,1,.36,1) .05s both;
+}
+
+/* Granulado leve (sem travar) */
+html::before{
+  content:"";
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, rgba(0,0,0,0) 1px 2px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.012) 0 1px, rgba(0,0,0,0) 1px 2px);
+  mix-blend-mode: soft-light;
+  opacity:.6;
+}
+
+/* Hero herda o clima, sem conflitos anteriores */
+.hero{
+  background: radial-gradient(1200px 900px at 50% 20%, rgba(59,130,246,.08) 0%, rgba(59,130,246,0) 60%) !important;
+  isolation:isolate;
+}
+
+/* Animações curtas (apenas na entrada) */
+@keyframes lumiFade{ from{opacity:0; transform:scale(1.015)} to{opacity:1; transform:scale(1)} }
+@keyframes sweepIn{ from{opacity:0; transform:translateY(20px) rotate(1deg)} to{opacity:.85; transform:translateY(0) rotate(0)} }
+
+@media (prefers-reduced-motion: reduce){
+  body::before, body::after{ animation:none !important; }
+}
+
+/* =========================
+   NAV translúcida desde o topo
+   ========================= */
+.header{
+  background: rgba(9,9,11,.42);
+  backdrop-filter: blur(16px) saturate(1.05);
+  border-bottom: 1px solid rgba(59,130,246,.14);
+}
+.header.scrolled{
+  background: rgba(9,9,11,.70);
+  border-bottom-color: rgba(59,130,246,.22);
+}
+
+/* =========================
+   Botão primário — azul sólido
+   ========================= */
+.btn--primary{
+  background: #3B82F6 !important;   /* sólido */
+  color: #FFFFFF !important;         /* texto branco */
+  border: 1px solid rgba(59,130,246,.55);
+  box-shadow: 0 10px 28px rgba(59,130,246,.35);
+}
+.btn--primary:hover{
+  filter: brightness(1.05) saturate(1.02);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Seções e cards — espaçamento e flutuação
+   ========================= */
+section, .demo, .showcase, .pains, .credibility, .diagnostic,
+.how-cards, .value-cards, .fit-section, .process, .plans, .cta-final{
+  padding-top: calc(var(--section-padding) - 20px);
+  padding-bottom: calc(var(--section-padding) - 20px);
+}
+
+.feature, .service-card, .metric-card, .how-card, .value-card,
+.fit-item, .process-step, .plan-card, .glow-card, .diag-card{
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--ring-light);
+  box-shadow:
+    0 0 0 1px var(--ring-light),
+    0 24px 60px rgba(0,0,0,.20),
+    0 6px 18px rgba(59,130,246,.10);
+  transform: translateZ(0);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.feature:hover, .service-card:hover, .metric-card:hover, .how-card:hover,
+.value-card:hover, .fit-item:hover, .process-step:hover, .plan-card:hover, .glow-card:hover{
+  transform: translateY(-8px);
+  border-color: var(--ring);
+  box-shadow:
+    0 0 0 1px var(--ring),
+    0 28px 72px rgba(0,0,0,.26),
+    0 10px 26px rgba(59,130,246,.16);
+}
+
+/* Grade consistente entre seções com cards */
+.services__grid, .case-metrics, .how-cards__grid, .value-cards__grid,
+.fit-grid, .process__steps, .plans__grid{
+  gap: 1.25rem !important;
+}
+
+/* =========================
+   “O que normalmente trava o crescimento”
+   — dois azuis (claro/escuro), sem coloridos
+   ========================= */
+.pains .pain-card{
+  background: linear-gradient(180deg,#DCEBFF,#CFE6FF);
+  border-color: rgba(59,130,246,.35);
+  color: #0B1220;
+}
+.pains .pain-card:nth-child(even){
+  background: linear-gradient(180deg,#C6D9FF,#B9D2FF);
+  border-color: rgba(59,130,246,.45);
+}
+
+/* =========================
+   Scroll animations (mais rápidas)
+   ========================= */
+.scroll-animate{ opacity:0; transform: translateY(18px); transition: opacity .45s ease, transform .45s ease; }
+.scroll-animate.animate{ opacity:1; transform: translateY(0); }
+
+/* Mobile: respiro proporcional */
+@media (max-width: 767px){
+  section, .demo, .showcase, .pains, .credibility, .diagnostic,
+  .how-cards, .value-cards, .fit-section, .process, .plans, .cta-final{
+    padding-top: calc(var(--section-padding-mobile) - 8px);
+    padding-bottom: calc(var(--section-padding-mobile) - 8px);
+  }
+}
