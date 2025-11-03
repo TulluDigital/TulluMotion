@@ -530,9 +530,10 @@
 
   </main>
 <!-- ⬇️ COLAR PERTO DO FIM DO BODY, ANTES DO FOOTER OU LOGO APÓS ELE (fica visível no mobile) -->
-<div class="sticky-cta" id="sticky-cta" hidden>
-  <div class="sticky-cta__inner">
-    <button class="sticky-cta__close" aria-label="Fechar" onclick="document.getElementById('sticky-cta').setAttribute('hidden','')">×</button>
+<!-- Sticky CTA (fixo no fundo, acessível) -->
+<div id="sticky-cta" class="sticky-cta" hidden role="region" aria-label="Atalhos rápidos">
+  <div class="sticky-cta__inner" role="group" aria-label="Ações principais">
+    <button class="sticky-cta__close" aria-label="Fechar barra" type="button">×</button>
     <a href="aistudio.html" class="btn btn--primary">Vim pelos Agentes de IA</a>
     <a href="#diagnostico" class="btn btn--outline">Saber a melhor solução</a>
   </div>
@@ -722,6 +723,79 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🔑 inicialização sem scroll/focus
   showStep(currentStep, { doScroll:false, doFocus:false });
 });
+</script>
+
+<script>
+(function(){
+  const bar = document.getElementById('sticky-cta');
+  if (!bar) return;
+
+  const inner = bar.querySelector('.sticky-cta__inner');
+  const closeBtn = bar.querySelector('.sticky-cta__close');
+  let dismissed = false;
+  let ticking = false;
+
+  const setVisible = (v) => {
+    if (dismissed) { bar.setAttribute('hidden',''); inner.classList.remove('is-visible'); return; }
+    if (v) { bar.removeAttribute('hidden'); inner.classList.add('is-visible'); }
+    else   { inner.classList.remove('is-visible'); setTimeout(()=>bar.setAttribute('hidden',''), 220); }
+  };
+
+  // Regra 1: só aparece após 30% de scroll da página
+  const percentScrolled = () => {
+    const h = document.documentElement;
+    const scrollTop = window.scrollY || h.scrollTop || 0;
+    const max = (h.scrollHeight - window.innerHeight) || 1;
+    return scrollTop / max;
+  };
+
+  // Regra 2: some quando o footer ou a seção final entram em vista (evita colisão)
+  const endTargets = [
+    document.querySelector('.cta-final'),
+    document.querySelector('footer')
+  ].filter(Boolean);
+
+  let endVisible = false;
+  if ('IntersectionObserver' in window && endTargets.length){
+    const io = new IntersectionObserver((entries)=>{
+      endVisible = entries.some(e => e.isIntersecting && e.intersectionRatio > 0.05);
+      rafCheck();
+    }, { rootMargin: '0px 0px -10% 0px', threshold: [0, .05, .1] });
+    endTargets.forEach(t => io.observe(t));
+  }
+
+  // Throttle via rAF
+  const rafCheck = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const p = percentScrolled();
+      const show = p > 0.30 && !endVisible;
+      setVisible(show);
+      ticking = false;
+    });
+  };
+
+  // Scroll/resize listeners (passive)
+  window.addEventListener('scroll', rafCheck, { passive: true });
+  window.addEventListener('resize', rafCheck, { passive: true });
+
+  // Botão fechar — memoriza a decisão até recarregar
+  closeBtn.addEventListener('click', () => { dismissed = true; setVisible(false); });
+
+  // Esconde quando o menu mobile abrir (se houver)
+  const nav = document.getElementById('nav-menu');
+  const toggle = document.getElementById('nav-toggle');
+  if (toggle && nav){
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.contains('active');
+      if (open) setVisible(false); else rafCheck();
+    });
+  }
+
+  // Primeira avaliação
+  rafCheck();
+})();
 </script>
     <!-- Footer -->
     <footer class="footer">
