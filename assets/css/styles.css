@@ -282,18 +282,112 @@ ul{ list-style:none; }
 /* Botão de card segue padrão global .btn--secondary (já sem degradê) */
 
 /* =====================================================================
-   PROCESS
-   ===================================================================== */
-.process{ padding:var(--section-padding) 0; }
-.process__steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,2vw,20px); }
-@media (max-width:1023px){ .process__steps{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:640px){  .process__steps{ grid-template-columns:1fr; } }
+ /* ===== PROCESS SECTION — versão “cards numerados” invertida ===== */
 
-.process-step{ composes: card; padding:1.1rem; display:grid; grid-template-columns:auto 1fr; gap:.9rem; align-items:flex-start; }
+.process{
+  padding: var(--section-padding) 0;
+  /* halo de fundo sutil azul */
+  background:
+    radial-gradient(80% 120% at 20% 0%, rgba(59,130,246,.10) 0%, transparent 60%),
+    radial-gradient(80% 120% at 100% 80%, rgba(34,211,238,.08) 0%, transparent 60%);
+}
+
+.process__steps{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width:1023px){ .process__steps{ grid-template-columns: 1fr 1fr; } }
+@media (max-width:640px){  .process__steps{ grid-template-columns: 1fr; } }
+
+/* CARD */
+.process-step{
+  position: relative;
+  padding: 1.25rem 1.25rem 1.4rem;
+  border-radius: 16px;
+  /* paleta invertida: azul claro com nébula interna */
+  background:
+    radial-gradient(120% 120% at 20% 10%, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 40%),
+    linear-gradient(180deg, rgba(207, 228, 255, 0.14) 0%, rgba(174, 215, 255, 0.10) 100%);
+  border: 1px solid rgba(59,130,246,.35);
+  box-shadow:
+    0 0 0 1px rgba(59,130,246,.18) inset,
+    0 18px 44px rgba(59,130,246,.18);
+  overflow: hidden;
+  /* flutuante */
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+  backdrop-filter: saturate(1.05);
+}
+.process-step:hover{
+  transform: translateY(-6px);
+  border-color: var(--ring);
+  box-shadow:
+    0 0 0 1px var(--ring),
+    0 28px 70px rgba(59,130,246,.28);
+}
+
+/* NÉBULA pulsando de leve dentro do card */
+.process-step::after{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(60% 60% at 70% 30%, rgba(34,211,238,.14) 0%, transparent 60%),
+    radial-gradient(60% 60% at 10% 80%, rgba(59,130,246,.12) 0%, transparent 65%);
+  opacity:.9;
+  pointer-events:none;
+}
+
+/* PÍLULA NUMERADA (quadradinha com glow) */
 .process-step__number{
-  width:44px; height:44px; border-radius:50%; display:grid; place-items:center;
-  background:var(--primary); color:#fff; font-weight:800;
-  box-shadow:0 10px 22px rgba(59,130,246,.35);
+  position: absolute;
+  top: -14px; left: -14px;
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: grid; place-items: center;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #0B0B0C;
+  background: linear-gradient(180deg, #67E8F9 0%, #3B82F6 100%);
+  box-shadow:
+    0 12px 28px rgba(59,130,246,.45),
+    0 0 0 6px rgba(59,130,246,.18);
+  z-index: 2;
+}
+
+/* filete/linha saindo da pílula (efeito do seu componente preferido) */
+.process-step__number::after{
+  content:"";
+  position: absolute;
+  top: 26px; left: 100%;
+  width: 64px; height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, rgba(59,130,246,.55), rgba(34,211,238,.35));
+  filter: blur(.2px);
+}
+
+/* CONTEÚDO */
+.process-step__title{
+  margin: 0 0 .35rem 0;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #FFFFFF;                  /* título branco */
+}
+.process-step__description{
+  color: #E7F1FF;                  /* texto claro, legível no azul */
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+/* remove o “conector” antigo entre círculos */
+.process-step__number + * { margin-left: 0; }
+.process-step__number::before{ display:none; }
+
+/* acessibilidade / motion */
+@media (prefers-reduced-motion: reduce){
+  .process-step{ transition: none; }
+  .process-step:hover{ transform: none; }
 }
 
 /* =====================================================================
