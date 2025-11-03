@@ -2280,3 +2280,58 @@ body::before{
   .fit-item{ padding:1rem; }
   .plan-card{ padding:1rem; }
 }
+
+/* ==== STICKY CTA (fixo, seguro no iOS/Android/desktop) ==== */
+.sticky-cta{
+  position: fixed;
+  left: 0; right: 0;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 9998;
+  pointer-events: none;            /* evita bloquear a página fora do container */
+}
+.sticky-cta__inner{
+  pointer-events: auto;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex; gap: .6rem; align-items: center; justify-content: center;
+  padding: .65rem .75rem;
+  border-radius: 14px;
+  background: rgba(9, 9, 11, .90);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--ring);
+  box-shadow:
+    0 0 0 1px var(--ring-light) inset,
+    0 14px 44px rgba(0,0,0,.35),
+    0 0 60px rgba(59,130,246,.15);
+  transform: translateY(18px);
+  opacity: 0;
+  transition: transform .28s ease, opacity .28s ease;
+}
+.sticky-cta.is-visible .sticky-cta__inner{
+  transform: translateY(0);
+  opacity: 1;
+}
+.sticky-cta__close{
+  appearance: none; border: 0; background: transparent; color: var(--muted);
+  font-size: 1.25rem; line-height: 1; padding: .25rem .5rem; border-radius: 8px;
+  transition: color .2s ease, background .2s ease;
+}
+.sticky-cta__close:hover{ color: #fff; background: rgba(255,255,255,.06); }
+
+/* Botões dentro da barra seguem identidade azul/preto */
+.sticky-cta .btn{ height: 42px; }
+.sticky-cta .btn--primary{ background: var(--gradient-primary); box-shadow: var(--shadow-glow); }
+.sticky-cta .btn--outline{ border-color: var(--ring); }
+
+/* Mobile: empilha e dá respiro lateral */
+@media (max-width: 767px){
+  .sticky-cta__inner{
+    width: calc(100% - 20px);
+    padding: .6rem .6rem;
+    gap: .5rem;
+  }
+  .sticky-cta .btn{ flex: 1 1 auto; width: auto; }
+}
+
+/* Evita sobreposição com outros fixos (se existir cookie bar, etc.) */
+body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px); }
