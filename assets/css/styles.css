@@ -2346,5 +2346,86 @@ body::before{
   .sticky-cta .btn{ flex: 1 1 auto; width: auto; }
 }
 
+/* VARIANTES DE COR PARA .pain-card */
+.pain-card--blue   { --pc-bg: rgba(59,130,246,.14); --pc-bd: rgba(59,130,246,.45); }
+.pain-card--green  { --pc-bg: rgba(16,185,129,.14); --pc-bd: rgba(16,185,129,.45); }
+.pain-card--purple { --pc-bg: rgba(139,92,246,.14); --pc-bd: rgba(139,92,246,.45); }
+.pain-card--amber  { --pc-bg: rgba(245,158,11,.14); --pc-bd: rgba(245,158,11,.45); }
+
+/* usa as variáveis acima quando houver variante */
+.pain-card.pain-card--blue:hover,
+.pain-card.pain-card--green:hover,
+.pain-card.pain-card--purple:hover,
+.pain-card.pain-card--amber:hover {
+  background: var(--pc-bg);
+  border-color: var(--pc-bd);
+  box-shadow: 0 12px 30px var(--pc-bd);
+}
+/* GLOW SUAVE ATRÁS DO CARD */
+.pain-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* garante que o ::before não vaze */
+}
+
+.pain-card::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background: radial-gradient(60% 60% at 30% 30%, rgba(59,130,246,.22), transparent 60%),
+              radial-gradient(50% 50% at 80% 20%, rgba(255,255,255,.05), transparent 60%);
+  filter: blur(22px);
+  opacity: .35;
+  z-index: -1;
+  animation: breath 5.5s ease-in-out infinite;
+}
+
+@keyframes breath {
+  0%, 100% { transform: scale(1);   opacity: .30; }
+  50%      { transform: scale(1.06); opacity: .45; }
+}
+
+/* efeito extra ao pairar */
+.pain-card:hover::before { opacity: .55; }
+/* GRID PADRÃO REUTILIZÁVEL PARA CARDS */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 .5rem;
+}
+
+/* CARD BASE PADRÃO (compartilha estilo com .pain-card) */
+.card-base {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text);
+  transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.card-base:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* você pode aplicar as mesmas variantes e o glow do .pain-card aqui também */
+.card-base::before { content:""; position:absolute; inset:-30%;
+  background: radial-gradient(60% 60% at 30% 30%, rgba(59,130,246,.22), transparent 60%),
+              radial-gradient(50% 50% at 80% 20%, rgba(255,255,255,.05), transparent 60%);
+  filter: blur(22px); opacity:.35; z-index:-1; animation: breath 5.5s ease-in-out infinite;
+}
+
+
 /* Evita sobreposição com outros fixos (se existir cookie bar, etc.) */
 body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px); }
