@@ -642,3 +642,93 @@
 .showcase-frame iframe::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
+
+/* ============================
+   O QUE VOCÊ RECEBE NA PRÁTICA
+   ============================ */
+.value-cards{
+  padding: var(--section-padding) 0;
+  background: radial-gradient(circle at 50% 50%, rgba(59,130,246,0.04) 0%, transparent 70%);
+}
+
+.value-cards .section__header{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* GRID */
+.value-cards__grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+}
+.value-cards__grid > *{ min-width: 0; } /* evita overflow */
+
+/* CARD – mesmo DNA dos service-cards */
+.value-card{
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--ring-light);
+  box-shadow: 0 0 0 1px var(--ring-light);
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-smooth),
+              box-shadow var(--transition-smooth),
+              border-color var(--transition-smooth),
+              background var(--transition-smooth);
+}
+.value-card::before{
+  content:'';
+  position:absolute; top:0; left:0; width:100%; height:2px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-smooth);
+}
+.value-card:hover{
+  transform: translateY(-6px);
+  border-color: var(--ring);
+  box-shadow: 0 0 0 1px var(--ring), 0 10px 36px rgba(0,0,0,.18);
+  background: rgba(255,255,255,0.04);
+}
+.value-card:hover::before{ transform: scaleX(1); }
+
+/* Conteúdo */
+.value-card__tick{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px; height:34px;
+  border-radius:10px;
+  margin-bottom:.75rem;
+  font-weight:800;
+  color:#0B0B0C;             /* contraste dentro do chip */
+  background: var(--gradient-primary);
+  box-shadow: 0 6px 18px rgba(59,130,246,.25);
+}
+.value-card__title{
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: .35rem;
+  line-height: 1.3;
+}
+.value-card__text{
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Foco acessível */
+.value-card:focus-within{
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 2px rgba(34,211,238,0.35), 0 10px 36px rgba(0,0,0,.18);
+  border-color: var(--primary-2);
+}
+
+/* Mobile */
+@media (max-width: 767px){
+  .value-cards{ padding: var(--section-padding-mobile) 0; }
+  .value-card{ padding: 1.25rem; border-radius: 14px; }
+}
