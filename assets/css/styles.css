@@ -2429,3 +2429,125 @@ body::before{
 
 /* Evita sobreposição com outros fixos (se existir cookie bar, etc.) */
 body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px); }
+
+
+/* ============================
+   AI AGENTS (cards com avatar)
+   ============================ */
+.agents{
+  padding: var(--section-padding) 0;
+  background: radial-gradient(circle at 50% 50%, rgba(59,130,246,0.04) 0%, transparent 70%);
+}
+
+.agents .section__header{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.agents__grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Card base do agente — mesmo DNA dos seus service/value cards */
+.agent-card{
+  position: relative;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--ring-light);
+  box-shadow: 0 0 0 1px var(--ring-light);
+  border-radius: 18px;
+  padding: 3.25rem 1.5rem 1.5rem; /* espaço p/ o avatar sobreposto */
+  transition: transform var(--transition-smooth),
+              box-shadow var(--transition-smooth),
+              border-color var(--transition-smooth),
+              background var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  overflow: visible; /* deixa o avatar sair do card */
+}
+.agent-card::before{
+  content:'';
+  position:absolute; top:0; left:0; width:100%; height:2px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-smooth);
+}
+.agent-card:hover{
+  transform: translateY(-6px);
+  border-color: var(--ring);
+  box-shadow: 0 0 0 1px var(--ring), 0 14px 40px rgba(0,0,0,.18);
+  background: rgba(255,255,255,0.04);
+}
+.agent-card:hover::before{ transform: scaleX(1); }
+
+/* Avatar redondo sobreposto ao topo do card */
+.agent-card__avatar{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 104px;
+  height: 104px;
+  border-radius: 999px;
+  background: rgba(9,9,11,.85);
+  border: 2px solid rgba(255,255,255,0.12);
+  box-shadow:
+    0 8px 26px rgba(0,0,0,.35),
+    0 0 0 6px rgba(59,130,246,.12); /* halo */
+  overflow: hidden;
+}
+.agent-card__avatar img{
+  width: 100%; height: 100%; object-fit: cover; display:block;
+  filter: drop-shadow(0 0 8px rgba(59,130,246,.35));
+}
+
+/* Título (nome) e descrição */
+.agent-card__name{
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: .25rem;
+  margin-bottom: .35rem;
+}
+.agent-card__role{
+  text-align: center;
+  color: var(--muted);
+  font-size: .95rem;
+  margin-bottom: .9rem;
+}
+
+/* Bullets internos com "bolinhas" */
+.agent-card__bullets{
+  margin: .25rem 0 1rem;
+  padding-left: 1.15rem;
+  color: var(--muted);
+  line-height: 1.55;
+  list-style: disc;
+}
+
+/* CTA no rodapé do card */
+.agent-card__cta{
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+.agent-card .btn{
+  width: 100%;
+}
+
+/* Mobile: 1 card por linha e avatar menor */
+@media (max-width: 767px){
+  .agents{ padding: var(--section-padding-mobile) 0; }
+  .agents__grid{ grid-template-columns: 1fr; gap: 1rem; }
+  .agent-card{ padding: 3rem 1.25rem 1.25rem; border-radius: 16px; }
+  .agent-card__avatar{ width: 92px; height: 92px; }
+}
+
+/* Espaço sutil quando a seção vem logo após o hero */
+.hero + .agents{ margin-top: -10px; }
