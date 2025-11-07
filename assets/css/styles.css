@@ -2706,3 +2706,98 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   }
   .service-card--aistudio .flame { animation: none !important; }
 }
+/* ===== AI STUDIO - CARD SECUNDÁRIO ===== */
+
+.service-card--aistudio {
+  position: relative;
+  padding-bottom: 4.5rem; /* espaço p/ mini-card */
+}
+
+/* Linha conectando */
+.aistudio-linkline {
+  position: absolute;
+  left: 50%;
+  top: calc(100% - 1.2rem);
+  width: 1px;
+  height: 28px;
+  background: rgba(34,211,238,0.35);
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity .5s ease, height .5s ease;
+}
+
+/* Mini-hero */
+.aistudio-mini-hero {
+  text-align: center;
+  margin-top: .5rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+.aistudio-mini-hero__title {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Mini-card secundário */
+.aistudio-mini-card {
+  display: block;
+  position: relative;
+  margin: 1.2rem auto 0;
+  width: 85%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--ring-light);
+  border-radius: 14px;
+  padding: 2.2rem 1rem 1.3rem;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(34,211,238,0.12);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+/* Avatares */
+.mini-card__avatars {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: .35rem;
+}
+
+.avatar--sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #0b0b0c;
+  box-shadow: 0 0 8px rgba(34,211,238,0.4);
+}
+
+/* Texto */
+.mini-card__text {
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.45;
+}
+
+/* ==== ANIMAÇÃO DE ENTRADA AO SCROLL ==== */
+[data-animate="line"].animate-in {
+  opacity: 1;
+  height: 34px;
+}
+
+[data-animate="mini-hero"].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate="mini-card"].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
