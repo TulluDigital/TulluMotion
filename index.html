@@ -852,6 +852,17 @@ document.addEventListener("DOMContentLoaded", () => {
   rafCheck();
 })();
 </script>
+
+<script>
+document.addEventListener("scroll", () => {
+  document.querySelectorAll("[data-animate]").forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.88) {
+      el.classList.add("animate-in");
+    }
+  });
+});
+</script>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
