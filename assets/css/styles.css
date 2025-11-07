@@ -72,7 +72,7 @@ ul {
 .container {
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 var(--container-padding);
+  padding:  var(--section-padding-mobile) 0;
 }
 
 .gradient-text {
@@ -2437,6 +2437,7 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
 .agents{
   padding: var(--section-padding) 0;
   background: radial-gradient(circle at 50% 50%, rgba(59,130,246,0.04) 0%, transparent 70%);
+  
   
 }
 
