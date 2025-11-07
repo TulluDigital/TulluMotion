@@ -363,16 +363,51 @@
             </div>
           </div>
 
-          <div class="service-card">
-            <div class="service-card__icon"><img src="assets/img/aistudio.png.png" alt="Tullu AI Studio"></div>
-            <div class="service-card__content">
-              <h3 class="service-card__title">AI Studio</h3>
-              <p class="service-card__tagline">Agentes de IA personalizados para empresas</p>
-              <p class="service-card__description">Atendimento, agendamento e follow-up integrados ao WhatsApp e CRM.</p>
-              <a href="aistudio.html" class="btn btn--secondary">Conheça o AI Studio</a>
-            </div>
-          </div>
+    <!-- CARD — AI STUDIO (com card secundário conectado) -->
+<div class="service-card service-card--aistudio">
+  <div class="service-card__icon">
+    <img src="assets/img/aistudio.png.png" alt="Tullu AI Studio">
+  </div>
 
+  <div class="service-card__content">
+    <h3 class="service-card__title">AI Studio</h3>
+    <p class="service-card__tagline">Agentes de IA personalizados para empresas</p>
+    <p class="service-card__description">
+      Atendimento, agendamento e follow-up integrados ao WhatsApp e CRM.
+    </p>
+    <a href="aistudio.html" class="btn btn--secondary">Conheça o AI Studio</a>
+  </div>
+
+  <!-- Linha de ligação fina entre o card principal e o secundário -->
+  <span class="aistudio-linkline" aria-hidden="true"></span>
+
+  <!-- Mini “hero” sobre a linha (título pequeno) -->
+  <div class="aistudio-mini-hero">
+    <h4 class="aistudio-mini-hero__title">
+      <span class="flame" aria-hidden="true">🔥</span> Agentes em alta
+    </h4>
+  </div>
+
+  <!-- CARD SECUNDÁRIO (menor, com brilho sutil) -->
+  <a href="aistudio.html" class="aistudio-mini-card" aria-label="Ver agentes do AI Studio">
+    <!-- Avatares sobrepostos no topo -->
+    <div class="mini-card__avatars" aria-hidden="true">
+      <img src="assets/img/agents/kael.jpg" alt="Agente Kael" class="avatar avatar--sm avatar--1">
+      <img src="assets/img/agents/steve.jpg" alt="Agente Steve" class="avatar avatar--sm avatar--2">
+      <img src="assets/img/agents/ryan.jpg" alt="Agente Ryan" class="avatar avatar--sm avatar--3">
+      <img src="assets/img/agents/arion.jpg" alt="Agente Arion" class="avatar avatar--sm avatar--4">
+      <img src="assets/img/agents/custom.jpg" alt="Agente Custom" class="avatar avatar--sm avatar--5">
+    </div>
+
+    <!-- Texto curto dentro do card secundário -->
+    <div class="mini-card__body">
+      <p class="mini-card__text">
+        O AI Studio está voando: agentes prontos para WhatsApp + CRM, aprendendo com seus dados e convertendo no automático.
+        Implantação em até 7 dias.
+      </p>
+    </div>
+  </a>
+</div>
           <div class="service-card">
             <div class="service-card__icon"><img src="assets/img/playlab.png" alt="Tullu PlayLab"></div>
             <div class="service-card__content">
