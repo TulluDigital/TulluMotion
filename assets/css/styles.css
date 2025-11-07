@@ -2437,6 +2437,7 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
 .agents{
   padding: var(--section-padding) 0;
   background: radial-gradient(circle at 50% 50%, rgba(59,130,246,0.04) 0%, transparent 70%);
+  
 }
 
 .agents .section__header{
@@ -2450,7 +2451,9 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   gap: 1.25rem;
   align-items: stretch;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 1.5rem auto;
+  
+
 }
 
 /* Card base do agente — mesmo DNA dos seus service/value cards */
@@ -2468,6 +2471,7 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   display: flex;
   flex-direction: column;
   overflow: visible; /* deixa o avatar sair do card */
+  margin-top:1rem;
 }
 .agent-card::before{
   content:'';
