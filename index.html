@@ -378,43 +378,12 @@
     </p>
     <a href="aistudio.html" class="btn btn--secondary">Conheça o AI Studio</a>
   </div>
-<!-- Linha de ligação -->
-  <span class="aistudio-linkline" data-animate="line" aria-hidden="true"></span>
 
-  <!-- Mini título -->
-  <div class="aistudio-mini-hero" data-animate="mini-hero">
-    <h4 class="aistudio-mini-hero__title">
-      <span class="flame" aria-hidden="true">🔥</span> Agentes em alta
-    </h4>
-  </div>
 
   
 </div>
 
-<!-- JS (somente para este card) -->
-<script>
-(() => {
-  const card = document.getElementById('card-aistudio');
-  if (!card) return;
 
-  // Sem IO disponível → mostra direto
-  if (!('IntersectionObserver' in window)) {
-    card.classList.add('is-visible');
-    return;
-  }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        card.classList.add('is-visible');
-        io.disconnect();
-      }
-    });
-  }, { threshold: 0.25 });
-
-  io.observe(card);
-})();
-</script>
      <div class="service-card">
             <div class="service-card__icon"><img src="assets/img/playlab.png" alt="Tullu PlayLab"></div>
             <div class="service-card__content">
