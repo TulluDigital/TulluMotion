@@ -741,7 +741,7 @@
 /* movimento base: flutuar + leve pulso */
 @keyframes tm-avatarFloat {
   0%   { transform: translateY(0) scale(1); }
-  50%  { transform: translateY(-6px) scale(1.035); }
+  50%  { transform: translateY(-3px) scale(1.035); }
   100% { transform: translateY(0) scale(1); }
 }
 
@@ -781,7 +781,7 @@
 @media (max-width: 767px) {
   @keyframes tm-avatarFloat {
     0%   { transform: translateY(0) scale(1); }
-    50%  { transform: translateY(-4px) scale(1.025); }
+    50%  { transform: translateY(-2px) scale(1.025); }
     100% { transform: translateY(0) scale(1); }
   }
 }
@@ -792,5 +792,90 @@
     animation: none !important;
     transform: none !important;
     filter: none !important;
+  }
+}
+/* === Avatar flutuando com o CÍRCULO (wrapper) === */
+@keyframes tm-wrapperFloat {
+  0%   { transform: translate(-50%, -50%); }
+  50%  { transform: translate(-50%, calc(-50% - 3px)); } /* sobe 3px */
+  100% { transform: translate(-50%, -50%); }
+}
+
+/* Halo/brilho pulsando atrás do círculo via box-shadow (não é cortado pelo overflow) */
+@keyframes tm-haloPulse {
+  0% {
+    box-shadow:
+      0 8px 26px rgba(0,0,0,.35),
+      0 0 0 6px rgba(59,130,246,.12),     /* anel externo */
+      0 0 0 0  rgba(59,130,246,.25);     /* glow interno */
+  }
+  50% {
+    box-shadow:
+      0 10px 30px rgba(0,0,0,.40),
+      0 0 0 10px rgba(59,130,246,.10),
+      0 0 14px 4px rgba(34,211,238,.28);
+  }
+  100% {
+    box-shadow:
+      0 8px 26px rgba(0,0,0,.35),
+      0 0 0 6px rgba(59,130,246,.12),
+      0 0 0 0  rgba(59,130,246,.25);
+  }
+}
+
+/* A animação agora é no WRAPPER (o círculo) */
+.agents .agent-card__avatar-wrapper{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);   /* mantém no topo do card */
+  width: 104px;
+  height: 104px;
+  border-radius: 999px;
+  overflow: hidden;                    /* recorta a imagem redonda */
+  background: rgba(9,9,11,.85);
+  border: 2px solid rgba(255,255,255,0.12);
+
+  /* animações */
+  will-change: transform, box-shadow;
+  animation: tm-wrapperFloat 5.2s ease-in-out infinite,
+             tm-haloPulse   4.4s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* IMG preenche 100% do círculo */
+.agents .agent-card__avatar{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+}
+
+/* Tira animações antigas do IMG (caso existam) */
+.agents .agent-card__avatar { filter: none; }
+
+/* Leve boost no hover do card */
+.agents .agent-card:hover .agent-card__avatar-wrapper{
+  animation-duration: 4.6s, 3.8s;
+}
+
+/* Mobile: movimento ainda mais sutil */
+@media (max-width: 767px){
+  @keyframes tm-wrapperFloat {
+    0%   { transform: translate(-50%, -50%); }
+    50%  { transform: translate(-50%, calc(-50% - 2px)); }
+    100% { transform: translate(-50%, -50%); }
+  }
+}
+
+/* Acessibilidade: respeita redução de movimento */
+@media (prefers-reduced-motion: reduce){
+  .agents .agent-card__avatar-wrapper{
+    animation: none !important;
+    transform: translate(-50%, -50%) !important;
+    box-shadow: 0 8px 26px rgba(0,0,0,.35),
+                0 0 0 6px rgba(59,130,246,.12);
   }
 }
