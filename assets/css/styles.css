@@ -3012,10 +3012,16 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   align-items: center;
   margin-top: 1.25rem;
 }
+/* =======================================
+   HERO — Card vítreo com setas ↓ ↓
+   ======================================= */
 
-/* Garantir que o card novo substitui os botões originais */
-.hero .hero__cta a{
-  display: none !important;
+/* Define que o card vítreo só estiliza o hero que tem essa variação */
+.hero__cta--glass{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.25rem;
 }
 
 /* Card vítreo */
@@ -3025,7 +3031,7 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   align-items: center;
   justify-content: center;
   gap: 1.25rem;
-  padding: 0.65rem 1.5rem; /* fino */
+  padding: 0.65rem 1.5rem;
   border-radius: 14px;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.14);
