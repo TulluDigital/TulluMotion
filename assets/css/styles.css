@@ -72,7 +72,7 @@ ul {
 .container {
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding:  var(--section-padding-mobile) 0;
+  padding:   0 var(--container-padding);
 }
 
 .gradient-text {
