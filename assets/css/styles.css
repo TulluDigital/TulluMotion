@@ -2555,7 +2555,7 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
 }
 
 /* Espaço sutil quando a seção vem logo após o hero */
-.hero + .agents{ margin-top: -10px; }
+/*.hero + .agents{ margin-top: -10px; }/*
 
 /* ===== AI STUDIO: Card secundário conectado + animações ===== */
 
@@ -2567,13 +2567,13 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
 /* Layout da área secundária (linha + mini-hero + mini-card) */
 .service-card--aistudio .aistudio-linkline {
   display: block;
-  width: 100%;
-  height: 2px;
+  width: 1px;
+  height: 90px;
   margin-top: 0.75rem;
   background: linear-gradient(90deg, rgba(34,211,238,.35), rgba(59,130,246,.35));
-  border-radius: 4px;
+  
   transform: scaleX(0);
-  transform-origin: left;
+  transform-origin: top;
   transition: transform 700ms cubic-bezier(.22,1,.36,1) 80ms;
 }
 
