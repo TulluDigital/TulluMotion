@@ -732,3 +732,65 @@
   .value-cards{ padding: var(--section-padding-mobile) 0; }
   .value-card{ padding: 1.25rem; border-radius: 14px; }
 }
+
+
+/* ============================
+   AI Studio — Avatares "in motion"
+   ============================ */
+
+/* movimento base: flutuar + leve pulso */
+@keyframes tm-avatarFloat {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-6px) scale(1.035); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* brilho respirando de forma sutil (halo) */
+@keyframes tm-avatarGlow {
+  0%   { filter: drop-shadow(0 0 6px rgba(59,130,246,.20)); }
+  50%  { filter: drop-shadow(0 0 12px rgba(34,211,238,.35)); }
+  100% { filter: drop-shadow(0 0 6px rgba(59,130,246,.20)); }
+}
+
+/* aplica a animação no IMG do avatar (não afeta layout do card) */
+.agents .agent-card__avatar {
+  will-change: transform, filter;
+  animation: tm-avatarFloat 4.8s ease-in-out infinite,
+             tm-avatarGlow 6.2s ease-in-out infinite;
+  transform-origin: 50% 55%;
+}
+
+/* desfase para não ficarem sincronizados (conta só <article> dentro da grid) */
+.agents .agents__grid > .agent-card:nth-of-type(3n+1) .agent-card__avatar {
+  animation-delay: .0s, .0s;
+}
+.agents .agents__grid > .agent-card:nth-of-type(3n+2) .agent-card__avatar {
+  animation-delay: .8s, 1.2s;
+}
+.agents .agents__grid > .agent-card:nth-of-type(3n+3) .agent-card__avatar {
+  animation-delay: 1.6s, .6s;
+}
+
+/* efeito ao passar o mouse: levemente mais vivo (sem “pular”) */
+.agents .agent-card:hover .agent-card__avatar {
+  animation-duration: 4.2s, 5.2s;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* mobile: movimento menor para não distrair */
+@media (max-width: 767px) {
+  @keyframes tm-avatarFloat {
+    0%   { transform: translateY(0) scale(1); }
+    50%  { transform: translateY(-4px) scale(1.025); }
+    100% { transform: translateY(0) scale(1); }
+  }
+}
+
+/* acessibilidade: respeita redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  .agents .agent-card__avatar {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
