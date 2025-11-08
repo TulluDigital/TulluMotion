@@ -3003,3 +3003,54 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
 }
 
 
+/* =======================================
+   HERO — Card vítreo com setas ↓ ↓
+   ======================================= */
+.hero .hero__cta{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+/* Garantir que o card novo substitui os botões originais */
+.hero .hero__cta a{
+  display: none !important;
+}
+
+/* Card vítreo */
+.hero__cta-glass{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 0.65rem 1.5rem; /* fino */
+  border-radius: 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: none; /* não clicável */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 8px 26px rgba(0,0,0,.35);
+}
+
+/* Texto */
+.hero__cta-glass span{
+  font-size: .9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--primary, #3b82f6);
+}
+
+/* Setas ↓ */
+.hero__cta-glass::before,
+.hero__cta-glass::after{
+  content: "↓";
+  font-size: 1.15rem;
+  color: var(--primary, #3b82f6);
+  opacity: 0.9;
+  position: relative;
+  top: 1px;
+}
