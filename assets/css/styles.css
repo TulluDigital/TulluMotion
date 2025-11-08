@@ -2475,11 +2475,11 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   border: 1px solid var(--ring-light);
   box-shadow: 0 0 0 1px var(--ring-light);
   border-radius: 18px;
-  padding: 3.25rem 1.5rem 1.5rem; /* espaço p/ o avatar sobreposto */
+  padding: 2.75rem 1.5rem 1.5rem;  
   display: flex;
   flex-direction: column;
   overflow: visible;              /* avatar pode passar do card */
-  margin-top: 3.25rem;
+  margin-top: 2.5rem;
   transition:
     transform var(--transition-smooth),
     border-color var(--transition-smooth),
@@ -2524,7 +2524,7 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   position: absolute;
   left: 50%;
   top: 0;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
   width: 104px;
   height: 104px;
   border-radius: 999px;
