@@ -327,6 +327,14 @@ ul {
   margin-bottom: 1.5rem;
 }
 
+
+.hero2_title{
+ font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
 .hero__subtitle {
   font-size: 1.5rem;
   color: white;
