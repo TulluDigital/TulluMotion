@@ -2479,7 +2479,7 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   display: flex;
   flex-direction: column;
   overflow: visible;              /* avatar pode passar do card */
-  margin-top: 2.9rem;
+  margin-top: 3.25rem;
   transition:
     transform var(--transition-smooth),
     border-color var(--transition-smooth),
@@ -2973,6 +2973,33 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
     max-width: 36ch;               /* largura semelhante ao card central */
     line-height: 1.2;              /* leitura mais firme */
   }
+}
+/* ===== ALINHAMENTO 3x3 E H2 CENTRAL ===== */
+@media (min-width: 968px) {
+  .agents__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* força 3 colunas */
+    grid-auto-rows: auto;
+    gap: 2rem 1.75rem; /* (vertical, horizontal) */
+    max-width: 1100px;
+    margin: 4rem auto;
+  }
+
+  /* H2 vira um item central sozinho */
+  .agents__grid > .hero2__title {
+    grid-column: 2 / 3;      /* fica na coluna central */
+    grid-row: 2;             /* segunda linha da grid */
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+    margin: 2.5rem 0;
+    max-width: 40ch;
+  }
+
+  /* Garante que os cards abaixo sigam na linha 3 */
+  .agents__grid > .hero2__title ~ .agent-card:nth-of-type(4) { grid-row: 3; }
+  .agents__grid > .hero2__title ~ .agent-card:nth-of-type(5) { grid-row: 3; }
+  .agents__grid > .hero2__title ~ .agent-card:nth-of-type(6) { grid-row: 3; }
 }
 
 
