@@ -2450,6 +2450,8 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   
 }
 
+
+
 .agents .section__header{
   text-align: center;
   margin-bottom: 2rem;
@@ -2571,6 +2573,11 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
 }
 .agent-card .btn{
   width: 100%;
+}
+
+/* Zera margens colaterais do H2 como item de grid (mobile e desktop) */
+.agents__grid > .hero2__title{
+  margin: 1.5rem 0; /* valor base; o desktop sobrescreve para 2.25rem */
 }
 
 /* Mobile: 1 card por linha e avatar menor */
@@ -2949,6 +2956,23 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
 }
 @media (min-width: 1280px){
   .aistudio-mini-card{ width: 52%; max-width: 520px; }
+}
+/* Desktop: 3 colunas fixas e H2 central como item da grade */
+@media (min-width: 1000px){
+  .agents__grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 colunas estáveis */
+    gap: 1.75rem;                                     /* um pouquinho mais de ar (opcional) */
+  }
+
+  /* O H2 dentro da grid vira um item central (coluna 2) */
+  .agents__grid > .hero2__title{
+    grid-column: 2;                /* ocupa só a coluna do meio */
+    justify-self: center;          /* centraliza o próprio item na célula */
+    text-align: center;
+    margin: 2.25rem 0;             /* espaçamento saudável acima/abaixo */
+    max-width: 36ch;               /* largura semelhante ao card central */
+    line-height: 1.2;              /* leitura mais firme */
+  }
 }
 
 
