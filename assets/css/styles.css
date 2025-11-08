@@ -2475,11 +2475,11 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   border: 1px solid var(--ring-light);
   box-shadow: 0 0 0 1px var(--ring-light);
   border-radius: 18px;
-  padding: 2.75rem 1.5rem 1.5rem;  
+  padding: 4.25rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
   overflow: visible;              /* avatar pode passar do card */
-  margin-top: 2.5rem;
+  margin-top: 2.25rem;
   transition:
     transform var(--transition-smooth),
     border-color var(--transition-smooth),
@@ -2520,21 +2520,16 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
 }
 
 /* Avatar redondo sobreposto ao topo do card */
+/* IMG do avatar: ocupa o círculo e anima */
 .agent-card__avatar{
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translate(-50%, -40%);
-  width: 104px;
-  height: 104px;
-  border-radius: 999px;
-  background: rgba(9,9,11,.85);
-  border: 2px solid rgba(255,255,255,0.12);
-  box-shadow:
-    0 8px 26px rgba(0,0,0,.35),
-    0 0 0 6px rgba(59,130,246,.12); /* halo */
-  overflow: hidden;
+  position: relative;      /* não absoluto! */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(59,130,246,.35));
 }
+
 .agent-card__avatar img{
   width: 100%; height: 100%; object-fit: cover; display:block;
   filter: drop-shadow(0 0 8px rgba(59,130,246,.35));
@@ -2750,4 +2745,23 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   opacity: 0.9;
   position: relative;
   top: 1px;
+}
+
+
+/* CÍRCULO que segura o avatar (fica absoluto) */
+.agent-card__avatar-wrapper{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  background: rgba(9,9,11,.85);
+  border: 2px solid rgba(255,255,255,0.12);
+  box-shadow:
+    0 8px 26px rgba(0,0,0,.35),
+    0 0 0 6px rgba(59,130,246,.12);
+  overflow: hidden;
+  pointer-events: none; /* não captura hover/click */
 }
