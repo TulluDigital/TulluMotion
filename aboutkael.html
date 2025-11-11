@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kael — Agente de Atendimento para Academias | Tullu Motion</title>
+  <meta name="description" content="O Kael atende seus leads e alunos 24/7 no WhatsApp, agenda aulas, responde dúvidas e integra com seu CRM. Página dedicada para donos/gestores de academia." />
+  <!-- Usa seu styles.css global já existente -->
+  <link rel="preload" href="img/Kael.png" as="image" />
+</head>
+
+<body>
+  <!-- HEADER MINIMAL (opcional; mantém seu header fixo global se já existir) -->
+  <header class="header">
+    <nav class="container nav">
+      <a class="nav__logo" href="/">
+        <img class="nav__logo-img" src="img/aistudio.png.png" alt="AI Studio" />
+        <span class="nav__logo-text">Uma solução: AI Studio</span>
+      </a>
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#recursos">Recursos</a></li>
+        <li><a class="nav__link" href="#como-funciona">Como funciona</a></li>
+        <li><a class="nav__link" href="#planos">Planos</a></li>
+        <li><a class="nav__link" href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav__toggle" id="navToggle" aria-label="Abrir menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- HERO -->
+    <section class="hero" id="topo">
+      <div class="hero__bg"></div>
+
+      <div class="container hero__content">
+        <p class="hero__tagline">App Tullu • Uma solução: <strong>AI Studio</strong></p>
+
+        <h1 class="hero__title">
+          Hoje você perde matrículas por causa do atendimento.<br/>
+          <span class="gradient-text">O Kael resolve isso.</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Agente de WhatsApp pensado para academias: capta, qualifica e agenda — 24/7 — do jeito que sua marca fala.
+        </p>
+
+        <!-- chips de prova rápida -->
+        <div class="services__grid" style="margin-top:1.25rem">
+          <div class="service-card">
+            <div class="service-card__tagline">100% personalizável</div>
+            <p class="service-card__description">Voz, termos, ofertas e regras de negócio do seu box/academia.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__tagline">Dashboard de CRM</div>
+            <p class="service-card__description">Pipeline, status de leads e relatórios de conversão.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__tagline">Multimídia + humano</div>
+            <p class="service-card__description">Lê áudios, entende imagens e aciona um atendente quando necessário.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__tagline">Atendimento 24/7</div>
+            <p class="service-card__description">Sem fila, sem horário. Pede dados, tira dúvidas e encaminha.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__tagline">Agendamento automático</div>
+            <p class="service-card__description">Integra com sua agenda e confirma aulas/experiências.</p>
+          </div>
+        </div>
+
+        <div class="hero__cta" style="margin-top:1.25rem">
+          <a class="btn btn--primary btn--large"
+             href="https://wa.me/5511958029428?text=Quero%20simular%20o%20Kael%20na%20minha%20academia"
+             target="_blank" rel="noopener">
+             Simular o Kael na minha academia
+          </a>
+          <a class="btn btn--outline btn--large" href="#recursos">Ver recursos</a>
+        </div>
+
+        <!-- avatar Kael destacando o herói -->
+        <div style="display:flex; justify-content:center; margin-top:2rem;">
+          <img src="img/Kael.png" alt="Kael — agente de atendimento para academias" style="max-width:560px; width:100%; height:auto; filter:drop-shadow(0 20px 60px rgba(0,0,0,.35));" />
+        </div>
+      </div>
+    </section>
+
+    <!-- RECUSOS / BENEFÍCIOS PRINCIPAIS -->
+    <section class="agents" id="recursos">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Feito para a rotina de academia</h2>
+          <p class="section__subtitle">Mais leads qualificados, menos retrabalho operacional.</p>
+        </div>
+
+        <div class="services__grid">
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">💪</div>
+            <h3 class="service-card__title">Captação que treina junto</h3>
+            <p class="service-card__description">
+              Capta via campanhas, QR nos equipamentos, bio do Instagram e site. Responde plano, unidade e horário.
+            </p>
+            <div class="agent-card__cta">
+              <a class="btn btn--secondary" href="#como-funciona">Ver fluxo</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">📆</div>
+            <h3 class="service-card__title">Agenda integrada</h3>
+            <p class="service-card__description">
+              Marca aula experimental, personal ou avaliação física de forma automática, com confirmação e lembretes.
+            </p>
+            <div class="agent-card__cta">
+              <a class="btn btn--secondary" href="#planos">Começar</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">🎧</div>
+            <h3 class="service-card__title">Entende áudio e imagem</h3>
+            <p class="service-card__description">
+              Reconhece perguntas por voz e fotos de tabela/horários; mantém contexto e não “enrola”.
+            </p>
+            <div class="agent-card__cta">
+              <a class="btn btn--secondary" href="#faq">Garantias</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">🤝</div>
+            <h3 class="service-card__title">Handoff humano inteligente</h3>
+            <p class="service-card__description">
+              Sabe quando transferir para seu time. Envia resumo do caso no CRM para acelerar o fechamento.
+            </p>
+            <div class="agent-card__cta">
+              <a class="btn btn--secondary" href="#crm">Ver CRM</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">📈</div>
+            <h3 class="service-card__title">Métricas que importam</h3>
+            <p class="service-card__description">
+              Taxa de resposta, tempo até agendar, canais que mais convertem e motivos de perda.
+            </p>
+            <div class="agent-card__cta">
+              <a class="btn btn--secondary" href="#planos">Planos</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="process" id="como-funciona">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Como o Kael trabalha por você</h2>
+          <p class="section__subtitle">Fluxo simples, resultado direto.</p>
+        </div>
+
+        <div class="process__steps">
+          <div class="process-step">
+            <div class="process-step__number">1</div>
+            <h3 class="process-step__title">Capta e qualifica</h3>
+            <p class="process-step__description">
+              Faz perguntas-chave (objetivo, horário, unidade, forma de pagamento) e registra no CRM.
+            </p>
+          </div>
+          <div class="process-step">
+            <div class="process-step__number">2</div>
+            <h3 class="process-step__title">Agenda e confirma</h3>
+            <p class="process-step__description">
+              Oferece horários disponíveis, envia confirmação e lembretes automáticos.
+            </p>
+          </div>
+          <div class="process-step">
+            <div class="process-step__number">3</div>
+            <h3 class="process-step__title">Entrega o lead pronto</h3>
+            <p class="process-step__description">
+              Se necessário, chama um humano com o histórico resumido para fechar o plano sem fricção.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero__cta" style="margin-top:2rem">
+          <a class="btn btn--primary btn--large"
+             href="https://wa.me/5511958029428?text=Quero%20simular%20o%20Kael%20na%20minha%20academia"
+             target="_blank" rel="noopener">
+            Testar no meu WhatsApp
+          </a>
+          <a class="btn btn--outline btn--large" href="#faq">Tirar dúvidas</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- “ONDE VOCÊ ESTÁ AGORA?” / PLANOS SIMPLES -->
+    <section class="plans" id="planos">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Comece do seu tamanho</h2>
+          <p class="section__subtitle">Migrar depois é simples — sem travas.</p>
+        </div>
+
+        <div class="plans__grid">
+          <div class="plan-card">
+            <div class="plan-card__name">Start</div>
+            <div class="plan-card__tagline">Atendimento 24/7 + agenda</div>
+            <ul class="plan-card__bullets">
+              <li>Fluxo básico de captação e triagem</li>
+              <li>Agendamento de aula experimental</li>
+              <li>Relatórios semanais</li>
+            </ul>
+            <div class="plan-card__cta">
+              <a class="btn btn--secondary" href="https://wa.me/5511958029428?text=Quero%20o%20Kael%20(Start)" target="_blank" rel="noopener">Quero esse</a>
+            </div>
+          </div>
+
+          <div class="plan-card plan-card--featured">
+            <div class="plan-card__name">Pro</div>
+            <div class="plan-card__tagline">CRM + automações de conversão</div>
+            <ul class="plan-card__bullets">
+              <li>Qualificação avançada + tags</li>
+              <li>Handoff humano com resumo</li>
+              <li>Dash em tempo real</li>
+            </ul>
+            <div class="plan-card__cta">
+              <a class="btn btn--accent" href="https://wa.me/5511958029428?text=Quero%20o%20Kael%20(Pro)" target="_blank" rel="noopener">Plano recomendado</a>
+            </div>
+          </div>
+
+          <div class="plan-card">
+            <div class="plan-card__name">Elite</div>
+            <div class="plan-card__tagline">Personalização total</div>
+            <ul class="plan-card__bullets">
+              <li>Tons de voz e vocabulário da sua marca</li>
+              <li>Regras de preço/combos por unidade</li>
+              <li>Integrações específicas</li>
+            </ul>
+            <div class="plan-card__cta">
+              <a class="btn btn--secondary" href="https://wa.me/5511958029428?text=Quero%20o%20Kael%20(Elite)" target="_blank" rel="noopener">Conversar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ENXUTO -->
+    <section class="cases" id="faq">
+      <div class="container cases__content">
+        <div>
+          <div class="testimonial__quote">?</div>
+          <h3 class="credibility__title">Perguntas frequentes</h3>
+          <p class="credibility__description">
+            Respostas diretas para o que mais aparece em academias.
+          </p>
+        </div>
+
+        <div>
+          <div class="feature">
+            <div class="feature__icon">🛠️</div>
+            <div>
+              <div class="feature__title">Quanto tempo para ativar?</div>
+              <p class="feature__text">Implantação padrão em até 7 dias corridos.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature__icon">🔗</div>
+            <div>
+              <div class="feature__title">Precisa trocar meu número?</div>
+              <p class="feature__text">Não. Usamos seu WhatsApp Business/linha nova, você escolhe.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature__icon">🔒</div>
+            <div>
+              <div class="feature__title">E os dados dos alunos?</div>
+              <p class="feature__text">Guardados com controle de acesso e logs. Exportação quando quiser.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature__icon">💬</div>
+            <div>
+              <div class="feature__title">Ele “vende” de fato?</div>
+              <p class="feature__text">Qualifica, oferece planos e agenda para fechar. Quando necessário, chama um humano.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+      <div class="cta-final__bg"></div>
+      <div class="container cta-final__content">
+        <h2 class="cta-final__title">Coloque o Kael para trabalhar hoje</h2>
+        <p class="cta-final__subtitle">Mais matrículas, menos horas no WhatsApp. Simples assim.</p>
+        <div class="cta-final__actions">
+          <a class="btn btn--primary btn--large"
+             href="https://wa.me/5511958029428?text=Quero%20simular%20o%20Kael%20na%20minha%20academia"
+             target="_blank" rel="noopener">Falar no WhatsApp</a>
+          <a class="btn btn--outline btn--large" href="#topo">Voltar ao topo</a>
+        </div>
+        <div class="cta-final__benefits">
+          <span class="benefit"><span class="benefit__icon">✓</span>Implantação em até 7 dias</span>
+          <span class="benefit"><span class="benefit__icon">✓</span>Sem fidelidade</span>
+          <span class="benefit"><span class="benefit__icon">✓</span>Suporte humano</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <img class="footer__logo-img" src="img/aistudio.png.png" alt="AI Studio" />
+          <span class="footer__logo-text">Tullu Motion • AI Studio</span>
+        </div>
+        <p class="footer__description">
+          O Kael é um agente do ecossistema AI Studio, feito para donos e gestores de academia que querem escala com atendimento de verdade.
+        </p>
+      </div>
+      <div class="footer__links">
+        <div>
+          <div class="footer__section-title">Produto</div>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#recursos">Recursos</a></li>
+            <li><a class="footer__link" href="#como-funciona">Como funciona</a></li>
+            <li><a class="footer__link" href="#planos">Planos</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__section-title">Suporte</div>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#faq">FAQ</a></li>
+            <li><a class="footer__link" href="https://wa.me/5511958029428" target="_blank" rel="noopener">Contato</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__section-title">Tullu</div>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="/">Site principal</a></li>
+            <li><a class="footer__link" href="/aistudio">AI Studio</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <div class="footer__copyright">© <span id="yy"></span> Tullu Motion • Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <script>
+    // ano no rodapé
+    document.getElementById('yy').textContent = new Date().getFullYear();
+
+    // menu mobile
+    const navToggle = document.getElementById('navToggle');
+    const menu = document.querySelector('.nav__menu') || document.querySelector('.nav__list');
+    if (navToggle && menu) {
+      const toggle = () => menu.classList.toggle('active');
+      navToggle.addEventListener('click', toggle);
+      navToggle.addEventListener('keypress', e => (e.key === 'Enter') && toggle());
+    }
+  </script>
+</body>
+</html>
