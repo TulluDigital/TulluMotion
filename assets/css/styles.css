@@ -2796,3 +2796,39 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   .agent-card__avatar-wrapper{ width: 92px; height: 92px; transform: translate(-50%, -54%); }
 }
 
+/* === PLANETAS FLUTUANTES (remover círculo preto e aumentar o tamanho) === */
+
+/* remove totalmente o wrapper preto */
+.agent-card__avatar-wrapper {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 140px !important;   /* tamanho final desejado */
+  height: 140px !important;
+  transform: translate(-50%, -60%) !important;
+  overflow: visible !important;
+}
+
+/* planeta agora ocupa 100% e fica flutuante */
+.agent-card__avatar {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 0 12px rgba(34,211,238,0.55)) !important;
+  animation: planetFloat 6s ease-in-out infinite;
+}
+
+/* animação suave de flutuação */
+@keyframes planetFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-6px) scale(1.03); }
+}
+
+/* mobile: ajustar para não ficar gigante */
+@media (max-width: 767px){
+  .agent-card__avatar-wrapper {
+    width: 110px !important;
+    height: 110px !important;
+    transform: translate(-50%, -55%) !important;
+  }
+}
