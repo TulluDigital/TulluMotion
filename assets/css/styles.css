@@ -2479,7 +2479,7 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   display: flex;
   flex-direction: column;
   overflow: visible;              /* avatar pode passar do card */
-  margin-top: 4.25rem;
+  margin-top: 6.25rem;
   transition:
     transform var(--transition-smooth),
     border-color var(--transition-smooth),
