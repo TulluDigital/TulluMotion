@@ -2804,8 +2804,8 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   border: none !important;
   box-shadow: none !important;
 
-  width: 170px !important;    /* planeta maior */
-  height: 170px !important;
+  width: 200px !important;    /* planeta maior */
+  height: 200px !important;
 
   position: absolute !important;
   left: 50% !important;
