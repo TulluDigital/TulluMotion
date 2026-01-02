@@ -1,337 +1,481 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Studio — CRM de Atendimento com IA | Tullu Motion</title>
-    <meta name="description" content="CRM de Atendimento com IA no WhatsApp: atendimento 24/7, qualificação de leads, follow-up e agendamentos automáticos. Teste grátis.">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tullumotion.com/aistudio">
-    <meta property="og:title" content="AI Studio — CRM de Atendimento com IA | Tullu Motion">
-    <meta property="og:description" content="Atenda no WhatsApp com IA 24/7, qualifique leads e marque calls automaticamente. Teste grátis.">
-    <meta property="og:image" content="assets/img/aistudio.png.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Studio, CRM de Atendimento com IA | Tullu Motion</title>
+  <meta name="description" content="CRM de Atendimento com IA no WhatsApp, atendimento 24/7, qualificação de leads, follow-up e agendamentos automáticos. Teste grátis.">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="AI Studio — CRM de Atendimento com IA | Tullu Motion">
-    <meta property="twitter:description" content="Atendimento 24/7 no WhatsApp + agendamentos automáticos + painel de CRM. Teste grátis.">
-    <meta property="twitter:image" content="assets/img/aistudio.png.png">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tullumotion.com/aistudio">
+  <meta property="og:title" content="AI Studio, CRM de Atendimento com IA | Tullu Motion">
+  <meta property="og:description" content="Atenda no WhatsApp com IA 24/7, qualifique leads e marque calls automaticamente. Teste grátis.">
+  <meta property="og:image" content="assets/img/aistudio.png.png">
 
-    <link rel="icon" type="image/png" href="assets/img/tu.png.png">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="AI Studio, CRM de Atendimento com IA | Tullu Motion">
+  <meta property="twitter:description" content="Atendimento 24/7 no WhatsApp, agendamentos automáticos, painel de CRM. Teste grátis.">
+  <meta property="twitter:image" content="assets/img/aistudio.png.png">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/img/tu.png.png">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/branch-pages.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/branch-pages.css">
 </head>
 <body>
 
 <header class="header" id="header">
-    <nav class="nav container">
-        <div class="nav__logo">
-            <a href="index.html">
-                <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
-                <span class="nav__logo-text">Motion</span>
-            </a>
-        </div>
+  <nav class="nav container">
+    <div class="nav__logo">
+      <a href="index.html">
+        <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
+        <span class="nav__logo-text">Motion</span>
+      </a>
+    </div>
 
-        <div class="nav__menu" id="nav-menu">
-            <ul class="nav__list">
-                <li class="nav__item"><a href="#features" class="nav__link">Por que a Tullu?</a></li>
-                <li class="nav__item"><a href="#showcase" class="nav__link">Como funciona</a></li>
-                <li class="nav__item"><a href="#agentes" class="nav__link">Mundos</a></li>
-            </ul>
-            <a href="https://app.tullumotion.com" class="btn btn--primary nav__cta">JÁ SOU CLIENTE / CRM</a>
-        </div>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#showcase" class="nav__link">Como funciona</a></li>
+        <li class="nav__item"><a href="#features" class="nav__link">Por que a Tullu?</a></li>
+        <li class="nav__item"><a href="#comparativo" class="nav__link">Comparativo</a></li>
+        <li class="nav__item"><a href="#agentes" class="nav__link">Mundos</a></li>
+        <li class="nav__item"><a href="#faq" class="nav__link">FAQ</a></li>
+      </ul>
 
-        <div class="nav__toggle" id="nav-toggle">
-            <span></span><span></span><span></span>
-        </div>
-    </nav>
+      <!-- CTA do menu, agora indo para WhatsApp -->
+      <a
+        href="https://wa.me/5511959029428?text=Quero%20testar%20gratuitamente%20o%20CRM%20de%20Atendimento%20com%20IA%20da%20Tullu%20no%20WhatsApp.%20Pode%20me%20mostrar%20como%20funciona%3F"
+        class="btn btn--primary nav__cta"
+        target="_blank"
+      >TESTAR GRÁTIS NO WHATSAPP</a>
+    </div>
+
+    <div class="nav__toggle" id="nav-toggle">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
 </header>
 
 <main class="main">
 
 <!-- HERO -->
 <section class="hero hero--branch hero--aistudio" id="hero">
-    <div class="container">
-        <div class="hero__content">
+  <div class="container">
+    <div class="hero__content">
 
-            <img src="assets/img/aistudio.png.png" alt="AI Studio" class="hero__logo">
+      <img src="assets/img/aistudio.png.png" alt="AI Studio" class="hero__logo">
 
-            <h1 class="hero__title">
-                Atenda clientes no <span class="gradient-text">WhatsApp com IA 24/7</span>
-            </h1>
+      <h1 class="hero__title">
+        Atenda clientes no <span class="gradient-text">WhatsApp com IA 24/7</span>
+      </h1>
 
-            <p class="hero__subtitle">
-                Clientes são respondidos na hora, leads são qualificados e agendamentos automáticos aparecem direto na sua agenda.
-            </p>
+      <p class="hero__subtitle">
+        Clientes são respondidos na hora, leads são qualificados e agendamentos automáticos aparecem direto na sua agenda, com acesso também na agenda do seu time.
+      </p>
 
-            <div class="hero__cta hero__cta--glass">
-                <div class="hero__cta-glass">
-                    <span>TESTE GRÁTIS • ATENDIMENTO AUTOMÁTICO • PAINEL DE CRM</span>
-                </div>
-            </div>
-
+      <div class="hero__cta hero__cta--glass">
+        <div class="hero__cta-glass">
+          <span>TESTE GRÁTIS • ATENDIMENTO AUTOMÁTICO • PAINEL DE CRM</span>
         </div>
+      </div>
+
+      <div class="hero__cta" style="margin-top: 1.25rem;">
+        <a
+          href="https://wa.me/5511959029428?text=Quero%20testar%20gratuitamente%20o%20CRM%20de%20Atendimento%20com%20IA%20da%20Tullu%20no%20WhatsApp.%20Pode%20me%20mostrar%20como%20funciona%3F"
+          class="btn btn--primary btn--large"
+          target="_blank"
+        >Testar grátis no WhatsApp</a>
+
+        <a
+          href="#showcase"
+          class="btn btn--outline btn--large"
+        >Ver como funciona</a>
+      </div>
+
     </div>
+  </div>
 </section>
 
-<!-- SHOWCASE (subiu para virar "Como funciona") -->
+<!-- SHOWCASE (Como funciona) -->
 <section id="showcase" class="showcase">
-    <div class="container">
-        <header class="section__header">
-            <h2 class="section__title">Você ativa. A IA atende. O CRM organiza.</h2>
-            <p class="section__subtitle">
-                Conversas, status, leads e agendamentos em um só lugar. Você entra só quando o cliente já está pronto.
-            </p>
-            <br>
-            <div class="tag tag--ai">Custa <strong>menos</strong> que um atendente — e trabalha 24/7.</div>
-        </header>
+  <div class="container">
+    <header class="section__header">
+      <h2 class="section__title">Você ativa, a IA atende, o CRM organiza.</h2>
+      <p class="section__subtitle">
+        Conversas, status, leads e agendamentos em um só lugar. Você entra só quando o cliente já está pronto.
+      </p>
+      <br>
+      <div class="tag tag--ai">Custa <strong>menos</strong> que um atendente, e trabalha 24/7.</div>
+    </header>
 
-        <figure class="showcase__frame">
-            <img src="assets/img/print-whitelabel.png" class="showcase__img" alt="CRM e painel de automação">
-        </figure>
+    <figure class="showcase__frame">
+      <img src="assets/img/print-whitelabel.png" class="showcase__img" alt="CRM e painel de automação">
+    </figure>
 
-        <div class="showcase__cta">
-            <a href="https://wa.me/5511959029428?text=Quero%20testar%20gratuitamente%20o%20CRM%20de%20Atendimento%20com%20IA%20da%20Tullu%20no%20WhatsApp.%20Pode%20me%20mostrar%20como%20funciona%3F" class="btn btn--accent btn--large" target="_blank">Quero testar gratuitamente</a>
-            <small class="demo__note">Atende até <strong>3.000 leads simultaneamente</strong></small>
-        </div>
+    <div class="showcase__cta">
+      <a
+        href="https://wa.me/5511959029428?text=Quero%20testar%20gratuitamente%20o%20CRM%20de%20Atendimento%20com%20IA%20da%20Tullu%20no%20WhatsApp.%20Pode%20me%20mostrar%20como%20funciona%3F"
+        class="btn btn--accent btn--large"
+        target="_blank"
+      >Quero testar gratuitamente</a>
+      <small class="demo__note">Atende até <strong>3.000 leads simultaneamente</strong></small>
     </div>
+  </div>
 </section>
 
-<!-- FEATURES (vira "Por que a Tullu?") -->
+<!-- FEATURES (Por que a Tullu) -->
 <section class="features" id="features">
-    <div class="container">
-        <div class="section__header">
-            <h2 class="section__title">Por que a Tullu?</h2>
-            <p class="section__subtitle">
-                A gente não “instala um bot”. A gente vira parceiro do seu crescimento: melhora o atendimento, organiza o funil e aumenta conversão com automação inteligente no WhatsApp.
-            </p>
-        </div>
-
-        <div class="features__grid">
-            <div class="feature-card">
-                <div class="feature-card__icon">📲</div>
-                <h3 class="feature-card__title">Atendimento 24/7 no WhatsApp</h3>
-                <p>Respostas instantâneas, sem fila e sem mensagens perdidas.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-card__icon">🗓️</div>
-                <h3 class="feature-card__title">Agendamento automático</h3>
-                <p>A IA marca calls e horários sem você precisar correr atrás.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-card__icon">🧠</div>
-                <h3 class="feature-card__title">Qualificação de leads</h3>
-                <p>Triagem por perfil, intenção e orçamento — antes de chegar em você.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-card__icon">💬</div>
-                <h3 class="feature-card__title">Fluxos ajustáveis por prompt</h3>
-                <p>Sem engessamento. Você muda o atendimento rápido, em linguagem natural.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-card__icon">📊</div>
-                <h3 class="feature-card__title">Painel de CRM em tempo real</h3>
-                <p>Status, histórico, tags e métricas para você decidir com clareza.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-card__icon">🔄</div>
-                <h3 class="feature-card__title">Follow-up automático</h3>
-                <p>Recupera leads frios e mantém o funil rodando sem esforço.</p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="section__header">
+      <h2 class="section__title">Por que a Tullu?</h2>
+      <p class="section__subtitle">
+        A gente não instala um bot, a gente vira parceiro do seu crescimento, melhora o atendimento, organiza o funil e aumenta conversão com automação inteligente no WhatsApp.
+      </p>
     </div>
+
+    <div class="features__grid">
+      <div class="feature-card">
+        <div class="feature-card__icon">📲</div>
+        <h3 class="feature-card__title">Atendimento 24/7 no WhatsApp</h3>
+        <p>Respostas instantâneas, sem fila e sem mensagens perdidas.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card__icon">🗓️</div>
+        <h3 class="feature-card__title">Agendamento automático com agenda compartilhada</h3>
+        <p>A IA marca horários e você acompanha tudo na agenda, com visibilidade também para o seu time.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card__icon">🧠</div>
+        <h3 class="feature-card__title">Qualificação de leads</h3>
+        <p>Triagem por perfil, intenção e orçamento, antes de chegar em você.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card__icon">💬</div>
+        <h3 class="feature-card__title">Fluxos ajustáveis por prompt</h3>
+        <p>Sem engessamento. Você muda o atendimento rápido, em linguagem natural.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card__icon">📊</div>
+        <h3 class="feature-card__title">Painel de CRM em tempo real</h3>
+        <p>Status, histórico, tags e métricas para você decidir com clareza.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card__icon">🔄</div>
+        <h3 class="feature-card__title">Follow-up automático</h3>
+        <p>Recupera leads frios e mantém o funil rodando sem esforço.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- PLANETS GRID (mantém, mas fica depois do “Por que” e “Como funciona”) -->
+<!-- CARD GIGANTE (hierarquia visual diferente) -->
+<section class="cta-section" id="comparativo">
+  <div class="container">
+    <div class="cta-section__card">
+      <h2 class="cta-section__title">Por que o AI Studio é melhor que chatbots comuns?</h2>
+      <p class="cta-section__subtitle">
+        Chatbots tradicionais travam o atendimento em menus, o AI Studio entende contexto, responde no tom da marca e organiza tudo no CRM, com agenda integrada.
+      </p>
+
+      <!-- lista dos diferenciais -->
+      <div class="cta-section__buttons" style="gap: 0.75rem; flex-wrap: wrap;">
+        <span class="tag tag--ai">Respostas contextualizadas</span>
+        <span class="tag tag--ai">Fluxos ajustáveis por prompt</span>
+        <span class="tag tag--ai">CRM e agenda juntos</span>
+        <span class="tag tag--ai">WhatsApp nativo</span>
+        <span class="tag tag--ai">Painel completo</span>
+      </div>
+
+      <!-- Comparativo em um único card, separação vertical com br grande -->
+      <div style="margin-top: 1.25rem;">
+        <div class="glow-card" style="max-width: 980px; margin: 0 auto;">
+          <h3 class="hero2_title" style="text-align:center; margin-bottom: 0.75rem;">Comparativo real de conversa</h3>
+
+          <div class="cards-grid" style="max-width: 980px;">
+            <div class="card-base" style="align-items:flex-start;">
+              <div class="pain-card__icon">🤖</div>
+              <div>
+                <strong>Chatbot padrão</strong>
+                <div style="margin-top: .5rem; color: var(--muted);">
+                  “Olá, digite 1 para orçamento, 2 para suporte, 3 para falar com um atendente.”<br>
+                  “Desculpe, não entendi, digite 1, 2 ou 3.”
+                </div>
+              </div>
+            </div>
+
+            <div class="card-base" style="align-items:flex-start;">
+              <div class="pain-card__icon">⚡</div>
+              <div>
+                <strong>Tullu AI Studio</strong>
+                <div style="margin-top: .5rem; color: var(--muted);">
+                  “Oi, Julia, perfeito, me diz rapidinho se você quer orçamento, agendamento ou suporte, eu já organizo tudo por aqui.”<br>
+                  “João, entendi, posso te fazer 2 perguntas rápidas pra te direcionar certinho e já deixar tudo registrado no CRM?”
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br>
+
+          <div class="showcase__cta" style="margin-top: 0;">
+            <a
+              href="https://wa.me/5511959029428?text=Quero%20testar%20gratuitamente%20o%20CRM%20de%20Atendimento%20com%20IA%20da%20Tullu%20no%20WhatsApp.%20Quero%20ver%20um%20exemplo%20do%20meu%20neg%C3%B3cio."
+              class="btn btn--primary btn--large"
+              target="_blank"
+            >Quero testar no meu negócio</a>
+            <small class="demo__note">Inclui suporte 24h, ajustes e estratégia por call</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PLANETS GRID -->
 <section class="agents" id="agentes">
-    <div class="container">
+  <div class="container">
 
-        <header class="section__header">
-            <h1 class="hero__title">Escolha o <span class="gradient-text">mundo</span> do seu negócio</h1>
-            <p class="hero__subtitle">
-                Cada mundo já vem com um modelo de atendimento ideal para o seu setor. Você “pousa” sua empresa e começa a testar no WhatsApp.
-            </p>
-        </header>
+    <header class="section__header">
+      <h1 class="hero__title">Escolha o <span class="gradient-text">mundo</span> do seu negócio</h1>
+      <p class="hero__subtitle">
+        Cada mundo já vem com um modelo de atendimento ideal para o seu setor. Você pousa sua empresa e começa a testar no WhatsApp.
+      </p>
+    </header>
 
-        <div class="agents__grid">
+    <div class="agents__grid">
 
-            <!-- ARCHIVUS -->
-            <article class="agent-card">
-                <div class="agent-card__avatar-wrapper">
-                    <img src="assets/img/archivus.png" class="agent-card__avatar" alt="Archivus — mundo de imobiliárias e advocacias">
-                </div>
-                <div class="agent-card__body">
-                    <h3 class="agent-card__title"><strong>Archivus</strong></h3>
-                    <p class="agent-card__desc">
-                        Para empresas com contratos, documentos e atendimento consultivo.
-                    </p>
-                    <ul class="agent-card__bullets">
-                        <li>Triagem com contexto</li>
-                        <li>Leads pré-qualificados</li>
-                        <li>Histórico e registro automático</li>
-                    </ul>
-                </div>
-                <div class="agent-card__footer">
-                    <a class="btn btn--primary" target="_blank"
-                        href="https://wa.me/5511959029428?text=Quero%20testar%20o%20atendimento%20com%20IA%20no%20WhatsApp%20para%20imobili%C3%A1ria%20ou%20advocacia%20no%20mundo%20Archivus.">
-                        Testar no Archivus
-                    </a>
-                </div>
-            </article>
-
-            <!-- VECTRA -->
-            <article class="agent-card">
-                <div class="agent-card__avatar-wrapper">
-                    <img src="assets/img/vectra.png" class="agent-card__avatar" alt="Vectra — mundo das clínicas">
-                </div>
-                <div class="agent-card__body">
-                    <h3 class="agent-card__title"><strong>Vectra</strong></h3>
-                    <p class="agent-card__desc">
-                        Para clínicas: agendamento organizado, lembretes e atendimento cuidadoso.
-                    </p>
-                    <ul class="agent-card__bullets">
-                        <li>Confirmação automática</li>
-                        <li>Fila inteligente</li>
-                        <li>Agenda sem furos</li>
-                    </ul>
-                </div>
-                <div class="agent-card__footer">
-                    <a class="btn btn--primary" target="_blank"
-                        href="https://wa.me/5511959029428?text=Quero%20testar%20o%20atendimento%20com%20IA%20no%20WhatsApp%20para%20cl%C3%ADnica%20no%20mundo%20Vectra.">
-                        Testar no Vectra
-                    </a>
-                </div>
-            </article>
-
-            <!-- DRIVON -->
-            <article class="agent-card">
-                <div class="agent-card__avatar-wrapper">
-                    <img src="assets/img/drivon.png" class="agent-card__avatar" alt="Drivon — concessionárias e veículos">
-                </div>
-                <div class="agent-card__body">
-                    <h3 class="agent-card__title"><strong>Drivon</strong></h3>
-                    <p class="agent-card__desc">
-                        Para concessionárias: rapidez, triagem e agendamento de test-drive.
-                    </p>
-                    <ul class="agent-card__bullets">
-                        <li>Triagem por orçamento</li>
-                        <li>Envio de fichas e fotos</li>
-                        <li>Agendamento de test-drive</li>
-                    </ul>
-                </div>
-                <div class="agent-card__footer">
-                    <a class="btn btn--primary" target="_blank"
-                        href="https://wa.me/5511959029428?text=Quero%20testar%20o%20atendimento%20com%20IA%20no%20WhatsApp%20para%20concession%C3%A1ria%20no%20mundo%20Drivon.">
-                        Testar no Drivon
-                    </a>
-                </div>
-            </article>
-
-            <!-- ATHLOS -->
-            <article class="agent-card">
-                <div class="agent-card__avatar-wrapper">
-                    <img src="assets/img/athlos.png" class="agent-card__avatar" alt="Athlos — academias e esportes">
-                </div>
-                <div class="agent-card__body">
-                    <h3 class="agent-card__title"><strong>Athlos</strong></h3>
-                    <p class="agent-card__desc">
-                        Para academias: respostas rápidas, ofertas e reengajamento automático.
-                    </p>
-                    <ul class="agent-card__bullets">
-                        <li>Triagem de planos</li>
-                        <li>Prova social</li>
-                        <li>Reengajamento automático</li>
-                    </ul>
-                </div>
-                <div class="agent-card__footer">
-                    <a class="btn btn--primary" target="_blank"
-                        href="https://wa.me/5511959029428?text=Quero%20testar%20o%20atendimento%20com%20IA%20no%20WhatsApp%20para%20academia%20no%20mundo%20Athlos.">
-                        Testar no Athlos
-                    </a>
-                </div>
-            </article>
-
-            <!-- SYNTECH -->
-            <article class="agent-card">
-                <div class="agent-card__avatar-wrapper">
-                    <img src="assets/img/syntech.png" class="agent-card__avatar" alt="Syntech — tecnologia e soluções avançadas">
-                </div>
-                <div class="agent-card__body">
-                    <h3 class="agent-card__title"><strong>Syntech</strong></h3>
-                    <p class="agent-card__desc">
-                        Para tecnologia e SaaS: conversas objetivas, requisitos e avanço de funil.
-                    </p>
-                    <ul class="agent-card__bullets">
-                        <li>Qualificação técnica</li>
-                        <li>Coleta de requisitos</li>
-                        <li>Próximo passo automático</li>
-                    </ul>
-                </div>
-                <div class="agent-card__footer">
-                    <a class="btn btn--primary" target="_blank"
-                        href="https://wa.me/5511959029428?text=Quero%20testar%20o%20atendimento%20com%20IA%20no%20WhatsApp%20para%20empresa%20de%20tecnologia%20no%20mundo%20Syntech.">
-                        Testar no Syntech
-                    </a>
-                </div>
-            </article>
-
+      <!-- ARCHIVUS -->
+      <article class="agent-card">
+        <div class="agent-card__avatar-wrapper">
+          <img src="assets/img/archivus.png" class="agent-card__avatar" alt="Archivus, mundo de imobiliárias e advocacias">
         </div>
+        <div class="agent-card__body">
+          <h3 class="agent-card__title"><strong>Archivus</strong></h3>
+          <p class="agent-card__desc">Para empresas com contratos, documentos e atendimento consultivo.</p>
+          <ul class="agent-card__bullets">
+            <li>Triagem com contexto</li>
+            <li>Leads pré-qualificados</li>
+            <li>Histórico e registro automático</li>
+          </ul>
+        </div>
+        <div class="agent-card__footer">
+          <a class="btn btn--primary" target="_blank"
+            href="https://wa.me/5511959029428?text=Quero%20testar%20o%20atendimento%20com%20IA%20no%20WhatsApp%20para%20imobili%C3%A1ria%20ou%20advocacia%20no%20mundo%20Archivus.">
+            Testar no Archivus
+          </a>
+        </div>
+      </article>
+
+      <!-- VECTRA -->
+      <article class="agent-card">
+        <div class="agent-card__avatar-wrapper">
+          <img src="assets/img/vectra.png" class="agent-card__avatar" alt="Vectra, mundo das clínicas">
+        </div>
+        <div class="agent-card__body">
+          <h3 class="agent-card__title"><strong>Vectra</strong></h3>
+          <p class="agent-card__desc">Para clínicas, agendamento organizado, lembretes e atendimento cuidadoso.</p>
+          <ul class="agent-card__bullets">
+            <li>Confirmação automática</li>
+            <li>Fila inteligente</li>
+            <li>Agenda sem furos</li>
+          </ul>
+        </div>
+        <div class="agent-card__footer">
+          <a class="btn btn--primary" target="_blank"
+            href="https://wa.me/5511959029428?text=Quero%20testar%20o%20atendimento%20com%20IA%20no%20WhatsApp%20para%20cl%C3%ADnica%20no%20mundo%20Vectra.">
+            Testar no Vectra
+          </a>
+        </div>
+      </article>
+
+      <!-- DRIVON -->
+      <article class="agent-card">
+        <div class="agent-card__avatar-wrapper">
+          <img src="assets/img/drivon.png" class="agent-card__avatar" alt="Drivon, concessionárias e veículos">
+        </div>
+        <div class="agent-card__body">
+          <h3 class="agent-card__title"><strong>Drivon</strong></h3>
+          <p class="agent-card__desc">Para concessionárias, rapidez, triagem e agendamento de test-drive.</p>
+          <ul class="agent-card__bullets">
+            <li>Triagem por orçamento</li>
+            <li>Envio de fichas e fotos</li>
+            <li>Agendamento de test-drive</li>
+          </ul>
+        </div>
+        <div class="agent-card__footer">
+          <a class="btn btn--primary" target="_blank"
+            href="https://wa.me/5511959029428?text=Quero%20testar%20o%20atendimento%20com%20IA%20no%20WhatsApp%20para%20concession%C3%A1ria%20no%20mundo%20Drivon.">
+            Testar no Drivon
+          </a>
+        </div>
+      </article>
+
+      <!-- ATHLOS -->
+      <article class="agent-card">
+        <div class="agent-card__avatar-wrapper">
+          <img src="assets/img/athlos.png" class="agent-card__avatar" alt="Athlos, academias e esportes">
+        </div>
+        <div class="agent-card__body">
+          <h3 class="agent-card__title"><strong>Athlos</strong></h3>
+          <p class="agent-card__desc">Para academias, respostas rápidas, ofertas e reengajamento automático.</p>
+          <ul class="agent-card__bullets">
+            <li>Triagem de planos</li>
+            <li>Prova social</li>
+            <li>Reengajamento automático</li>
+          </ul>
+        </div>
+        <div class="agent-card__footer">
+          <a class="btn btn--primary" target="_blank"
+            href="https://wa.me/5511959029428?text=Quero%20testar%20o%20atendimento%20com%20IA%20no%20WhatsApp%20para%20academia%20no%20mundo%20Athlos.">
+            Testar no Athlos
+          </a>
+        </div>
+      </article>
+
+      <!-- SYNTECH -->
+      <article class="agent-card">
+        <div class="agent-card__avatar-wrapper">
+          <img src="assets/img/syntech.png" class="agent-card__avatar" alt="Syntech, tecnologia e soluções avançadas">
+        </div>
+        <div class="agent-card__body">
+          <h3 class="agent-card__title"><strong>Syntech</strong></h3>
+          <p class="agent-card__desc">Para tecnologia e SaaS, conversas objetivas, requisitos e avanço de funil.</p>
+          <ul class="agent-card__bullets">
+            <li>Qualificação técnica</li>
+            <li>Coleta de requisitos</li>
+            <li>Próximo passo automático</li>
+          </ul>
+        </div>
+        <div class="agent-card__footer">
+          <a class="btn btn--primary" target="_blank"
+            href="https://wa.me/5511959029428?text=Quero%20testar%20o%20atendimento%20com%20IA%20no%20WhatsApp%20para%20empresa%20de%20tecnologia%20no%20mundo%20Syntech.">
+            Testar no Syntech
+          </a>
+        </div>
+      </article>
 
     </div>
+  </div>
 </section>
 
-<!-- CTA FINAL (mantido, só texto ajustado) -->
-<section class="cta-section">
-    <div class="container">
-        <div class="cta-section__card">
-            <h2 class="cta-section__title">Quer ver a IA atendendo por você?</h2>
-            <p class="cta-section__subtitle">
-                Fale com o agente no WhatsApp, teste gratuitamente e veja como fica seu atendimento quando ele opera 24/7 com CRM organizado.
-            </p>
-
-            <div class="cta-section__buttons">
-                <a href="https://wa.me/5511959029428?text=Quero%20testar%20gratuitamente%20o%20CRM%20de%20Atendimento%20com%20IA%20da%20Tullu%20no%20WhatsApp." class="btn btn--primary btn--large" target="_blank">Testar grátis no WhatsApp</a>
-                <a href="index.html" class="btn btn--outline btn--large">Voltar para home</a>
-            </div>
-        </div>
+<!-- FAQ (última, em balões, com peso, mas visualmente secundária) -->
+<section class="features" id="faq" style="padding-top: 80px;">
+  <div class="container">
+    <div class="section__header">
+      <h2 class="section__title">Perguntas rápidas</h2>
+      <p class="section__subtitle">
+        Tudo que parece técnico demais vira simples, você fala com a gente no WhatsApp e ajustamos com suporte 24h, com call quando fizer sentido.
+      </p>
     </div>
+
+    <div class="cards-grid" style="max-width: 1000px;">
+      <div class="card-base" style="align-items:flex-start; background: rgba(255,255,255,0.03);">
+        <div class="pain-card__icon">❓</div>
+        <div>
+          <strong>O que é prompt?</strong>
+          <div style="margin-top:.35rem; color: var(--muted);">
+            É uma instrução em linguagem normal, você descreve o que quer e a IA ajusta o fluxo, o tom e as respostas.
+          </div>
+        </div>
+      </div>
+
+      <div class="card-base" style="align-items:flex-start; background: rgba(255,255,255,0.03);">
+        <div class="pain-card__icon">🧩</div>
+        <div>
+          <strong>Consigo mudar perguntas e fluxo depois?</strong>
+          <div style="margin-top:.35rem; color: var(--muted);">
+            Sim. Você chama no WhatsApp, a gente faz uma call rápida se necessário, e ajusta com você, sem quebrar o que já está funcionando.
+          </div>
+        </div>
+      </div>
+
+      <div class="card-base" style="align-items:flex-start; background: rgba(255,255,255,0.03);">
+        <div class="pain-card__icon">🗓️</div>
+        <div>
+          <strong>Como funciona o agendamento?</strong>
+          <div style="margin-top:.35rem; color: var(--muted);">
+            A IA sugere horários, confirma com o lead e registra, você vê na agenda e seu time também tem acesso, tudo fica alinhado.
+          </div>
+        </div>
+      </div>
+
+      <div class="card-base" style="align-items:flex-start; background: rgba(255,255,255,0.03);">
+        <div class="pain-card__icon">📱</div>
+        <div>
+          <strong>Funciona no meu WhatsApp atual?</strong>
+          <div style="margin-top:.35rem; color: var(--muted);">
+            Sim, a gente conecta pelo caminho certo para seu cenário, mantendo um atendimento fluido e registrando tudo no CRM.
+          </div>
+        </div>
+      </div>
+
+      <div class="card-base" style="align-items:flex-start; background: rgba(255,255,255,0.03);">
+        <div class="pain-card__icon">🧠</div>
+        <div>
+          <strong>Isso é só um bot de menu?</strong>
+          <div style="margin-top:.35rem; color: var(--muted);">
+            Não. Ele entende intenção, faz perguntas inteligentes, registra no CRM, faz follow-up e agenda, sem ficar preso em “digite 1”.
+          </div>
+        </div>
+      </div>
+
+      <div class="card-base" style="align-items:flex-start; background: rgba(255,255,255,0.03);">
+        <div class="pain-card__icon">🛟</div>
+        <div>
+          <strong>Se eu quiser personalizar para meu jeito, vocês ajudam?</strong>
+          <div style="margin-top:.35rem; color: var(--muted);">
+            Sim. Suporte 24h no WhatsApp e ajustes contínuos, com orientação estratégica, para você não piorar conversão por mudar coisa errada.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase__cta" style="margin-top: 1.5rem;">
+      <a
+        href="https://wa.me/5511959029428?text=Quero%20testar%20gratuitamente%20o%20CRM%20de%20Atendimento%20com%20IA%20da%20Tullu%20no%20WhatsApp.%20Tenho%20d%C3%BAvidas%20e%20quero%20entender%20qual%20mundo%20serve%20para%20mim."
+        class="btn btn--primary btn--large"
+        target="_blank"
+      >Tirar dúvidas no WhatsApp</a>
+      <a href="index.html" class="btn btn--outline btn--large">Voltar para home</a>
+    </div>
+  </div>
 </section>
 
 </main>
 
 <footer class="footer">
-    <div class="container">
-        <div class="footer__content">
-            <div class="footer__brand">
-                <div class="footer__logo">
-                    <img src="assets/img/tullu.png" class="footer__logo-img">
-                </div>
-                <p class="footer__description">
-                    O motor digital que combina automação, IA e estratégia para acelerar marcas.
-                </p>
-            </div>
+  <div class="container">
+    <div class="footer__content">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <img src="assets/img/tullu.png" class="footer__logo-img" alt="Tullu Motion">
         </div>
-
-        <div class="footer__bottom">
-            <p class="footer__copyright">
-                © 2025 Tullu Motion. Todos os direitos reservados.
-            </p>
-        </div>
+        <p class="footer__description">
+          O motor digital que combina automação, IA e estratégia para acelerar marcas.
+        </p>
+      </div>
     </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        © 2025 Tullu Motion. Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
 </footer>
 
 <script src="assets/js/main.js"></script>
