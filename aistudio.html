@@ -185,7 +185,7 @@
 <section class="cta-section" id="comparativo">
   <div class="container">
     <div class="cta-section__card">
-      <h1 class="hero__title" style="text-align:justify;" >Por que o <span class="gradient-text">AI Studio</span> é melhor que chatbots comuns?</h1>
+      <h1 class="hero__title" style="text-align:center;" >Por que o <span class="gradient-text">AI Studio</span> é melhor que chatbots comuns?</h1>
       <p class="cta-section__subtitle">
         Chatbots tradicionais travam o atendimento em menus, o AI Studio entende contexto, responde no tom da marca e organiza tudo no CRM, com agenda integrada.
       </p>
@@ -199,154 +199,184 @@
         <span class="tag tag--ai">Painel completo</span>
       </div>
 <br><br>
-      <!-- Comparativo em um único card, separação vertical com br grande -->
-      <div style="margin-top: 1.25rem;">
-        <div class="glow-card" style="max-width: 980px; margin: 0 auto;">
-          <h2 class="hero3_title" style="text-align:center; margin-bottom: 0.75rem;">Comparativo real de conversa</h3>
+      <!-- Comparativo em um único card (corrigido: 1 coluna no mobile, sem sumir o “CERTO”, título com menos espaço) -->
+<div style="margin-top: 1.25rem;">
+  <div class="glow-card" style="max-width: 980px; margin: 0 auto; overflow: visible;">
 
-          <div class="cards-grid" style="max-width: 980px;">
-            <div class="card-base" style="align-items:flex-start;">
-              <!-- Comparativo real de conversa (cards com estilos inline) -->
-<div class="cards-grid" style="max-width: 980px;">
+    <!-- TÍTULO (corrigido: era h2 fechado com </h3> + espaçamento menor) -->
+    <h3 class="hero3_title" style="
+      text-align:center;
+      margin: 0 0 0.65rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    ">Comparativo real de conversa</h3>
 
-  <!-- ERRADO -->
-  <div class="card-base" style="
-    align-items:flex-start;
-    padding: 18px 18px;
-    border-radius: 18px;
-    background: linear-gradient(180deg, rgba(255, 74, 74, 0.12) 0%, rgba(255, 74, 74, 0.06) 100%);
-    border: 1px solid rgba(255, 74, 74, 0.22);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-  ">
-    <div style="
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: rgba(255, 74, 74, 0.16);
-      border: 1px solid rgba(255, 74, 74, 0.25);
-      flex: 0 0 auto;
-      margin-right: 12px;
-      margin-top: 2px;
+    <!-- GRID (blindado pra não mandar o 2º card pra direita/cortar no mobile) -->
+    <div class="cards-grid" style="
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      width: min(980px, 100%);
+      margin: 0 auto;
+      overflow: visible;
     ">
-      <span style="
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: rgba(255, 74, 74, 0.85);
-        box-shadow: 0 0 14px rgba(255, 74, 74, 0.55);
-        display:block;
-      "></span>
-    </div>
 
-    <div style="flex:1;">
-      <div style="display:flex; align-items:center; gap:10px; margin-bottom: 8px;">
-        <span style="
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: .12em;
-          text-transform: uppercase;
-          padding: 6px 10px;
-          border-radius: 999px;
-          background: rgba(255, 74, 74, 0.14);
-          border: 1px solid rgba(255, 74, 74, 0.22);
-          color: rgba(255, 210, 210, 0.95);
-        ">ERRADO</span>
-
-        <strong style="color: rgba(255,255,255,0.92); font-size: 16px;">Chatbot padrão</strong>
-      </div>
-
-      <div style="
-        margin-top: .25rem;
-        text-align: left;
-        color: rgba(255,255,255,0.78);
-        line-height: 1.55;
+      <!-- ERRADO -->
+      <div class="card-base" style="
+        width: 100%;
+        box-sizing: border-box;
+        display:flex;
+        gap: 12px;
+        align-items:flex-start;
+        padding: 18px 18px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(255, 74, 74, 0.12) 0%, rgba(255, 74, 74, 0.06) 100%);
+        border: 1px solid rgba(255, 74, 74, 0.22);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        overflow: visible;
       ">
-        “Olá, digite 1 para orçamento, 2 para suporte, 3 para falar com um atendente.”<br>
-        “Desculpe, não entendi, digite 1, 2 ou 3.”
+        <div style="
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          width: 38px;
+          height: 38px;
+          border-radius: 12px;
+          background: rgba(255, 74, 74, 0.16);
+          border: 1px solid rgba(255, 74, 74, 0.25);
+          flex: 0 0 auto;
+          margin-top: 2px;
+        ">
+          <span style="
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(255, 74, 74, 0.85);
+            box-shadow: 0 0 14px rgba(255, 74, 74, 0.55);
+            display:block;
+          "></span>
+        </div>
+
+        <div style="flex:1; min-width: 0;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom: 8px;">
+            <span style="
+              font-size: 11px;
+              font-weight: 700;
+              letter-spacing: .12em;
+              text-transform: uppercase;
+              padding: 6px 10px;
+              border-radius: 999px;
+              background: rgba(255, 74, 74, 0.14);
+              border: 1px solid rgba(255, 74, 74, 0.22);
+              color: rgba(255, 210, 210, 0.95);
+              line-height: 1;
+            ">ERRADO</span>
+
+            <strong style="color: rgba(255,255,255,0.92); font-size: 16px; line-height: 1.15;">
+              Chatbot padrão
+            </strong>
+          </div>
+
+          <div style="
+            margin-top: 2px;
+            text-align: left;
+            color: rgba(255,255,255,0.78);
+            line-height: 1.55;
+          ">
+            “Olá, digite 1 para orçamento, 2 para suporte, 3 para falar com um atendente.”<br>
+            “Desculpe, não entendi, digite 1, 2 ou 3.”
+          </div>
+
+          <div style="
+            margin-top: 10px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.60);
+            line-height: 1.3;
+          ">
+            Resultado: fricção, abandono e conversão baixa.
+          </div>
+        </div>
       </div>
 
-      <div style="
-        margin-top: 10px;
-        font-size: 12px;
-        color: rgba(255,255,255,0.60);
+      <!-- CERTO -->
+      <div class="card-base" style="
+        width: 100%;
+        box-sizing: border-box;
+        display:flex;
+        gap: 12px;
+        align-items:flex-start;
+        padding: 18px 18px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(0, 200, 255, 0.20) 0%, rgba(0, 140, 255, 0.12) 100%);
+        border: 1px solid rgba(0, 200, 255, 0.28);
+        box-shadow: 0 12px 34px rgba(0, 145, 255, 0.18), 0 10px 30px rgba(0,0,0,0.35);
+        overflow: visible;
       ">
-        Resultado: fricção, abandono e conversão baixa.
+        <div style="
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          width: 38px;
+          height: 38px;
+          border-radius: 12px;
+          background: rgba(0, 200, 255, 0.18);
+          border: 1px solid rgba(0, 200, 255, 0.30);
+          flex: 0 0 auto;
+          margin-top: 2px;
+        ">
+          <span style="
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(120, 255, 220, 0.92);
+            box-shadow: 0 0 16px rgba(120, 255, 220, 0.55);
+            display:block;
+          "></span>
+        </div>
+
+        <div style="flex:1; min-width: 0;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom: 8px;">
+            <span style="
+              font-size: 11px;
+              font-weight: 700;
+              letter-spacing: .12em;
+              text-transform: uppercase;
+              padding: 6px 10px;
+              border-radius: 999px;
+              background: rgba(120, 255, 220, 0.12);
+              border: 1px solid rgba(120, 255, 220, 0.25);
+              color: rgba(180, 255, 235, 0.95);
+              line-height: 1;
+            ">CERTO</span>
+
+            <strong style="color: rgba(255,255,255,0.95); font-size: 16px; line-height: 1.15;">
+              Tullu AI Studio
+            </strong>
+          </div>
+
+          <div style="
+            margin-top: 2px;
+            text-align: left;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.55;
+          ">
+            “Oi, Julia, perfeito. Você quer orçamento, agendamento ou suporte? Eu já organizo tudo por aqui.”<br>
+            “João, entendi. Posso te fazer 2 perguntas rápidas pra te direcionar certinho e já deixar tudo registrado no CRM?”
+          </div>
+
+          <div style="
+            margin-top: 10px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.70);
+            line-height: 1.3;
+          ">
+            Resultado: clareza, velocidade e lead pronto pro time.
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
-
-  <!-- CERTO -->
-  <div class="card-base" style="
-    align-items:flex-start;
-    padding: 18px 18px;
-    border-radius: 18px;
-    background: linear-gradient(180deg, rgba(0, 200, 255, 0.20) 0%, rgba(0, 140, 255, 0.12) 100%);
-    border: 1px solid rgba(0, 200, 255, 0.28);
-    box-shadow: 0 12px 34px rgba(0, 145, 255, 0.18), 0 10px 30px rgba(0,0,0,0.35);
-  ">
-    <div style="
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: rgba(0, 200, 255, 0.18);
-      border: 1px solid rgba(0, 200, 255, 0.30);
-      flex: 0 0 auto;
-      margin-right: 12px;
-      margin-top: 2px;
-    ">
-      <span style="
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: rgba(120, 255, 220, 0.92);
-        box-shadow: 0 0 16px rgba(120, 255, 220, 0.55);
-        display:block;
-      "></span>
-    </div>
-
-    <div style="flex:1;">
-      <div style="display:flex; align-items:center; gap:10px; margin-bottom: 8px;">
-        <span style="
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: .12em;
-          text-transform: uppercase;
-          padding: 6px 10px;
-          border-radius: 999px;
-          background: rgba(120, 255, 220, 0.12);
-          border: 1px solid rgba(120, 255, 220, 0.25);
-          color: rgba(180, 255, 235, 0.95);
-        ">CERTO</span>
-
-        <strong style="color: rgba(255,255,255,0.95); font-size: 16px;">Tullu AI Studio</strong>
-      </div>
-
-      <div style="
-        margin-top: .25rem;
-        text-align: left;
-        color: rgba(255,255,255,0.88);
-        line-height: 1.55;
-      ">
-        “Oi, Julia, perfeito. Você quer orçamento, agendamento ou suporte? Eu já organizo tudo por aqui.”<br>
-        “João, entendi. Posso te fazer 2 perguntas rápidas pra te direcionar certinho e já deixar tudo registrado no CRM?”
-      </div>
-
-      <div style="
-        margin-top: 10px;
-        font-size: 12px;
-        color: rgba(255,255,255,0.70);
-      ">
-        Resultado: clareza, velocidade e lead pronto pro time.
-      </div>
-    </div>
-  </div>
-
 </div>
           <br><br>
 
