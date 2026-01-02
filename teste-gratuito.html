@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste gratuito, como funciona | AI Studio | Tullu Motion</title>
+  <meta name="description" content="Entenda como funciona o teste gratuito do AI Studio: atendimento com IA no WhatsApp, ativação segura, sem compromisso e com processo simples.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tullumotion.com/teste">
+  <meta property="og:title" content="Teste gratuito, como funciona | AI Studio | Tullu Motion">
+  <meta property="og:description" content="Veja como funciona o teste gratuito do AI Studio: IA no WhatsApp, ativação segura e sem compromisso.">
+  <meta property="og:image" content="assets/img/aistudio.png.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Teste gratuito, como funciona | AI Studio | Tullu Motion">
+  <meta property="twitter:description" content="Teste gratuito do AI Studio: IA no WhatsApp, ativação segura e sem compromisso.">
+  <meta property="twitter:image" content="assets/img/aistudio.png.png">
+
+  <link rel="icon" type="image/png" href="assets/img/tu.png.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/branch-pages.css">
+
+  <!-- CSS local só para esta página (checks glow e cards de confiança) -->
+  <style>
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      width: min(980px, 100%);
+      margin: 0 auto;
+    }
+    @media (min-width: 860px) {
+      .trust-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .trust-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 18px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+    }
+    .glow-dot {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      margin-top: 2px;
+      background: rgba(0, 200, 255, 0.14);
+      border: 1px solid rgba(0, 200, 255, 0.26);
+    }
+    .glow-dot::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(120, 255, 220, 0.92);
+      box-shadow: 0 0 16px rgba(120, 255, 220, 0.55);
+      display: block;
+      position: relative;
+    }
+    .glow-dot::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 4px;
+      border-left: 2px solid rgba(12, 20, 28, 0.85);
+      border-bottom: 2px solid rgba(12, 20, 28, 0.85);
+      transform: translateY(-1px) rotate(-45deg);
+      display: block;
+    }
+    .glow-dot {
+      position: relative;
+    }
+
+    .risk-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,255,220,0.22);
+      background: rgba(120,255,220,0.10);
+      color: rgba(230,255,250,0.92);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .risk-chip .mini-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(120, 255, 220, 0.92);
+      box-shadow: 0 0 12px rgba(120, 255, 220, 0.55);
+      display: inline-block;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      width: min(980px, 100%);
+      margin: 0 auto;
+    }
+    @media (min-width: 900px) {
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .step-card {
+      border-radius: 18px;
+      padding: 18px 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+    }
+    .step-kicker {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(180, 255, 235, 0.95);
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0, 200, 255, 0.12);
+      border: 1px solid rgba(0, 200, 255, 0.22);
+      margin-bottom: 10px;
+    }
+    .muted-p {
+      color: rgba(255,255,255,0.72);
+      line-height: 1.55;
+      margin-top: 6px;
+    }
+    .notice {
+      background: linear-gradient(180deg, rgba(0, 200, 255, 0.16) 0%, rgba(0, 140, 255, 0.08) 100%);
+      border: 1px solid rgba(0, 200, 255, 0.22);
+      border-radius: 18px;
+      padding: 18px 18px;
+      box-shadow: 0 12px 34px rgba(0, 145, 255, 0.16), 0 10px 30px rgba(0,0,0,0.30);
+      width: min(980px, 100%);
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header" id="header">
+  <nav class="nav container">
+    <div class="nav__logo">
+      <a href="index.html">
+        <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
+        <span class="nav__logo-text">Motion</span>
+      </a>
+    </div>
+
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#como-funciona" class="nav__link">Como funciona</a></li>
+        <li class="nav__item"><a href="#o-que-voce-recebe" class="nav__link">O que você recebe</a></li>
+        <li class="nav__item"><a href="#seguranca" class="nav__link">Segurança</a></li>
+        <li class="nav__item"><a href="#faq" class="nav__link">FAQ</a></li>
+      </ul>
+
+      <a
+        href="https://wa.me/5511959029428?text=Quero%20testar%20gratuitamente%20o%20AI%20Studio%20no%20WhatsApp.%20Quero%20entender%20como%20funciona%20o%20teste%20e%20come%C3%A7ar%20agora."
+        class="btn btn--primary nav__cta"
+        target="_blank"
+      >INICIAR TESTE NO WHATSAPP</a>
+    </div>
+
+    <div class="nav__toggle" id="nav-toggle">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<main class="main">
+
+<section class="hero hero--branch hero--aistudio" id="hero">
+  <div class="container">
+    <div class="hero__content">
+
+      <img src="assets/img/aistudio.png.png" alt="AI Studio" class="hero__logo">
+
+      <h1 class="hero__title" style="line-height: 2;">
+        Teste o atendimento com IA no <span class="gradient-text">WhatsApp</span> com segurança
+      </h1>
+
+      <p class="hero__subtitle">
+        Você vê o AI Studio funcionando no mundo real: respostas humanizadas, organização de leads no CRM e agendamentos, antes de decidir qualquer contratação.
+      </p>
+
+      <div class="hero__cta hero__cta--glass">
+        <div class="hero__cta-glass">
+          <span>SEM CUSTO • SEM COMPROMISSO • VOCÊ CONTROLA O ACESSO</span>
+        </div>
+      </div><br>
+
+      <div style="display:flex; gap: .75rem; flex-wrap: wrap; justify-content:center;">
+        <span class="risk-chip"><span class="mini-dot"></span>Sem cobrança automática</span>
+        <span class="risk-chip"><span class="mini-dot"></span>Ativação com autorização</span>
+        <span class="risk-chip"><span class="mini-dot"></span>Cancelamento a qualquer momento</span>
+      </div>
+
+      <div class="hero__cta" style="margin-top: 1.25rem;">
+        <a
+          href="https://wa.me/5511959029428?text=Quero%20testar%20gratuitamente%20o%20AI%20Studio%20no%20WhatsApp.%20Quero%20come%C3%A7ar%20agora."
+          class="btn btn--primary btn--large"
+          target="_blank"
+        >Iniciar teste no WhatsApp</a>
+
+        <a href="#como-funciona" class="btn btn--outline btn--large">Entender como funciona</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<br><br>
+
+<section id="como-funciona" class="showcase">
+  <div class="container">
+    <header class="section__header">
+      <h2 class="section__title">Como funciona o teste gratuito</h2>
+      <p class="section__subtitle">
+        Processo simples e rápido. Você não precisa entender IA, nem configurar nada sozinho.
+      </p>
+      <br>
+      <div class="tag tag--ai">Você começa agora e já vê valor em poucas horas.</div>
+    </header>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-kicker">Passo 1</span>
+        <strong style="color: rgba(255,255,255,0.95); font-size: 16px; line-height: 1.25;">Você inicia a conversa no WhatsApp</strong>
+        <p class="muted-p">Você nos diz qual é o seu tipo de negócio e qual objetivo do seu atendimento: orçamento, agendamento, suporte ou tudo junto.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-kicker">Passo 2</span>
+        <strong style="color: rgba(255,255,255,0.95); font-size: 16px; line-height: 1.25;">Você autoriza e envia dados básicos</strong>
+        <p class="muted-p">Você preenche um formulário curto com as informações essenciais do seu fluxo e autoriza a ativação do teste. Sem letras miúdas.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-kicker">Passo 3</span>
+        <strong style="color: rgba(255,255,255,0.95); font-size: 16px; line-height: 1.25;">A equipe ativa seu fluxo inicial</strong>
+        <p class="muted-p">A gente configura o atendimento inicial com o seu contexto, no tom da sua marca, com registro no CRM e agendamento quando fizer sentido.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-kicker">Passo 4</span>
+        <strong style="color: rgba(255,255,255,0.95); font-size: 16px; line-height: 1.25;">Você testa na vida real</strong>
+        <p class="muted-p">Você acompanha clientes sendo atendidos no WhatsApp e tudo organizado no CRM. Você entra só quando o lead estiver pronto.</p>
+      </div>
+    </div>
+
+    <div class="showcase__cta" style="margin-top: 1.5rem;">
+      <a
+        href="https://wa.me/5511959029428?text=Quero%20iniciar%20o%20teste%20gratuito%20do%20AI%20Studio.%20Pode%20me%20mandar%20o%20passo%20a%20passo%20e%20o%20formul%C3%A1rio%3F"
+        class="btn btn--accent btn--large"
+        target="_blank"
+      >Começar agora no WhatsApp</a>
+      <small class="demo__note">Você recebe suporte no WhatsApp durante o teste</small>
+    </div>
+  </div>
+</section>
+
+<section id="o-que-voce-recebe" class="features">
+  <div class="container">
+    <div class="section__header">
+      <h2 class="section__title">O que você recebe no teste</h2>
+      <p class="section__subtitle">
+        Não é simulação. Você vê o AI Studio funcionando de verdade no WhatsApp e registrando tudo no CRM.
+      </p>
+    </div>
+
+    <div class="features__grid">
+      <div class="feature-card">
+        <div class="feature-card__icon">📲</div>
+        <h3 class="feature-card__title">Atendimento 24/7 no WhatsApp</h3>
+        <p>Respostas rápidas, sem fila e sem mensagens perdidas.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card__icon">🧠</div>
+        <h3 class="feature-card__title">Qualificação automática</h3>
+        <p>Entende intenção e faz perguntas certas antes de passar para o time.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card__icon">📊</div>
+        <h3 class="feature-card__title">CRM organizado</h3>
+        <p>Status, histórico e rastreio do lead para você ter clareza e controle.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card__icon">🗓️</div>
+        <h3 class="feature-card__title">Agendamento quando fizer sentido</h3>
+        <p>O lead agenda e você vê a organização do fluxo sem fricção.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card__icon">🔄</div>
+        <h3 class="feature-card__title">Follow-up automático</h3>
+        <p>Recupera leads frios e mantém o funil rodando sem esforço.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card__icon">💬</div>
+        <h3 class="feature-card__title">Ajuste inicial no seu contexto</h3>
+        <p>Você não fica refém de “digite 1”. O fluxo é adaptável ao seu negócio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="seguranca" class="cta-section">
+  <div class="container">
+    <div class="cta-section__card">
+
+      <h1 class="hero__title" style="text-align:center;">
+        Segurança e <span class="gradient-text">confiança</span> no teste
+      </h1>
+      <p class="cta-section__subtitle">
+        Você está certo em ter cautela. Por isso o teste foi desenhado para ser seguro, transparente e controlado por você.
+      </p>
+
+      <div class="notice">
+        <strong style="color: rgba(255,255,255,0.95); font-size: 16px; line-height: 1.25;">Sem risco financeiro e sem armadilha</strong>
+        <p class="muted-p" style="margin: 8px 0 0;">
+          O teste não gera cobrança automática. Nada é ativado sem autorização. E você pode encerrar quando quiser.
+        </p>
+      </div>
+
+      <br><br>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="glow-dot"></div>
+          <div>
+            <strong style="color: rgba(255,255,255,0.95);">Ativação com autorização clara</strong>
+            <div class="muted-p">Você entende exatamente o que será ativado e por quanto tempo. Sem letras miúdas.</div>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <div class="glow-dot"></div>
+          <div>
+            <strong style="color: rgba(255,255,255,0.95);">Você controla o acesso</strong>
+            <div class="muted-p">O teste existe para provar valor, não para te prender. Cancelamento a qualquer momento.</div>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <div class="glow-dot"></div>
+          <div>
+            <strong style="color: rgba(255,255,255,0.95);">Transparência do que está incluso</strong>
+            <div class="muted-p">Você recebe uma experiência real do produto. Ajustes profundos ficam para depois do teste.</div>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <div class="glow-dot"></div>
+          <div>
+            <strong style="color: rgba(255,255,255,0.95);">Suporte no WhatsApp</strong>
+            <div class="muted-p">Durante o teste, você fala com a gente. Se fizer sentido, marcamos um contato curto.</div>
+          </div>
+        </div>
+      </div>
+
+      <br><br>
+
+      <div class="showcase__cta" style="margin-top: 0;">
+        <a
+          href="https://wa.me/5511959029428?text=Quero%20iniciar%20o%20teste%20gratuito%20do%20AI%20Studio.%20Quero%20um%20processo%20seguro%20e%20sem%20compromisso."
+          class="btn btn--primary btn--large"
+          target="_blank"
+        >Iniciar teste com segurança</a>
+
+        <a href="aistudio.html" class="btn btn--outline btn--large">Voltar para AI Studio</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="features" id="faq" style="padding-top: 80px;">
+  <div class="container">
+    <div class="section__header">
+      <h2 class="section__title">Perguntas rápidas</h2>
+      <p class="section__subtitle">
+        Tudo que parece técnico vira simples. Você fala com a gente no WhatsApp e a gente guia o processo.
+      </p>
+    </div>
+
+    <div class="cards-grid" style="max-width: 1000px;">
+      <div class="card-base" style="align-items:flex-start; background: rgba(255,255,255,0.03);">
+        <div class="pain-card__icon">❓</div>
+        <div>
+          <strong>Eu vou pagar alguma coisa no teste?</strong>
+          <div style="margin-top:.35rem; color: var(--muted);">
+            Não. O teste não gera cobrança automática e você só continua se fizer sentido para você.
+          </div>
+        </div>
+      </div>
+
+      <div class="card-base" style="align-items:flex-start; background: rgba(255,255,255,0.03);">
+        <div class="pain-card__icon">🔐</div>
+        <div>
+          <strong>É seguro conectar meu WhatsApp?</strong>
+          <div style="margin-top:.35rem; color: var(--muted);">
+            Sim. A ativação é feita com autorização e você controla o acesso. Transparência total do que será ativado.
+          </div>
+        </div>
+      </div>
+
+      <div class="card-base" style="align-items:flex-start; background: rgba(255,255,255,0.03);">
+        <div class="pain-card__icon">🧩</div>
+        <div>
+          <strong>Preciso configurar alguma coisa?</strong>
+          <div style="margin-top:.35rem; color: var(--muted);">
+            Não. Você responde algumas perguntas, a gente configura o fluxo inicial e te entrega para testar.
+          </div>
+        </div>
+      </div>
+
+      <div class="card-base" style="align-items:flex-start; background: rgba(255,255,255,0.03);">
+        <div class="pain-card__icon">⏱️</div>
+        <div>
+          <strong>Quanto tempo leva para começar?</strong>
+          <div style="margin-top:.35rem; color: var(--muted);">
+            Em geral, você inicia agora no WhatsApp e já entra no processo. A ativação depende do seu retorno com os dados básicos.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase__cta" style="margin-top: 1.5rem;">
+      <a
+        href="https://wa.me/5511959029428?text=Quero%20iniciar%20o%20teste%20gratuito%20do%20AI%20Studio.%20Tenho%20d%C3%BAvidas%20e%20quero%20come%C3%A7ar."
+        class="btn btn--primary btn--large"
+        target="_blank"
+      >Falar no WhatsApp</a>
+      <a href="index.html" class="btn btn--outline btn--large">Voltar para home</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__content">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
+          <span class="footer__logo-text"></span>
+        </div>
+        <p class="footer__description">
+          O motor digital que combina automação, IA e estratégia para acelerar marcas.
+        </p>
+      </div>
+
+      <div class="footer__links">
+        <div class="footer__section">
+          <h4 class="footer__section-title">Navegação</h4>
+          <ul class="footer__list">
+            <li><a href="#como-funciona" class="footer__link">Como funciona</a></li>
+            <li><a href="#seguranca" class="footer__link">Segurança</a></li>
+            <li><a href="#faq" class="footer__link">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h4 class="footer__section-title">Contato</h4>
+          <ul class="footer__list">
+            <li><a href="https://wa.me/5511959029428?text=Quero%20iniciar%20o%20teste%20gratuito%20do%20AI%20Studio." class="footer__link" target="_blank">WhatsApp</a></li>
+            <li><a href="mailto:comercial@tullumotion.com" class="footer__link">E-mail</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h4 class="footer__section-title">Legal</h4>
+          <ul class="footer__list">
+            <li><a href="#" class="footer__link">Política de Privacidade</a></li>
+            <li><a href="#" class="footer__link">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        © 2026 Tullu Motion. Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/branch-animations.js"></script>
+
+</body>
+</html>
