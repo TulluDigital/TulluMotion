@@ -3424,4 +3424,45 @@ figure.showcase__frame.showcase__frame--clean {
     width: 360px;
   }
 }
+/* ===== REMOVER GLOW AMARELADO DO SHOWCASE ===== */
+#showcase,
+#showcase * {
+  --warm-glow: 0;
+}
+
+/* Mata qualquer overlay quente */
+#showcase::before,
+#showcase::after,
+#showcase .showcase__frame::before,
+#showcase .showcase__frame::after {
+  background: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Recria glow FRIO (tech) opcional */
+#showcase {
+  position: relative;
+}
+
+#showcase::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(59,130,246,0.14) 0%,
+    rgba(34,211,238,0.10) 35%,
+    transparent 70%
+  );
+  filter: blur(24px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Garante que os mockups ficam acima */
+#showcase .showcase__img {
+  position: relative;
+  z-index: 1;
+}
 
