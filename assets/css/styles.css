@@ -3480,3 +3480,63 @@ section#showcase img.showcase__img--over{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+/* =========================================================
+   iPhone/Safari/Instagram in-app: mockups pequenos + lado a lado + sobreposição
+   ========================================================= */
+
+/* pega praticamente todo mobile real (inclui iPhone grande) */
+@media (max-width: 768px){
+
+  #showcase .showcase__frame{
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0 !important;
+
+    max-width: 100% !important;
+    overflow: visible !important;      /* no iPhone o hidden corta sombra feio */
+    left: 0 !important;
+    transform: none !important;
+
+    position: relative !important;
+    isolation: isolate;                 /* evita glow/overlay interferindo */
+  }
+
+  /* miniaturiza o conjunto inteiro (mais consistente no Safari) */
+  #showcase .showcase__frame{
+    transform: scale(.86) !important;   /* ajuste rápido */
+    transform-origin: center top !important;
+  }
+
+  #showcase .showcase__img{
+    max-width: none !important;
+    height: auto !important;
+    object-fit: contain !important;
+    position: relative !important;
+  }
+
+  /* CRM (esquerda) */
+  #showcase .showcase__img--main{
+    width: 220px !important;            /* fixo p/ consistência */
+    transform: rotate(-7deg) translateX(-10px) translateY(6px) !important;
+    z-index: 1 !important;
+    filter: drop-shadow(0 16px 34px rgba(0,0,0,0.55)) !important;
+  }
+
+  /* LOGIN (direita, à frente e sobrepondo) */
+  #showcase .showcase__img--over{
+    width: 235px !important;
+    transform: rotate(8deg) translateX(-48px) translateY(16px) !important;
+    z-index: 3 !important;
+    filter: drop-shadow(0 20px 46px rgba(0,0,0,0.65)) !important;
+  }
+}
+
+/* reforço específico Safari/iOS (quando o in-app bagunça viewport) */
+@supports (-webkit-touch-callout: none){
+  @media (max-width: 900px){
+    #showcase .showcase__frame{ transform: scale(.84) !important; }
+  }
+}
