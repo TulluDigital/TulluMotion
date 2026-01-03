@@ -3245,3 +3245,44 @@ figure.showcase__frame.showcase__frame--clean {
   padding: 0 !important;
   backdrop-filter: none !important;
 }
+/* container continua flex */
+.showcase__frame--clean {
+  display: flex !important;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  max-width: 980px;
+  margin: 28px auto 0;
+}
+
+/* mockup principal (CRM) */
+.showcase__img--main {
+  width: 420px;
+  max-height: 560px;
+  z-index: 1;
+}
+
+/* mockup login – MAIS FORTE, MAIS À FRENTE */
+.showcase__img--over {
+  width: 420px;              /* 🔹 leve aumento */
+  max-height: 580px;
+  z-index: 3;
+
+  position: relative;
+  margin-left: -140px;       /* 🔹 empurra pra esquerda */
+  transform: translateY(22px) rotate(-1.5deg);
+  filter: drop-shadow(0 25px 60px rgba(0,0,0,0.55));
+}
+@media (max-width: 560px) {
+  .showcase__frame--clean {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .showcase__img--over {
+    margin-left: 0;
+    transform: translateY(-12px) rotate(-1deg);
+    width: 360px;
+  }
+}
