@@ -4236,9 +4236,10 @@ section[id]{
 /* frame do mockup */
 #showcase .showcase__frame{
   position: relative;
-  width: 460px;              /* 🔑 limita o tamanho */
+  width: 420px;              /* 🔑 limita o tamanho */
   max-width: 100%;
-  margin-right: -40px;       /* 🔑 empurra pra direita sem vazar */
+  margin-right: 0;     
+    margin-left: -40px; /* 🔑 empurra pra direita sem vazar */
 }
 
 /* imagem em si */
