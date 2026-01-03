@@ -4010,14 +4010,14 @@ section[id]{
 
   /* mata o espação em cima e embaixo */
   #showcase{
-    padding-top: 28px !important;
-    padding-bottom: 36px !important;
+    padding-top: 12px !important;
+    padding-bottom: 20px !important;
   }
 
   /* aproxima o mockup do texto */
   #showcase .showcase__stage,
   #showcase .showcase__visual{
-    margin-top: 8px !important;
+    margin-top: 0px !important;
     margin-bottom: 0 !important;
   }
 
