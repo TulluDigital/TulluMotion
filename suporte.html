@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suporte | Tullu Motion</title>
+  <meta name="description" content="Central de suporte do AI Studio: conta, ativação, integrações, incidentes e dúvidas operacionais. Canal direto com suporte." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,199 +14,331 @@
   <!-- CSS do projeto -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/branch-pages.css">
+
+  <!-- Ajustes locais (apenas layout/tamanho dos cards) -->
+  <style>
+    .support-grid,
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      width: min(1000px, 100%);
+      margin: 0 auto;
+    }
+    @media (min-width: 860px) {
+      .support-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .faq-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    /* Card compacto, reaproveitando o visual “FAQ” das outras páginas */
+    .support-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 18px 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 0;
+    }
+    .support-card__title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.2;
+      color: rgba(255,255,255,0.95);
+      letter-spacing: -0.02em;
+    }
+    .support-card__desc {
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .support-card__meta {
+      margin-top: 2px;
+      color: rgba(255,255,255,0.60);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .support-card__actions {
+      margin-top: 6px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Remove qualquer “vazio” visual extra em telas grandes */
+    .hero.hero--branch { padding-bottom: 34px; }
+    .main { padding-top: 0; }
+  </style>
 </head>
 
 <body>
 
-  <!-- HEADER / NAV -->
-  <header class="header">
-    <div class="container">
-      <nav class="nav">
-        <div class="nav__logo">
-          <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
-        </div>
-
-        <div class="nav__menu">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="/index.html" class="nav__link">Início</a>
-            </li>
-            <li class="nav__item">
-              <a href="/aistudio.html" class="nav__link">AI Studio</a>
-            </li>
-            <li class="nav__item">
-              <a href="/suporte.html" class="nav__link is-active">Suporte</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+<header class="header" id="header">
+  <nav class="nav container">
+    <div class="nav__logo">
+      <a href="index.html">
+        <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
+        <span class="nav__logo-text">Motion</span>
+      </a>
     </div>
-  </header>
 
-  <main class="main">
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="index.html" class="nav__link">Início</a></li>
+        <li class="nav__item"><a href="aistudio.html" class="nav__link">AI Studio</a></li>
+        <li class="nav__item"><a href="suporte.html" class="nav__link is-active">Suporte</a></li>
+      </ul>
 
-    <!-- HERO -->
-    <section class="hero hero--branch">
-      <div class="container">
-        <div class="hero__content">
-          <h1 class="hero__title">
-            Central de Suporte<br>
-            <span class="gradient-text">Tullu Motion</span>
-          </h1>
-          <p class="hero__subtitle">
-            Atendimento, dúvidas técnicas, informações institucionais
-            e suporte aos produtos da Tullu Motion.
-          </p>
-        </div>
-      </div>
-    </section>
+      <!-- CTA do menu (contato direto, sem levar pro WhatsApp da Tullu; vai pro seu pessoal) -->
+      <a
+        href="https://wa.me/5511959029428?text=Ol%C3%A1%2C%20preciso%20de%20suporte%20no%20AI%20Studio."
+        class="btn btn--primary nav__cta"
+        target="_blank"
+        rel="noopener"
+      >FALAR COM SUPORTE</a>
+    </div>
 
-    <!-- CONTATO -->
-    <section class="credibility">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">Falar com suporte</h2>
-          <p class="section__subtitle">
-            Canal direto para suporte técnico, dúvidas operacionais e parcerias.
-          </p>
-        </div>
+    <div class="nav__toggle" id="nav-toggle">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
 
-        <div class="services__grid">
-          <div class="service-card">
-            <h3 class="service-card__title">Suporte Técnico</h3>
-            <p class="service-card__description">
-              Atendimento relacionado ao AI Studio, formulários,
-              automações, integrações e funcionamento da plataforma.
-            </p>
-            <a
-              href="https://wa.me/5511959029428?text=Ol%C3%A1%2C%20preciso%20de%20suporte%20da%20Tullu%20Motion."
-              class="btn btn--secondary"
-              target="_blank"
-            >
-              Falar com o suporte
-            </a>
-          </div>
+<main class="main">
 
-          <div class="service-card">
-            <h3 class="service-card__title">Parcerias e Negócios</h3>
-            <p class="service-card__description">
-              Contato para parcerias estratégicas, integrações,
-              oportunidades de negócio e investimentos.
-            </p>
-            <a
-              href="https://wa.me/5511959029428?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20sobre%20parcerias%20com%20a%20Tullu%20Motion."
-              class="btn btn--secondary"
-              target="_blank"
-            >
-              Entrar em contato
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ AI STUDIO -->
-    <section class="process">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">FAQ — AI Studio</h2>
-          <p class="section__subtitle">
-            Dúvidas frequentes sobre o uso do AI Studio como plataforma SaaS.
-          </p>
-        </div>
-
-        <div class="services__grid">
-          <div class="service-card">
-            <h3 class="service-card__title">Meus dados estão seguros?</h3>
-            <p class="service-card__description">
-              Sim. Os dados coletados são utilizados apenas para criar sua conta,
-              configurar o agente e viabilizar o uso da plataforma,
-              seguindo boas práticas e a LGPD.
-            </p>
-          </div>
-
-          <div class="service-card">
-            <h3 class="service-card__title">Existe cobrança automática no teste?</h3>
-            <p class="service-card__description">
-              Não. O teste grátis não possui cobrança automática.
-              Qualquer continuidade depende de aceite e contratação posterior.
-            </p>
-          </div>
-
-          <div class="service-card">
-            <h3 class="service-card__title">A Tullu se responsabiliza por perdas?</h3>
-            <p class="service-card__description">
-              O AI Studio é uma ferramenta de automação.
-              Resultados dependem da configuração, estratégia e uso correto,
-              conforme descrito nos Termos de Uso.
-            </p>
-          </div>
-
-          <div class="service-card">
-            <h3 class="service-card__title">Onde posso consultar os Termos de Uso?</h3>
-            <p class="service-card__description">
-              Os Termos de Uso estão disponíveis neste documento oficial:
-              <br><br>
-              <a href="/assets/docs/termos.pdf" target="_blank">
-                Abrir Termos de Uso
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ TULLU MOTION -->
-    <section class="cases">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">FAQ — Tullu Motion</h2>
-          <p class="section__subtitle">
-            Sobre a empresa, visão, parcerias e posicionamento.
-          </p>
-        </div>
-
-        <div class="services__grid">
-          <div class="service-card">
-            <h3 class="service-card__title">O que é a Tullu Motion?</h3>
-            <p class="service-card__description">
-              A Tullu Motion é uma empresa de tecnologia focada em automação,
-              inteligência artificial e estratégia digital,
-              operando como ecossistema SaaS.
-            </p>
-          </div>
-
-          <div class="service-card">
-            <h3 class="service-card__title">Vocês aceitam parcerias?</h3>
-            <p class="service-card__description">
-              Sim. A Tullu Motion está aberta a parcerias estratégicas,
-              integrações e modelos colaborativos.
-            </p>
-          </div>
-
-          <div class="service-card">
-            <h3 class="service-card__title">A Tullu aceita investimentos?</h3>
-            <p class="service-card__description">
-              Avaliamos oportunidades alinhadas à visão de produto,
-              crescimento sustentável e inovação tecnológica.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
+  <!-- HERO -->
+  <section class="hero hero--branch" id="hero">
     <div class="container">
-      <div class="footer__bottom">
-        <p class="footer__copyright">
-          © 2026 Tullu Motion. Todos os direitos reservados.
+      <div class="hero__content">
+
+        <h1 class="hero__title" style="line-height: 1.25;">
+          Central de <span class="gradient-text">Suporte</span>
+        </h1>
+
+        <p class="hero__subtitle" style="max-width: 880px; margin-left:auto; margin-right:auto;">
+          Ajuda operacional, dúvidas técnicas e suporte de conta do AI Studio (SaaS). Sem enrolação: você descreve o cenário e a gente te guia no próximo passo.
+        </p>
+
+        <div class="hero__cta hero__cta--glass">
+          <div class="hero__cta-glass">
+            <span>SUPORTE • CONTA • ATIVAÇÃO • INTEGRAÇÕES</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO (3 cards) -->
+  <section class="showcase" id="contato">
+    <div class="container">
+      <header class="section__header">
+        <h2 class="section__title">Falar com suporte</h2>
+        <p class="section__subtitle">
+          Escolha o assunto para cair direto no atendimento certo e reduzir retrabalho.
+        </p>
+      </header>
+
+      <div class="support-grid">
+
+        <!-- 1) Suporte técnico -->
+        <article class="support-card">
+          <h3 class="support-card__title">Suporte Técnico</h3>
+          <p class="support-card__desc">
+            Erros, comportamento do agente, integrações, fluxo do WhatsApp, dúvidas de uso do CRM e ajustes operacionais.
+          </p>
+          <p class="support-card__meta">
+            Dica: já envie “o que aconteceu + quando + prints + link da página” para acelerar.
+          </p>
+          <div class="support-card__actions">
+            <a
+              href="https://wa.me/5511959029428?text=Ol%C3%A1%2C%20preciso%20de%20suporte%20t%C3%A9cnico%20no%20AI%20Studio.%20Cen%C3%A1rio%3A%20%5Bdescreva%5D.%20Quando%20aconteceu%3A%20%5Bdata%2Fhora%5D.%20Impacto%3A%20%5Bbaixo%2Fm%C3%A9dio%2Falto%5D.%20Link%3A%20%5Burl%5D."
+              class="btn btn--secondary"
+              target="_blank"
+              rel="noopener"
+            >Abrir chamado</a>
+          </div>
+        </article>
+
+        <!-- 2) Conta e acesso -->
+        <article class="support-card">
+          <h3 class="support-card__title">Conta e Acesso</h3>
+          <p class="support-card__desc">
+            Login no painel, criação de usuário, permissões, recuperação de acesso e dúvidas sobre ativação do teste.
+          </p>
+          <p class="support-card__meta">
+            Para agilizar, envie o e-mail da conta e o nome da empresa (ou CPF/CNPJ se for o caso).
+          </p>
+          <div class="support-card__actions">
+            <a
+              href="https://wa.me/5511959029428?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20CONTA%20%2F%20ACESSO%20no%20AI%20Studio.%20E-mail%3A%20%5Bseu%20e-mail%5D.%20Empresa%3A%20%5Bnome%5D.%20Problema%3A%20%5Bdescreva%5D."
+              class="btn btn--secondary"
+              target="_blank"
+              rel="noopener"
+            >Resolver acesso</a>
+          </div>
+        </article>
+
+        <!-- 3) Comercial e faturamento (novo card) -->
+        <article class="support-card">
+          <h3 class="support-card__title">Comercial e Faturamento</h3>
+          <p class="support-card__desc">
+            Planos, dúvidas de contratação, renovação, upgrades, nota fiscal e alinhamento do que está incluso.
+          </p>
+          <p class="support-card__meta">
+            Se já for cliente, envie o nome da conta + o que você quer alcançar (objetivo do atendimento).
+          </p>
+          <div class="support-card__actions">
+            <a
+              href="https://wa.me/5511959029428?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20PLANO%20%2F%20FATURAMENTO%20do%20AI%20Studio.%20Conta%3A%20%5Bnome%5D.%20D%C3%BAvida%3A%20%5Bdescreva%5D."
+              class="btn btn--secondary"
+              target="_blank"
+              rel="noopener"
+            >Falar com comercial</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ — AI STUDIO (cards menores, estilo da FAQ) -->
+  <section class="features" id="faq-aistudio" style="padding-top: 60px;">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">FAQ — AI Studio</h2>
+        <p class="section__subtitle">
+          Dúvidas rápidas sobre teste, segurança, responsabilidade e termos.
         </p>
       </div>
+
+      <div class="faq-grid">
+        <div class="support-card">
+          <h3 class="support-card__title">Meus dados estão seguros?</h3>
+          <p class="support-card__desc">
+            Sim. Usamos os dados para criar sua conta, configurar o fluxo e viabilizar o uso da plataforma, seguindo boas práticas e a LGPD.
+          </p>
+        </div>
+
+        <div class="support-card">
+          <h3 class="support-card__title">Existe cobrança automática no teste?</h3>
+          <p class="support-card__desc">
+            Não. O teste não gera cobrança automática. Qualquer continuidade depende de aceite e contratação posterior.
+          </p>
+        </div>
+
+        <div class="support-card">
+          <h3 class="support-card__title">A Tullu se responsabiliza por perdas?</h3>
+          <p class="support-card__desc">
+            O AI Studio é uma ferramenta de automação. Resultados dependem da configuração, estratégia e uso correto, conforme descrito nos Termos.
+          </p>
+        </div>
+
+        <div class="support-card">
+          <h3 class="support-card__title">Onde consultar Termos de Uso?</h3>
+          <p class="support-card__desc">
+            O documento oficial está disponível aqui:
+            <br><br>
+            <a class="btn btn--outline" href="assets/docs/termos.pdf" target="_blank" rel="noopener">Abrir Termos de Uso</a>
+          </p>
+        </div>
+
+        <div class="support-card">
+          <h3 class="support-card__title">Como funciona o teste gratuito?</h3>
+          <p class="support-card__desc">
+            Você inicia no WhatsApp, envia os dados essenciais e a ativação acontece com autorização. O foco é provar valor no mundo real.
+          </p>
+          <div class="support-card__actions">
+            <a class="btn btn--outline" href="teste-gratuito.html">Ver explicação do teste</a>
+          </div>
+        </div>
+
+        <div class="support-card">
+          <h3 class="support-card__title">Quero relatar um incidente</h3>
+          <p class="support-card__desc">
+            Se algo estiver impactando atendimento ou vendas, informe o impacto (baixo/médio/alto), horário e prints. Isso acelera triagem.
+          </p>
+          <div class="support-card__actions">
+            <a
+              class="btn btn--outline"
+              href="https://wa.me/5511959029428?text=INCIDENTE%20AI%20Studio%20%7C%20Impacto%3A%20%5Bbaixo%2Fm%C3%A9dio%2Falto%5D%20%7C%20Quando%3A%20%5Bdata%2Fhora%5D%20%7C%20O%20que%20ocorreu%3A%20%5Bdescreva%5D%20%7C%20Link%3A%20%5Burl%5D"
+              target="_blank"
+              rel="noopener"
+            >Reportar agora</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase__cta" style="margin-top: 1.5rem;">
+        <a
+          href="https://wa.me/5511959029428?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20AI%20Studio%20e%20preciso%20de%20orienta%C3%A7%C3%A3o."
+          class="btn btn--primary btn--large"
+          target="_blank"
+          rel="noopener"
+        >Tirar dúvida com suporte</a>
+
+        <a href="aistudio.html" class="btn btn--outline btn--large">Voltar para AI Studio</a>
+      </div>
     </div>
-  </footer>
+  </section>
+
+</main>
+
+<!-- FOOTER (igual ao padrão das páginas guardadas) -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__content">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
+          <span class="footer__logo-text"></span>
+        </div>
+        <p class="footer__description">
+          O motor digital que combina automação, IA e estratégia para acelerar marcas.
+        </p>
+      </div>
+
+      <div class="footer__links">
+        <div class="footer__section">
+          <h4 class="footer__section-title">Navegação</h4>
+          <ul class="footer__list">
+            <li><a href="aistudio.html#comparativo" class="footer__link">Recursos</a></li>
+            <li><a href="aistudio.html#faq" class="footer__link">Dúvidas frequentes</a></li>
+            <li><a href="suporte.html#contato" class="footer__link">Suporte</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h4 class="footer__section-title">Contato</h4>
+          <ul class="footer__list">
+            <li><a href="https://wa.me/5511959029428" class="footer__link" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:comercial@tullumotion.com" class="footer__link">E-mail</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h4 class="footer__section-title">Legal</h4>
+          <ul class="footer__list">
+            <li><a href="#" class="footer__link">Política de Privacidade</a></li>
+            <li><a href="assets/docs/termos.pdf" class="footer__link" target="_blank" rel="noopener">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        © 2026 Tullu Motion. Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/branch-animations.js"></script>
 
 </body>
 </html>
