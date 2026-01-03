@@ -4056,3 +4056,104 @@ section[id]{
   right: auto !important;
   transform: none !important;
 }
+/* =========================================================
+   SHOWCASE — DESKTOP CORRETO (texto esquerda, mockup direita)
+   ========================================================= */
+
+#showcase{
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* GRID REAL */
+#showcase .showcase__grid{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 64px;
+}
+
+/* TEXTO */
+#showcase .showcase__text{
+  max-width: 620px;
+}
+
+/* VISUAL */
+#showcase .showcase__visual{
+  position: relative;
+  display: flex;
+  justify-content: flex-end; /* 🔑 empurra pra direita */
+  align-items: center;
+  overflow: visible;
+}
+
+/* GLOW */
+#showcase .showcase__glow{
+  position: absolute;
+  inset: -80px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(34,211,238,.20),
+    rgba(59,130,246,.12),
+    transparent 72%
+  );
+  filter: blur(32px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* FRAME */
+#showcase .showcase__frame{
+  position: relative;
+  width: 520px;
+  max-width: 100%;
+  z-index: 1;
+}
+
+/* IMAGEM */
+#showcase .showcase__img{
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 38px 90px rgba(0,0,0,.65));
+}
+
+/* =========================================================
+   MOBILE — CENTRALIZADO (continua bonito)
+   ========================================================= */
+@media (max-width: 768px){
+
+  #showcase{
+    padding: 64px 0;
+  }
+
+  #showcase .showcase__grid{
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  #showcase .showcase__visual{
+    justify-content: center;
+  }
+
+  #showcase .showcase__frame{
+    width: min(420px, 92vw);
+    margin: 0 auto;
+  }
+}
+/* CTA do showcase */
+#showcase .showcase__cta{
+  grid-column: 1 / -1;     /* ocupa a largura toda do grid */
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+/* no desktop, puxa levemente para a esquerda (fica abaixo do texto) */
+@media (min-width: 769px){
+  #showcase .showcase__cta{
+    justify-content: flex-start;
+  }
+}
