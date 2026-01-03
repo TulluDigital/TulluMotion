@@ -956,3 +956,11 @@
     transform: translateY(-10px) rotate(-1deg);
   }
 }
+/* REMOVE COMPLETAMENTE O CARD DO SHOWCASE */
+figure.showcase__frame.showcase__frame--clean {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  backdrop-filter: none !important;
+}
