@@ -3540,3 +3540,34 @@ section#showcase img.showcase__img--over{
     #showcase .showcase__frame{ transform: scale(.84) !important; }
   }
 }
+/* =========================================================
+   FIX FINAL: "corte" ao navegar + respiro entre HERO e SHOWCASE
+   (cola no FINAL do CSS)
+   ========================================================= */
+
+/* 1) Âncoras não ficam escondidas atrás do header fixo */
+section[id]{
+  scroll-margin-top: calc(var(--header-h, 88px) + 18px) !important;
+}
+
+/* 2) Respiro real entre HERO e SHOWCASE */
+.hero--aistudio{
+  padding-bottom: clamp(28px, 5vh, 72px) !important; /* espaço antes do showcase */
+}
+
+/* A seção showcase começa “limpa” e com topo respirando */
+#showcase.showcase{
+  margin-top: 0 !important;
+  padding-top: clamp(70px, 7vh, 110px) !important;  /* respiro do título */
+  padding-bottom: clamp(36px, 5vh, 90px) !important;
+  position: relative !important;
+  z-index: 2 !important;
+  overflow: visible !important; /* não corta header/tags */
+}
+
+/* 3) Se algum container pai estiver cortando (muito comum em efeitos de fundo) */
+.main{
+  position: relative;
+  overflow-x: hidden;  /* ok */
+  overflow-y: visible; /* evita cortar a transição de seções */
+}
