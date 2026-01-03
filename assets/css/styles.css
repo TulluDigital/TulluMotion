@@ -4177,13 +4177,7 @@ section[id]{
   overflow: visible;
 }
 
-/* frame do mockup */
-#showcase .showcase__frame{
-  position: relative;
-  width: 460px;              /* 🔑 limita o tamanho */
-  max-width: 100%;
-  margin-right: -40px;       /* 🔑 empurra pra direita sem vazar */
-}
+
 
 /* imagem em si */
 #showcase .showcase__img{
@@ -4300,5 +4294,36 @@ section[id]{
   #showcase .showcase__frame{
     transform: none !important;
     width: min(420px, 92vw) !important;
+  }
+}
+/* =========================================================
+   FIX iPHONE — remove espaço excessivo acima/abaixo do showcase
+   ========================================================= */
+@media (max-width: 480px){
+
+  /* corta padding da seção */
+  #showcase{
+    padding-top: 0 !important;
+    padding-bottom: 12px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* corta margem do container interno */
+  #showcase .container{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* aproxima mockup do texto */
+  #showcase .showcase__visual{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* garante que o frame não “afunde” */
+  #showcase .showcase__frame{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 }
