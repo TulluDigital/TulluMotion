@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Feed 02 — Mercado Agentes</title>
+
+<style>
+:root{
+  --blue:#2563EB;
+  --blue-2:#3B82F6;
+  --cyan:#22D3EE;
+
+  --ink:#0F172A;
+  --muted:#475569;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  display:grid;
+  place-items:center;
+  min-height:100vh;
+  background:#000;
+  font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===== Canvas ===== */
+.feed{
+  width:min(1080px,96vw);
+  aspect-ratio:1/1;
+  background:#fff;
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+}
+
+/* leve profundidade premium */
+.feed::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(600px 300px at 50% 0%, rgba(37,99,235,.08), transparent 60%);
+  pointer-events:none;
+}
+
+/* ===== Conteúdo ===== */
+.content{
+  position:relative;
+  height:100%;
+  padding:64px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+/* ===== Imagem IA ===== */
+.visual{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.visual img{
+  max-width:88%;
+  height:auto;
+}
+
+/* ===== Texto ===== */
+.text{
+  text-align:center;
+  margin-top:-10px;
+}
+
+.text h1{
+  margin:0;
+  font-size:clamp(52px,5.2vw,72px);
+  font-weight:900;
+  letter-spacing:-0.03em;
+  color:var(--ink);
+}
+
+.text h1 span{
+  color:var(--blue);
+}
+
+.text p{
+  margin-top:14px;
+  font-size:clamp(22px,2vw,26px);
+  font-weight:600;
+  color:var(--muted);
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .content{padding:36px}
+  .visual img{max-width:95%}
+}
+</style>
+</head>
+
+<body>
+
+<section class="feed">
+  <div class="content">
+
+    <!-- Visual IA -->
+    <div class="visual">
+      <img src="assets/img/img11.png" alt="Agente de IA conectado a múltiplas conversas">
+    </div>
+
+    <!-- Texto -->
+    <div class="text">
+      <h1>
+        Um agente. <span>Centenas de conversas.</span>
+      </h1>
+      <p>
+        Atendimento 24h por dia sem escalar equipe.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
