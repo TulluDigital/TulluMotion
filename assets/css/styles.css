@@ -4031,3 +4031,28 @@ section[id]{
     margin-top: 18px !important;
   }
 }
+/* SHOWCASE: centraliza o mockup no desktop também */
+#showcase .showcase__stage{
+  display: grid !important;
+  place-items: center !important;
+  width: 100% !important;
+  max-width: 1100px;     /* ajusta se quiser */
+  margin: 0 auto !important;
+  position: relative !important;
+}
+
+/* se você trocou pra 1 imagem só (cels.png) */
+#showcase .showcase__stage img{
+  display:block !important;
+  margin: 0 auto !important;
+  max-width: min(780px, 92vw);  /* tamanho no desktop */
+  height: auto !important;
+}
+
+/* mata qualquer empurrão antigo */
+#showcase .showcase__stage,
+#showcase .showcase__stage img{
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+}
