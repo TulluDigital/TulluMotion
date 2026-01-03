@@ -1,288 +1,165 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mercado Agentes — Feed 01</title>
-  <style>
-    /* ===============================
-       FEED 1:1 (Instagram)
-       =============================== */
-    :root{
-      --bg0:#060813;
-      --bg1:#0A0D1E;
-      --text:#EAF2FF;
-      --muted:rgba(234,242,255,.72);
-      --blue:#2F7BFF;
-      --cyan:#22D3EE;
-      --ink:rgba(255,255,255,.06);
-      --card:rgba(255,255,255,.03);
-      --stroke:rgba(255,255,255,.10);
-      --shadow:0 18px 50px rgba(0,0,0,.45);
-      --radius:28px;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Feed 01 — Mercado Agentes</title>
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      display:grid;
-      place-items:center;
-      background:#0b0b0f;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-    }
+<style>
+:root{
+  --bg-dark:#020617;
+  --blue:#2563EB;
+  --blue-2:#3B82F6;
+  --cyan:#22D3EE;
+  --text:#EAF2FF;
+  --muted:rgba(234,242,255,.75);
+}
 
-    /* Canvas quadrado */
-    .artboard{
-      width:min(1080px, 96vw);
-      aspect-ratio:1/1;
-      position:relative;
-      overflow:hidden;
-      border-radius:32px;
-      background:
-        radial-gradient(1200px 900px at 18% 20%, rgba(47,123,255,.35) 0%, rgba(47,123,255,0) 55%),
-        radial-gradient(900px 700px at 85% 25%, rgba(34,211,238,.22) 0%, rgba(34,211,238,0) 58%),
-        radial-gradient(1000px 900px at 55% 95%, rgba(47,123,255,.18) 0%, rgba(47,123,255,0) 60%),
-        linear-gradient(160deg, var(--bg0) 0%, var(--bg1) 65%, #070814 100%);
-      box-shadow: var(--shadow);
-      border:1px solid rgba(255,255,255,.06);
-    }
+*{box-sizing:border-box}
 
-    /* Detalhes de fundo (grade + partículas) */
-    .grid{
-      position:absolute; inset:-2px;
-      background:
-        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
-      background-size: 64px 64px;
-      opacity:.10;
-      mask-image: radial-gradient(700px 700px at 50% 45%, #000 40%, transparent 75%);
-      pointer-events:none;
-    }
+body{
+  margin:0;
+  display:grid;
+  place-items:center;
+  min-height:100vh;
+  background:#000;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-    .noise{
-      position:absolute; inset:0;
-      opacity:.10;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
-      background-size: 240px 240px;
-      mix-blend-mode: overlay;
-      pointer-events:none;
-    }
+/* ===== Canvas Feed ===== */
+.feed{
+  width:min(1080px, 96vw);
+  aspect-ratio:1/1;
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  background:
+    radial-gradient(700px 700px at 80% 30%, rgba(34,211,238,.35), transparent 60%),
+    radial-gradient(900px 900px at 15% 20%, rgba(59,130,246,.45), transparent 65%),
+    linear-gradient(145deg, #020617 0%, #020617 40%, #020617 100%);
+}
 
-    /* Orbes/halos */
-    .orb{
-      position:absolute;
-      border-radius:999px;
-      filter: blur(26px);
-      opacity:.75;
-      pointer-events:none;
-    }
-    .orb--a{
-      width:360px; height:360px;
-      left:-90px; top:-80px;
-      background: radial-gradient(circle at 35% 35%, rgba(47,123,255,.85), rgba(47,123,255,0) 62%);
-    }
-    .orb--b{
-      width:420px; height:420px;
-      right:-140px; top:120px;
-      background: radial-gradient(circle at 35% 35%, rgba(34,211,238,.65), rgba(34,211,238,0) 62%);
-    }
-    .orb--c{
-      width:520px; height:520px;
-      left:240px; bottom:-260px;
-      background: radial-gradient(circle at 40% 30%, rgba(47,123,255,.35), rgba(47,123,255,0) 66%);
-      opacity:.55;
-    }
+/* Glow suave */
+.feed::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.05), transparent 40%);
+  pointer-events:none;
+}
 
-    /* Conteúdo central */
-    .content{
-      position:absolute; inset:0;
-      display:grid;
-      grid-template-rows: auto 1fr auto;
-      padding: 72px 84px;
-      gap: 28px;
-    }
+/* ===== Conteúdo ===== */
+.content{
+  position:relative;
+  height:100%;
+  padding:72px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
+/* Logo */
+.logo{
+  width:170px;
+  height:auto;
+  opacity:.95;
+}
 
-    .brand{
-      display:flex; align-items:center; gap:14px;
-      padding: 12px 14px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 16px;
-      backdrop-filter: blur(10px);
-    }
+/* ===== Texto central ===== */
+.hero{
+  text-align:center;
+  margin-top:-20px;
+}
 
-    .brand img{
-      width:44px; height:44px;
-      object-fit:contain;
-      filter: drop-shadow(0 8px 18px rgba(47,123,255,.25));
-    }
+.hero h1{
+  margin:0;
+  font-size:clamp(64px, 6vw, 86px);
+  font-weight:900;
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  color:var(--text);
+}
 
-    .brand .name{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-    .brand .name strong{
-      color:var(--text);
-      font-weight:800;
-      font-size:16px;
-      letter-spacing:.2px;
-    }
-    .brand .name span{
-      color:var(--muted);
-      font-size:12px;
-      font-weight:600;
-    }
+.hero h1 span{
+  background:linear-gradient(90deg, var(--blue), var(--cyan));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.10);
-      color: rgba(234,242,255,.86);
-      font-weight:700;
-      font-size:13px;
-      letter-spacing:.2px;
-      backdrop-filter: blur(10px);
-      white-space:nowrap;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
-      box-shadow: 0 0 0 6px rgba(47,123,255,.12);
-    }
+.hero p{
+  margin-top:12px; /* MAIS PRÓXIMO */
+  font-size:clamp(22px, 2vw, 26px);
+  font-weight:600;
+  color:var(--muted);
+}
 
-    .hero{
-      display:grid;
-      place-items:center;
-      text-align:center;
-      padding: 8px 18px;
-    }
+/* ===== Rodapé ===== */
+.footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:14px;
+  color:rgba(234,242,255,.65);
+}
 
-    h1{
-      margin:0;
-      color:var(--text);
-      font-size: clamp(44px, 5.2vw, 74px);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.04;
-      text-wrap: balance;
-      text-shadow: 0 18px 60px rgba(0,0,0,.35);
-    }
+.badge{
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+  font-weight:600;
+}
 
-    .accent{
-      background: linear-gradient(90deg, var(--blue), var(--cyan));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
+.right{
+  text-align:right;
+}
 
-    .subtitle{
-      margin: 18px 0 0;
-      max-width: 760px;
-      color: rgba(234,242,255,.80);
-      font-size: clamp(16px, 1.55vw, 22px);
-      line-height: 1.45;
-      font-weight: 650;
-    }
-
-    /* linha suave + micro detalhes */
-    .divider{
-      margin-top: 26px;
-      width: min(680px, 86%);
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(34,211,238,.40), rgba(47,123,255,.40), transparent);
-      opacity:.9;
-    }
-
-    /* Rodapé minimal */
-    .footer{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:16px;
-      color: rgba(234,242,255,.55);
-      font-size: 12px;
-      font-weight: 650;
-      letter-spacing:.25px;
-    }
-
-    .mini{
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(0,0,0,.18);
-      border: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(10px);
-    }
-
-    .right{
-      text-align:right;
-    }
-
-    /* safe area mobile preview */
-    @media (max-width: 520px){
-      .content{ padding: 38px 26px; }
-      .brand img{ width:38px; height:38px; }
-      .pill{ padding:10px 12px; font-size:12px; }
-    }
-  </style>
+/* Mobile preview */
+@media(max-width:600px){
+  .content{padding:40px}
+  .logo{width:140px}
+}
+</style>
 </head>
 
 <body>
-  <main class="artboard" role="img" aria-label="Arte feed: Crie seu 1º agente de IA fácil e rápido. Marketplace no-code para agentes de IA no WhatsApp.">
-    <div class="grid" aria-hidden="true"></div>
-    <div class="noise" aria-hidden="true"></div>
 
-    <div class="orb orb--a" aria-hidden="true"></div>
-    <div class="orb orb--b" aria-hidden="true"></div>
-    <div class="orb orb--c" aria-hidden="true"></div>
+<section class="feed">
 
-    <section class="content">
-      <header class="topbar">
-        <div class="brand">
-          <!-- Coloque o logo em assets/img/logo.png (ou ajuste o src para o nome correto) -->
-          <img src="assets/img/logoma.avif" alt="Mercado Agentes" />
-          <div class="name">
-            <strong>mercado agentes</strong>
-            <span>no-code + whatsapp</span>
-          </div>
-        </div>
+  <div class="content">
 
-        <div class="pill" aria-label="Tag de proposta">
-          <span class="dot" aria-hidden="true"></span>
-          Crie sem programar
-        </div>
-      </header>
+    <!-- Logo -->
+    <img src="assets/img/logoma.avif" alt="Mercado Agentes" class="logo" />
 
-      <div class="hero">
-        <h1>
-          Crie seu <span class="accent">1º agente de IA</span><br />
-          fácil e rápido.
-        </h1>
+    <!-- Texto principal -->
+    <div class="hero">
+      <h1>
+        Crie seu <span>1º agente de IA</span><br>
+        fácil e rápido.
+      </h1>
 
-        <p class="subtitle">
-          Marketplace no-code para agentes de IA no WhatsApp.
-        </p>
+      <p>
+        Marketplace no-code para agentes de IA no WhatsApp.
+      </p>
+    </div>
 
-        <div class="divider" aria-hidden="true"></div>
+    <!-- Rodapé -->
+    <div class="footer">
+      <div class="badge">
+        Atendimento • Vendas • Agendamentos • Suporte
       </div>
 
-      <footer class="footer">
-        <div class="mini">Atendimento • Vendas • Agendamentos • Suporte</div>
-        <div class="mini right">Infra + CRM integrado</div>
-      </footer>
-    </section>
-  </main>
+      <div class="badge right">
+        Infra + CRM integrado
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
 </body>
 </html>
