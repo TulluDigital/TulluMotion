@@ -4327,3 +4327,53 @@ section[id]{
     margin-bottom: 0 !important;
   }
 }
+/* =========================================================
+   SHOWCASE (AI STUDIO) — versão limpa, apenas texto
+   ========================================================= */
+
+#showcase{
+  position: relative;
+  z-index: 2;
+  padding: clamp(48px, 8vh, 96px) 0;
+  background: transparent;
+}
+
+/* grid simples */
+#showcase .showcase__grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+/* texto */
+#showcase .showcase__text{
+  max-width: 760px;
+}
+
+/* remove QUALQUER resquício visual antigo */
+#showcase .showcase__visual,
+#showcase .showcase__frame,
+#showcase .showcase__img,
+#showcase .showcase__glow,
+#showcase .showcase__cta{
+  display: none !important;
+}
+
+/* badge */
+#showcase .badge{
+  margin-top: 16px;
+}
+
+/* =========================================================
+   MOBILE (iPhone / Android)
+   ========================================================= */
+@media (max-width: 768px){
+  #showcase{
+    padding: 32px 0;
+  }
+
+  #showcase .showcase__text{
+    max-width: 100%;
+  }
+}
