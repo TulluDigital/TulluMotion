@@ -6,17 +6,14 @@
   <title>Ativar teste grátis, Tullu AI Studio</title>
   <meta name="description" content="Ative seu teste grátis do Tullu AI Studio, CRM de atendimento com IA no WhatsApp. Preencha o formulário, nós criamos sua conta e liberamos seu acesso ao painel." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- CSS do projeto -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/branch-pages.css">
 
   <style>
-    /* obrigatório, só asterisco vermelho */
     .req{
       color: #ff4a4a;
       font-weight: 900;
@@ -63,7 +60,6 @@
                   Sem cobrança automática, ativação somente com autorização.
                 </p>
               </div>
-              <span class="badge badge--fast">Ativação em até 24h úteis</span>
             </div>
 
             <div class="stepper" role="tablist" aria-label="Etapas do formulário">
@@ -88,11 +84,9 @@
             <br>
 
             <form id="trialForm" novalidate>
-              <!-- hidden fields para planilha -->
               <input type="hidden" id="source_url" name="source_url" value="">
               <input type="hidden" id="user_agent" name="user_agent" value="">
 
-              <!-- STEP 1 -->
               <section class="form-step" id="step1" data-step="1">
                 <h2 class="hero3_title" style="margin:0 0 8px;">Dados da conta</h2>
                 <p class="help" style="margin-top:0;">
@@ -120,137 +114,95 @@
                   </div>
                 </div>
 
-                <!-- PJ -->
                 <div id="pjFields">
                   <div class="form-grid form-grid--2">
                     <div class="field">
                       <div class="label"><span>Razão Social<span class="req">*</span></span></div>
                       <input class="input" type="text" id="pj_razao_social" name="pj_razao_social"
-                        placeholder="Ex, Empresa Exemplo LTDA"
-                        autocomplete="organization"
-                        data-required="true"
-                      />
+                        placeholder="Ex, Empresa Exemplo LTDA" autocomplete="organization" data-required="true" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>Email corporativo<span class="req">*</span></span></div>
                       <input class="input" type="email" id="pj_email" name="pj_email"
-                        placeholder="contato@empresa.com"
-                        autocomplete="email"
-                        data-required="true"
-                      />
+                        placeholder="contato@empresa.com" autocomplete="email" data-required="true" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>CNPJ<span class="req">*</span></span></div>
                       <input class="input" type="text" id="pj_cnpj" name="pj_cnpj"
-                        placeholder="00.000.000/0000-00"
-                        inputmode="numeric"
-                        data-required="true"
-                      />
+                        placeholder="00.000.000/0000-00" inputmode="numeric" data-required="true" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>Segmento de negócio<span class="req">*</span></span></div>
                       <input class="input" type="text" id="pj_segmento" name="pj_segmento"
-                        placeholder="Ex, clínica, imobiliária, academia, concessionária, tecnologia"
-                        data-required="true"
-                      />
+                        placeholder="Ex, clínica, imobiliária, academia, concessionária, tecnologia" data-required="true" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>Telefone comercial<span class="req">*</span></span></div>
                       <input class="input" type="tel" id="pj_telefone" name="pj_telefone"
-                        placeholder="(11) 99999-9999"
-                        autocomplete="tel"
-                        data-required="true"
-                      />
+                        placeholder="(11) 99999-9999" autocomplete="tel" data-required="true" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>Máximo de usuários<span class="req">*</span></span></div>
                       <input class="input" type="number" id="pj_max_users" name="pj_max_users"
-                        placeholder="5"
-                        min="1"
-                        step="1"
-                        data-required="true"
-                      />
+                        placeholder="5" min="1" step="1" data-required="true" />
                       <div class="help">Quantas pessoas do seu time vão acessar o painel durante o teste.</div>
                     </div>
 
                     <div class="field">
                       <div class="label"><span>Nome fantasia</span></div>
                       <input class="input" type="text" id="pj_nome_fantasia" name="pj_nome_fantasia"
-                        placeholder="Nome fantasia da empresa"
-                        data-required="false"
-                      />
+                        placeholder="Nome fantasia da empresa" data-required="false" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>Tipo jurídico</span></div>
                       <input class="input" type="text" id="pj_tipo_juridico" name="pj_tipo_juridico"
-                        placeholder="Ex, LTDA, MEI, EPP"
-                        data-required="false"
-                      />
+                        placeholder="Ex, LTDA, MEI, EPP" data-required="false" />
                     </div>
                   </div>
                 </div>
 
-                <!-- PF -->
                 <div id="pfFields" hidden>
                   <div class="form-grid form-grid--2">
                     <div class="field">
                       <div class="label"><span>Nome completo<span class="req">*</span></span></div>
                       <input class="input" type="text" id="pf_nome" name="pf_nome"
-                        placeholder="Ex, João da Silva Santos"
-                        autocomplete="name"
-                        data-required="true"
-                      />
+                        placeholder="Ex, João da Silva Santos" autocomplete="name" data-required="true" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>CPF<span class="req">*</span></span></div>
                       <input class="input" type="text" id="pf_cpf" name="pf_cpf"
-                        placeholder="000.000.000-00"
-                        inputmode="numeric"
-                        data-required="true"
-                      />
+                        placeholder="000.000.000-00" inputmode="numeric" data-required="true" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>Email para contato<span class="req">*</span></span></div>
                       <input class="input" type="email" id="pf_email" name="pf_email"
-                        placeholder="joao@email.com"
-                        autocomplete="email"
-                        data-required="true"
-                      />
+                        placeholder="joao@email.com" autocomplete="email" data-required="true" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>Segmento de atuação<span class="req">*</span></span></div>
                       <input class="input" type="text" id="pf_segmento" name="pf_segmento"
-                        placeholder="Ex, prestador de serviços, consultoria, profissional liberal"
-                        data-required="true"
-                      />
+                        placeholder="Ex, prestador de serviços, consultoria, profissional liberal" data-required="true" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>Telefone<span class="req">*</span></span></div>
                       <input class="input" type="tel" id="pf_telefone" name="pf_telefone"
-                        placeholder="(11) 99999-9999"
-                        autocomplete="tel"
-                        data-required="true"
-                      />
+                        placeholder="(11) 99999-9999" autocomplete="tel" data-required="true" />
                     </div>
 
                     <div class="field">
                       <div class="label"><span>Máximo de usuários<span class="req">*</span></span></div>
                       <input class="input" type="number" id="pf_max_users" name="pf_max_users"
-                        placeholder="5"
-                        min="1"
-                        step="1"
-                        data-required="true"
-                      />
+                        placeholder="5" min="1" step="1" data-required="true" />
                     </div>
                   </div>
                 </div>
@@ -266,9 +218,7 @@
 
                   <textarea class="textarea" id="observacoes" name="observacoes"
                     placeholder="Escreva tudo que ajude a ativação, objetivo do teste, restrições, região atendida, quem atende hoje, prioridade no teste."
-                    data-required="true"
-                    data-maxlen="800"
-                  ></textarea>
+                    data-required="true" data-maxlen="800"></textarea>
                   <div class="counter" id="obsCounter">0/800</div>
                 </div>
 
@@ -278,7 +228,6 @@
                 </div>
               </section>
 
-              <!-- STEP 2 -->
               <section class="form-step" id="step2" data-step="2" hidden>
                 <h2 class="hero3_title" style="margin:0 0 8px;">Briefing do atendimento</h2>
                 <p class="help" style="margin-top:0;">
@@ -302,9 +251,7 @@
 
                   <textarea class="textarea" id="briefing_geral" name="briefing_geral"
                     placeholder="Escreva no formato do modelo acima, quanto mais detalhe, melhor."
-                    data-required="true"
-                    data-maxlen="3000"
-                  ></textarea>
+                    data-required="true" data-maxlen="3000"></textarea>
                   <div class="counter" id="briefCounter">0/3000</div>
                 </div>
 
@@ -320,9 +267,7 @@
 
                   <textarea class="textarea" id="briefing_agente" name="briefing_agente"
                     placeholder="Escreva em blocos, pré venda, durante, pós venda, com ações e regras claras."
-                    data-required="true"
-                    data-maxlen="2000"
-                  ></textarea>
+                    data-required="true" data-maxlen="2000"></textarea>
                   <div class="counter" id="agentCounter">0/2000</div>
                 </div>
 
@@ -337,9 +282,7 @@
 
                   <textarea class="textarea" id="integracoes_ativos" name="integracoes_ativos"
                     placeholder="Cole links e descreva o que você já usa, se não tiver, escreva que não usa."
-                    data-required="true"
-                    data-maxlen="1500"
-                  ></textarea>
+                    data-required="true" data-maxlen="1500"></textarea>
                   <div class="counter" id="assetsCounter">0/1500</div>
                 </div>
 
@@ -349,11 +292,10 @@
                 </div>
               </section>
 
-              <!-- STEP 3 -->
               <section class="form-step" id="step3" data-step="3" hidden>
                 <h2 class="hero3_title" style="margin:0 0 8px;">Termos e envio</h2>
                 <p class="help" style="margin-top:0;">
-                  Após enviar, nós vamos preparar sua ativação em até 24h úteis, você recebe QR Code, termo de autorização e login do painel.
+                  Após enviar, nós vamos preparar sua ativação, você recebe QR Code, termo de autorização e login do painel.
                 </p>
 
                 <div class="glow-card" style="margin-top: 12px;">
@@ -392,20 +334,11 @@
 
                 <div class="field" style="margin-top: 14px;">
                   <label class="pill" style="align-items:flex-start; border-radius: 16px; padding: 14px; cursor: pointer;">
-                    <input
-                      type="checkbox"
-                      id="accept_terms"
-                      name="accept_terms"
-                      data-required="true"
-                      style="margin-top: 2px;"
-                    >
+                    <input type="checkbox" id="accept_terms" name="accept_terms" data-required="true" style="margin-top: 2px;">
                     <span style="line-height: 1.45;">
                       Eu li e aceito os <a href="https://tullumotion.com/termos.pdf" target="_blank" rel="noopener" style="text-decoration: underline;">Termos de Uso</a><span class="req">*</span>
                     </span>
                   </label>
-                  <div class="help">
-                    O link é um placeholder, você pode trocar depois por PDF ou página oficial.
-                  </div>
                 </div>
 
                 <div class="form-actions">
@@ -414,7 +347,6 @@
                 </div>
               </section>
 
-              <!-- CONFIRMAÇÃO FINAL -->
               <section class="form-step" id="successStep" data-step="success" hidden>
                 <h2 class="hero3_title" style="margin:0 0 8px;">Pronto, recebemos seus dados</h2>
                 <p class="help" style="margin-top:0;">
@@ -443,7 +375,6 @@
     </section>
   </main>
 
-  <!-- Footer, sem links para sair do formulário -->
   <footer class="footer">
     <div class="container">
       <div class="footer__content">
@@ -462,8 +393,8 @@
           <div class="footer__section">
             <h4 class="footer__section-title">Suporte</h4>
             <ul class="footer__list">
-              <li><span class="footer__link" style="opacity:.75; cursor: default;">Ativação em até 24h úteis</span></li>
               <li><span class="footer__link" style="opacity:.75; cursor: default;">Sem cobrança automática</span></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Ativação com autorização</span></li>
             </ul>
           </div>
 
@@ -471,15 +402,15 @@
             <h4 class="footer__section-title">Acesso</h4>
             <ul class="footer__list">
               <li><span class="footer__link" style="opacity:.75; cursor: default;">Painel, app.tullumotion.com</span></li>
-              <li><span class="footer__link" style="opacity:.75; cursor: default;">Ativação com autorização</span></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Confirmação no WhatsApp</span></li>
             </ul>
           </div>
 
           <div class="footer__section">
             <h4 class="footer__section-title">Legal</h4>
             <ul class="footer__list">
-              <li><span class="footer__link" style="opacity:.75; cursor: default;">Termos de uso exigidos no envio</span></li>
-              <li><span class="footer__link" style="opacity:.75; cursor: default;">Privacidade e segurança do teste</span></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Termos exigidos no envio</span></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Privacidade e segurança</span></li>
             </ul>
           </div>
         </div>
@@ -494,11 +425,8 @@
     </div>
   </footer>
 
-  <!-- JS base do site -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/branch-animations.js"></script>
-
-  <!-- JS do formulário -->
   <script src="assets/js/testform.js"></script>
 </body>
 </html>
