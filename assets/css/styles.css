@@ -3310,3 +3310,24 @@ figure.showcase__frame.showcase__frame--clean {
   padding-top: 80px;               /* dá respiro pra não parecer colado */
   background: transparent;
 }
+#showcase .showcase__frame{
+  position: relative;
+}
+
+#showcase .showcase__frame::before{
+  content:"";
+  position:absolute;
+  inset: -40px -20px;
+  background: radial-gradient(ellipse at center,
+    rgba(34,211,238,0.12) 0%,
+    rgba(59,130,246,0.08) 35%,
+    transparent 70%);
+  filter: blur(18px);
+  z-index: 0;
+  pointer-events:none;
+}
+
+#showcase .showcase__img{
+  position: relative;
+  z-index: 1;
+}
