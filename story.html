@@ -197,6 +197,44 @@ l<!doctype html>
       font-size:14px;
       color:rgba(242,242,242,.65);
     }
+    
+    /* =========================================================
+   STORY FINAL FIX — centralização e respiro superior
+   ========================================================= */
+
+/* 1️⃣ Descer LOGO + PILLS do topo */
+.story .top{
+  top: 150px !important;   /* antes ~110px */
+}
+
+/* 2️⃣ Descer um pouco o HERO inteiro (mantém proporção) */
+.story .hero{
+  top: 300px !important;  /* antes ~260px */
+}
+
+/* 3️⃣ Centralizar o CONJUNTO dos mockups (não cada imagem) */
+.story .showcase{
+  top: 860px !important;  /* desce levemente o bloco */
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* 4️⃣ Centralização real do grupo */
+.story .phones{
+  margin: 0 auto !important;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 5️⃣ Micro ajuste de equilíbrio visual (opcional, mas fica mais premium) */
+.story .phone.metrics{
+  left: 0 !important;
+}
+
+.story .phone.login{
+  right: 0 !important;
+}
+    
   </style>
 </head>
 
