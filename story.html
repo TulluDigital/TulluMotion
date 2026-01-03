@@ -1,29 +1,27 @@
-<!doctype html>
+l<!doctype html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tullu AI Studio — Story</title>
+  <title>Tullu AI Studio — Story Ad</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#09090B;
-      --text:#EDEDED;
-      --muted:#A7A7A7;
-      --stroke: rgba(59,130,246,.35);
+      --text:#F2F2F2;
+      --muted:#A9A9A9;
       --cyan:#22D3EE;
       --blue:#3B82F6;
-      --amber:#F59E0B;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%; margin:0; background:var(--bg); color:var(--text)}
-    body{display:grid; place-items:center; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    body{display:grid; place-items:center; font-family:Inter,system-ui}
 
-    /* CANVAS 9:16 fixo para print */
     .story{
       width:1080px;
       height:1920px;
@@ -31,209 +29,201 @@
       overflow:hidden;
       border-radius:28px;
       background:
-        radial-gradient(1100px 700px at 50% 20%, rgba(34,211,238,.22), transparent 60%),
-        radial-gradient(900px 700px at 20% 35%, rgba(59,130,246,.18), transparent 62%),
-        radial-gradient(900px 700px at 80% 35%, rgba(59,130,246,.14), transparent 62%),
-        linear-gradient(180deg, rgba(9,9,11,1) 0%, rgba(9,9,11,1) 55%, rgba(9,9,11,1) 100%);
-    }
-
-    /* grade suave */
-    .grid{
-      position:absolute; inset:-2px;
-      background:
-        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-      background-size: 72px 72px;
-      opacity:.12;
-      mask-image: radial-gradient(circle at 50% 35%, #000 0 48%, transparent 72%);
-      pointer-events:none;
+        radial-gradient(1200px 800px at 50% 25%, rgba(34,211,238,.22), transparent 60%),
+        radial-gradient(900px 700px at 80% 40%, rgba(59,130,246,.18), transparent 65%),
+        linear-gradient(#09090B, #09090B);
     }
 
     /* topo */
     .top{
-      position:absolute; left:64px; right:64px; top:54px;
-      display:flex; align-items:center; justify-content:space-between;
+      position:absolute;
+      left:64px; right:64px; top:110px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
-    .brand{display:flex; align-items:center; gap:14px}
-    .brand img{height:44px; width:auto}
+
+    .brand{
+      display:flex; align-items:center; gap:14px;
+    }
+
+    .brand img{height:52px}
+
     .pill{
-      padding:10px 14px;
-      border:1px solid rgba(34,211,238,.35);
-      background: rgba(0,0,0,.22);
+      padding:12px 16px;
       border-radius:999px;
-      font-size:14px;
-      color: rgba(237,237,237,.92);
-      letter-spacing:.2px;
+      border:1px solid rgba(34,211,238,.35);
+      background:rgba(0,0,0,.35);
+      font-size:15px;
+      font-weight:600;
       backdrop-filter: blur(10px);
     }
 
-    /* título */
+    /* HERO */
     .hero{
-      position:absolute; left:64px; right:64px; top:170px;
+      position:absolute;
+      left:64px; right:64px;
+      top:260px;
       text-align:center;
     }
+
     .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:12px 16px;
+      display:inline-block;
+      margin-bottom:22px;
+      padding:14px 20px;
       border-radius:999px;
       border:1px solid rgba(59,130,246,.35);
-      background: rgba(255,255,255,.04);
-      color: rgba(237,237,237,.92);
+      background:rgba(255,255,255,.05);
       font-weight:600;
-      font-size:15px;
+      font-size:16px;
     }
-    .dot{
-      width:8px; height:8px; border-radius:99px;
-      background: linear-gradient(90deg, var(--blue), var(--cyan));
-      box-shadow:0 0 18px rgba(34,211,238,.45);
-    }
+
     h1{
-      font-family:Poppins,Inter,system-ui;
-      margin:22px 0 12px;
-      font-size:82px;
+      font-family:Poppins,Inter;
+      font-size:96px;
       line-height:1.05;
+      margin:0 0 20px;
       letter-spacing:-1px;
     }
+
     .grad{
-      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      background:linear-gradient(90deg,var(--blue),var(--cyan));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
+
     .sub{
+      max-width:900px;
       margin:0 auto;
-      max-width:860px;
-      font-size:22px;
+      font-size:26px;
       line-height:1.45;
-      color: rgba(237,237,237,.78);
+      color:rgba(242,242,242,.78);
     }
 
-    /* chips */
     .chips{
-      margin-top:26px;
+      margin-top:28px;
       display:flex;
       justify-content:center;
-      gap:12px;
+      gap:14px;
       flex-wrap:wrap;
     }
+
     .chip{
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(59,130,246,.28);
-      background: rgba(0,0,0,.18);
-      color: rgba(237,237,237,.88);
+      padding:14px 18px;
+      border-radius:16px;
+      border:1px solid rgba(59,130,246,.3);
+      background:rgba(0,0,0,.3);
       font-weight:600;
-      font-size:15px;
-      backdrop-filter: blur(10px);
+      font-size:16px;
     }
 
-    /* showcase */
+    /* MOCKUPS */
     .showcase{
-      position:absolute; left:64px; right:64px; top:720px;
-      height:820px;
+      position:absolute;
+      left:0; right:0;
+      top:820px;
+      height:760px;
       display:grid;
       place-items:center;
     }
+
     .phones{
       position:relative;
-      width:min(860px, 100%);
-      height:760px;
-    }
-    .phone{
-      position:absolute;
-      top:40px;
-      width:420px;
-      height:auto;
-      filter: drop-shadow(0 30px 70px rgba(0,0,0,.65));
-      transform-origin:center;
-    }
-    .phone.one{
-      left:80px;
-      transform: rotate(-8deg) translateY(10px);
-      z-index:1;
-    }
-    .phone.two{
-      right:80px;
-      transform: rotate(9deg) translateX(-70px) translateY(40px);
-      z-index:3;
+      width:900px;
+      height:700px;
     }
 
-    /* glow frio atrás dos aparelhos */
     .glow{
-      position:absolute; inset:-40px;
-      background: radial-gradient(ellipse at center,
-        rgba(34,211,238,.18) 0%,
-        rgba(59,130,246,.12) 35%,
+      position:absolute;
+      inset:-60px;
+      background:radial-gradient(circle,
+        rgba(34,211,238,.22),
+        rgba(59,130,246,.14),
         transparent 70%);
-      filter: blur(24px);
-      opacity:.85;
-      pointer-events:none;
+      filter:blur(30px);
+      opacity:.9;
+    }
+
+    .phone{
+      position:absolute;
+      width:420px;
+      filter:drop-shadow(0 35px 80px rgba(0,0,0,.7));
+    }
+
+    /* métricas (esquerda) */
+    .phone.metrics{
+      left:90px;
+      top:40px;
+      transform:rotate(-9deg);
+      z-index:1;
+    }
+
+    /* login (direita / frente) */
+    .phone.login{
+      right:90px;
+      top:120px;
+      transform:rotate(10deg) translateX(-80px);
+      z-index:3;
     }
 
     /* CTA */
     .cta{
-      position:absolute; left:64px; right:64px; bottom:130px;
-      display:flex; justify-content:center;
+      position:absolute;
+      left:64px; right:64px;
+      bottom:180px;
+      display:flex;
+      justify-content:center;
     }
+
     .btn{
-      padding:20px 28px;
-      border-radius:18px;
-      border:1px solid rgba(34,211,238,.32);
-      background: linear-gradient(90deg, rgba(59,130,246,.95), rgba(34,211,238,.95));
-      color:#061019;
+      padding:24px 36px;
+      font-size:22px;
       font-weight:800;
-      font-size:20px;
-      letter-spacing:.2px;
+      border-radius:20px;
+      background:linear-gradient(90deg,var(--blue),var(--cyan));
+      color:#061019;
+      border:none;
       box-shadow:
-        0 18px 55px rgba(34,211,238,.18),
-        0 10px 25px rgba(0,0,0,.55);
+        0 22px 60px rgba(34,211,238,.28),
+        0 12px 30px rgba(0,0,0,.6);
     }
 
-    /* rodapé confiança */
     .trust{
-      position:absolute; left:64px; right:64px; bottom:60px;
-      display:flex; justify-content:space-between; align-items:center;
-      color: rgba(237,237,237,.62);
+      position:absolute;
+      left:64px; right:64px;
+      bottom:90px;
+      display:flex;
+      justify-content:space-between;
       font-size:14px;
-    }
-    .trust b{color: rgba(237,237,237,.82)}
-    .badge{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      backdrop-filter: blur(10px);
-    }
-
-    /* guia de safe-area (desliga depois se quiser) */
-    .safe{
-      position:absolute; inset:0;
-      border:2px dashed rgba(255,255,255,.10);
-      border-top-width:110px;   /* topo UI story */
-      border-bottom-width:150px;/* bottom UI story */
-      pointer-events:none;
-      opacity:.18;
+      color:rgba(242,242,242,.65);
     }
   </style>
 </head>
 
 <body>
   <div class="story">
-    <div class="grid"></div>
-    <div class="safe"></div>
 
     <div class="top">
       <div class="brand">
-        <!-- Troque pelo seu logo -->
-        <img src="assets/img/tullu.png" alt="Tullu" />
+        <img src="assets/img/tullu.png" alt="Tullu Motion">
         <div class="pill">AI Studio • WhatsApp com IA • CRM</div>
       </div>
       <div class="pill">Teste grátis • Sem cobrança automática</div>
     </div>
 
     <section class="hero">
-      <div class="kicker"><span class="dot"></span> Atendimento 24/7 no WhatsApp</div>
-      <h1>Você ativa.<br><span class="grad">A IA atende.</span><br>O CRM organiza.</h1>
-      <p class="sub">Respostas instantâneas, qualificação e agendamentos em um só fluxo — sem depender de atendente.</p>
+      <div class="kicker">Atendimento 24/7 no WhatsApp</div>
+
+      <h1>
+        Você ativa.<br>
+        <span class="grad">A IA atende.</span><br>
+        O CRM organiza.
+      </h1>
+
+      <p class="sub">
+        Respostas instantâneas, qualificação e agendamentos em um único fluxo —
+        sem depender de atendente.
+      </p>
 
       <div class="chips">
         <div class="chip">Responde na hora</div>
@@ -247,9 +237,11 @@
       <div class="phones">
         <div class="glow"></div>
 
-        <!-- Troque pelos seus mockups -->
-        <img class="phone one" src="assets/img/mockup-crm.png" alt="CRM" />
-        <img class="phone two" src="assets/img/mockup-login.png" alt="Login" />
+        <!-- MOCKUP MÉTRICAS -->
+        <img class="phone metrics" src="assets/img/mockup-metricas.png" alt="Métricas">
+
+        <!-- MOCKUP LOGIN -->
+        <img class="phone login" src="assets/img/mockup-login.png" alt="Login">
       </div>
     </section>
 
@@ -258,9 +250,10 @@
     </div>
 
     <div class="trust">
-      <div class="badge"><b>LGPD</b> • dados usados só para ativação</div>
-      <div class="badge">Atende até <b>3.000</b> leads simultaneamente</div>
+      <div>LGPD • dados usados só para ativação</div>
+      <div>Atende até <b>3.000</b> leads simultaneamente</div>
     </div>
+
   </div>
 </body>
 </html>
