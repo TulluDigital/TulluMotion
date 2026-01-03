@@ -3748,3 +3748,83 @@ section[id]{
     will-change: transform;
   }
 }
+
+
+/* =========================================================
+   AI STUDIO — SHOWCASE MOBILE (igual ao print)
+   iPhone 11 / 390–430px: 2 mockups menores, overlap e respiro
+   ========================================================= */
+@media (max-width: 480px){
+
+  /* 1) respiro geral e evita “corte” */
+  #showcase{
+    padding-top: 10px;
+    padding-bottom: 34px; /* espaço antes da próxima seção */
+  }
+
+  /* 2) frame vira “palco” fixo pros iPhones */
+  #showcase .showcase__frame{
+    position: relative;
+    width: min(92vw, 420px);
+    margin-inline: auto;
+
+    /* altura do palco (controla o quanto aparece dos iPhones) */
+    min-height: clamp(320px, 52vh, 430px);
+
+    overflow: visible !important; /* não cortar */
+    transform: none !important;
+    left: auto !important;
+  }
+
+  /* 3) garante que nenhum wrapper clipa */
+  #showcase .container,
+  #showcase .section__inner,
+  #showcase .showcase__inner{
+    overflow: visible !important;
+  }
+
+  /* 4) tamanho dos iPhones (menores) */
+  #showcase .showcase__img{
+    max-width: none !important;
+    width: clamp(170px, 44vw, 220px); /* 👉 menor que antes */
+    height: auto !important;
+  }
+
+  /* 5) posicionamento pra ficar como no print */
+  #showcase .showcase__img--main{
+    position: relative;
+    z-index: 1;
+
+    /* “mais baixo” */
+    transform: rotate(-9deg) translateY(18px);
+  }
+
+  #showcase .showcase__img--side{
+    position: relative;
+    z-index: 3;
+
+    /* overlap por cima + desloca pro centro */
+    margin-left: clamp(-78px, -15vw, -48px);
+    transform: rotate(10deg) translateX(-10px) translateY(52px);
+  }
+
+  /* 6) glow do showcase: some um pouco e fica mais baixo */
+  #showcase .showcase__glow,
+  #showcase .glow,
+  #showcase .showcase__halo{
+    opacity: .35 !important;
+    filter: blur(26px) !important;
+    transform: translateY(70px) !important; /* joga pra trás/baixo */
+  }
+}
+
+/* =========================================================
+   SHOWCASE (desktop/tablet): deixar os mockups um pouco menores também
+   (opcional, mas mantém “cara de anúncio”)
+   ========================================================= */
+@media (min-width: 481px){
+  #showcase .showcase__img{
+    width: clamp(260px, 28vw, 420px);
+    height: auto;
+  }
+}
