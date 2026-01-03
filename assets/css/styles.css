@@ -3965,3 +3965,69 @@ section[id]{
     width: 94vw;
   }
 }
+
+/* =========================================================
+   SHOWCASE — correção definitiva (desktop + mobile)
+   ========================================================= */
+
+/* -------- BASE (todos os tamanhos) -------- */
+
+/* palco centralizador real */
+#showcase .showcase__stage,
+#showcase .showcase__visual{
+  display: grid;
+  place-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* imagem centralizada de verdade */
+#showcase img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: auto !important;
+  right: auto !important;
+}
+
+/* remove qualquer deslocamento antigo */
+#showcase .showcase__stage,
+#showcase .showcase__frame,
+#showcase img{
+  transform: none !important;
+}
+
+/* -------- DESKTOP -------- */
+@media (min-width: 641px){
+  #showcase{
+    padding-top: 72px;     /* controla respiro superior */
+    padding-bottom: 72px;  /* controla respiro inferior */
+  }
+}
+
+/* -------- MOBILE (iPhone / Instagram browser) -------- */
+@media (max-width: 640px){
+
+  /* mata o espação em cima e embaixo */
+  #showcase{
+    padding-top: 28px !important;
+    padding-bottom: 36px !important;
+  }
+
+  /* aproxima o mockup do texto */
+  #showcase .showcase__stage,
+  #showcase .showcase__visual{
+    margin-top: 8px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* evita “afundamento” visual */
+  #showcase img{
+    max-width: 86vw;       /* mantém proporcional */
+  }
+
+  /* CTA sobe e cola no mockup */
+  #showcase .showcase__cta{
+    margin-top: 18px !important;
+  }
+}
