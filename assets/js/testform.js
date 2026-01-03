@@ -1,11 +1,10 @@
 /**
  * Tullu AI Studio – Teste Grátis
  * Arquivo: /assets/js/testform.js
- * Correções principais:
- * - Step 1 valida apenas campos do tipo selecionado (PJ ou PF), sem depender de hidden
- * - Toggle PJ/PF robusto (clique no pill e change no radio)
- * - Step 2 e Step 3 validam apenas o que está no step
- * - Envio para Google Apps Script e tela final
+ * Fix principal:
+ * - Envia POST como text/plain (sem header application/json) para evitar preflight/CORS no iOS Safari
+ * - Parse robusto da resposta (JSON ou texto)
+ * - Step 1 valida só PJ ou só PF (determinístico)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -37,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const radioPJ = document.getElementById("accountTypePJ");
   const radioPF = document.getElementById("accountTypePF");
 
-  // hidden metadata
+  // meta
   const sourceUrl = document.getElementById("source_url");
   const userAgent = document.getElementById("user_agent");
   if (sourceUrl) sourceUrl.value = window.location.href;
@@ -55,8 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!el || !counter) return;
 
     const update = () => {
-      const len = (el.value || "").length;
-      counter.textContent = `${len}/${max}`;
+      counter.textContent = `${(el.value || "").length}/${max}`;
     };
 
     el.addEventListener("input", update);
@@ -71,16 +69,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function toggleAccountType() {
     const isPJ = radioPJ.checked;
-
-    // troca campos
     pjFields.hidden = !isPJ;
     pfFields.hidden = isPJ;
-
-    // troca visual pill
     setActivePill(isPJ);
   }
 
-  // clique no pill inteiro, garante toggle em mobile
   if (pillPJ) {
     pillPJ.addEventListener("click", () => {
       radioPJ.checked = true;
@@ -97,10 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // change no radio
   radioPJ.addEventListener("change", toggleAccountType);
   radioPF.addEventListener("change", toggleAccountType);
-
   toggleAccountType();
 
   function showStep(step) {
@@ -123,11 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnBack2.addEventListener("click", () => showStep(1));
   btnBack3.addEventListener("click", () => showStep(2));
 
-  // =========================
-  // VALIDAÇÃO ROBUSTA
-  // =========================
-
-  // Campos obrigatórios Step 1 por tipo
+  // ===== validação determinística =====
   const STEP1_REQUIRED_PJ = [
     "pj_razao_social",
     "pj_email",
@@ -150,20 +137,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getValue(id) {
     const el = document.getElementById(id);
-    if (!el) return "";
-    return (el.value || "").trim();
+    return el ? (el.value || "").trim() : "";
   }
 
-  function markError(id, hasError) {
+  function markError(id, on) {
     const el = document.getElementById(id);
     if (!el) return;
-    el.classList.toggle("error", !!hasError);
+    el.classList.toggle("error", !!on);
   }
 
   function validateStep1() {
-    // valida se algum tipo está selecionado
-    const typeOk = radioPJ.checked || radioPF.checked;
-    if (!typeOk) {
+    if (!(radioPJ.checked || radioPF.checked)) {
       alert("Por favor, selecione o tipo de conta antes de continuar.");
       return false;
     }
@@ -171,13 +155,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const isPJ = radioPJ.checked;
     const required = isPJ ? STEP1_REQUIRED_PJ : STEP1_REQUIRED_PF;
 
-    let ok = true;
-
-    // limpa erros nos dois conjuntos (pra não ficar sujo ao alternar)
+    // limpa erros dos dois lados
     [...new Set([...STEP1_REQUIRED_PJ, ...STEP1_REQUIRED_PF])].forEach((id) => {
       markError(id, false);
     });
 
+    let ok = true;
     required.forEach((id) => {
       const v = getValue(id);
       if (!v) {
@@ -186,21 +169,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    if (!ok) {
-      alert("Por favor, preencha todos os campos obrigatórios antes de continuar.");
-    }
-
+    if (!ok) alert("Por favor, preencha todos os campos obrigatórios antes de continuar.");
     return ok;
   }
 
   function validateStepGeneric(stepEl) {
-    // valida apenas fields required dentro do step (checkbox e inputs/textarea)
     const required = Array.from(stepEl.querySelectorAll('[data-required="true"]'));
 
-    // radio: valida por grupo name, uma vez só
+    // radios por grupo
     const radioNames = new Set();
     const toValidate = [];
-
     for (const f of required) {
       const type = (f.type || "").toLowerCase();
       if (type === "radio") {
@@ -228,7 +206,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (type === "radio") {
-        const group = FORM.querySelectorAll(`input[type="radio"][name="${CSS.escape(field.name)}"]`);
+        const group = FORM.querySelectorAll(
+          `input[type="radio"][name="${CSS.escape(field.name)}"]`
+        );
         const anyChecked = Array.from(group).some((r) => r.checked);
         if (!anyChecked) {
           field.classList.add("error");
@@ -244,10 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    if (!ok) {
-      alert("Por favor, preencha todos os campos obrigatórios antes de continuar.");
-    }
-
+    if (!ok) alert("Por favor, preencha todos os campos obrigatórios antes de continuar.");
     return ok;
   }
 
@@ -256,9 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return validateStepGeneric(steps[step]);
   }
 
-  // =========================
-  // SUBMIT FINAL
-  // =========================
+  // ===== submit =====
   FORM.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -275,37 +250,46 @@ document.addEventListener("DOMContentLoaded", () => {
     payload.accept_terms = document.getElementById("accept_terms").checked;
 
     const submitBtn = document.getElementById("submitBtn");
+    const prevText = submitBtn ? submitBtn.textContent : "";
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = "Enviando...";
     }
 
     try {
+      // IMPORTANTÍSSIMO: sem headers -> vira text/plain, evita preflight no iOS
       const res = await fetch(ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
+        redirect: "follow",
+        cache: "no-store",
       });
 
-      const data = await res.json();
+      const raw = await res.text();
+      let data = null;
 
-      if (!data || data.ok !== true) {
-        console.error("Resposta do endpoint:", data);
-        alert("Erro ao enviar o formulário. Verifique os campos e tente novamente.");
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Enviar";
-        }
+      try {
+        data = JSON.parse(raw);
+      } catch (_) {
+        // se não veio JSON, ainda assim tentamos detectar sucesso
+        // muitos Apps Scripts devolvem HTML ou texto em alguns cenários
+        data = { ok: false, raw };
+      }
+
+      if (data && data.ok === true) {
+        showStep("success");
         return;
       }
 
-      showStep("success");
+      console.error("Resposta do endpoint (raw):", raw);
+      alert("Erro ao enviar o formulário. Tente novamente em instantes.");
     } catch (err) {
-      console.error(err);
+      console.error("Fetch falhou:", err);
       alert("Erro de conexão. Tente novamente em instantes.");
+    } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Enviar";
+        submitBtn.textContent = prevText || "Enviar";
       }
     }
   });
