@@ -311,11 +311,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (ok) {
-      // sem CORS não dá pra ler resposta, então avançamos para sucesso
-      Object.values(steps).forEach((s) => (s.hidden = true));
-      steps.success.hidden = false;
-      return;
-    }
+  // sem CORS não dá pra ler resposta, então avançamos para sucesso
+  Object.values(steps).forEach((s) => (s.hidden = true));
+  steps.success.hidden = false;
+
+  // ativa "modo sucesso": esconde header/stepper/progress via CSS
+  document.querySelector(".form-card")?.classList.add("is-success");
+
+  return;
+}
 
     alert("Erro ao enviar. Tente novamente em instantes.");
   });
