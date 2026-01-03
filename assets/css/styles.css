@@ -3160,61 +3160,74 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
 .form-card.is-success #successStep{
   padding-top: 8px;
 }
-/* ===== SHOWCASE IMAGE SIZE CONTROL ===== */
-.showcase__frame {
-  max-width: 960px;      /* controla largura visual */
-  margin: 0 auto;        /* centraliza */
-}
-
-.showcase__img {
-  width: 100%;
-  max-height: 520px;     /* <-- aqui você reduz o “impacto” visual */
-  object-fit: contain;  /* mantém proporção */
-}
-
-/* SHOWCASE – mockups verticais (prints ~1220px de altura) */
-.showcase__frame--phone {
+/* ===== SHOWCASE: 2 mockups lado a lado + sobreposição leve ===== */
+.showcase__frame{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
   max-width: 980px;
   margin: 0 auto;
+  padding: 18px 18px;
 }
 
-.showcase__phones {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  align-items: center;
-  justify-items: center;
-}
-
-.showcase__img {
-  width: min(520px, 100%);
+/* base dos dois */
+.showcase__img{
   height: auto;
-  max-height: 560px;     /* <- aqui reduz o “gigante” */
   object-fit: contain;
   filter: drop-shadow(0 18px 45px rgba(0,0,0,0.45));
 }
 
-/* Desktop: dois mockups lado a lado */
-@media (min-width: 900px) {
-  .showcase__phones {
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
+/* print 1 (principal) */
+.showcase__img--main{
+  width: min(420px, 100%);
+  max-height: 560px;
+}
+
+/* print 2 (sobreposto) */
+.showcase__img--over{
+  width: min(380px, 100%);
+  max-height: 520px;
+  position: relative;
+  z-index: 2;
+
+  /* sobreposição “em cima” do primeiro */
+  margin-left: -90px;      /* puxa pra cima do 1 */
+  transform: translateY(24px) rotate(-1.2deg);
+  opacity: 0.98;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px){
+  .showcase__frame{
+    gap: 14px;
+    max-width: 92%;
   }
 
-  .showcase__img--main {
-    max-height: 620px;
-  }
-
-  .showcase__img--secondary {
+  .showcase__img--main{
+    width: min(360px, 100%);
     max-height: 520px;
-    opacity: 0.92;
-    transform: translateY(10px);
+  }
+
+  .showcase__img--over{
+    width: min(320px, 100%);
+    max-height: 460px;
+    margin-left: -60px;
+    transform: translateY(18px) rotate(-1deg);
   }
 }
 
-/* Mobile: mostra só o principal */
-@media (max-width: 899px) {
-  .showcase__img--secondary {
-    display: none;
+/* Mobile: empilha (sem ficar “zuado”) */
+@media (max-width: 560px){
+  .showcase__frame{
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .showcase__img--over{
+    margin-left: 0;
+    transform: translateY(-10px) rotate(-1deg);
   }
 }
+
