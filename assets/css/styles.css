@@ -3331,3 +3331,46 @@ figure.showcase__frame.showcase__frame--clean {
   position: relative;
   z-index: 1;
 }
+/* ===== MATAR O CARD DO SHOWCASE (sem dó) ===== */
+#showcase .showcase__frame{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  backdrop-filter: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+/* Se o “card” estiver vindo de pseudo-elementos */
+#showcase .showcase__frame::before,
+#showcase .showcase__frame::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* (Opcional) garante que nada “pinte” atrás */
+#showcase{
+  background: transparent !important;
+}
+#showcase .showcase__frame{
+  position: relative;
+}
+
+#showcase .showcase__frame::before{
+  content:"";
+  position:absolute;
+  inset: -40px -20px;
+  background: radial-gradient(ellipse at center,
+    rgba(34,211,238,0.12) 0%,
+    rgba(59,130,246,0.08) 35%,
+    transparent 70%);
+  filter: blur(18px);
+  z-index: 0;
+  pointer-events:none;
+}
+
+#showcase .showcase__img{
+  position: relative;
+  z-index: 1;
+}
