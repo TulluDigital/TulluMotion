@@ -3420,4 +3420,57 @@ section#showcase img.showcase__img--over{
     transform: rotate(4deg) translateY(-20px) !important;
   }
 }
+/* =========================================================
+   MOBILE: mockups pequenos, lado a lado e sobrepostos (SEM empilhar)
+   ========================================================= */
+@media (max-width: 640px){
+
+  /* impede o layout de virar coluna */
+  #showcase .showcase__frame{
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0 !important;
+
+    /* garante que não “estoura” largura */
+    max-width: 100% !important;
+    overflow: hidden !important; /* corta qualquer sobra */
+    left: 0 !important;
+    transform: none !important;
+  }
+
+  /* base geral das imagens no mobile */
+  #showcase .showcase__img{
+    max-width: none !important;
+  }
+
+  /* mockup CRM (esquerda) — pequeno */
+  #showcase .showcase__img--main{
+    width: clamp(140px, 42vw, 190px) !important;
+    max-height: none !important;
+
+    transform:
+      rotate(-7deg)
+      translateX(-8px)
+      translateY(4px)
+      !important;
+
+    filter: drop-shadow(0 16px 32px rgba(0,0,0,0.55)) !important;
+  }
+
+  /* mockup Login (direita) — levemente maior e sobrepondo */
+  #showcase .showcase__img--over{
+    width: clamp(150px, 46vw, 205px) !important;
+    max-height: none !important;
+
+    transform:
+      rotate(8deg)
+      translateX(-36px)   /* faz a sobreposição real no mobile */
+      translateY(14px)
+      !important;
+
+    filter: drop-shadow(0 18px 40px rgba(0,0,0,0.65)) !important;
+  }
+}
 
