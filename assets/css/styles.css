@@ -3171,3 +3171,50 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   max-height: 520px;     /* <-- aqui você reduz o “impacto” visual */
   object-fit: contain;  /* mantém proporção */
 }
+
+/* SHOWCASE – mockups verticais (prints ~1220px de altura) */
+.showcase__frame--phone {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.showcase__phones {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: center;
+  justify-items: center;
+}
+
+.showcase__img {
+  width: min(520px, 100%);
+  height: auto;
+  max-height: 560px;     /* <- aqui reduz o “gigante” */
+  object-fit: contain;
+  filter: drop-shadow(0 18px 45px rgba(0,0,0,0.45));
+}
+
+/* Desktop: dois mockups lado a lado */
+@media (min-width: 900px) {
+  .showcase__phones {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  .showcase__img--main {
+    max-height: 620px;
+  }
+
+  .showcase__img--secondary {
+    max-height: 520px;
+    opacity: 0.92;
+    transform: translateY(10px);
+  }
+}
+
+/* Mobile: mostra só o principal */
+@media (max-width: 899px) {
+  .showcase__img--secondary {
+    display: none;
+  }
+}
