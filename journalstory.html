@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Tullu Journal — Story</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,95 +13,116 @@
     :root{
       --bg:#09090B;
       --text:#FFFFFF;
-      --muted:rgba(255,255,255,.72);
+      --muted:rgba(255,255,255,.74);
+      --muted2:rgba(255,255,255,.58);
       --blue:#3B82F6;
       --cyan:#22D3EE;
+      --ink:#061019;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%; margin:0; background:var(--bg); color:var(--text)}
-    body{display:grid; place-items:center; font-family:Inter,system-ui}
+    body{display:grid; place-items:center; font-family:Inter,system-ui; overflow:hidden}
 
-    /* CANVAS (Story 9:16) */
+    /* STORY CANVAS — sempre 9:16 e cabe na tela */
     .story{
-      width:1080px;
-      height:1920px;
       position:relative;
+      width:min(1080px, 100vw);
+      height:min(1920px, 100vh);
+      aspect-ratio: 9 / 16;
       overflow:hidden;
       border-radius:28px;
       background:
-        radial-gradient(1100px 700px at 18% 22%, rgba(59,130,246,.18), transparent 60%),
-        radial-gradient(900px 700px at 70% 34%, rgba(34,211,238,.16), transparent 62%),
-        radial-gradient(900px 900px at 50% 80%, rgba(59,130,246,.10), transparent 60%),
+        radial-gradient(980px 720px at 22% 18%, rgba(59,130,246,.18), transparent 60%),
+        radial-gradient(900px 760px at 70% 40%, rgba(34,211,238,.14), transparent 62%),
+        radial-gradient(900px 900px at 50% 82%, rgba(59,130,246,.10), transparent 60%),
         linear-gradient(#09090B, #09090B);
     }
 
-    /* subtle noise */
-    .noise{
-      position:absolute; inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
-      mix-blend-mode:overlay;
-      opacity:.35;
-      pointer-events:none;
+    /* safe padding p/ iPhone (notch + barra) */
+    .safe{
+      position:absolute;
+      inset:0;
+      padding:
+        calc(64px + env(safe-area-inset-top))
+        64px
+        calc(64px + env(safe-area-inset-bottom))
+        64px;
+      display:flex;
+      flex-direction:column;
+      gap:34px;
     }
 
-    /* TOP (left oriented) */
+    /* TOP */
     .top{
-      position:absolute;
-      left:64px; right:64px; top:120px;
       display:flex;
       justify-content:space-between;
-      align-items:center;
+      align-items:flex-start;
       gap:18px;
       flex-wrap:wrap;
     }
 
     .brand{
-      display:flex; align-items:center; gap:14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
       min-width:fit-content;
     }
-    .brand img{height:52px}
 
+    .brand img{
+      height:64px;
+      display:block;
+    }
+
+    /* “Journal” igual ao print (textinho azul) */
+    .brand .subbrand{
+      font-size:18px;
+      font-weight:800;
+      color:rgba(59,130,246,.95);
+      letter-spacing:.02em;
+      margin-left:2px;
+    }
+
+    /* pill (só pra meta info) */
     .pill{
       padding:12px 16px;
       border-radius:999px;
-      border:1px solid rgba(34,211,238,.35);
+      border:1px solid rgba(34,211,238,.30);
       background:rgba(0,0,0,.35);
       font-size:14px;
-      font-weight:700;
+      font-weight:800;
       backdrop-filter: blur(10px);
       white-space:nowrap;
       color:rgba(255,255,255,.92);
     }
 
-    /* MAIN */
+    /* CONTENT */
     .content{
-      position:absolute;
-      left:64px; right:64px;
-      top:320px;
+      max-width:860px;
       text-align:left;
     }
 
     .kicker{
-      display:inline-block;
-      margin-bottom:22px;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
       padding:12px 16px;
       border-radius:999px;
-      border:1px solid rgba(59,130,246,.35);
+      border:1px solid rgba(59,130,246,.28);
       background:rgba(255,255,255,.04);
-      font-weight:700;
+      font-weight:900;
       font-size:14px;
-      letter-spacing:.08em;
+      letter-spacing:.12em;
       text-transform:uppercase;
-      color:rgba(255,255,255,.9);
+      color:rgba(255,255,255,.86);
     }
 
     h1{
       font-family:Poppins,Inter;
-      font-size:92px;
+      font-size: clamp(44px, 5.6vw, 84px);
       line-height:1.06;
-      margin:0 0 18px;
       letter-spacing:-1px;
+      margin:22px 0 14px;
     }
 
     .grad{
@@ -111,178 +132,173 @@
     }
 
     .sub{
-      max-width:820px;
-      font-size:26px;
+      margin:0;
+      font-size: clamp(16px, 2.1vw, 24px);
       line-height:1.5;
-      margin:0 0 34px;
       color:var(--muted);
+      max-width:900px;
     }
 
-    .bullets{
+    .cards{
+      margin-top:26px;
       display:grid;
       gap:14px;
-      max-width:820px;
-      margin-top:26px;
+      max-width:920px;
     }
 
-    .bullet{
+    .card{
       display:flex;
       gap:12px;
       align-items:flex-start;
       padding:16px 18px;
       border-radius:16px;
-      border:1px solid rgba(59,130,246,.18);
+      border:1px solid rgba(59,130,246,.16);
       background:rgba(255,255,255,.03);
-      box-shadow: 0 0 0 1px rgba(0,0,0,.2);
+      box-shadow: 0 0 0 1px rgba(0,0,0,.18);
     }
 
     .dot{
-      width:10px; height:10px; border-radius:999px;
-      margin-top:8px;
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      margin-top:7px;
       background:linear-gradient(90deg,var(--blue),var(--cyan));
-      box-shadow: 0 0 24px rgba(34,211,238,.35);
+      box-shadow: 0 0 22px rgba(34,211,238,.30);
       flex:0 0 auto;
     }
 
-    .bullet span{
-      font-size:18px;
-      color:rgba(255,255,255,.88);
+    .card p{
+      margin:0;
+      font-size: clamp(14px, 1.6vw, 18px);
       line-height:1.45;
+      color:rgba(255,255,255,.90);
     }
 
-    /* CTA */
+    .card strong{font-weight:900; color:#fff}
+
+    /* CTA — fixo embaixo, mas dentro da safe area */
     .cta{
-      position:absolute;
-      left:64px; right:64px;
-      bottom:190px;
+      margin-top:auto;
       display:flex;
-      justify-content:flex-start;
-      align-items:center;
-      gap:18px;
-      flex-wrap:wrap;
+      flex-direction:column;
+      gap:14px;
+      align-items:flex-start;
     }
 
     .btn{
-      padding:22px 30px;
-      font-size:20px;
-      font-weight:900;
-      border-radius:18px;
-      background:linear-gradient(90deg,var(--blue),var(--cyan));
-      color:#061019;
-      border:none;
-      box-shadow:
-        0 22px 60px rgba(34,211,238,.22),
-        0 12px 30px rgba(0,0,0,.6);
       display:inline-flex;
       align-items:center;
-      gap:12px;
+      gap:14px;
+      padding:18px 22px;
+      border-radius:18px;
+      background:linear-gradient(90deg,var(--blue),var(--cyan));
+      color:var(--ink);
+      font-weight:1000;
+      font-size:20px;
+      border:none;
+      box-shadow:
+        0 22px 60px rgba(34,211,238,.18),
+        0 10px 26px rgba(0,0,0,.55);
+      text-decoration:none;
+      user-select:none;
     }
 
     .btn .arrow{
-      width:34px; height:34px;
-      border-radius:12px;
-      background:rgba(0,0,0,.16);
-      display:grid; place-items:center;
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,.10);
-      font-weight:900;
+      width:38px;
+      height:38px;
+      border-radius:14px;
+      background:rgba(0,0,0,.14);
+      display:grid;
+      place-items:center;
+      font-weight:1000;
     }
 
-    .link{
-      padding:16px 18px;
-      border-radius:16px;
+    .url{
+      padding:14px 16px;
+      border-radius:14px;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(0,0,0,.28);
-      color:rgba(255,255,255,.86);
+      color:rgba(255,255,255,.82);
       font-size:14px;
-      font-weight:700;
-      letter-spacing:.02em;
-      max-width:820px;
+      font-weight:800;
+      letter-spacing:.01em;
+      max-width:920px;
       overflow:hidden;
       text-overflow:ellipsis;
       white-space:nowrap;
     }
 
-    /* bottom trust */
-    .trust{
-      position:absolute;
-      left:64px; right:64px;
-      bottom:110px;
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      font-size:13px;
-      color:rgba(255,255,255,.58);
+    .fineprint{
+      margin-top:4px;
+      font-size:12px;
+      color:var(--muted2);
     }
 
-    /* Safe area helpers */
-    .safe-top, .safe-bottom{
-      position:absolute; left:0; right:0;
-      pointer-events:none;
-      opacity:.0;
-    }
-    .safe-top{ top:0; height:170px;}
-    .safe-bottom{ bottom:0; height:220px;}
-
-    @media (max-width: 1120px){
-      body{padding:18px}
-      .story{width: min(1080px, 96vw); height: calc(min(1080px, 96vw) * 16 / 9);}
+    /* mobile tweaks (fica mais “cheio”, sem buracos) */
+    @media (max-width: 520px){
+      .safe{
+        padding:
+          calc(26px + env(safe-area-inset-top))
+          20px
+          calc(22px + env(safe-area-inset-bottom))
+          20px;
+        gap:22px;
+      }
+      .brand img{height:56px}
+      .brand .subbrand{font-size:16px}
+      .pill{font-size:13px; padding:10px 14px}
+      .btn{font-size:18px; padding:16px 18px}
+      .btn .arrow{width:36px; height:36px}
     }
   </style>
 </head>
 
 <body>
   <div class="story">
+    <div class="safe">
 
-    <div class="noise" aria-hidden="true"></div>
-    <div class="safe-top"></div>
-    <div class="safe-bottom"></div>
+      <!-- TOP -->
+      <div class="top">
+        <div class="brand">
+          <img src="assets/img/tullu.png" alt="Tullu Motion">
+          <div class="subbrand">Journal</div>
+        </div>
 
-    <!-- TOP -->
-    <div class="top">
-      <div class="brand">
-        <img src="assets/img/tullu.png" alt="Tullu Motion">
-        <div class="pill">Journal</div>
+        <div class="pill">Edição mensal • Próxima: Fev 2026</div>
       </div>
-      <div class="pill">Edição mensal • Próxima: Fev 2026</div>
-    </div>
 
-    <!-- CONTENT (left aligned) -->
-    <section class="content">
-      <div class="kicker">análise • mercado • ia</div>
+      <!-- CONTENT -->
+      <section class="content">
+        <div class="kicker">ANÁLISE • MERCADO • IA</div>
 
-      <h1>
-        Leia o <span class="grad">Tullu Journal</span><br>
-        e entenda o que muda<br>
-        <span class="grad">agora</span>.
-      </h1>
+        <h1>
+          Entenda o que a <span class="grad">IA</span><br>
+          está mudando no<br>
+          <span class="grad">trabalho</span>.
+        </h1>
 
-      <p class="sub">
-        Um jornal curto, direto e baseado em fontes globais (McKinsey, PwC, MIT, WEF).
-        Sem hype. Só o que realmente está acontecendo — e o que isso exige do seu negócio.
-      </p>
+        <p class="sub">
+          Um resumo direto (com fontes) do que está acontecendo em 2024–2026 —
+          e como empresas estão virando produtividade real, sem hype.
+        </p>
 
-      <div class="bullets">
-        <div class="bullet"><div class="dot"></div><span><strong>Menos achismo:</strong> links e estudos originais.</span></div>
-        <div class="bullet"><div class="dot"></div><span><strong>Mais clareza:</strong> o que automatizar, o que manter humano.</span></div>
-        <div class="bullet"><div class="dot"></div><span><strong>Mais vantagem:</strong> decisões rápidas antes do seu concorrente.</span></div>
+        <div class="cards">
+          <div class="card"><span class="dot"></span><p><strong>Menos achismo:</strong> links da McKinsey, PwC, MIT e WEF.</p></div>
+          <div class="card"><span class="dot"></span><p><strong>Mais clareza:</strong> IA substitui desperdício, não trabalho.</p></div>
+          <div class="card"><span class="dot"></span><p><strong>Mais vantagem:</strong> decisões melhores antes do concorrente.</p></div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="cta">
+        <a class="btn" href="https://tullumotion.com/tullujournal.html" target="_blank" rel="noopener">
+          Acessar o Tullu Journal <span class="arrow">→</span>
+        </a>
+        <div class="url">https://tullumotion.com/tullujournal.html</div>
+        <div class="fineprint">Conteúdo editorial • Tullu Motion © 2026</div>
       </div>
-    </section>
 
-    <!-- CTA -->
-    <div class="cta">
-      <div class="btn">
-        Acessar o Tullu Journal
-        <span class="arrow">→</span>
-      </div>
-      <div class="link">https://tullumotion.com/tullujournal.html</div>
     </div>
-
-    <div class="trust">
-      <div>Conteúdo editorial • fontes citadas no artigo</div>
-      <div>Tullu Motion © 2026</div>
-    </div>
-
   </div>
 </body>
 </html>
