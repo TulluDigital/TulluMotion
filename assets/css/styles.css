@@ -3160,72 +3160,78 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
 .form-card.is-success #successStep{
   padding-top: 8px;
 }
-/* ===== SHOWCASE: 2 mockups lado a lado + sobreposição leve ===== */
-.showcase__frame{
-  position: relative;
-  display: flex;
+/* ===== SHOWCASE: sem card + 2 imgs lado a lado ===== */
+.showcase__frame--clean{
+  /* remove o “card externo” */
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+
+  /* força layout lado a lado */
+  display: flex !important;
   justify-content: center;
-  align-items: center;
-  gap: 22px;
+  align-items: flex-start;
+  gap: 24px;
+
   max-width: 980px;
-  margin: 0 auto;
-  padding: 18px 18px;
+  margin: 22px auto 0;
 }
 
-/* base dos dois */
-.showcase__img{
+/* base */
+.showcase__frame--clean .showcase__img{
+  display: block;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 18px 45px rgba(0,0,0,0.45));
 }
 
-/* print 1 (principal) */
-.showcase__img--main{
+/* principal */
+.showcase__frame--clean .showcase__img--main{
   width: min(420px, 100%);
   max-height: 560px;
 }
 
-/* print 2 (sobreposto) */
-.showcase__img--over{
+/* secundário sobrepondo o principal */
+.showcase__frame--clean .showcase__img--over{
   width: min(380px, 100%);
   max-height: 520px;
+
   position: relative;
   z-index: 2;
-
-  /* sobreposição “em cima” do primeiro */
-  margin-left: -90px;      /* puxa pra cima do 1 */
-  transform: translateY(24px) rotate(-1.2deg);
-  opacity: 0.98;
+  margin-left: -110px;                /* sobreposição lateral */
+  transform: translateY(34px) rotate(-1.2deg);
 }
 
 /* ===== RESPONSIVO ===== */
-@media (max-width: 900px){
-  .showcase__frame{
-    gap: 14px;
+@media (max-width: 860px){
+  .showcase__frame--clean{
+    gap: 16px;
     max-width: 92%;
   }
 
-  .showcase__img--main{
+  .showcase__frame--clean .showcase__img--main{
     width: min(360px, 100%);
     max-height: 520px;
   }
 
-  .showcase__img--over{
-    width: min(320px, 100%);
-    max-height: 460px;
-    margin-left: -60px;
-    transform: translateY(18px) rotate(-1deg);
+  .showcase__frame--clean .showcase__img--over{
+    width: min(330px, 100%);
+    max-height: 470px;
+    margin-left: -70px;
+    transform: translateY(22px) rotate(-1deg);
   }
 }
 
-/* Mobile: empilha (sem ficar “zuado”) */
+/* Mobile: empilha (não tem como manter lado a lado sem virar micro) */
 @media (max-width: 560px){
-  .showcase__frame{
+  .showcase__frame--clean{
     flex-direction: column;
+    align-items: center;
     gap: 10px;
   }
 
-  .showcase__img--over{
+  .showcase__frame--clean .showcase__img--over{
     margin-left: 0;
     transform: translateY(-10px) rotate(-1deg);
   }
