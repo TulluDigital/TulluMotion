@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tullu AI Studio — Feed Ad (4:5)</title>
+  <title>Tullu AI Studio — Feed Ad</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +13,16 @@
     :root{
       --bg:#09090B;
       --text:#F2F2F2;
+      --muted:#A9A9A9;
       --cyan:#22D3EE;
       --blue:#3B82F6;
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text)}
-    body{display:grid;place-items:center;font-family:Inter,system-ui}
+    html,body{height:100%; margin:0; background:var(--bg); color:var(--text)}
+    body{display:grid; place-items:center; font-family:Inter,system-ui}
 
-    /* ✅ FEED 4:5 */
+    /* ✅ FEED 4:5 (Instagram) */
     .feed{
       width:1080px;
       height:1350px;
@@ -31,21 +32,21 @@
       background:
         radial-gradient(1100px 720px at 50% 18%, rgba(34,211,238,.20), transparent 62%),
         radial-gradient(900px 680px at 82% 35%, rgba(59,130,246,.16), transparent 66%),
-        #09090B;
+        linear-gradient(#09090B, #09090B);
     }
 
-    /* TOPO */
+    /* topo */
     .top{
       position:absolute;
       left:64px; right:64px; top:72px;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:16px;
+      gap:18px;
     }
 
     .brand{
-      display:flex;align-items:center;gap:14px;
+      display:flex; align-items:center; gap:14px;
       min-width:0;
     }
 
@@ -120,43 +121,30 @@
       font-size:14px;
     }
 
-    /* =========================================================
-       SHOWCASE (✅ SEM CORTE) — 1 imagem: assets/img/cels.png
-       ========================================================= */
+    /* SHOWCASE (1 imagem estática: cels.png) */
     .showcase{
       position:absolute;
       left:0; right:0;
-      top:610px;
-
-      /* ✅ deixa o conteúdo decidir a altura */
-      height:auto;
-      width:30%;
+      top:610px; /* ajusta o “palco” no feed */
+      height:520px;
       display:grid;
       place-items:center;
-
-      /* ✅ não corta o mockup */
-      overflow:visible;
+      overflow:hidden; /* garante que nada estoure */
     }
 
     .stage{
       position:relative;
       width:980px;
-
-      /* ✅ remove altura fixa */
-      height:auto;
-
+      height:520px;
       display:grid;
       place-items:center;
-
-      /* ✅ respiro inferior para não encostar na borda do feed */
-      padding-bottom: 46px;
     }
 
     /* glow atrás e com fim suave */
     .glow{
       position:absolute;
       width:980px;
-      height:560px; /* só o “halo”, não precisa casar com a imagem */
+      height:520px;
       left:50%;
       top:50%;
       transform:translate(-50%,-50%);
@@ -174,21 +162,41 @@
 
     .cels{
       position:relative;
-      width:760px;      /* ajuste fino: 720/760/800 */
-      max-width:100%;
+      width:720px;     /* ajuste fino */
       height:auto;
-      transform: translateY(0); /* ajuste fino: -10px / 0 / 10px */
+      transform: translateY(-10px); /* sobe/desce */
       filter:drop-shadow(0 34px 80px rgba(0,0,0,.72));
       z-index:2;
-      user-select:none;
       pointer-events:none;
+      user-select:none;
     }
 
-    /* FOOT (sem botão) */
+    /* CTA */
+    .cta{
+      position:absolute;
+      left:64px; right:64px;
+      bottom:132px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .btn{
+      padding:20px 34px;
+      font-size:20px;
+      font-weight:900;
+      border-radius:18px;
+      background:linear-gradient(90deg,var(--blue),var(--cyan));
+      color:#061019;
+      border:none;
+      box-shadow:
+        0 22px 60px rgba(34,211,238,.24),
+        0 12px 30px rgba(0,0,0,.6);
+    }
+
     .trust{
       position:absolute;
       left:64px; right:64px;
-      bottom:80px;
+      bottom:70px;
       display:flex;
       justify-content:space-between;
       gap:18px;
@@ -196,10 +204,12 @@
       color:rgba(242,242,242,.65);
     }
 
+    /* segurança: não quebrar no feed */
     .trust > div{max-width:520px}
 
-    /* opcional: centralizar mais pro lado (se precisar) */
+    /* opcional: se quiser “puxar” a imagem mais pra direita/esquerda */
     .stage{ transform: translateX(0px); } /* ex: 18px */
+
   </style>
 </head>
 
@@ -239,9 +249,15 @@
     <section class="showcase" aria-label="Mockup do AI Studio">
       <div class="stage">
         <div class="glow"></div>
+
+        <!-- ✅ Agora é 1 imagem só -->
         <img class="cels" src="assets/img/cels.png" alt="Mockup do AI Studio (celulares)">
       </div>
     </section>
+
+    <div class="cta">
+      <div class="btn">Quero testar gratuitamente</div>
+    </div>
 
     <div class="trust">
       <div>LGPD • dados usados só para ativação</div>
