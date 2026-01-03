@@ -3,400 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="x-apple-disable-message-reformatting" content="yes" />
   <title>Suporte | Tullu Motion</title>
 
-  <!-- Reaproveite seu CSS base do site -->
-  <link rel="stylesheet" href="/style.css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    /* Ajustes locais, não quebram seu CSS global */
-    .support-hero { padding: 84px 0 24px; }
-    .support-hero__title { font-size: clamp(28px, 4vw, 44px); line-height: 1.1; margin: 0; }
-    .support-hero__subtitle { margin: 12px 0 0; color: rgba(255,255,255,.7); max-width: 840px; }
-    .support-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; padding: 18px 0 44px; }
-    .support-card { border-radius: 18px; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04); box-shadow: 0 0 0 1px rgba(59,130,246,.08), 0 18px 60px rgba(0,0,0,.4); overflow: hidden; }
-    .support-card__head { padding: 18px 18px 0; }
-    .support-card__title { margin: 0; font-size: 18px; }
-    .support-card__desc { margin: 8px 0 0; color: rgba(255,255,255,.7); }
-    .support-card__body { padding: 16px 18px 18px; }
-
-    .tabs { display: flex; gap: 10px; flex-wrap: wrap; }
-    .tab-btn {
-      appearance: none; border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.85);
-      padding: 10px 12px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .tab-btn.is-active {
-      border-color: rgba(34,211,238,.55);
-      box-shadow: 0 0 0 3px rgba(34,211,238,.10);
-      background: rgba(34,211,238,.10);
-      color: #fff;
-    }
-
-    .faq { margin-top: 16px; }
-    .faq-item { border-top: 1px solid rgba(255,255,255,.10); }
-    .faq-q {
-      width: 100%;
-      text-align: left;
-      padding: 14px 0;
-      background: transparent;
-      border: 0;
-      color: #fff;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      justify-content: space-between;
-    }
-    .faq-q span { display: block; max-width: 92%; }
-    .faq-icon { opacity: .7; flex: 0 0 auto; transform: translateY(2px); }
-    .faq-a {
-      padding: 0 0 14px;
-      color: rgba(255,255,255,.75);
-      display: none;
-    }
-    .faq-a a { color: #22D3EE; text-decoration: underline; }
-    .faq-item.is-open .faq-a { display: block; }
-    .faq-item.is-open .faq-icon { transform: rotate(45deg) translateY(2px); opacity: 1; }
-
-    .support-meta { display: grid; gap: 12px; }
-    .meta-row { display: flex; gap: 10px; align-items: flex-start; }
-    .meta-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(34,211,238,.8); margin-top: 6px; box-shadow: 0 0 0 3px rgba(34,211,238,.12); }
-    .meta-row p { margin: 0; color: rgba(255,255,255,.75); }
-    .meta-row strong { color: #fff; }
-
-    .cta-stack { display: grid; gap: 10px; margin-top: 14px; }
-    .cta-note { font-size: 12px; color: rgba(255,255,255,.55); margin: 0; }
-    .cta-note a { color: rgba(255,255,255,.75); text-decoration: underline; }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(34,211,238,.55);
-      background: linear-gradient(90deg, rgba(59,130,246,.9), rgba(34,211,238,.9));
-      color: #061018;
-      font-weight: 800;
-      text-decoration: none;
-      min-height: 44px;
-    }
-    .btn-outline {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.9);
-      font-weight: 700;
-      text-decoration: none;
-      min-height: 44px;
-    }
-
-    @media (max-width: 980px) {
-      .support-grid { grid-template-columns: 1fr; }
-      .support-hero { padding-top: 72px; }
-    }
-  </style>
+  <!-- CSS do projeto -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/branch-pages.css">
 </head>
 
 <body>
-  <!-- Header minimal (se você já tem header fixo no style.css, pode remover este bloco e reutilizar o seu) -->
-  <header class="header" style="position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px); background: rgba(9,9,11,.65); border-bottom: 1px solid rgba(255,255,255,.08);">
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between; padding: 14px 0;">
-      <a href="/" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
-        <img src="assets/img/tullu.png" alt="Tullu Motion" style="height:28px; width:auto;" />
-        <span style="color:#fff; font-weight:800; letter-spacing:.2px;">Tullu Motion</span>
-      </a>
 
-      <nav style="display:flex; gap:12px; align-items:center;">
-        <a href="#faq" class="btn-outline" style="padding:10px 12px;">FAQ</a>
-        <a href="#contato" class="btn-primary" style="padding:10px 12px;">Falar com suporte</a>
+  <!-- HEADER / NAV -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <div class="nav__logo">
+          <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
+        </div>
+
+        <div class="nav__menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="/index.html" class="nav__link">Início</a>
+            </li>
+            <li class="nav__item">
+              <a href="/aistudio.html" class="nav__link">AI Studio</a>
+            </li>
+            <li class="nav__item">
+              <a href="/suporte.html" class="nav__link is-active">Suporte</a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="support-hero">
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero hero--branch">
       <div class="container">
-        <h1 class="support-hero__title">
-          Suporte <span style="background: linear-gradient(90deg,#3B82F6,#22D3EE); -webkit-background-clip:text; background-clip:text; color: transparent;">Tullu Motion</span>
-        </h1>
-        <p class="support-hero__subtitle">
-          Aqui você encontra respostas rápidas, orientações do teste grátis do Tullu AI Studio, e informações gerais sobre a Tullu Motion.
-          Nosso foco é clareza, segurança e operação real de SaaS.
-        </p>
+        <div class="hero__content">
+          <h1 class="hero__title">
+            Central de Suporte<br>
+            <span class="gradient-text">Tullu Motion</span>
+          </h1>
+          <p class="hero__subtitle">
+            Atendimento, dúvidas técnicas, informações institucionais
+            e suporte aos produtos da Tullu Motion.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="container support-grid" id="faq">
-      <!-- FAQ card -->
-      <div class="support-card">
-        <div class="support-card__head">
-          <div class="tabs" role="tablist" aria-label="Categorias de FAQ">
-            <button class="tab-btn is-active" type="button" data-tab="ai" role="tab" aria-selected="true">
-              FAQ AI Studio
-            </button>
-            <button class="tab-btn" type="button" data-tab="tm" role="tab" aria-selected="false">
-              FAQ Tullu Motion
-            </button>
-          </div>
-          <p class="support-card__desc">
-            Selecione a categoria. As respostas abaixo foram pensadas para reduzir atrito e aumentar confiança durante o uso.
+    <!-- CONTATO -->
+    <section class="credibility">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Falar com suporte</h2>
+          <p class="section__subtitle">
+            Canal direto para suporte técnico, dúvidas operacionais e parcerias.
           </p>
         </div>
 
-        <div class="support-card__body">
-          <!-- AI Studio FAQ -->
-          <div class="faq" data-tab-panel="ai">
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Como funciona o teste grátis do Tullu AI Studio?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Você conversa com o agente no WhatsApp, preenche o formulário e, após o envio, nós preparamos sua ativação e seu acesso ao painel.
-                A ativação ocorre somente após a confirmação e o aceite do termo de autorização.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>O que acontece depois que eu envio o formulário?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Seu envio é registrado e entra na fila de ativação. Nós usamos as informações para criar sua conta de teste, organizar o contexto do seu atendimento e preparar a configuração do agente.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Meus dados estão seguros?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Sim. Nós coletamos apenas o necessário para criar sua conta e configurar seu ambiente de teste, aplicamos medidas de segurança e seguimos as regras aplicáveis de proteção de dados.
-                Para detalhes, consulte os Termos de Uso.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Existe cobrança automática durante o teste?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Não. O teste grátis não possui cobrança automática. Qualquer continuidade após o teste depende de alinhamento e contratação.
-                As regras estão descritas nos Termos de Uso.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>O agente pode responder algo errado e eu perder vendas?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                O agente opera com base nas informações e regras fornecidas por você no formulário. Por isso, pedimos detalhes, exemplos e limites claros.
-                O usuário é responsável pelo conteúdo e pelas decisões comerciais do atendimento.
-                Recomendamos revisar as respostas e ajustes iniciais.
-                Para detalhes de responsabilidade e limitações, consulte os Termos de Uso.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Por que o formulário pede tanta informação?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Porque nosso objetivo é reduzir retrabalho e evitar perguntas depois. Quanto mais contexto real você fornece, mais preciso fica o atendimento do agente,
-                e melhor é o resultado do teste.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Eu posso pedir para remover meus dados depois?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Sim. Você pode solicitar orientações de remoção e ajuste conforme as regras aplicáveis de proteção de dados.
-                Os detalhes de tratamento e solicitações estão descritos nos Termos de Uso.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Onde eu leio os Termos de Uso?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Você pode acessar o documento em PDF por aqui:
-                <a href="/assets/docs/termos.pdf" target="_blank" rel="noopener">Termos de Uso</a>.
-              </div>
-            </div>
+        <div class="services__grid">
+          <div class="service-card">
+            <h3 class="service-card__title">Suporte Técnico</h3>
+            <p class="service-card__description">
+              Atendimento relacionado ao AI Studio, formulários,
+              automações, integrações e funcionamento da plataforma.
+            </p>
+            <a
+              href="https://wa.me/5511959029428?text=Ol%C3%A1%2C%20preciso%20de%20suporte%20da%20Tullu%20Motion."
+              class="btn btn--secondary"
+              target="_blank"
+            >
+              Falar com o suporte
+            </a>
           </div>
 
-          <!-- Tullu Motion FAQ -->
-          <div class="faq" data-tab-panel="tm" hidden>
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>O que é a Tullu Motion?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                A Tullu Motion é um ecossistema tech que combina automação, IA e estratégia para acelerar operação e atendimento.
-                O AI Studio é um dos produtos dentro desse ecossistema.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>A Tullu Motion é agência ou SaaS?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                A Tullu Motion opera como empresa tech, com produtos e sistemas próprios. Em algumas frentes, pode existir implantação e configuração assistida,
-                mas o núcleo é plataforma e automação.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Vocês aceitam parcerias, investimento ou sócios?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Sim, avaliamos parcerias estratégicas e formatos de colaboração. O caminho ideal é apresentar objetivo, contrapartida e tese de valor.
-                O primeiro passo é contato pelo canal de suporte para alinharmos contexto.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Quais tipos de negócio a Tullu atende melhor?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Negócios com volume de leads e necessidade de resposta rápida, triagem, qualificação, follow-up e organização de atendimento.
-                Também atendemos cenários de suporte e pós-venda com processos repetitivos.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Posso solicitar uma demonstração além do teste?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Sim. Quando necessário, podemos orientar uma demonstração ou uma configuração guiada, dependendo do caso.
-                O canal de suporte é o ponto oficial para isso.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Onde eu encontro documentos legais e políticas?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-a">
-                Os documentos oficiais ficam disponíveis nesta página e no PDF:
-                <a href="/assets/docs/termos.pdf" target="_blank" rel="noopener">Termos de Uso</a>.
-              </div>
-            </div>
+          <div class="service-card">
+            <h3 class="service-card__title">Parcerias e Negócios</h3>
+            <p class="service-card__description">
+              Contato para parcerias estratégicas, integrações,
+              oportunidades de negócio e investimentos.
+            </p>
+            <a
+              href="https://wa.me/5511959029428?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20sobre%20parcerias%20com%20a%20Tullu%20Motion."
+              class="btn btn--secondary"
+              target="_blank"
+            >
+              Entrar em contato
+            </a>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Side card -->
-      <aside class="support-card" id="contato">
-        <div class="support-card__head">
-          <h2 class="support-card__title">Contato e orientações</h2>
-          <p class="support-card__desc">
-            Para agilidade, use o WhatsApp de suporte abaixo. Evite enviar dados sensíveis por mensagem.
+    <!-- FAQ AI STUDIO -->
+    <section class="process">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">FAQ — AI Studio</h2>
+          <p class="section__subtitle">
+            Dúvidas frequentes sobre o uso do AI Studio como plataforma SaaS.
           </p>
         </div>
 
-        <div class="support-card__body">
-          <div class="support-meta">
-            <div class="meta-row">
-              <span class="meta-dot"></span>
-              <p><strong>Canal oficial</strong><br>WhatsApp de suporte.</p>
-            </div>
-
-            <div class="meta-row">
-              <span class="meta-dot"></span>
-              <p><strong>Boas práticas</strong><br>Envie prints, contexto e o e-mail cadastrado na conta.</p>
-            </div>
-
-            <div class="meta-row">
-              <span class="meta-dot"></span>
-              <p><strong>Documentos</strong><br>Consulte os Termos de Uso para regras e responsabilidade.</p>
-            </div>
+        <div class="services__grid">
+          <div class="service-card">
+            <h3 class="service-card__title">Meus dados estão seguros?</h3>
+            <p class="service-card__description">
+              Sim. Os dados coletados são utilizados apenas para criar sua conta,
+              configurar o agente e viabilizar o uso da plataforma,
+              seguindo boas práticas e a LGPD.
+            </p>
           </div>
 
-          <div class="cta-stack">
-            <a class="btn-primary" href="https://wa.me/5511959029428?text=Ol%C3%A1%2C%20preciso%20de%20suporte%20Tullu%20Motion.%20Meu%20contexto%20%C3%A9%3A%20" target="_blank" rel="noopener">
-              Abrir suporte no WhatsApp
-            </a>
+          <div class="service-card">
+            <h3 class="service-card__title">Existe cobrança automática no teste?</h3>
+            <p class="service-card__description">
+              Não. O teste grátis não possui cobrança automática.
+              Qualquer continuidade depende de aceite e contratação posterior.
+            </p>
+          </div>
 
-            <a class="btn-outline" href="/assets/docs/termos.pdf" target="_blank" rel="noopener">
-              Abrir Termos de Uso
-            </a>
+          <div class="service-card">
+            <h3 class="service-card__title">A Tullu se responsabiliza por perdas?</h3>
+            <p class="service-card__description">
+              O AI Studio é uma ferramenta de automação.
+              Resultados dependem da configuração, estratégia e uso correto,
+              conforme descrito nos Termos de Uso.
+            </p>
+          </div>
 
-            <p class="cta-note">
-              Ao usar o suporte, você concorda com os termos aplicáveis.
-              Consulte o documento de Termos de Uso.
+          <div class="service-card">
+            <h3 class="service-card__title">Onde posso consultar os Termos de Uso?</h3>
+            <p class="service-card__description">
+              Os Termos de Uso estão disponíveis neste documento oficial:
+              <br><br>
+              <a href="/assets/docs/termos.pdf" target="_blank">
+                Abrir Termos de Uso
+              </a>
             </p>
           </div>
         </div>
-      </aside>
+      </div>
     </section>
-  </main>
 
-  <!-- Footer (sem links que tirem do suporte, só institucional e termo) -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__content">
-        <div class="footer__brand">
-          <div class="footer__logo">
-            <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
-            <span class="footer__logo-text"></span>
-          </div>
-          <p class="footer__description">
-            O motor digital que combina automação, IA e estratégia para acelerar marcas.
+    <!-- FAQ TULLU MOTION -->
+    <section class="cases">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">FAQ — Tullu Motion</h2>
+          <p class="section__subtitle">
+            Sobre a empresa, visão, parcerias e posicionamento.
           </p>
         </div>
 
-        <div class="footer__links">
-          <div class="footer__section">
-            <h4 class="footer__section-title">Suporte</h4>
-            <ul class="footer__list">
-              <li>
-                <a href="#faq" class="footer__link">FAQ</a>
-              </li>
-              <li>
-                <a href="#contato" class="footer__link">Contato</a>
-              </li>
-            </ul>
+        <div class="services__grid">
+          <div class="service-card">
+            <h3 class="service-card__title">O que é a Tullu Motion?</h3>
+            <p class="service-card__description">
+              A Tullu Motion é uma empresa de tecnologia focada em automação,
+              inteligência artificial e estratégia digital,
+              operando como ecossistema SaaS.
+            </p>
           </div>
 
-          <div class="footer__section">
-            <h4 class="footer__section-title">Legal</h4>
-            <ul class="footer__list">
-              <li><a href="/assets/docs/termos.pdf" class="footer__link" target="_blank" rel="noopener">Termos de Uso</a></li>
-            </ul>
+          <div class="service-card">
+            <h3 class="service-card__title">Vocês aceitam parcerias?</h3>
+            <p class="service-card__description">
+              Sim. A Tullu Motion está aberta a parcerias estratégicas,
+              integrações e modelos colaborativos.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <h3 class="service-card__title">A Tullu aceita investimentos?</h3>
+            <p class="service-card__description">
+              Avaliamos oportunidades alinhadas à visão de produto,
+              crescimento sustentável e inovação tecnológica.
+            </p>
           </div>
         </div>
       </div>
+    </section>
 
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
       <div class="footer__bottom">
         <p class="footer__copyright">
           © 2026 Tullu Motion. Todos os direitos reservados.
@@ -405,39 +207,5 @@
     </div>
   </footer>
 
-  <script>
-    // Tabs
-    const tabButtons = Array.from(document.querySelectorAll(".tab-btn"));
-    const panels = Array.from(document.querySelectorAll("[data-tab-panel]"));
-
-    function setTab(tabKey) {
-      tabButtons.forEach(btn => {
-        const isActive = btn.getAttribute("data-tab") === tabKey;
-        btn.classList.toggle("is-active", isActive);
-        btn.setAttribute("aria-selected", isActive ? "true" : "false");
-      });
-
-      panels.forEach(p => {
-        const isTarget = p.getAttribute("data-tab-panel") === tabKey;
-        p.hidden = !isTarget;
-      });
-    }
-
-    tabButtons.forEach(btn => {
-      btn.addEventListener("click", () => setTab(btn.getAttribute("data-tab")));
-    });
-
-    // Accordion
-    const items = Array.from(document.querySelectorAll(".faq-item"));
-    items.forEach(item => {
-      const q = item.querySelector(".faq-q");
-      q.addEventListener("click", () => {
-        const open = item.classList.contains("is-open");
-        // fecha outros para ficar limpo
-        items.forEach(i => i.classList.remove("is-open"));
-        if (!open) item.classList.add("is-open");
-      });
-    });
-  </script>
 </body>
 </html>
