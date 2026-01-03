@@ -527,30 +527,30 @@
     </header>
 
     <!-- GRID DE PLANOS -->
-    <div class="cards-grid" style="
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    ">
+    <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr); gap: 18px;">
 
       <!-- ESSENCIAL -->
-      <div class="card-base" style="
+      <div class="card-base plan-card" style="
         background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
         border: 1px solid rgba(255,255,255,0.18);
       ">
-        <span class="tag">Essencial</span>
+        <div class="plan-top">
+          <span class="tag">Essencial</span>
+        </div>
 
-        <h1 class="hero__title" style="font-size: 2.2rem; margin: .75rem 0;">
-          R$ 297<span style="font-size:.9rem; opacity:.7;">/mês</span>
-        </h1>
+        <div class="plan-price">
+          <div class="plan-value">R$ 297</div>
+          <div class="plan-per">/mês</div>
+        </div>
 
-        <p class="muted">
+        <p class="plan-desc">
           Ideal para automatizar o atendimento principal do negócio.
         </p>
 
-        <ul class="agent-card__bullets">
+        <ul class="agent-card__bullets plan-list">
           <li>1 Agente de IA</li>
           <li>1 WhatsApp conectado</li>
-          <li>Até 5 usuários da equipe<br><small>(1 admin + até 4 funcionários)</small></li>
+          <li>Até 5 usuários da equipe <small>(1 admin + até 4 funcionários)</small></li>
           <li>Plataforma de gestão completa (CRM)</li>
           <li>Chat estilo WhatsApp Web</li>
           <li>Suporte via chat</li>
@@ -559,7 +559,7 @@
 
         <a
           href="https://wa.me/5511959029428?text=Quero%20contratar%20o%20plano%20Essencial%20do%20AI%20Studio."
-          class="btn btn--outline btn--large"
+          class="btn btn--outline btn--large plan-cta"
           target="_blank"
         >
           Iniciar com Essencial
@@ -567,25 +567,28 @@
       </div>
 
       <!-- CRESCIMENTO -->
-      <div class="card-base" style="
+      <div class="card-base plan-card" style="
         background: linear-gradient(180deg, rgba(0,140,255,0.18), rgba(0,140,255,0.06));
         border: 1px solid rgba(0,140,255,0.35);
         box-shadow: 0 20px 50px rgba(0,140,255,0.18);
       ">
-        <span class="tag tag--ai">Crescimento</span>
+        <div class="plan-top">
+          <span class="tag tag--ai">Crescimento</span>
+        </div>
 
-        <h1 class="hero__title" style="font-size: 2.2rem; margin: .75rem 0;">
-          R$ 497<span style="font-size:.9rem; opacity:.8;">/mês</span>
-        </h1>
+        <div class="plan-price">
+          <div class="plan-value">R$ 497</div>
+          <div class="plan-per">/mês</div>
+        </div>
 
-        <p class="muted">
+        <p class="plan-desc">
           Para empresas com mais de um fluxo ou objetivo de atendimento.
         </p>
 
-        <ul class="agent-card__bullets">
+        <ul class="agent-card__bullets plan-list">
           <li>2 Agentes de IA</li>
           <li>2 WhatsApps conectados</li>
-          <li>Até 5 usuários da equipe<br><small>(1 admin + até 4 funcionários)</small></li>
+          <li>Até 5 usuários da equipe <small>(1 admin + até 4 funcionários)</small></li>
           <li>Plataforma de gestão completa (CRM)</li>
           <li>Chat estilo WhatsApp Web</li>
           <li>Suporte via chat</li>
@@ -594,7 +597,7 @@
 
         <a
           href="https://wa.me/5511959029428?text=Quero%20contratar%20o%20plano%20Crescimento%20do%20AI%20Studio."
-          class="btn btn--primary btn--large"
+          class="btn btn--primary btn--large plan-cta"
           target="_blank"
         >
           Contratar Crescimento
@@ -602,25 +605,28 @@
       </div>
 
       <!-- ESTRATÉGICO -->
-      <div class="card-base" style="
+      <div class="card-base plan-card" style="
         background: linear-gradient(180deg, rgba(0,200,255,0.28), rgba(0,200,255,0.12));
         border: 1px solid rgba(0,200,255,0.45);
         box-shadow: 0 25px 70px rgba(0,200,255,0.25);
       ">
-        <span class="tag tag--ai">Estratégico</span>
+        <div class="plan-top">
+          <span class="tag tag--ai">Estratégico</span>
+        </div>
 
-        <h1 class="hero__title" style="font-size: 2.4rem; margin: .75rem 0;">
-          R$ 897<span style="font-size:.9rem; opacity:.85;">/mês</span>
-        </h1>
+        <div class="plan-price">
+          <div class="plan-value">R$ 897</div>
+          <div class="plan-per">/mês</div>
+        </div>
 
-        <p class="muted">
+        <p class="plan-desc">
           Atendimento automatizado + crescimento orientado a resultado.
         </p>
 
-        <ul class="agent-card__bullets">
+        <ul class="agent-card__bullets plan-list">
           <li>3 Agentes de IA ou mais</li>
           <li>3 WhatsApps conectados ou mais</li>
-          <li>Até 5 usuários da equipe<br><small>(1 admin + até 4 funcionários)</small></li>
+          <li>Até 5 usuários da equipe <small>(1 admin + até 4 funcionários)</small></li>
           <li>Plataforma de gestão completa (CRM)</li>
           <li>Chat estilo WhatsApp Web</li>
           <li>Suporte prioritário</li>
@@ -629,8 +635,8 @@
         </ul>
 
         <a
-          href="https://wa.me/5511959029428?text=Quero%20contratar%20o%20plano%20Estratégico%20do%20AI%20Studio."
-          class="btn btn--primary btn--large"
+          href="https://wa.me/5511959029428?text=Quero%20contratar%20o%20plano%20Estrat%C3%A9gico%20do%20AI%20Studio."
+          class="btn btn--primary btn--large plan-cta"
           target="_blank"
         >
           Falar sobre o Estratégico
@@ -640,16 +646,64 @@
     </div>
 
   </div>
+
+  <!-- CSS LOCAL (blindado só pro #planos) -->
+  <style>
+    #planos .plan-card{
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      text-align: left !important;
+      gap: 12px !important;
+    }
+
+    #planos .plan-top{ width: 100%; display:flex; justify-content:flex-start; }
+
+    #planos .plan-price{
+      width: 100%;
+      display:flex;
+      justify-content:center;
+      align-items: baseline;
+      gap: 8px;
+      margin: 6px 0 0;
+    }
+
+    #planos .plan-value{
+      font-size: clamp(34px, 2.6vw, 44px);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    #planos .plan-per{
+      font-size: 14px;
+      opacity: .75;
+      font-weight: 800;
+    }
+
+    #planos .plan-desc{
+      width: 100%;
+      margin: 0;
+      opacity: .85;
+    }
+
+    #planos .plan-list{ width: 100%; margin: 8px 0 0; }
+
+    #planos .plan-cta{ width: 100%; margin-top: 10px; }
+
+    /* Desktop: 3 colunas em uma tela */
+    @media (min-width: 769px){
+      #planos .cards-grid{ grid-template-columns: repeat(3, 1fr) !important; }
+    }
+
+    /* Mobile: 1 por linha */
+    @media (max-width: 768px){
+      #planos .cards-grid{ grid-template-columns: 1fr !important; }
+    }
+  </style>
 </section>
 
-<!-- MOBILE: 1 plano por linha -->
-<style>
-@media (max-width: 768px){
-  #planos .cards-grid{
-    grid-template-columns: 1fr !important;
-  }
-}
-</style>
+
 
 <!-- PLANETS GRID -->
 <section class="agents" id="agentes">
