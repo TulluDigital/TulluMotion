@@ -3337,4 +3337,87 @@ section#showcase img.showcase__img--over{
   }
 }
 
+/* =========================================================
+   FIX FINAL — CIANO + CENTRALIZAÇÃO DO SHOWCASE (AI STUDIO)
+   ========================================================= */
+
+/* --- CORRIGE FUNDO: AZUL → CIANO TECNOLÓGICO --- */
+.hero--aistudio,
+#showcase{
+  background:
+    radial-gradient(
+      ellipse at top center,
+      rgba(34, 211, 238, 0.28) 0%,   /* ciano */
+      rgba(59, 130, 246, 0.18) 35%,  /* azul */
+      rgba(9, 9, 11, 1) 72%
+    ) !important;
+}
+
+/* remove QUALQUER overlay antigo */
+.hero--aistudio::before,
+.hero--aistudio::after,
+#showcase::before,
+#showcase::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* --- CENTRALIZA O CONJUNTO DE MOCKUPS --- */
+#showcase .showcase__frame{
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0 !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* --- MOCKUP ESQUERDA (CRM) --- */
+#showcase .showcase__img--main{
+  transform:
+    rotate(-7deg)
+    translateX(-20px)
+    translateY(10px)
+    !important;
+}
+
+/* --- MOCKUP DIREITA (LOGIN, À FRENTE) --- */
+#showcase .showcase__img--over{
+  transform:
+    rotate(8deg)
+    translateX(40px)
+    translateY(30px)
+    !important;
+}
+
+/* --- GARANTE QUE NADA PINTE FUNDO --- */
+#showcase .showcase__frame::before,
+#showcase .showcase__frame::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* --- MOBILE: LIMPA E CENTRAL --- */
+@media (max-width: 640px){
+  #showcase .showcase__frame{
+    left: 0 !important;
+    transform: none !important;
+    flex-direction: column !important;
+  }
+
+  #showcase .showcase__img--main{
+    transform: rotate(-4deg) translateY(0) !important;
+  }
+
+  #showcase .showcase__img--over{
+    transform: rotate(4deg) translateY(-20px) !important;
+  }
+}
 
