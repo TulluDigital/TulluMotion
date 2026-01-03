@@ -4377,3 +4377,19 @@ section[id]{
     max-width: 100%;
   }
 }
+/* =========================================================
+   AJUSTE FINAL — REMOVE ESPAÇO EXCESSIVO DO SHOWCASE
+   ========================================================= */
+
+#showcase{
+  padding-top: 48px !important;
+  padding-bottom: 56px !important;
+}
+
+/* mobile */
+@media (max-width: 768px){
+  #showcase{
+    padding-top: 32px !important;
+    padding-bottom: 40px !important;
+  }
+}
