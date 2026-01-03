@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Feed 01 — Mercado Agentes</title>
+<title>Feed 01 — Mercado Agentes (1080x1350)</title>
 
 <style>
 :root{
@@ -29,15 +29,14 @@ body{
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* ===== Canvas ===== */
+/* ===== Canvas (Feed vertical 4:5) ===== */
 .feed{
-  width:min(1080px,96vw);
-  aspect-ratio:1/1;
-  border-radius:28px;
-  overflow:hidden;
+  width:min(1080px, 96vw);
+  aspect-ratio:4/5;           /* ✅ 1080x1350 */
   position:relative;
+  overflow:hidden;
+  border-radius:28px;
 
-  /* base */
   background: linear-gradient(180deg, var(--blue-3), var(--blue), var(--blue-2));
 }
 
@@ -47,12 +46,10 @@ body{
   position:absolute;
   inset:-12%;
   background:
-    /* halos grandes (premium feel) */
-    radial-gradient(900px 700px at 20% 18%, rgba(255,255,255,.20), transparent 65%),
-    radial-gradient(900px 700px at 85% 28%, rgba(34,211,238,.16), transparent 62%),
-    radial-gradient(1100px 900px at 50% 110%, rgba(0,0,0,.18), transparent 55%),
+    radial-gradient(900px 700px at 20% 12%, rgba(255,255,255,.20), transparent 65%),
+    radial-gradient(900px 700px at 85% 20%, rgba(34,211,238,.16), transparent 62%),
+    radial-gradient(1100px 900px at 50% 115%, rgba(0,0,0,.18), transparent 55%),
 
-    /* “sheen” diagonal (faixa de luz tipo UI SaaS) */
     linear-gradient(115deg,
       rgba(255,255,255,.00) 0%,
       rgba(255,255,255,.10) 28%,
@@ -60,20 +57,16 @@ body{
       rgba(255,255,255,.08) 62%,
       rgba(255,255,255,.00) 78%
     );
-
   pointer-events:none;
-  filter: blur(0px);
   opacity:1;
 }
 
-/* GRAIN/NOISE leve (sem imagem externa) */
+/* GRAIN/NOISE leve */
 .feed::after{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
-
-  /* micro-noise via repeating gradients */
   background:
     repeating-linear-gradient(
       0deg,
@@ -89,82 +82,73 @@ body{
       rgba(0,0,0,0) 2px,
       rgba(0,0,0,0) 5px
     );
-
   mix-blend-mode: soft-light;
-  opacity:.22; /* bem sutil */
+  opacity:.22;
 }
 
 /* ===== Layout ===== */
 .content{
+  position:relative;
+  z-index:1;
   height:100%;
   display:flex;
   flex-direction:column;
-  position:relative;
-  z-index:1; /* acima das camadas */
 }
 
-/* Faixa branca do logo */
+/* Topbar branca */
 .topbar{
   background:#fff;
   padding:22px 56px;
   box-shadow: 0 16px 50px rgba(0,0,0,.20);
 }
 
-.logo{
-  width:190px;
-}
+.logo{ width:190px; height:auto; display:block; }
 
-/* Corpo */
+/* Corpo (ajustado pro 4:5) */
 .main{
   flex:1;
-  padding:64px 72px;
+  padding:74px 72px 88px;   /* ✅ mais respiro vertical */
   display:flex;
   flex-direction:column;
   justify-content:center;
-  gap:46px;
+  gap:54px;                 /* ✅ um pouco mais de ar */
 }
 
 /* ===== Hero ===== */
-.hero{
-  text-align:center;
-}
+.hero{ text-align:center; }
 
 .hero h1{
   margin:0;
-  font-size:clamp(64px,6vw,92px);
+  font-size:clamp(64px, 5.8vw, 92px); /* leve ajuste pro 4:5 */
   font-weight:900;
-  line-height:1.20;
+  line-height:1.22;
   letter-spacing:-0.03em;
   color:var(--text);
-
-  /* leve profundidade */
   text-shadow:
     0 18px 55px rgba(0,0,0,.22),
     0 2px 0 rgba(255,255,255,.04);
 }
 
-/* CHIP glass premium + brilho interno */
+/* Chip glass premium */
 .hero .emph{
   display:inline-block;
   color:var(--ink);
   padding:.12em .32em;
   border-radius:.28em;
-
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.42));
+  background: linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.42));
   border:1px solid rgba(255,255,255,.42);
-
   box-shadow:
     0 22px 60px rgba(0,0,0,.18),
-    inset 0 1px 0 rgba(255,255,255,.65),         /* brilho interno top */
-    inset 0 -18px 40px rgba(59,130,246,.14),     /* azul interno suave */
+    inset 0 1px 0 rgba(255,255,255,.65),
+    inset 0 -18px 40px rgba(59,130,246,.14),
     inset 0 0 0 1px rgba(15,23,42,.06);
-
   backdrop-filter: blur(10px);
   position:relative;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.30),
+    0 10px 22px rgba(15,23,42,.18);
 }
 
-/* brilho “dentro” do texto (bem sutil) */
 .hero .emph::after{
   content:"";
   position:absolute;
@@ -178,16 +162,9 @@ body{
   pointer-events:none;
 }
 
-/* texto do chip com glow interno discreto */
-.hero .emph{
-  text-shadow:
-    0 1px 0 rgba(255,255,255,.30),
-    0 10px 22px rgba(15,23,42,.18);
-}
-
 .hero p{
-  margin-top:18px;
-  font-size:clamp(24px,2.2vw,30px);
+  margin-top:20px;
+  font-size:clamp(24px, 2.1vw, 30px);
   font-weight:700;
   color:var(--muted);
   text-shadow: 0 14px 40px rgba(0,0,0,.20);
@@ -204,15 +181,12 @@ body{
 .badge{
   padding:16px 22px;
   border-radius:999px;
-  font-size:clamp(18px,1.4vw,20px);
+  font-size:clamp(18px, 1.35vw, 20px);
   font-weight:800;
   color:#fff;
-
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,.12));
+  background: linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,.12));
   border:1px solid rgba(255,255,255,.34);
   backdrop-filter: blur(12px);
-
   box-shadow:
     0 18px 50px rgba(0,0,0,.16),
     inset 0 1px 0 rgba(255,255,255,.30);
@@ -220,9 +194,9 @@ body{
 
 /* Mobile */
 @media(max-width:600px){
-  .topbar{padding:18px 22px}
-  .logo{width:160px}
-  .main{padding:42px 26px}
+  .topbar{ padding:18px 22px; }
+  .logo{ width:160px; }
+  .main{ padding:56px 26px 64px; gap:40px; }
 }
 </style>
 </head>
