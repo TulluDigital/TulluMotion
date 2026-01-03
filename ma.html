@@ -7,18 +7,13 @@
 
 <style>
 :root{
-  /* novo “azul do botão” */
-  --bg:#3B82F6;          /* base */
-  --bg-2:#2563EB;        /* sombra */
-  --bg-3:#60A5FA;        /* highlight */
-  --cyan:#22D3EE;
+  --blue:#3B82F6;
+  --blue-2:#2563EB;
+  --blue-3:#60A5FA;
 
-  --text:#FFFFFF;
-  --muted:rgba(255,255,255,.88);
-
-  /* contraste para o destaque do título (sem ficar “azul em cima de azul”) */
-  --ink:#0B1220;         /* azul bem escuro/quase preto */
-  --ink-2:#0F172A;       /* navy */
+  --text:#ffffff;
+  --muted:rgba(255,255,255,.9);
+  --ink:#0B1220;
 }
 
 *{box-sizing:border-box}
@@ -29,143 +24,114 @@ body{
   place-items:center;
   min-height:100vh;
   background:#000;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* ===== Canvas Feed ===== */
+/* ===== Canvas ===== */
 .feed{
-  width:min(1080px, 96vw);
+  width:min(1080px,96vw);
   aspect-ratio:1/1;
-  position:relative;
-  overflow:hidden;
   border-radius:28px;
+  overflow:hidden;
+  position:relative;
 
-  /* fundo azul “button-like” com profundidade */
   background:
-    radial-gradient(900px 900px at 80% 25%, rgba(34,211,238,.28), transparent 62%),
-    radial-gradient(900px 900px at 15% 15%, rgba(255,255,255,.18), transparent 60%),
-    linear-gradient(145deg, var(--bg-3) 0%, var(--bg) 30%, var(--bg-2) 100%);
+    radial-gradient(900px 500px at 50% 0%, rgba(255,255,255,.22), transparent 60%),
+    linear-gradient(180deg, var(--blue-3), var(--blue), var(--blue-2));
 }
 
-/* brilho suave geral (mantém o “glow”, mas casando com azul) */
+/* Glow */
 .feed::before{
   content:"";
   position:absolute;
   inset:0;
-  background:
-    radial-gradient(900px 420px at 50% 0%, rgba(255,255,255,.18), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.10), transparent 40%);
+  background:linear-gradient(180deg, rgba(255,255,255,.15), transparent 45%);
   pointer-events:none;
 }
 
-/* ===== Conteúdo ===== */
+/* ===== Layout ===== */
 .content{
-  position:relative;
   height:100%;
   display:flex;
   flex-direction:column;
 }
 
-/* ===== Faixa branca do logo ===== */
+/* Faixa branca do logo */
 .topbar{
   background:#fff;
   padding:22px 56px;
-  display:flex;
-  align-items:center;
-  gap:16px;
-
-  /* separação suave do fundo azul */
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.18),
-    inset 0 -1px 0 rgba(15,23,42,.08);
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
 }
 
 .logo{
-  width:200px;          /* maior */
-  height:auto;
-  display:block;
+  width:190px;
 }
 
-/* ===== Corpo ===== */
+/* Corpo */
 .main{
   flex:1;
-  padding:64px 72px 64px;
+  padding:64px 72px;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
+  justify-content:center; /* 🔥 centralização vertical real */
+  gap:48px;
 }
 
-/* ===== Texto central ===== */
+/* ===== Hero ===== */
 .hero{
   text-align:center;
-  margin-top:6px;
 }
 
 .hero h1{
   margin:0;
-  font-size:clamp(64px, 6vw, 92px);
+  font-size:clamp(64px,6vw,92px);
   font-weight:900;
-  line-height:1.03;
+  line-height:1.18; /* 🔥 mais respiro */
   letter-spacing:-0.03em;
   color:var(--text);
-  text-shadow: 0 10px 40px rgba(0,0,0,.20);
 }
 
-/* destaque agora “ink” (escuro) pra contrastar no fundo azul */
-.hero h1 .emph{
+.hero .emph{
   color:var(--ink);
-  background:rgba(255,255,255,.45);
-  padding:.04em .22em;
-  border-radius:.22em;
-  box-shadow:
-    0 14px 35px rgba(0,0,0,.18),
-    inset 0 0 0 1px rgba(255,255,255,.35);
+  background:rgba(255,255,255,.5);
+  padding:.08em .26em;
+  border-radius:.25em;
 }
-
-/* evita “viúva” no IA */
-.nowrap{ white-space:nowrap; }
 
 .hero p{
-  margin-top:14px; /* mais próximo */
-  font-size:clamp(24px, 2.2vw, 30px);
+  margin-top:18px;
+  font-size:clamp(24px,2.2vw,30px);
   font-weight:700;
   color:var(--muted);
-  text-shadow: 0 10px 30px rgba(0,0,0,.18);
 }
 
-/* ===== Rodapé: maior e mais central ===== */
+/* ===== Badges ===== */
 .footer{
   display:flex;
-  justify-content:center;     /* centraliza */
-  align-items:center;
-  gap:18px;
-  margin-top:28px;
+  justify-content:center;
+  gap:22px;
   flex-wrap:wrap;
 }
 
 .badge{
-  padding:14px 20px;          /* maior */
+  padding:16px 22px;
   border-radius:999px;
-  font-size:clamp(18px, 1.35vw, 20px);
+  font-size:clamp(18px,1.4vw,20px);
   font-weight:800;
 
-  background:rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.28);
+  color:#fff; /* 🔥 texto branco */
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.32);
   backdrop-filter:blur(10px);
 
-  box-shadow:
-    0 18px 40px rgba(0,0,0,.16),
-    inset 0 0 0 1px rgba(15,23,42,.08);
+  box-shadow:0 18px 40px rgba(0,0,0,.16);
 }
 
-/* Mobile preview */
-@media (max-width:600px){
-  .topbar{ padding:18px 22px; }
-  .logo{ width:170px; }
-
-  .main{ padding:46px 26px 46px; }
-  .footer{ gap:12px; }
-  .badge{ padding:12px 16px; }
+/* Mobile */
+@media(max-width:600px){
+  .topbar{padding:18px 22px}
+  .logo{width:160px}
+  .main{padding:42px 26px}
 }
 </style>
 </head>
@@ -175,29 +141,28 @@ body{
 <section class="feed">
   <div class="content">
 
-    <!-- Faixa branca do logo (pra texto preto do logo não sumir) -->
+    <!-- Logo -->
     <div class="topbar">
-      <img src="assets/img/logoma.avif" alt="Mercado Agentes" class="logo" />
+      <img src="assets/img/logoma.avif" alt="Mercado Agentes" class="logo">
     </div>
 
+    <!-- Conteúdo central -->
     <div class="main">
-      <!-- Texto principal -->
+
       <div class="hero">
         <h1>
           Crie seu <span class="emph">1º agente</span><br>
-          <span class="nowrap">de IA</span> fácil e rápido.
+          de IA fácil e rápido.
         </h1>
 
-        <p>
-          Marketplace no-code para agentes de IA no WhatsApp.
-        </p>
+        <p>Marketplace no-code para agentes de IA no WhatsApp.</p>
       </div>
 
-      <!-- Rodapé -->
       <div class="footer">
         <div class="badge">Atendimento • Vendas • Agendamentos • Suporte</div>
         <div class="badge">Infra + CRM integrado</div>
       </div>
+
     </div>
 
   </div>
