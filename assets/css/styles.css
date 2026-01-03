@@ -3725,4 +3725,26 @@ section[id]{
     transform: rotate(10deg) translateX(-90px);
   }
 }
+/* =========================================================
+   FIX MOBILE — mockups não invadem a próxima seção
+   ========================================================= */
 
+@media (max-width: 640px){
+
+  /* garante que o showcase "segura" os mockups */
+  #showcase{
+    position: relative !important;
+    overflow: hidden !important;   /* 🔑 corta o excesso */
+    padding-bottom: 120px !important; /* cria área de respiro */
+  }
+
+  /* palco com altura REAL no mobile */
+  #showcase .showcase__stage{
+    height: 460px !important;  /* 🔑 suficiente pros 2 iPhones */
+  }
+
+  /* evita que os iPhones escapem visualmente */
+  #showcase .showcase__phone{
+    will-change: transform;
+  }
+}
