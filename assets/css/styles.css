@@ -3474,3 +3474,9 @@ section#showcase img.showcase__img--over{
   }
 }
 
+.hero--aistudio h1 span,
+.hero--aistudio .highlight {
+  background: linear-gradient(90deg, #22d3ee, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
