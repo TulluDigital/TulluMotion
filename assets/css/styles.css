@@ -3262,3 +3262,79 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
     transform: rotate(4deg) translateY(-20px);
   }
 }
+
+/* ===== FORCE SHOWCASE CLEAN + ROTATION (AI STUDIO) ===== */
+
+/* mata QUALQUER card/frame no showcase */
+section#showcase figure.showcase__frame{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  overflow: visible !important;
+}
+
+/* mata pseudo-elementos que desenham “card” */
+section#showcase figure.showcase__frame::before,
+section#showcase figure.showcase__frame::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* layout lado a lado */
+section#showcase figure.showcase__frame{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0 !important;
+  max-width: 980px !important;
+  margin: 28px auto 0 !important;
+}
+
+/* garante que as imgs aceitam transform */
+section#showcase img.showcase__img{
+  display: block !important;
+  position: relative !important;
+  height: auto !important;
+  object-fit: contain !important;
+  transform-origin: center center !important;
+}
+
+/* rotaciona (FORÇADO) */
+section#showcase img.showcase__img--main{
+  width: 420px !important;
+  max-height: 560px !important;
+  transform: rotate(-7deg) translateY(10px) !important;
+  z-index: 1 !important;
+  filter: drop-shadow(0 28px 60px rgba(0,0,0,0.55)) !important;
+}
+
+section#showcase img.showcase__img--over{
+  width: 440px !important;
+  max-height: 580px !important;
+  transform: rotate(8deg) translateX(-80px) translateY(30px) !important;
+  z-index: 3 !important;
+  filter: drop-shadow(0 38px 80px rgba(0,0,0,0.65)) !important;
+}
+
+/* mobile */
+@media (max-width: 640px){
+  section#showcase figure.showcase__frame{
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  section#showcase img.showcase__img--main{
+    width: 340px !important;
+    transform: rotate(-4deg) translateY(0) !important;
+  }
+
+  section#showcase img.showcase__img--over{
+    width: 360px !important;
+    transform: rotate(4deg) translateY(-20px) !important;
+  }
+}
+
+
