@@ -4271,3 +4271,34 @@ section[id]{
     justify-content: center;
   }
 }
+/* =========================================================
+   FIX DEFINITIVO — CONTROLE REAL DO MOCKUP (SHOWCASE)
+   Cola NO FINAL do CSS
+   ========================================================= */
+
+/* 1) REMOVE a centralização forçada APENAS do mockup */
+#showcase .showcase__frame img{
+  margin-left: unset !important;
+  margin-right: unset !important;
+}
+
+/* 2) DEVOLVE controle de posição (escapa do reset global) */
+#showcase .showcase__frame{
+  transform: translateX(-40px) !important; /* 👈 puxa os celulares pra esquerda */
+}
+
+/* 3) AJUSTE FINO DE TAMANHO (desktop) */
+@media (min-width: 769px){
+  #showcase .showcase__frame{
+    width: 420px !important;  /* 👈 um pouco menor */
+    max-width: 100% !important;
+  }
+}
+
+/* 4) MOBILE — mantém centralizado e compacto */
+@media (max-width: 768px){
+  #showcase .showcase__frame{
+    transform: none !important;
+    width: min(420px, 92vw) !important;
+  }
+}
