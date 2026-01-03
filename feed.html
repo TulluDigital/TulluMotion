@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tullu AI Studio — Feed Ad</title>
+  <title>Tullu AI Studio — Feed Ad (4:5)</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
     html,body{margin:0;background:var(--bg);color:var(--text)}
     body{display:grid;place-items:center;font-family:Inter,system-ui}
 
-    /* FEED 4:5 */
+    /* ✅ FEED 4:5 */
     .feed{
       width:1080px;
       height:1350px;
@@ -46,6 +46,7 @@
 
     .brand{
       display:flex;align-items:center;gap:14px;
+      min-width:0;
     }
 
     .brand img{height:48px}
@@ -119,56 +120,86 @@
       font-size:14px;
     }
 
-    /* SHOWCASE */
+    /* =========================================================
+       SHOWCASE (✅ SEM CORTE) — 1 imagem: assets/img/cels.png
+       ========================================================= */
     .showcase{
       position:absolute;
       left:0; right:0;
       top:610px;
-      height:520px;
+
+      /* ✅ deixa o conteúdo decidir a altura */
+      height:auto;
+
       display:grid;
       place-items:center;
-      overflow:hidden;
+
+      /* ✅ não corta o mockup */
+      overflow:visible;
     }
 
     .stage{
       position:relative;
       width:980px;
-      height:520px;
+
+      /* ✅ remove altura fixa */
+      height:auto;
+
       display:grid;
       place-items:center;
+
+      /* ✅ respiro inferior para não encostar na borda do feed */
+      padding-bottom: 46px;
     }
 
+    /* glow atrás e com fim suave */
     .glow{
       position:absolute;
-      inset:-40px;
+      width:980px;
+      height:560px; /* só o “halo”, não precisa casar com a imagem */
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
       background:radial-gradient(circle at 50% 55%,
         rgba(34,211,238,.18),
         rgba(59,130,246,.12),
         transparent 68%);
       filter:blur(26px);
       opacity:.95;
-      mask-image: radial-gradient(circle at 50% 55%, #000 45%, rgba(0,0,0,.55) 60%, transparent 78%);
+
+      /* ✅ “acaba suave” (fade) */
+      -webkit-mask-image: radial-gradient(circle at 50% 55%, #000 45%, rgba(0,0,0,.55) 60%, transparent 78%);
+              mask-image: radial-gradient(circle at 50% 55%, #000 45%, rgba(0,0,0,.55) 60%, transparent 78%);
     }
 
     .cels{
       position:relative;
-      width:720px;
+      width:760px;      /* ajuste fino: 720/760/800 */
+      max-width:100%;
       height:auto;
+      transform: translateY(0); /* ajuste fino: -10px / 0 / 10px */
       filter:drop-shadow(0 34px 80px rgba(0,0,0,.72));
       z-index:2;
       user-select:none;
+      pointer-events:none;
     }
 
-    /* FOOT */
+    /* FOOT (sem botão) */
     .trust{
       position:absolute;
       left:64px; right:64px;
       bottom:80px;
       display:flex;
       justify-content:space-between;
+      gap:18px;
       font-size:13px;
       color:rgba(242,242,242,.65);
     }
+
+    .trust > div{max-width:520px}
+
+    /* opcional: centralizar mais pro lado (se precisar) */
+    .stage{ transform: translateX(0px); } /* ex: 18px */
   </style>
 </head>
 
@@ -205,10 +236,10 @@
       </div>
     </section>
 
-    <section class="showcase">
+    <section class="showcase" aria-label="Mockup do AI Studio">
       <div class="stage">
         <div class="glow"></div>
-        <img class="cels" src="assets/img/cels.png" alt="Mockup AI Studio">
+        <img class="cels" src="assets/img/cels.png" alt="Mockup do AI Studio (celulares)">
       </div>
     </section>
 
