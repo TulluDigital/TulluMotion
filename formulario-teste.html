@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ativar teste grátis, Tullu AI Studio</title>
+  <meta name="description" content="Ative seu teste grátis do Tullu AI Studio, CRM de atendimento com IA no WhatsApp. Preencha o formulário, nós criamos sua conta e liberamos seu acesso ao painel." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS do projeto -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/branch-pages.css">
+
+  <style>
+    /* obrigatório, só asterisco vermelho */
+    .req{
+      color: #ff4a4a;
+      font-weight: 900;
+      margin-left: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" id="header">
+    <nav class="nav container">
+      <div class="nav__logo">
+        <a href="index.html">
+          <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
+          <span class="nav__logo-text">Motion</span>
+        </a>
+      </div>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#form" class="nav__link">Ativar teste</a></li>
+        </ul>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="cta-section" id="form" style="padding-top: 110px;">
+      <div class="container">
+        <div class="form-shell">
+
+          <div class="form-card">
+            <div class="form-header">
+              <div>
+                <h1 class="form-title">
+                  Bem vindo ao <span class="gradient-text">teste grátis</span> do Tullu AI Studio
+                </h1>
+                <p class="form-subtitle">
+                  Preencha as informações abaixo para criarmos sua conta de teste, configurar o agente no WhatsApp e liberar seu acesso ao painel.
+                  Sem cobrança automática, ativação somente com autorização.
+                </p>
+              </div>
+              <span class="badge badge--fast">Ativação em até 24h úteis</span>
+            </div>
+
+            <div class="stepper" role="tablist" aria-label="Etapas do formulário">
+              <div class="step is-active" data-step-indicator="1" role="tab" aria-selected="true">
+                <span class="step__num">1</span>
+                <span>Dados da conta</span>
+              </div>
+              <div class="step" data-step-indicator="2" role="tab" aria-selected="false">
+                <span class="step__num">2</span>
+                <span>Briefing do atendimento</span>
+              </div>
+              <div class="step" data-step-indicator="3" role="tab" aria-selected="false">
+                <span class="step__num">3</span>
+                <span>Termos e envio</span>
+              </div>
+            </div>
+
+            <div class="progress" aria-label="Progresso">
+              <div class="progress__bar" id="progressBar" style="width: 33%;"></div>
+            </div>
+
+            <br>
+
+            <form id="trialForm" novalidate>
+              <!-- hidden fields para planilha -->
+              <input type="hidden" id="source_url" name="source_url" value="">
+              <input type="hidden" id="user_agent" name="user_agent" value="">
+
+              <!-- STEP 1 -->
+              <section class="form-step" id="step1" data-step="1">
+                <h2 class="hero3_title" style="margin:0 0 8px;">Dados da conta</h2>
+                <p class="help" style="margin-top:0;">
+                  Esses dados são usados para criar seu acesso no painel e organizar seu teste corretamente.
+                </p>
+
+                <div class="field">
+                  <div class="label">
+                    <span>Tipo de conta<span class="req">*</span></span>
+                  </div>
+
+                  <div class="pills" role="radiogroup" aria-label="Tipo de conta">
+                    <label class="pill is-active" id="pillPJ">
+                      <input type="radio" name="account_type" id="accountTypePJ" value="PJ" checked data-required="true">
+                      <span>Pessoa Jurídica</span>
+                    </label>
+                    <label class="pill" id="pillPF">
+                      <input type="radio" name="account_type" id="accountTypePF" value="PF" data-required="true">
+                      <span>Pessoa Física</span>
+                    </label>
+                  </div>
+
+                  <div class="help">
+                    Selecione como você quer ativar o teste, depois o formulário adapta os campos.
+                  </div>
+                </div>
+
+                <!-- PJ -->
+                <div id="pjFields">
+                  <div class="form-grid form-grid--2">
+                    <div class="field">
+                      <div class="label"><span>Razão Social<span class="req">*</span></span></div>
+                      <input class="input" type="text" id="pj_razao_social" name="pj_razao_social"
+                        placeholder="Ex, Empresa Exemplo LTDA"
+                        autocomplete="organization"
+                        data-required="true"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>Email corporativo<span class="req">*</span></span></div>
+                      <input class="input" type="email" id="pj_email" name="pj_email"
+                        placeholder="contato@empresa.com"
+                        autocomplete="email"
+                        data-required="true"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>CNPJ<span class="req">*</span></span></div>
+                      <input class="input" type="text" id="pj_cnpj" name="pj_cnpj"
+                        placeholder="00.000.000/0000-00"
+                        inputmode="numeric"
+                        data-required="true"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>Segmento de negócio<span class="req">*</span></span></div>
+                      <input class="input" type="text" id="pj_segmento" name="pj_segmento"
+                        placeholder="Ex, clínica, imobiliária, academia, concessionária, tecnologia"
+                        data-required="true"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>Telefone comercial<span class="req">*</span></span></div>
+                      <input class="input" type="tel" id="pj_telefone" name="pj_telefone"
+                        placeholder="(11) 99999-9999"
+                        autocomplete="tel"
+                        data-required="true"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>Máximo de usuários<span class="req">*</span></span></div>
+                      <input class="input" type="number" id="pj_max_users" name="pj_max_users"
+                        placeholder="5"
+                        min="1"
+                        step="1"
+                        data-required="true"
+                      />
+                      <div class="help">Quantas pessoas do seu time vão acessar o painel durante o teste.</div>
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>Nome fantasia</span></div>
+                      <input class="input" type="text" id="pj_nome_fantasia" name="pj_nome_fantasia"
+                        placeholder="Nome fantasia da empresa"
+                        data-required="false"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>Tipo jurídico</span></div>
+                      <input class="input" type="text" id="pj_tipo_juridico" name="pj_tipo_juridico"
+                        placeholder="Ex, LTDA, MEI, EPP"
+                        data-required="false"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PF -->
+                <div id="pfFields" hidden>
+                  <div class="form-grid form-grid--2">
+                    <div class="field">
+                      <div class="label"><span>Nome completo<span class="req">*</span></span></div>
+                      <input class="input" type="text" id="pf_nome" name="pf_nome"
+                        placeholder="Ex, João da Silva Santos"
+                        autocomplete="name"
+                        data-required="true"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>CPF<span class="req">*</span></span></div>
+                      <input class="input" type="text" id="pf_cpf" name="pf_cpf"
+                        placeholder="000.000.000-00"
+                        inputmode="numeric"
+                        data-required="true"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>Email para contato<span class="req">*</span></span></div>
+                      <input class="input" type="email" id="pf_email" name="pf_email"
+                        placeholder="joao@email.com"
+                        autocomplete="email"
+                        data-required="true"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>Segmento de atuação<span class="req">*</span></span></div>
+                      <input class="input" type="text" id="pf_segmento" name="pf_segmento"
+                        placeholder="Ex, prestador de serviços, consultoria, profissional liberal"
+                        data-required="true"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>Telefone<span class="req">*</span></span></div>
+                      <input class="input" type="tel" id="pf_telefone" name="pf_telefone"
+                        placeholder="(11) 99999-9999"
+                        autocomplete="tel"
+                        data-required="true"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <div class="label"><span>Máximo de usuários<span class="req">*</span></span></div>
+                      <input class="input" type="number" id="pf_max_users" name="pf_max_users"
+                        placeholder="5"
+                        min="1"
+                        step="1"
+                        data-required="true"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field" style="margin-top: 14px;">
+                  <div class="label"><span>Observações<span class="req">*</span></span></div>
+
+                  <div class="example">
+                    <strong>Escreva com detalhe</strong><br>
+                    Ex, atendemos São Paulo e ABC, o objetivo do teste é automatizar agendamento e reduzir no show,
+                    hoje respondemos em até 30 minutos, perdemos leads quando o WhatsApp fica parado, queremos que a IA faça triagem e confirme horários.
+                  </div>
+
+                  <textarea class="textarea" id="observacoes" name="observacoes"
+                    placeholder="Escreva tudo que ajude a ativação, objetivo do teste, restrições, região atendida, quem atende hoje, prioridade no teste."
+                    data-required="true"
+                    data-maxlen="800"
+                  ></textarea>
+                  <div class="counter" id="obsCounter">0/800</div>
+                </div>
+
+                <div class="form-actions">
+                  <span></span>
+                  <button type="button" class="btn btn--primary btn--large" id="nextBtn1">Próximo</button>
+                </div>
+              </section>
+
+              <!-- STEP 2 -->
+              <section class="form-step" id="step2" data-step="2" hidden>
+                <h2 class="hero3_title" style="margin:0 0 8px;">Briefing do atendimento</h2>
+                <p class="help" style="margin-top:0;">
+                  Escreva como se estivesse explicando para alguém novo no seu time, nós vamos transformar isso em atendimento no WhatsApp e regras no painel.
+                </p>
+
+                <div class="field">
+                  <div class="label"><span>Descreva seu negócio e seu fluxo atual de atendimento<span class="req">*</span></span></div>
+
+                  <div class="example">
+                    <strong>Modelo para copiar e preencher</strong><br>
+                    Tenho uma empresa de [segmento]. Vendemos [produto ou serviço] com ticket médio de [valor].
+                    Os leads chegam por [canais]. O atendimento funciona assim, primeiro perguntamos [perguntas],
+                    depois classificamos por [critérios], então convertemos por [pix, link, agendamento, contrato].
+                    Hoje quem atende é [pessoa ou time], o tempo médio de resposta é [tempo].
+                    Dúvidas e objeções comuns são [liste]. Dores atuais são [liste].
+                    Regras importantes, horários, região, políticas e formas de pagamento, são [liste].
+                    Tom de voz da marca é [formal, direto, premium, descontraído].
+                    Sucesso no teste significa [meta clara].
+                  </div>
+
+                  <textarea class="textarea" id="briefing_geral" name="briefing_geral"
+                    placeholder="Escreva no formato do modelo acima, quanto mais detalhe, melhor."
+                    data-required="true"
+                    data-maxlen="3000"
+                  ></textarea>
+                  <div class="counter" id="briefCounter">0/3000</div>
+                </div>
+
+                <div class="field" style="margin-top: 14px;">
+                  <div class="label"><span>O que a IA deve fazer no WhatsApp, pré venda, durante, pós venda<span class="req">*</span></span></div>
+
+                  <div class="example">
+                    <strong>Exemplo</strong><br>
+                    Pré venda, triagem com 3 perguntas, filtrar por região e urgência, oferecer planos e coletar dados.
+                    Durante, enviar instruções, acompanhar status e confirmar pagamentos ou agendamentos.
+                    Pós venda, follow up em 24h, reativar leads frios em 3 dias, pedir avaliação e registrar no painel.
+                  </div>
+
+                  <textarea class="textarea" id="briefing_agente" name="briefing_agente"
+                    placeholder="Escreva em blocos, pré venda, durante, pós venda, com ações e regras claras."
+                    data-required="true"
+                    data-maxlen="2000"
+                  ></textarea>
+                  <div class="counter" id="agentCounter">0/2000</div>
+                </div>
+
+                <div class="field" style="margin-top: 14px;">
+                  <div class="label"><span>Links e ativos, site, Instagram, agenda, CRM, planilhas, mensagens prontas<span class="req">*</span></span></div>
+
+                  <div class="example">
+                    <strong>Exemplo</strong><br>
+                    Site, https://exemplo.com, Instagram, https://instagram.com/exemplo, Agenda, Google Calendar,
+                    CRM atual, planilha de leads no Google Sheets, catálogo em PDF, mensagens prontas, FAQ e links de pagamento.
+                  </div>
+
+                  <textarea class="textarea" id="integracoes_ativos" name="integracoes_ativos"
+                    placeholder="Cole links e descreva o que você já usa, se não tiver, escreva que não usa."
+                    data-required="true"
+                    data-maxlen="1500"
+                  ></textarea>
+                  <div class="counter" id="assetsCounter">0/1500</div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn--outline btn--large" id="backBtn2">Voltar</button>
+                  <button type="button" class="btn btn--primary btn--large" id="nextBtn2">Próximo</button>
+                </div>
+              </section>
+
+              <!-- STEP 3 -->
+              <section class="form-step" id="step3" data-step="3" hidden>
+                <h2 class="hero3_title" style="margin:0 0 8px;">Termos e envio</h2>
+                <p class="help" style="margin-top:0;">
+                  Após enviar, nós vamos preparar sua ativação em até 24h úteis, você recebe QR Code, termo de autorização e login do painel.
+                </p>
+
+                <div class="glow-card" style="margin-top: 12px;">
+                  <div class="cards-grid" style="grid-template-columns: 1fr; gap: 12px;">
+                    <div class="card-base" style="align-items:flex-start;">
+                      <div class="pain-card__icon">✅</div>
+                      <div>
+                        <strong>Sem cobrança automática</strong>
+                        <div style="margin-top:.35rem; color: var(--muted);">
+                          Você só ativa de verdade após aceitar o termo de autorização.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-base" style="align-items:flex-start;">
+                      <div class="pain-card__icon">🔐</div>
+                      <div>
+                        <strong>Ativação controlada</strong>
+                        <div style="margin-top:.35rem; color: var(--muted);">
+                          O teste é configurado para seu fluxo e você controla o acesso.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-base" style="align-items:flex-start;">
+                      <div class="pain-card__icon">🕒</div>
+                      <div>
+                        <strong>Prazo padrão</strong>
+                        <div style="margin-top:.35rem; color: var(--muted);">
+                          Retorno em até 24h úteis com QR Code, termo e login do painel.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field" style="margin-top: 14px;">
+                  <label class="pill" style="align-items:flex-start; border-radius: 16px; padding: 14px; cursor: pointer;">
+                    <input
+                      type="checkbox"
+                      id="accept_terms"
+                      name="accept_terms"
+                      data-required="true"
+                      style="margin-top: 2px;"
+                    >
+                    <span style="line-height: 1.45;">
+                      Eu li e aceito os <a href="https://tullumotion.com/termos.pdf" target="_blank" rel="noopener" style="text-decoration: underline;">Termos de Uso</a><span class="req">*</span>
+                    </span>
+                  </label>
+                  <div class="help">
+                    O link é um placeholder, você pode trocar depois por PDF ou página oficial.
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn--outline btn--large" id="backBtn3">Voltar</button>
+                  <button type="submit" class="btn btn--primary btn--large" id="submitBtn">Enviar</button>
+                </div>
+              </section>
+
+              <!-- CONFIRMAÇÃO FINAL -->
+              <section class="form-step" id="successStep" data-step="success" hidden>
+                <h2 class="hero3_title" style="margin:0 0 8px;">Pronto, recebemos seus dados</h2>
+                <p class="help" style="margin-top:0;">
+                  Em até 24h úteis você recebe QR Code, termo de autorização e login do painel.
+                </p>
+
+                <div class="showcase__cta" style="margin-top: 12px;">
+                  <a
+                    href="https://wa.me/5511978217095?text=J%C3%A1%20preenchi%20o%20formul%C3%A1rio%2C%20podemos%20dar%20continuidade."
+                    class="btn btn--primary btn--large"
+                    target="_blank"
+                    rel="noopener"
+                  >Voltar para o WhatsApp e confirmar envio</a>
+
+                  <small class="demo__note" style="margin-top: 10px;">
+                    * Você deve clicar no botão e voltar ao WhatsApp com a mensagem de confirmação de envio para que o teste se inicie com sucesso.
+                  </small>
+                </div>
+              </section>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer, sem links para sair do formulário -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
+            <span class="footer__logo-text"></span>
+          </div>
+          <p class="footer__description">
+            Tullu AI Studio, CRM de atendimento com IA no WhatsApp, teste grátis com ativação guiada.
+          </p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__section">
+            <h4 class="footer__section-title">Suporte</h4>
+            <ul class="footer__list">
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Ativação em até 24h úteis</span></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Sem cobrança automática</span></li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__section-title">Acesso</h4>
+            <ul class="footer__list">
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Painel, app.tullumotion.com</span></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Ativação com autorização</span></li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__section-title">Legal</h4>
+            <ul class="footer__list">
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Termos de uso exigidos no envio</span></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Privacidade e segurança do teste</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          © 2026 Tullu Motion. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS base do site -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/branch-animations.js"></script>
+
+  <!-- JS do formulário -->
+  <script src="assets/js/testform.js"></script>
+</body>
+</html>
