@@ -3571,3 +3571,64 @@ section[id]{
   overflow-x: hidden;  /* ok */
   overflow-y: visible; /* evita cortar a transição de seções */
 }
+
+
+/* =========================================================
+   FIX iPHONE (Safari/Instagram): mockups pequenos + lado a lado + sobreposição
+   ========================================================= */
+
+@supports (-webkit-touch-callout: none) {
+
+  /* força layout do frame como grid (mais estável que flex no iOS in-app) */
+  #showcase .showcase__frame{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    place-items: center !important;
+    gap: 0 !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+
+    left: 0 !important;
+    transform: none !important;
+  }
+
+  /* trava tamanho “pequeno” e impede imagem de explodir */
+  #showcase .showcase__img{
+    width: 180px !important;
+    max-width: 180px !important;
+    height: auto !important;
+    max-height: none !important;
+
+    display: block !important;
+  }
+
+  /* CRM (esquerda) */
+  #showcase .showcase__img--main{
+    width: 180px !important;
+    max-width: 180px !important;
+
+    transform: rotate(-7deg) translateY(6px) !important;
+    z-index: 1 !important;
+    filter: drop-shadow(0 14px 30px rgba(0,0,0,0.55)) !important;
+  }
+
+  /* LOGIN (direita) — maior e sobrepondo por cima */
+  #showcase .showcase__img--over{
+    width: 195px !important;
+    max-width: 195px !important;
+
+    transform: rotate(8deg) translateX(-55px) translateY(16px) !important;
+    z-index: 3 !important;
+    filter: drop-shadow(0 18px 40px rgba(0,0,0,0.65)) !important;
+  }
+
+  /* garante que NADA em mobile reforce coluna */
+  @media (max-width: 900px){
+    #showcase .showcase__frame{
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+    }
+  }
+}
