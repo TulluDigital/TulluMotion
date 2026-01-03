@@ -4214,3 +4214,59 @@ section[id]{
     justify-content: center;
   }
 }
+/* ================================
+   FIX FINAL — MOCKUP DESKTOP
+   ================================ */
+
+/* garante que o showcase cria um contexto */
+#showcase{
+  position: relative;
+  overflow: hidden;
+}
+
+/* visual do mockup */
+#showcase .showcase__visual{
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: visible;
+}
+
+/* frame do mockup */
+#showcase .showcase__frame{
+  position: relative;
+  width: 460px;              /* 🔑 limita o tamanho */
+  max-width: 100%;
+  margin-right: -40px;       /* 🔑 empurra pra direita sem vazar */
+}
+
+/* imagem em si */
+#showcase .showcase__img{
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 32px 80px rgba(0,0,0,.65));
+}
+
+/* CTA fica abaixo do texto, não do mockup */
+#showcase .showcase__cta{
+  grid-column: 1 / -1;
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* ================================
+   MOBILE — mantém centralizado
+   ================================ */
+@media (max-width: 768px){
+  #showcase .showcase__frame{
+    width: min(420px, 92vw);
+    margin-right: 0;
+  }
+
+  #showcase .showcase__cta{
+    justify-content: center;
+  }
+}
