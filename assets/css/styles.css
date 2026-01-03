@@ -3374,3 +3374,54 @@ figure.showcase__frame.showcase__frame--clean {
   position: relative;
   z-index: 1;
 }
+/* ===== ROTACAO PREMIUM DOS MOCKUPS ===== */
+
+#showcase .showcase__frame{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+
+/* Mockup CRM (esquerda) */
+#showcase .showcase__img--main{
+  width: 420px;
+  max-height: 560px;
+
+  transform:
+    rotate(-7deg)
+    translateY(10px);
+
+  z-index: 1;
+  filter: drop-shadow(0 28px 60px rgba(0,0,0,0.55));
+}
+
+/* Mockup Login (direita, mais à frente) */
+#showcase .showcase__img--over{
+  width: 440px;                 /* ligeiramente maior */
+  max-height: 580px;
+
+  transform:
+    rotate(8deg)
+    translateX(-80px)
+    translateY(30px);
+
+  z-index: 3;
+  filter: drop-shadow(0 38px 80px rgba(0,0,0,0.65));
+}
+@media (max-width: 640px){
+  #showcase .showcase__frame{
+    flex-direction: column;
+  }
+
+  #showcase .showcase__img--main{
+    transform: rotate(-4deg) translateY(0);
+    width: 340px;
+  }
+
+  #showcase .showcase__img--over{
+    transform: rotate(4deg) translateY(-20px);
+    width: 360px;
+  }
+}
+
