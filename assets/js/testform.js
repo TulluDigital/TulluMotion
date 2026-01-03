@@ -1,10 +1,11 @@
 /**
  * Tullu AI Studio – Teste Grátis
  * Arquivo: /assets/js/testform.js
- * Fix principal:
- * - Envia POST como text/plain (sem header application/json) para evitar preflight/CORS no iOS Safari
- * - Parse robusto da resposta (JSON ou texto)
- * - Step 1 valida só PJ ou só PF (determinístico)
+ * Inclui:
+ * - Stepper topo atualiza conforme etapa (is-active, is-done, aria-selected)
+ * - Toggle PJ/PF robusto
+ * - Validação Step1 determinística (somente PJ ou PF)
+ * - Envio sem CORS (sendBeacon + fallback fetch no-cors)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -35,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const radioPJ = document.getElementById("accountTypePJ");
   const radioPF = document.getElementById("accountTypePF");
+
+  const stepIndicators = Array.from(document.querySelectorAll("[data-step-indicator]"));
 
   // meta
   const sourceUrl = document.getElementById("source_url");
@@ -74,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setActivePill(isPJ);
   }
 
+  // clique no pill inteiro (mobile friendly)
   if (pillPJ) {
     pillPJ.addEventListener("click", () => {
       radioPJ.checked = true;
@@ -94,6 +98,21 @@ document.addEventListener("DOMContentLoaded", () => {
   radioPF.addEventListener("change", toggleAccountType);
   toggleAccountType();
 
+  // ===== Stepper topo =====
+  function updateStepper(activeStep) {
+    // activeStep: 1,2,3 (não roda para "success")
+    stepIndicators.forEach((el) => {
+      const s = Number(el.getAttribute("data-step-indicator"));
+      const isActive = s === activeStep;
+      const isDone = s < activeStep;
+
+      el.classList.toggle("is-active", isActive);
+      el.classList.toggle("is-done", isDone);
+
+      el.setAttribute("aria-selected", isActive ? "true" : "false");
+    });
+  }
+
   function showStep(step) {
     Object.values(steps).forEach((s) => (s.hidden = true));
     steps[step].hidden = false;
@@ -101,7 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (step === 1) progressBar.style.width = "33%";
     if (step === 2) progressBar.style.width = "66%";
     if (step === 3) progressBar.style.width = "100%";
+
+    if (step === 1 || step === 2 || step === 3) updateStepper(step);
   }
+
+  // init
+  showStep(1);
 
   btnNext1.addEventListener("click", () => {
     if (validateStep(1)) showStep(2);
@@ -114,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnBack2.addEventListener("click", () => showStep(1));
   btnBack3.addEventListener("click", () => showStep(2));
 
-  // ===== validação determinística =====
+  // ===== validação determinística Step1 =====
   const STEP1_REQUIRED_PJ = [
     "pj_razao_social",
     "pj_email",
@@ -156,14 +180,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const required = isPJ ? STEP1_REQUIRED_PJ : STEP1_REQUIRED_PF;
 
     // limpa erros dos dois lados
-    [...new Set([...STEP1_REQUIRED_PJ, ...STEP1_REQUIRED_PF])].forEach((id) => {
-      markError(id, false);
-    });
+    [...new Set([...STEP1_REQUIRED_PJ, ...STEP1_REQUIRED_PF])].forEach((id) => markError(id, false));
 
     let ok = true;
     required.forEach((id) => {
-      const v = getValue(id);
-      if (!v) {
+      if (!getValue(id)) {
         markError(id, true);
         ok = false;
       }
@@ -206,9 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (type === "radio") {
-        const group = FORM.querySelectorAll(
-          `input[type="radio"][name="${CSS.escape(field.name)}"]`
-        );
+        const group = FORM.querySelectorAll(`input[type="radio"][name="${CSS.escape(field.name)}"]`);
         const anyChecked = Array.from(group).some((r) => r.checked);
         if (!anyChecked) {
           field.classList.add("error");
@@ -233,6 +252,33 @@ document.addEventListener("DOMContentLoaded", () => {
     return validateStepGeneric(steps[step]);
   }
 
+  // ===== envio sem CORS =====
+  function sendPayloadNoCors(payload) {
+    const body = JSON.stringify(payload);
+
+    // 1) sendBeacon (melhor)
+    if (navigator.sendBeacon) {
+      try {
+        const blob = new Blob([body], { type: "text/plain;charset=UTF-8" });
+        const ok = navigator.sendBeacon(ENDPOINT, blob);
+        return Promise.resolve(ok);
+      } catch (_) {
+        // cai pro fallback
+      }
+    }
+
+    // 2) fetch no-cors (fire-and-forget)
+    return fetch(ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      body,
+      cache: "no-store",
+      redirect: "follow",
+    })
+      .then(() => true)
+      .catch(() => false);
+  }
+
   // ===== submit =====
   FORM.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -251,46 +297,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const submitBtn = document.getElementById("submitBtn");
     const prevText = submitBtn ? submitBtn.textContent : "";
+
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = "Enviando...";
     }
 
-    try {
-      // IMPORTANTÍSSIMO: sem headers -> vira text/plain, evita preflight no iOS
-      const res = await fetch(ENDPOINT, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        redirect: "follow",
-        cache: "no-store",
-      });
+    const ok = await sendPayloadNoCors(payload);
 
-      const raw = await res.text();
-      let data = null;
-
-      try {
-        data = JSON.parse(raw);
-      } catch (_) {
-        // se não veio JSON, ainda assim tentamos detectar sucesso
-        // muitos Apps Scripts devolvem HTML ou texto em alguns cenários
-        data = { ok: false, raw };
-      }
-
-      if (data && data.ok === true) {
-        showStep("success");
-        return;
-      }
-
-      console.error("Resposta do endpoint (raw):", raw);
-      alert("Erro ao enviar o formulário. Tente novamente em instantes.");
-    } catch (err) {
-      console.error("Fetch falhou:", err);
-      alert("Erro de conexão. Tente novamente em instantes.");
-    } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = prevText || "Enviar";
-      }
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = prevText || "Enviar";
     }
+
+    if (ok) {
+      // sem CORS não dá pra ler resposta, então avançamos para sucesso
+      Object.values(steps).forEach((s) => (s.hidden = true));
+      steps.success.hidden = false;
+      return;
+    }
+
+    alert("Erro ao enviar. Tente novamente em instantes.");
   });
 });
