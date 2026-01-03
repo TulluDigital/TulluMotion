@@ -4125,7 +4125,8 @@ section[id]{
 @media (max-width: 768px){
 
   #showcase{
-    padding: 64px 0;
+     padding-top: 32px;      /* 👈 diminui espaço em cima */
+    padding-bottom: 32px;   /* 👈 diminui espaço embaixo */
   }
 
   #showcase .showcase__grid{
