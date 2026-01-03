@@ -29,20 +29,32 @@ body{
 /* ===== Canvas ===== */
 .feed{
   width:min(1080px,96vw);
-  aspect-ratio:4/5;            /* feed vertical */
+  aspect-ratio:4/5;
   background:#fff;
   border-radius:28px;
   overflow:hidden;
   position:relative;
 }
 
-/* profundidade premium leve */
+/* ===== Glows premium (NOVO) ===== */
+.feed::before{
+  content:"";
+  position:absolute;
+  inset:-10%;
+  background:
+    radial-gradient(520px 260px at 50% 0%, rgba(37,99,235,.14), transparent 60%),
+    radial-gradient(420px 260px at 20% 35%, rgba(59,130,246,.12), transparent 62%),
+    radial-gradient(420px 260px at 80% 35%, rgba(34,211,238,.10), transparent 62%);
+  pointer-events:none;
+}
+
+/* profundidade leve */
 .feed::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    radial-gradient(600px 300px at 50% 0%, rgba(37,99,235,.08), transparent 60%);
+    linear-gradient(180deg, rgba(255,255,255,0), rgba(0,0,0,.04));
   pointer-events:none;
 }
 
@@ -50,7 +62,7 @@ body{
 .content{
   position:relative;
   height:100%;
-  padding:64px 64px 48px;
+  padding:56px 64px 48px; /* ↓ menos espaço geral */
   display:flex;
   flex-direction:column;
 }
@@ -71,7 +83,7 @@ body{
 /* ===== Texto ===== */
 .text{
   text-align:center;
-  margin-top:-12px;
+  margin-top:-28px; /* 🔥 sobe o bloco de texto */
 }
 
 .text h1{
@@ -79,6 +91,7 @@ body{
   font-size:clamp(52px,5.2vw,72px);
   font-weight:900;
   letter-spacing:-0.03em;
+  line-height:1.08; /* 🔥 line-height menor */
   color:var(--ink);
 }
 
@@ -87,7 +100,7 @@ body{
 }
 
 .text p{
-  margin-top:14px;
+  margin-top:12px;
   font-size:clamp(22px,2vw,26px);
   font-weight:600;
   color:var(--muted);
@@ -95,21 +108,21 @@ body{
 
 /* ===== Logo inferior ===== */
 .footer-logo{
-  margin-top:36px;
+  margin-top:22px; /* 🔥 aproxima mais do centro */
   display:flex;
   justify-content:center;
 }
 
 .footer-logo img{
-  width:170px;
+  width:160px;
   opacity:.95;
 }
 
 /* Mobile */
 @media(max-width:600px){
-  .content{padding:36px 26px 32px}
+  .content{padding:40px 26px 36px}
   .visual img{max-width:95%}
-  .footer-logo img{width:150px}
+  .text{margin-top:-20px}
 }
 </style>
 </head>
@@ -134,7 +147,7 @@ body{
       </p>
     </div>
 
-    <!-- Logo centralizado embaixo -->
+    <!-- Logo -->
     <div class="footer-logo">
       <img src="assets/img/logoma.avif" alt="Mercado Agentes">
     </div>
