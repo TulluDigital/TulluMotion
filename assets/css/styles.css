@@ -2845,3 +2845,290 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   }
 }
 
+/* ============================
+   FORM WIZARD (Formulário Teste)
+   Add-on CSS (não quebra o AI Studio)
+   ============================ */
+
+/* Container do formulário */
+.form-shell{
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.form-card{
+  border-radius: 22px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 34px rgba(0,0,0,0.35);
+  padding: 22px;
+}
+
+.form-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.form-title{
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.form-subtitle{
+  margin: 6px 0 0;
+  color: var(--muted, rgba(255,255,255,0.70));
+  line-height: 1.5;
+}
+
+/* Stepper (topo) */
+.stepper{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items:center;
+  margin: 14px 0 10px;
+}
+
+.step{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.02);
+  color: rgba(255,255,255,0.75);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.step__num{
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+}
+
+.step.is-active{
+  border-color: rgba(0,200,255,0.35);
+  background: rgba(0,200,255,0.08);
+  color: rgba(255,255,255,0.92);
+  box-shadow: 0 0 0 1px rgba(0,200,255,0.10) inset, 0 16px 40px rgba(0,145,255,0.14);
+}
+
+.step.is-active .step__num{
+  background: rgba(0,200,255,0.16);
+  border-color: rgba(0,200,255,0.30);
+}
+
+/* Barra de progresso */
+.progress{
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  overflow: hidden;
+}
+
+.progress__bar{
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(59,130,246,0.95), rgba(34,211,238,0.95));
+  box-shadow: 0 0 24px rgba(0,200,255,0.25);
+  transition: width .35s ease;
+}
+
+/* Grid de campos */
+.form-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 860px){
+  .form-grid--2{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Field */
+.field{
+  display:flex;
+  flex-direction:column;
+  gap: 8px;
+}
+
+.label{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.92);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+}
+
+.label small{
+  font-weight: 700;
+  color: rgba(255,255,255,0.55);
+}
+
+.input, .select, .textarea{
+  width: 100%;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.92);
+  padding: 12px 12px;
+  outline: none;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+  box-sizing: border-box;
+}
+
+.textarea{
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.input:focus, .select:focus, .textarea:focus{
+  border-color: rgba(0,200,255,0.35);
+  box-shadow: 0 0 0 4px rgba(0,200,255,0.10);
+  background: rgba(255,255,255,0.04);
+}
+
+.help{
+  color: var(--muted, rgba(255,255,255,0.70));
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+/* Bloco “Exemplo do nível esperado” (muito importante pro teu caso) */
+.example{
+  border-radius: 14px;
+  background: rgba(0,200,255,0.06);
+  border: 1px solid rgba(0,200,255,0.18);
+  padding: 12px 12px;
+  color: rgba(255,255,255,0.80);
+  font-size: 12.8px;
+  line-height: 1.5;
+}
+
+.example strong{
+  color: rgba(255,255,255,0.92);
+}
+
+.counter{
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  text-align:right;
+  margin-top: -2px;
+}
+
+/* Radio pill (PJ/PF) */
+.pills{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.02);
+  cursor: pointer;
+  user-select: none;
+}
+
+.pill input{
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.35);
+  position: relative;
+}
+
+.pill input:checked{
+  border-color: rgba(0,200,255,0.85);
+  box-shadow: 0 0 14px rgba(0,200,255,0.25);
+}
+
+.pill input:checked::after{
+  content:"";
+  position:absolute;
+  inset: 3px;
+  border-radius: 999px;
+  background: rgba(0,200,255,0.95);
+}
+
+.pill.is-active{
+  border-color: rgba(0,200,255,0.30);
+  background: rgba(0,200,255,0.07);
+}
+
+/* Validação */
+.is-error .input, .is-error .select, .is-error .textarea{
+  border-color: rgba(255, 74, 74, 0.40);
+  box-shadow: 0 0 0 4px rgba(255, 74, 74, 0.10);
+}
+
+.error-msg{
+  color: rgba(255, 120, 120, 0.92);
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+/* Footer fixo de ações (Próximo/Voltar) */
+.form-actions{
+  display:flex;
+  justify-content:space-between;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.form-actions .btn{
+  min-width: 160px;
+}
+
+/* Badge de “rápido / obrigatório / recomendado” */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.02);
+  color: rgba(255,255,255,0.75);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.badge--required{
+  border-color: rgba(255, 74, 74, 0.22);
+  background: rgba(255, 74, 74, 0.06);
+}
+
+.badge--fast{
+  border-color: rgba(0,200,255,0.22);
+  background: rgba(0,200,255,0.06);
+}
