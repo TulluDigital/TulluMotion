@@ -3828,3 +3828,140 @@ section[id]{
     height: auto;
   }
 }
+/* =========================================================
+   SHOWCASE — versão com 1 PNG (cels.png) estável em mobile
+   ========================================================= */
+
+#showcase .showcase__grid{
+  display: grid;
+  gap: 28px;
+  align-items: center;
+}
+
+/* desktop: texto + visual */
+@media (min-width: 900px){
+  #showcase .showcase__grid{
+    grid-template-columns: 1.05fr .95fr;
+  }
+}
+
+#showcase .showcase__visual{
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+
+/* glow discreto e MAIS BAIXO (não invade o título) */
+#showcase .showcase__glow{
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle,
+    rgba(34,211,238,.16),
+    rgba(59,130,246,.10),
+    transparent 70%);
+  filter: blur(26px);
+  opacity: .45;
+  transform: translateY(60px); /* joga pra trás/baixo */
+  pointer-events: none;
+  z-index: 0;
+}
+
+#showcase .showcase__frame{
+  position: relative;
+  width: min(520px, 92%);
+  margin: 0;
+  display: grid;
+  place-items: center;
+  overflow: visible; /* não corta */
+  z-index: 1;
+}
+
+/* a imagem final (já com os 2 celulares) */
+#showcase .showcase__img{
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 34px 80px rgba(0,0,0,.65));
+}
+
+/* MOBILE — garante “respiro” e tamanho perfeito */
+@media (max-width: 640px){
+  #showcase{
+    padding-top: 8px;
+    padding-bottom: 34px;
+  }
+
+  #showcase .showcase__frame{
+    width: min(420px, 92vw);
+  }
+
+  /* se quiser ainda menor, mexe só aqui */
+  /* #showcase .showcase__frame{ width: min(380px, 90vw); } */
+}
+
+/* MOBILE bem pequeno (iPhone SE / telas curtinhas) */
+@media (max-width: 380px){
+  #showcase .showcase__frame{
+    width: 92vw;
+  }
+}
+/* =========================================================
+   SHOWCASE — versão final com cels.png
+   ========================================================= */
+
+#showcase .showcase__visual{
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin-top: 28px;
+  overflow: visible;
+}
+
+/* glow sutil e jogado pra trás */
+#showcase .showcase__glow{
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle,
+    rgba(34,211,238,.16),
+    rgba(59,130,246,.10),
+    transparent 70%);
+  filter: blur(28px);
+  opacity: .4;
+  transform: translateY(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#showcase .showcase__frame{
+  position: relative;
+  width: min(520px, 92%);
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+#showcase .showcase__img{
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 32px 80px rgba(0,0,0,.65));
+}
+
+/* MOBILE — exatamente como no print */
+@media (max-width: 640px){
+  #showcase{
+    padding-bottom: 36px;
+  }
+
+  #showcase .showcase__frame{
+    width: min(420px, 92vw);
+  }
+}
+
+/* telas muito pequenas */
+@media (max-width: 380px){
+  #showcase .showcase__frame{
+    width: 94vw;
+  }
+}
