@@ -3132,3 +3132,31 @@ body.has-bottom-ui .sticky-cta{ bottom: calc(env(safe-area-inset-bottom) + 60px)
   border-color: rgba(0,200,255,0.22);
   background: rgba(0,200,255,0.06);
 }
+
+/* balão azul no padrão dark + glow */
+.info-bubble{
+  border-radius: 16px;
+  padding: 14px 14px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* azul (usei os seus tons do gradiente) */
+.info-bubble--blue{
+  background: rgba(59,130,246,.12);
+  border: 1px solid rgba(34,211,238,.28);
+  color: rgba(255,255,255,.88);
+  box-shadow: 0 0 0 1px rgba(59,130,246,.12), 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* quando estiver no sucesso: some topo + stepper + progress */
+.form-card.is-success .form-header,
+.form-card.is-success .stepper,
+.form-card.is-success .progress{
+  display: none !important;
+}
+
+/* opcional: dá um respiro no sucesso */
+.form-card.is-success #successStep{
+  padding-top: 8px;
+}
