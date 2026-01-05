@@ -252,107 +252,224 @@
     </p>
   </div>
 </section>
-<!-- VISUALIZAÇÃO DO FLUXO (antes dos valores/planos) -->
+<!-- FLUXO VISUAL (antes dos valores/planos) -->
 <section class="cta-section" id="fluxo-sorteio">
   <div class="container">
 
     <header class="section__header">
       <h2 class="section__title">
-        Visualize o <span class="gradient-text">fluxo do Sorteio Inteligente</span>
+        Veja o <span class="gradient-text">fluxo completo</span> do Sorteio Inteligente
       </h2>
       <p class="section__subtitle">
-        Não é “só um sorteio”. É uma campanha que vira base de clientes e marketing pronto para rodar.
+        Em vez de urna e papel, você roda uma campanha que vira base de clientes e marketing pronto.
       </p>
     </header>
 
-    <div class="card-base" style="
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 18px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.10);
-    ">
+    <div class="card-base flowviz" aria-label="Fluxo do Sorteio Inteligente">
+      <!-- shapes atrás (apenas visual) -->
+      <div class="flowviz__bg" aria-hidden="true">
+        <span class="flowviz__pill flowviz__pill--1"></span>
+        <span class="flowviz__pill flowviz__pill--2"></span>
+        <span class="flowviz__pill flowviz__pill--3"></span>
+        <span class="flowviz__pill flowviz__pill--4"></span>
+      </div>
 
-      <!-- STEP 1 -->
-      <div class="card-base" style="background: rgba(255,255,255,0.03); align-items:flex-start;">
-        <div class="pain-card__icon">1</div>
-        <div>
-          <strong>Página + formulário com a marca do seu negócio</strong>
-          <div style="margin-top:.35rem; color: var(--muted);">
-            Layout igual site profissional, com hospedagem e domínio/URL do sorteio.
-            O acesso pode ser via QR Code no caixa ou link.
+      <!-- conteúdo sempre em cima -->
+      <div class="flowviz__content">
+
+        <div class="flowstep">
+          <div class="flowstep__n">1</div>
+          <div class="flowstep__box">
+            <strong>Landing + formulário com a sua marca</strong>
+            <p>
+              A gente cria a página do sorteio no seu domínio/URL e um formulário rápido (cadastro em segundos).
+            </p>
           </div>
         </div>
-      </div>
 
-      <div style="display:flex; justify-content:center; padding: 10px 0;">
-        <span class="tag tag--ai" aria-hidden="true">↓</span>
-      </div>
+        <div class="flowarrow" aria-hidden="true">
+          <span class="flowarrow__dot">↓</span>
+        </div>
 
-      <!-- STEP 2 -->
-      <div class="card-base" style="background: rgba(255,255,255,0.03); align-items:flex-start;">
-        <div class="pain-card__icon">2</div>
-        <div>
-          <strong>O cliente se cadastra em segundos</strong>
-          <div style="margin-top:.35rem; color: var(--muted);">
-            Nome, telefone e CPF (ou o que você definir). Com consentimento e links de termos (LGPD) já no formulário.
+        <div class="flowstep">
+          <div class="flowstep__n">2</div>
+          <div class="flowstep__box">
+            <strong>O cliente se cadastra e confirma</strong>
+            <p>
+              Nome + telefone + CPF (ou campos que você escolher) com consentimento e links de termos já no formulário.
+            </p>
           </div>
         </div>
-      </div>
 
-      <div style="display:flex; justify-content:center; padding: 10px 0;">
-        <span class="tag tag--ai" aria-hidden="true">↓</span>
-      </div>
+        <div class="flowarrow" aria-hidden="true">
+          <span class="flowarrow__dot">↓</span>
+        </div>
 
-      <!-- STEP 3 -->
-      <div class="card-base" style="background: rgba(255,255,255,0.03); align-items:flex-start;">
-        <div class="pain-card__icon">3</div>
-        <div>
-          <strong>Os dados caem automaticamente na sua planilha</strong>
-          <div style="margin-top:.35rem; color: var(--muted);">
-            Tudo organizado com data/hora, pronto para acompanhar a campanha e exportar no dia do sorteio.
+        <div class="flowstep">
+          <div class="flowstep__n">3</div>
+          <div class="flowstep__box">
+            <strong>Dados caem automaticamente na planilha</strong>
+            <p>
+              Tudo organizado com data/hora. Base pronta para acompanhar e sortear no dia.
+            </p>
           </div>
         </div>
-      </div>
 
-      <div style="display:flex; justify-content:center; padding: 10px 0;">
-        <span class="tag tag--ai" aria-hidden="true">↓</span>
-      </div>
+        <div class="flowarrow" aria-hidden="true">
+          <span class="flowarrow__dot">↓</span>
+        </div>
 
-      <!-- STEP 4 -->
-      <div class="card-base" style="background: rgba(255,255,255,0.03); align-items:flex-start;">
-        <div class="pain-card__icon">4</div>
-        <div>
-          <strong>Disparamos e-mails para a base durante a campanha</strong>
-          <div style="margin-top:.35rem; color: var(--muted);">
-            Lembretes, promoções e atualizações do sorteio (conforme o plano e o período da ação).
-            Você transforma participação em retorno.
+        <div class="flowstep">
+          <div class="flowstep__n">4</div>
+          <div class="flowstep__box">
+            <strong>Campanhas por e-mail durante o período</strong>
+            <p>
+              Enviamos e-mails para a base (promoções, lembretes e avisos) conforme o plano e o tempo do sorteio.
+            </p>
           </div>
         </div>
-      </div>
 
-      <div style="display:flex; justify-content:center; padding: 10px 0;">
-        <span class="tag tag--ai" aria-hidden="true">↓</span>
-      </div>
+        <div class="flowarrow" aria-hidden="true">
+          <span class="flowarrow__dot">↓</span>
+        </div>
 
-      <!-- STEP 5 -->
-      <div class="card-base" style="
-        background: linear-gradient(180deg, rgba(34,211,238,0.18), rgba(34,211,238,0.06));
-        border: 1px solid rgba(34,211,238,0.30);
-        align-items:flex-start;
-      ">
-        <div class="pain-card__icon">5</div>
-        <div>
-          <strong>Quando o sorteio acontece, você fica com o ativo</strong>
-          <div style="margin-top:.35rem; color: var(--muted);">
-            Uma base rica de clientes engajados, pronta para campanhas futuras — e não uma urna cheia de papéis.
+        <div class="flowstep flowstep--final">
+          <div class="flowstep__n">5</div>
+          <div class="flowstep__box">
+            <strong>O sorteio acontece — e você fica com o ativo</strong>
+            <p>
+              Além do ganhador, você fica com uma base rica de clientes que já participou e engajou com seu negócio.
+            </p>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
 
   </div>
+
+  <!-- CSS LOCAL (não mexe no resto do site) -->
+  <style>
+    /* container */
+    #fluxo-sorteio .flowviz{
+      position: relative;
+      overflow: hidden; /* ok pq conteúdo tá acima com z-index */
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 22px;
+    }
+
+    /* bg shapes (atrás) */
+    #fluxo-sorteio .flowviz__bg{
+      position:absolute;
+      inset: 14px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 25% 35%, rgba(59,130,246,0.18), transparent 60%),
+                  radial-gradient(circle at 75% 35%, rgba(34,211,238,0.12), transparent 60%);
+      border: 1px solid rgba(255,255,255,0.08);
+      z-index: 0;
+      pointer-events:none;
+    }
+    #fluxo-sorteio .flowviz__pill{
+      position:absolute;
+      bottom: 16px;
+      width: 64px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      filter: blur(0px);
+      opacity: .9;
+    }
+    #fluxo-sorteio .flowviz__pill--1{ left: 20px; height: 240px; background: rgba(59,130,246,0.12); }
+    #fluxo-sorteio .flowviz__pill--2{ left: 105px; height: 190px; }
+    #fluxo-sorteio .flowviz__pill--3{ right: 105px; height: 150px; }
+    #fluxo-sorteio .flowviz__pill--4{ right: 20px; height: 240px; background: rgba(34,211,238,0.10); }
+
+    /* conteúdo (sempre em cima) */
+    #fluxo-sorteio .flowviz__content{
+      position: relative;
+      z-index: 2;
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    #fluxo-sorteio .flowstep{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+    }
+    #fluxo-sorteio .flowstep__n{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 800;
+      color: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      flex: 0 0 auto;
+    }
+    #fluxo-sorteio .flowstep__box{
+      flex: 1 1 auto;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 18px;
+      padding: 12px 14px;
+    }
+    #fluxo-sorteio .flowstep__box strong{
+      display:block;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    #fluxo-sorteio .flowstep__box p{
+      margin: 6px 0 0;
+      color: rgba(255,255,255,0.74);
+      line-height: 1.5;
+    }
+
+    #fluxo-sorteio .flowarrow{
+      display:flex;
+      justify-content:center;
+      padding: 2px 0;
+    }
+    #fluxo-sorteio .flowarrow__dot{
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      color: rgba(255,255,255,0.92);
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.22);
+      box-shadow: 0 10px 30px rgba(59,130,246,0.14);
+    }
+
+    /* final com destaque suave */
+    #fluxo-sorteio .flowstep--final .flowstep__box{
+      background: linear-gradient(180deg, rgba(34,211,238,0.14), rgba(255,255,255,0.03));
+      border-color: rgba(34,211,238,0.26);
+    }
+    #fluxo-sorteio .flowstep--final .flowstep__n{
+      background: rgba(34,211,238,0.12);
+      border-color: rgba(34,211,238,0.26);
+    }
+
+    /* mobile respiro */
+    @media (max-width: 560px){
+      #fluxo-sorteio .flowviz{ padding: 14px; }
+      #fluxo-sorteio .flowviz__bg{ inset: 10px; }
+      #fluxo-sorteio .flowviz__pill{ width: 56px; }
+      #fluxo-sorteio .flowstep__n{ width: 40px; height: 40px; border-radius: 13px; }
+    }
+  </style>
 </section>
 <!-- PLANOS -->
 <section class="cta-section" id="planos">
