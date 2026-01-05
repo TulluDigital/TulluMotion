@@ -14,6 +14,7 @@
 :root{
   --blue:#3B82F6;
   --blue-2:#2563EB;
+  --blue-3:#60A5FA;
   --cyan:#22D3EE;
 
   --text:#ffffff;
@@ -29,100 +30,191 @@ body{
   display:grid;
   place-items:center;
   background:#000;
-  font-family: "Sora", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:"Sora", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* ===== Canvas Story ===== */
+/* ===== Canvas Story (9:16) ===== */
 .story{
   width:min(1080px, 96vw);
   aspect-ratio:9/16;
   position:relative;
   overflow:hidden;
-  border-radius:28px;
+  border-radius:34px;
 
-  background:
-    radial-gradient(900px 900px at 20% 10%, rgba(255,255,255,.18), transparent 60%),
-    radial-gradient(800px 800px at 80% 20%, rgba(34,211,238,.18), transparent 60%),
-    linear-gradient(180deg, #60A5FA, #3B82F6, #2563EB);
+  background: linear-gradient(180deg, #8CC8FF 0%, #5BA8FF 35%, #2F77F2 70%, #1F5CE0 100%);
 }
 
-/* Noise */
+/* Halos + sheen */
+.story::before{
+  content:"";
+  position:absolute;
+  inset:-12%;
+  background:
+    radial-gradient(900px 700px at 20% 12%, rgba(255,255,255,.18), transparent 65%),
+    radial-gradient(900px 700px at 85% 20%, rgba(34,211,238,.14), transparent 62%),
+    radial-gradient(1100px 900px at 50% 120%, rgba(0,0,0,.14), transparent 55%),
+    linear-gradient(115deg,
+      rgba(255,255,255,.00) 0%,
+      rgba(255,255,255,.10) 28%,
+      rgba(255,255,255,.00) 46%,
+      rgba(255,255,255,.08) 62%,
+      rgba(255,255,255,.00) 78%
+    );
+  pointer-events:none;
+  opacity:1;
+}
+
+/* Grain */
 .story::after{
   content:"";
   position:absolute;
   inset:0;
+  pointer-events:none;
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(255,255,255,.04) 0px,
-      rgba(255,255,255,.04) 1px,
-      transparent 2px,
-      transparent 4px
+      rgba(255,255,255,.035) 0px,
+      rgba(255,255,255,.035) 1px,
+      rgba(255,255,255,0) 2px,
+      rgba(255,255,255,0) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,.03) 0px,
+      rgba(0,0,0,.03) 1px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0) 5px
     );
   mix-blend-mode:soft-light;
-  opacity:.25;
-  pointer-events:none;
+  opacity:.22;
 }
 
-/* ZONA SEGURA PARA STORY (evita corte em iPhone) */
+/* ===== Safe area + layout ===== */
 .content{
-  padding-top: 120px;   /* ↑ mais respiro no topo */
-  padding-bottom: 140px;
+  position:relative;
+  z-index:1;
+  height:100%;
+  padding:120px 64px 160px; /* ✅ mais safe pra print iPhone */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:28px;
 }
 
-/* ALERTA */
-.alert{
-  margin-bottom: 48px;
+/* Logo Mercado Agentes (topo) */
+.brand{
+  position:absolute;
+  top:54px;
+  left:54px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  z-index:2;
 }
-
-/* TÍTULO */
-.hero h1{
-  margin-bottom: 32px;
+.brand img{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  box-shadow:0 14px 40px rgba(0,0,0,.22);
 }
-
-/* TEXTO SECUNDÁRIO */
-.hero p{
-  max-width: 780px;
-  margin: 0 auto;
-}
-
-/* BLOCO MARKETPLACE (menos “botão”, mais destaque editorial) */
-.highlight{
-  margin-top: 48px;
-  border-radius: 24px;
-  font-size: clamp(24px, 2.6vw, 32px);
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,.85),
-    rgba(255,255,255,.65)
-  );
-}
-
-/* FOOTER MAIS RESPIRADO */
-.footer{
-  margin-top: 56px;
-}
-.footer .line{
-  font-size:clamp(20px, 2.1vw, 26px);
+.brand span{
+  color:rgba(255,255,255,.95);
   font-weight:700;
-  color:var(--text);
+  font-size:16px;
+  letter-spacing:.02em;
+  text-shadow:0 14px 40px rgba(0,0,0,.22);
 }
 
-.badge{
-  align-self:center;
-  padding:16px 28px;
+/* Pill ALERTA */
+.alert{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  padding:16px 30px;
   border-radius:999px;
-  font-size:18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.80));
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.85);
+  color:var(--ink);
   font-weight:800;
-  background:rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.35);
-  backdrop-filter: blur(10px);
-  box-shadow:0 18px 50px rgba(0,0,0,.22);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:20px;  /* ✅ menor pra caber */
+}
+
+/* Headline */
+.h1{
+  margin:6px 0 0;
+  font-size:clamp(58px, 6.2vw, 86px); /* ✅ menor */
+  font-weight:900;
+  line-height:1.06;
+  letter-spacing:-0.04em;
+  color:var(--text);
+  text-shadow:0 18px 55px rgba(0,0,0,.22);
+}
+
+/* Subtexto (quebras parecidas com o print) */
+.sub{
+  max-width:760px;
+  font-size:clamp(22px, 2.35vw, 30px); /* ✅ menor */
+  font-weight:650;
+  line-height:1.55;
+  color:rgba(255,255,255,.92);
+  text-shadow:0 14px 40px rgba(0,0,0,.18);
+}
+
+/* Card marketplace */
+.market{
+  width:min(860px, 92%);
+  margin-top:6px;
+  padding:26px 30px;
+  border-radius:26px;
+  background: linear-gradient(180deg, rgba(255,255,255,.70), rgba(255,255,255,.55));
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:
+    0 26px 70px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.80);
+  color:var(--ink);
+  font-size:clamp(30px, 3.2vw, 42px); /* ✅ menor */
+  font-weight:900;
+  letter-spacing:-0.03em;
+}
+
+/* Footer texto */
+.footer{
+  margin-top:6px;
+  font-size:clamp(22px, 2.3vw, 30px); /* ✅ menor */
+  font-weight:800;
+  color:rgba(255,255,255,.92);
+  text-shadow:0 14px 40px rgba(0,0,0,.18);
+}
+
+/* CTA pill final */
+.cta{
+  width:min(820px, 92%);
+  padding:22px 30px;
+  border-radius:999px;
+  background: rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.30);
+  backdrop-filter: blur(12px);
+  box-shadow:0 18px 50px rgba(0,0,0,.16);
+  color:rgba(255,255,255,.96);
+  font-weight:800;
+  font-size:clamp(20px, 2.1vw, 26px);
 }
 
 /* Mobile */
 @media(max-width:600px){
-  .content{ padding:56px 28px 64px; }
+  .content{ padding:110px 24px 150px; gap:22px; }
+  .brand{ top:42px; left:22px; }
+  .brand img{ width:40px; height:40px; border-radius:12px; }
+  .brand span{ font-size:14px; }
+  .alert{ font-size:18px; padding:14px 22px; }
+  .market{ padding:22px 22px; }
 }
 </style>
 </head>
@@ -130,40 +222,43 @@ body{
 <body>
 
 <section class="story">
-  <div class="content">
+  <!-- Logo Mercado Agentes -->
+  <div class="brand">
+    <!-- Troque o src pelo caminho real do seu logo -->
+    <img src="assets/img/logoma.avif" alt="Mercado Agentes">
+    <span>mercado agentes</span>
+  </div>
 
-    <div>
-      <div class="alert">🚨 Alerta Geral 🚨</div>
+  <div class="content">
+    <div class="alert">🚨&nbsp; ALERTA GERAL &nbsp;🚨</div>
+
+    <div class="h1">
+      2026<br>
+      começa do<br>
+      jeito certo.
     </div>
 
-    <div class="hero">
-      <h1>
-        2026 começa do<br>
-        jeito certo.
-      </h1>
+    <div class="sub">
+      Uma <strong>NOVIDADE GRANDE</strong> está<br>
+      chegando<br>
+      para quem quer criar, vender e<br>
+      escalar<br>
+      agentes de IA.
+    </div>
 
-      <p>
-        Uma <strong>NOVIDADE GRANDE</strong> está chegando<br>
-        para quem quer criar, vender e escalar<br>
-        agentes de IA.
-      </p>
-
-      <div class="highlight">
-        O Marketplace está na reta final 🚀
-      </div>
+    <div class="market">
+      O Marketplace está<br>
+      na reta final 🚀
     </div>
 
     <div class="footer">
-      <div class="line">
-        Quem estiver atento agora,<br>
-        sai na frente depois.
-      </div>
-
-      <div class="badge">
-        Fica de olho 👀 — em breve contamos mais
-      </div>
+      Quem estiver atento agora,<br>
+      sai na frente depois.
     </div>
 
+    <div class="cta">
+      Fica de olho 👀 — em breve contamos mais
+    </div>
   </div>
 </section>
 
