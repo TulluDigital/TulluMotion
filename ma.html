@@ -3,87 +3,65 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Feed 01 — Mercado Agentes (1080x1350)</title>
+<title>Story — Alerta Geral | Mercado Agentes</title>
+
+<!-- Fonte Sora -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --blue:#3B82F6;
   --blue-2:#2563EB;
-  --blue-3:#60A5FA;
   --cyan:#22D3EE;
 
   --text:#ffffff;
   --muted:rgba(255,255,255,.88);
-
-  --ink:#0B1220; /* navy escuro */
+  --ink:#0B1220;
 }
 
 *{box-sizing:border-box}
 
 body{
   margin:0;
+  min-height:100vh;
   display:grid;
   place-items:center;
-  min-height:100vh;
   background:#000;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Sora", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* ===== Canvas (Feed vertical 4:5) ===== */
-.feed{
+/* ===== Canvas Story ===== */
+.story{
   width:min(1080px, 96vw);
-  aspect-ratio:4/5;           /* ✅ 1080x1350 */
+  aspect-ratio:9/16;
   position:relative;
   overflow:hidden;
   border-radius:28px;
 
-  background: linear-gradient(180deg, var(--blue-3), var(--blue), var(--blue-2));
-}
-
-/* CAMADAS PREMIUM: halos + sheen + vignette */
-.feed::before{
-  content:"";
-  position:absolute;
-  inset:-12%;
   background:
-    radial-gradient(900px 700px at 20% 12%, rgba(255,255,255,.20), transparent 65%),
-    radial-gradient(900px 700px at 85% 20%, rgba(34,211,238,.16), transparent 62%),
-    radial-gradient(1100px 900px at 50% 115%, rgba(0,0,0,.18), transparent 55%),
-
-    linear-gradient(115deg,
-      rgba(255,255,255,.00) 0%,
-      rgba(255,255,255,.10) 28%,
-      rgba(255,255,255,.00) 46%,
-      rgba(255,255,255,.08) 62%,
-      rgba(255,255,255,.00) 78%
-    );
-  pointer-events:none;
-  opacity:1;
+    radial-gradient(900px 900px at 20% 10%, rgba(255,255,255,.18), transparent 60%),
+    radial-gradient(800px 800px at 80% 20%, rgba(34,211,238,.18), transparent 60%),
+    linear-gradient(180deg, #60A5FA, #3B82F6, #2563EB);
 }
 
-/* GRAIN/NOISE leve */
-.feed::after{
+/* Noise */
+.story::after{
   content:"";
   position:absolute;
   inset:0;
-  pointer-events:none;
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(255,255,255,.035) 0px,
-      rgba(255,255,255,.035) 1px,
-      rgba(255,255,255,0) 2px,
-      rgba(255,255,255,0) 4px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(0,0,0,.03) 0px,
-      rgba(0,0,0,.03) 1px,
-      rgba(0,0,0,0) 2px,
-      rgba(0,0,0,0) 5px
+      rgba(255,255,255,.04) 0px,
+      rgba(255,255,255,.04) 1px,
+      transparent 2px,
+      transparent 4px
     );
-  mix-blend-mode: soft-light;
-  opacity:.22;
+  mix-blend-mode:soft-light;
+  opacity:.25;
+  pointer-events:none;
 }
 
 /* ===== Layout ===== */
@@ -91,137 +69,131 @@ body{
   position:relative;
   z-index:1;
   height:100%;
+  padding:72px 64px 88px;
   display:flex;
   flex-direction:column;
+  justify-content:space-between;
+  text-align:center;
 }
 
-/* Topbar branca */
-.topbar{
-  background:#fff;
-  padding:22px 56px;
-  box-shadow: 0 16px 50px rgba(0,0,0,.20);
+/* ===== Top ===== */
+.alert{
+  font-weight:800;
+  letter-spacing:.08em;
+  font-size:22px;
+  text-transform:uppercase;
+  background:rgba(255,255,255,.9);
+  color:var(--ink);
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:999px;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
 }
 
-.logo{ width:190px; height:auto; display:block; }
-
-/* Corpo (ajustado pro 4:5) */
-.main{
-  flex:1;
-  padding:74px 72px 88px;   /* ✅ mais respiro vertical */
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:54px;                 /* ✅ um pouco mais de ar */
+/* ===== Centro ===== */
+.hero{
+  margin-top:40px;
 }
-
-/* ===== Hero ===== */
-.hero{ text-align:center; }
 
 .hero h1{
-  margin:0;
-  font-size:clamp(64px, 5.8vw, 92px); /* leve ajuste pro 4:5 */
-  font-weight:900;
-  line-height:1.22;
+  margin:0 0 24px;
+  font-size:clamp(52px, 5vw, 80px);
+  line-height:1.18;
+  font-weight:800;
   letter-spacing:-0.03em;
   color:var(--text);
-  text-shadow:
-    0 18px 55px rgba(0,0,0,.22),
-    0 2px 0 rgba(255,255,255,.04);
-}
-
-/* Chip glass premium */
-.hero .emph{
-  display:inline-block;
-  color:var(--ink);
-  padding:.12em .32em;
-  border-radius:.28em;
-  background: linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.42));
-  border:1px solid rgba(255,255,255,.42);
-  box-shadow:
-    0 22px 60px rgba(0,0,0,.18),
-    inset 0 1px 0 rgba(255,255,255,.65),
-    inset 0 -18px 40px rgba(59,130,246,.14),
-    inset 0 0 0 1px rgba(15,23,42,.06);
-  backdrop-filter: blur(10px);
-  position:relative;
-  text-shadow:
-    0 1px 0 rgba(255,255,255,.30),
-    0 10px 22px rgba(15,23,42,.18);
-}
-
-.hero .emph::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  background:
-    radial-gradient(120px 60px at 30% 25%, rgba(255,255,255,.60), transparent 62%),
-    radial-gradient(160px 90px at 80% 70%, rgba(34,211,238,.18), transparent 65%);
-  mix-blend-mode: overlay;
-  opacity:.55;
-  pointer-events:none;
+  text-shadow:0 18px 55px rgba(0,0,0,.28);
 }
 
 .hero p{
-  margin-top:20px;
-  font-size:clamp(24px, 2.1vw, 30px);
-  font-weight:700;
+  margin:0;
+  font-size:clamp(22px, 2.4vw, 30px);
+  font-weight:600;
   color:var(--muted);
-  text-shadow: 0 14px 40px rgba(0,0,0,.20);
+  line-height:1.5;
 }
 
-/* ===== Badges ===== */
+/* ===== Destaque ===== */
+.highlight{
+  margin-top:36px;
+  font-size:clamp(26px, 2.8vw, 34px);
+  font-weight:800;
+  color:#0B1220;
+  background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.5));
+  display:inline-block;
+  padding:18px 28px;
+  border-radius:20px;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+/* ===== Footer ===== */
 .footer{
   display:flex;
-  justify-content:center;
+  flex-direction:column;
   gap:22px;
-  flex-wrap:wrap;
+}
+
+.footer .line{
+  font-size:clamp(20px, 2.1vw, 26px);
+  font-weight:700;
+  color:var(--text);
 }
 
 .badge{
-  padding:16px 22px;
+  align-self:center;
+  padding:16px 28px;
   border-radius:999px;
-  font-size:clamp(18px, 1.35vw, 20px);
+  font-size:18px;
   font-weight:800;
-  color:#fff;
-  background: linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,.12));
-  border:1px solid rgba(255,255,255,.34);
-  backdrop-filter: blur(12px);
-  box-shadow:
-    0 18px 50px rgba(0,0,0,.16),
-    inset 0 1px 0 rgba(255,255,255,.30);
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.35);
+  backdrop-filter: blur(10px);
+  box-shadow:0 18px 50px rgba(0,0,0,.22);
 }
 
 /* Mobile */
 @media(max-width:600px){
-  .topbar{ padding:18px 22px; }
-  .logo{ width:160px; }
-  .main{ padding:56px 26px 64px; gap:40px; }
+  .content{ padding:56px 28px 64px; }
 }
 </style>
 </head>
 
 <body>
-<br><br><br>
-<section class="feed">
+
+<section class="story">
   <div class="content">
 
-    <div class="topbar">
-      <img src="assets/img/logoma.avif" alt="Mercado Agentes" class="logo">
+    <div>
+      <div class="alert">🚨 Alerta Geral 🚨</div>
     </div>
 
-    <div class="main">
-      <div class="hero">
-        <h1>
-          Crie seu <span class="emph">1º agente</span><br>
-          de IA fácil e rápido.
-        </h1>
-        <p>Plataforma no-code para agentes de IA no WhatsApp.</p>
+    <div class="hero">
+      <h1>
+        2026 começa do<br>
+        jeito certo.
+      </h1>
+
+      <p>
+        Uma <strong>NOVIDADE GRANDE</strong> está chegando<br>
+        para quem quer criar, vender e escalar<br>
+        agentes de IA.
+      </p>
+
+      <div class="highlight">
+        O Marketplace está na reta final 🚀
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="line">
+        Quem estiver atento agora,<br>
+        sai na frente depois.
       </div>
 
-      <div class="footer">
-        <div class="badge">Atendimento • Vendas • Agendamentos • Suporte</div>
-        <div class="badge">Infra + CRM integrado</div>
+      <div class="badge">
+        Fica de olho 👀 — em breve contamos mais
       </div>
     </div>
 
