@@ -64,77 +64,44 @@ body{
   pointer-events:none;
 }
 
-/* ===== Layout ===== */
+/* ZONA SEGURA PARA STORY (evita corte em iPhone) */
 .content{
-  position:relative;
-  z-index:1;
-  height:100%;
-  padding:72px 64px 88px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  text-align:center;
+  padding-top: 120px;   /* ↑ mais respiro no topo */
+  padding-bottom: 140px;
 }
 
-/* ===== Top ===== */
+/* ALERTA */
 .alert{
-  font-weight:800;
-  letter-spacing:.08em;
-  font-size:22px;
-  text-transform:uppercase;
-  background:rgba(255,255,255,.9);
-  color:var(--ink);
-  display:inline-block;
-  padding:14px 28px;
-  border-radius:999px;
-  box-shadow:0 20px 50px rgba(0,0,0,.25);
+  margin-bottom: 48px;
 }
 
-/* ===== Centro ===== */
-.hero{
-  margin-top:40px;
-}
-
+/* TÍTULO */
 .hero h1{
-  margin:0 0 24px;
-  font-size:clamp(52px, 5vw, 80px);
-  line-height:1.18;
-  font-weight:800;
-  letter-spacing:-0.03em;
-  color:var(--text);
-  text-shadow:0 18px 55px rgba(0,0,0,.28);
+  margin-bottom: 32px;
 }
 
+/* TEXTO SECUNDÁRIO */
 .hero p{
-  margin:0;
-  font-size:clamp(22px, 2.4vw, 30px);
-  font-weight:600;
-  color:var(--muted);
-  line-height:1.5;
+  max-width: 780px;
+  margin: 0 auto;
 }
 
-/* ===== Destaque ===== */
+/* BLOCO MARKETPLACE (menos “botão”, mais destaque editorial) */
 .highlight{
-  margin-top:36px;
-  font-size:clamp(26px, 2.8vw, 34px);
-  font-weight:800;
-  color:#0B1220;
-  background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.5));
-  display:inline-block;
-  padding:18px 28px;
-  border-radius:20px;
-  box-shadow:
-    0 24px 60px rgba(0,0,0,.25),
-    inset 0 1px 0 rgba(255,255,255,.8);
+  margin-top: 48px;
+  border-radius: 24px;
+  font-size: clamp(24px, 2.6vw, 32px);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.85),
+    rgba(255,255,255,.65)
+  );
 }
 
-/* ===== Footer ===== */
+/* FOOTER MAIS RESPIRADO */
 .footer{
-  display:flex;
-  flex-direction:column;
-  gap:22px;
+  margin-top: 56px;
 }
-
 .footer .line{
   font-size:clamp(20px, 2.1vw, 26px);
   font-weight:700;
