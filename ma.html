@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Story — Alerta Geral | Mercado Agentes</title>
+<title>Story — Pré-Lançamento | Mercado Agentes</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,20 +38,20 @@ body{
   position:relative;
   width:1080px;
   height:1920px;
-  border-radius:34px;
   overflow:hidden;
-  background: linear-gradient(180deg,
-  #0E1628 0%,
-  #0B1F3A 35%,
-  #0A2A52 70%,
-  #081B34 100%);
+  background: linear-gradient(
+    180deg,
+    #8CC8FF 0%,
+    #5BA8FF 35%,
+    #2F77F2 70%,
+    #1F5CE0 100%
+  );
 }
 
 @media (max-width:1100px){
   .story{
     width:100vw;
     height:100vh;
-    border-radius:0;
   }
 }
 
@@ -62,7 +62,6 @@ body{
   background:
     radial-gradient(900px 700px at 20% 12%, rgba(255,255,255,.18), transparent 65%),
     radial-gradient(900px 700px at 85% 20%, rgba(34,211,238,.14), transparent 62%),
-    radial-gradient(1100px 900px at 50% 120%, rgba(0,0,0,.14), transparent 55%),
     linear-gradient(115deg,
       rgba(255,255,255,0) 0%,
       rgba(255,255,255,.10) 28%,
@@ -81,8 +80,8 @@ body{
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(255,255,255,.030) 0px,
-      rgba(255,255,255,.030) 1px,
+      rgba(255,255,255,.03) 0px,
+      rgba(255,255,255,.03) 1px,
       rgba(255,255,255,0) 2px,
       rgba(255,255,255,0) 4px
     );
@@ -107,108 +106,86 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:18px;
-  padding-top: calc(var(--pad) + 18px + env(safe-area-inset-top));
-  padding-bottom: calc(var(--pad) + 40px + env(safe-area-inset-bottom));
+  gap:22px;
 }
 
-.brand{align-self:flex-start}
+.brand{
+  align-self:flex-start;
+}
 .brand img{
   width:64px;
   height:auto;
   display:block;
-  object-fit:contain;
   filter: drop-shadow(0 14px 40px rgba(0,0,0,.22));
 }
 
-.alert{
-  margin-top:4px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:14px;
-  padding:14px 26px;
-  border-radius:999px;
-  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
-  border:1px solid rgba(255,255,255,.55);
-  box-shadow:
-    0 18px 46px rgba(0,0,0,.16),
-    inset 0 1px 0 rgba(255,255,255,.85);
-  color:var(--ink);
-  font-weight:800;
-  letter-spacing:.11em;
-  text-transform:uppercase;
-  font-size:18px;
-}
-
 .h1{
-  margin:2px 0 0;
   max-width:900px;
   text-align:center;
-  font-size:clamp(44px, 7.2vw, 74px);
+  font-size:clamp(36px, 6.8vw, 64px);
   font-weight:900;
-  line-height:1.05;
+  line-height:1.1;
   letter-spacing:-0.04em;
   color:var(--text);
-  text-shadow:0 16px 50px rgba(0,0,0,.20);
+  text-shadow:0 16px 50px rgba(0,0,0,.25);
 }
 
 .sub{
-  width:min(720px, 92%);
-  font-size:clamp(18px, 3.7vw, 26px);
+  width:min(760px, 92%);
+  font-size:clamp(18px, 3.6vw, 26px);
   font-weight:650;
-  line-height:1.55;
+  line-height:1.6;
   color:var(--muted);
-  text-shadow:0 14px 40px rgba(0,0,0,.16);
   text-align:center;
   text-wrap:balance;
+  text-shadow:0 14px 40px rgba(0,0,0,.18);
 }
 
-.market{
-  width:min(740px, 94%);
+.list{
+  width:min(760px, 92%);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  font-size:clamp(18px, 3.6vw, 26px);
+  font-weight:700;
+  color:#fff;
+  text-align:center;
+}
+
+.alert{
+  width:min(760px, 92%);
   padding:18px 22px;
   border-radius:22px;
-  background: linear-gradient(180deg, rgba(255,255,255,.70), rgba(255,255,255,.56));
-  border:1px solid rgba(255,255,255,.55);
-  box-shadow:
-    0 22px 60px rgba(0,0,0,.16),
-    inset 0 1px 0 rgba(255,255,255,.80);
+  background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.70));
   color:var(--ink);
-  font-size:clamp(22px, 4.4vw, 34px);
-  font-weight:900;
-  letter-spacing:-0.03em;
+  font-weight:800;
+  font-size:clamp(18px, 3.8vw, 26px);
   text-align:center;
+  box-shadow:0 22px 60px rgba(0,0,0,.18);
 }
 
 .footer{
-  width:min(720px, 92%);
-  font-size:clamp(18px, 3.8vw, 26px);
+  width:min(760px, 92%);
+  font-size:clamp(18px, 3.6vw, 26px);
   font-weight:800;
-  color:rgba(255,255,255,.92);
-  text-shadow:0 14px 40px rgba(0,0,0,.16);
+  color:#fff;
   text-align:center;
   text-wrap:balance;
+  text-shadow:0 14px 40px rgba(0,0,0,.18);
 }
 
 .cta{
   width:min(760px, 94%);
-  padding:16px 20px;
+  padding:18px 22px;
   border-radius:999px;
-  background: rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.30);
+  background: rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.35);
   backdrop-filter: blur(12px);
-  box-shadow:0 18px 50px rgba(0,0,0,.14);
-  color:rgba(255,255,255,.96);
+  color:#fff;
   font-weight:800;
   font-size:clamp(16px, 3.4vw, 22px);
   text-align:center;
-  text-wrap:balance;
-}
-
-@supports (height:100dvh){
-  @media (max-width:1100px){
-    .story{height:100dvh}
-  }
+  box-shadow:0 18px 50px rgba(0,0,0,.16);
 }
 </style>
 </head>
@@ -218,34 +195,43 @@ body{
   <section class="story">
     <div class="scroll">
       <div class="content">
+
         <div class="brand">
           <img src="assets/img/logoma.avif" alt="Mercado Agentes">
         </div>
 
-        <div class="alert">🚨&nbsp; ALERTA GERAL &nbsp;🚨</div>
-
         <div class="h1">
-          2026<br>
-          começa do<br>
-          jeito certo.
+          Se prepare para o PRÉ-LANÇAMENTO<br>
+          do Marketplace do<br>
+          Mercado Agentes 🚀🤖
         </div>
 
         <div class="sub">
-          Uma <strong>NOVIDADE GRANDE</strong> está chegando para quem quer criar,
-          vender e escalar agentes de IA.
+          Um ambiente criado pra quem quer:
         </div>
 
-        <div class="market">
-          O Marketplace está na reta final 🚀
+        <div class="list">
+          ✨ Vender agentes em escala<br>
+          ✨ Transformar IA em negócio de verdade<br>
+          ✨ Construir renda recorrente com agentes inteligentes
+        </div>
+
+        <div class="alert">
+          ⚠️ ATENÇÃO, ISSO É IMPORTANTE:<br><br>
+          Antes do lançamento oficial, vamos abrir uma <strong>VERSÃO BETA FECHADA</strong> 😎
         </div>
 
         <div class="footer">
-          Quem estiver atento agora, sai na frente depois.
+          E quem você acha que vai entrar primeiro?<br><br>
+          👉 Os VIPs. Os visionários.<br>
+          Quem está à frente do jogo. 💥
         </div>
 
         <div class="cta">
-          Fica de olho 👀 — em breve contamos mais
+          👀 Amanhã contaremos tudo como vai funcionar…<br>
+          Fica ligado porque isso aqui vai mudar o jogo 🚀🔥
         </div>
+
       </div>
     </div>
   </section>
