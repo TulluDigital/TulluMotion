@@ -1,388 +1,531 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kael — Agente de IA para Academias | Tullu Motion</title>
-  <meta name="description" content="O Kael capta, qualifica e agenda no WhatsApp 24/7. Feito para donos e gestores de academia que querem mais matrículas com menos atrito." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feed 01 — Tullu Motion (1080x1350)</title>
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tullumotion.com/aboutkael">
-  <meta property="og:title" content="Kael — Agente de IA para Academias | Tullu Motion">
-  <meta property="og:description" content="Agente de WhatsApp que não deixa lead esfriar: capta, responde e agenda automaticamente.">
-  <meta property="og:image" content="assets/img/aistudio.png.png">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://tullumotion.com/aboutkael">
-  <meta property="twitter:title" content="Kael — Agente de IA para Academias | Tullu Motion">
-  <meta property="twitter:description" content="Captação e agendamento 24/7 com o tom de voz da sua marca.">
-  <meta property="twitter:image" content="assets/img/aistudio.png.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/img/tu.png.png">
-
-  <!-- Fonts -->
+  <!-- Fonts (igual seu site) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- CSS (mesmas classes do AI Studio) -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/branch-pages.css">
+  <style>
+    :root{
+      /* Tullu */
+      --blue:#0E6BFF;
+      --blue2:#2F8CFF;
+      --deep:#0A1C3D;
+      --ink:#020617;
+      --text:#F8FAFC;
+      --muted:rgba(248,250,252,.78);
+      --muted2:rgba(248,250,252,.62);
+      --stroke:rgba(255,255,255,.10);
+      --glass:rgba(255,255,255,.06);
+    }
 
-  <link rel="preload" href="assets/img/kael.png" as="image" />
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      display:grid;
+      place-items:center;
+      background:#0b0f1a;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    /* Canvas 1080 x 1350 */
+    .frame{
+      width:1080px;
+      height:1350px;
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      background:
+        radial-gradient(900px 700px at 18% 20%, rgba(14,107,255,.28), transparent 62%),
+        radial-gradient(760px 640px at 86% 80%, rgba(47,140,255,.22), transparent 62%),
+        radial-gradient(520px 520px at 65% 30%, rgba(10,28,61,.75), transparent 64%),
+        linear-gradient(135deg, #000 0%, #040818 35%, #060e28 62%, #000 100%);
+    }
+
+    /* “faixa” azul tipo seu insta */
+    .streak{
+      position:absolute;
+      inset:-120px -240px auto -240px;
+      height:520px;
+      transform:rotate(-18deg);
+      background:
+        radial-gradient(closest-side, rgba(14,107,255,.55), rgba(14,107,255,.08) 55%, transparent 78%);
+      filter:blur(2px);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .streak--2{
+      position:absolute;
+      inset:auto -260px -220px -260px;
+      height:620px;
+      transform:rotate(12deg);
+      background:
+        radial-gradient(closest-side, rgba(47,140,255,.42), rgba(47,140,255,.10) 56%, transparent 80%);
+      opacity:.75;
+      pointer-events:none;
+    }
+
+    /* grade/ruído */
+    .noise{
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:56px 56px;
+      opacity:.12;
+      mask-image:radial-gradient(closest-side at 50% 45%, rgba(0,0,0,.9), transparent 70%);
+      pointer-events:none;
+    }
+
+    .wrap{
+      position:absolute;
+      inset:0;
+      padding:78px 78px 64px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    /* Top bar */
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+    .brand img{
+      width:44px; height:44px;
+      object-fit:contain;
+      filter:drop-shadow(0 12px 22px rgba(14,107,255,.20));
+    }
+    .brand .name{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .brand .name strong{
+      font-family:Poppins,Inter,sans-serif;
+      font-weight:800;
+      font-size:18px;
+      color:rgba(248,250,252,.92);
+    }
+    .brand .name span{
+      font-size:13px;
+      color:rgba(248,250,252,.60);
+      font-weight:600;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(14,107,255,.26);
+      background:rgba(14,107,255,.10);
+      box-shadow:0 14px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(14,107,255,.08) inset;
+      font-weight:800;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:rgba(248,250,252,.90);
+      white-space:nowrap;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:99px;
+      background:var(--blue);
+      box-shadow:0 0 16px rgba(14,107,255,.65);
+    }
+
+    /* Headline */
+    .hero{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    .kicker{
+      font-weight:800;
+      font-size:14px;
+      color:rgba(248,250,252,.70);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    h1{
+      margin:0;
+      font-family:Poppins,Inter,sans-serif;
+      font-weight:800;
+      font-size:64px;
+      line-height:1.05;
+      letter-spacing:-.04em;
+      color:var(--text);
+    }
+
+    .grad{
+      background:linear-gradient(90deg, var(--blue2), var(--blue));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .sub{
+      margin:16px 0 0;
+      font-size:18px;
+      line-height:1.55;
+      color:var(--muted);
+      max-width:560px;
+    }
+
+    /* Card lista tipo “sinais” */
+    .card{
+      margin-top:18px;
+      padding:20px 20px;
+      border-radius:22px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 22px 60px rgba(0,0,0,.45);
+      backdrop-filter: blur(10px);
+    }
+
+    .card h2{
+      margin:0 0 10px;
+      font-family:Poppins,Inter,sans-serif;
+      font-size:18px;
+      letter-spacing:-.02em;
+      color:rgba(248,250,252,.92);
+    }
+
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .row{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      padding:12px 12px;
+      border-radius:16px;
+      background:rgba(2,6,23,.35);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .toggle{
+      width:44px; height:26px;
+      border-radius:999px;
+      border:1px solid rgba(14,107,255,.20);
+      background:rgba(14,107,255,.10);
+      position:relative;
+      flex:0 0 auto;
+      margin-top:2px;
+      box-shadow:0 10px 24px rgba(0,0,0,.35);
+    }
+    .toggle:before{
+      content:"";
+      position:absolute;
+      top:50%; left:4px;
+      transform:translateY(-50%);
+      width:18px; height:18px;
+      border-radius:99px;
+      background:linear-gradient(180deg, rgba(47,140,255,1), rgba(14,107,255,1));
+      box-shadow:0 0 16px rgba(14,107,255,.55);
+    }
+
+    .row p{
+      margin:0;
+      font-size:15px;
+      line-height:1.35;
+      color:rgba(248,250,252,.78);
+    }
+    .row p strong{ color:rgba(248,250,252,.95) }
+
+    /* Right column “app badge” */
+    .side{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:14px;
+    }
+
+    .appbox{
+      width:100%;
+      padding:18px;
+      border-radius:22px;
+      border:1px solid rgba(14,107,255,.18);
+      background:
+        radial-gradient(180px 180px at 25% 20%, rgba(14,107,255,.24), transparent 62%),
+        rgba(255,255,255,.04);
+      box-shadow:0 22px 60px rgba(0,0,0,.42);
+      backdrop-filter: blur(10px);
+    }
+
+    .apphead{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      justify-content:flex-end;
+    }
+
+    .appicon{
+      width:56px;height:56px;
+      border-radius:16px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.10);
+      display:grid; place-items:center;
+      overflow:hidden;
+      box-shadow:0 18px 40px rgba(0,0,0,.45);
+    }
+    .appicon img{
+      width:80%;
+      height:80%;
+      object-fit:contain;
+      filter:drop-shadow(0 12px 22px rgba(14,107,255,.22));
+    }
+
+    .apptxt{
+      text-align:right;
+      min-width:0;
+    }
+    .apptxt strong{
+      display:block;
+      font-family:Poppins,Inter,sans-serif;
+      font-weight:800;
+      color:rgba(248,250,252,.92);
+      letter-spacing:-.02em;
+      font-size:16px;
+      line-height:1.1;
+    }
+    .apptxt span{
+      display:block;
+      color:rgba(248,250,252,.62);
+      font-size:13px;
+      font-weight:700;
+      margin-top:4px;
+    }
+
+    .cta{
+      margin-top:14px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:10px;
+    }
+
+    .cta .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 16px;
+      border-radius:16px;
+      border:1px solid rgba(14,107,255,.30);
+      background:linear-gradient(135deg, rgba(14,107,255,.22), rgba(47,140,255,.12));
+      box-shadow:
+        0 0 0 1px rgba(14,107,255,.10) inset,
+        0 18px 45px rgba(0,0,0,.45),
+        0 0 30px rgba(14,107,255,.20);
+      text-decoration:none;
+      color:rgba(248,250,252,.95);
+      font-weight:900;
+      letter-spacing:-.01em;
+      font-size:14px;
+      white-space:nowrap;
+    }
+
+    .cta .link{
+      font-size:12px;
+      color:rgba(248,250,252,.58);
+      font-weight:700;
+    }
+    .cta .link b{ color:rgba(248,250,252,.82) }
+
+    /* Footer mini */
+    .foot{
+      margin-top:auto;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:18px;
+      padding-top:18px;
+    }
+    .foot .small{
+      font-size:12px;
+      color:rgba(248,250,252,.55);
+      font-weight:700;
+      line-height:1.3;
+      max-width:520px;
+    }
+    .foot .mark{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:rgba(248,250,252,.78);
+      font-weight:800;
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .foot .mark .b{
+      color:rgba(248,250,252,.95);
+      letter-spacing:-.02em;
+    }
+    .foot .mark .j{
+      color:rgba(14,107,255,.95);
+      font-weight:900;
+    }
+
+    /* (Opcional) Ajuda pra você tirar print no mobile */
+    @media (max-width: 1100px){
+      body{ padding:14px; }
+      .frame{ transform: scale(calc((100vw - 28px) / 1080)); transform-origin: top center; }
+    }
+  </style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header class="header" id="header">
-    <nav class="nav container">
-      <div class="nav__logo">
-        <a href="index.html">
-          <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
-          <span class="nav__logo-text">Motion</span>
-        </a>
-      </div>
+  <div class="frame" role="img" aria-label="Arte Feed 1080x1350 Tullu Motion">
+    <div class="streak"></div>
+    <div class="streak--2"></div>
+    <div class="noise"></div>
 
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-          <li class="nav__item"><a href="#chegou-aqui" class="nav__link">Por que o Kael</a></li>
-          <li class="nav__item"><a href="#servicos" class="nav__link">Recursos</a></li>
-          <li class="nav__item"><a href="#como-funciona" class="nav__link">Como funciona</a></li>
-          <li class="nav__item"><a href="#faq" class="nav__link">FAQ</a></li>
-        </ul>
-        <a href="https://wa.me/5511959029428?text=Quero%20simular%20o%20Kael%20na%20minha%20academia" class="btn btn--primary nav__cta" target="_blank" rel="noopener">
-          Simular no WhatsApp
-        </a>
-      </div>
+    <div class="wrap">
 
-      <div class="nav__toggle" id="nav-toggle">
-        <span></span><span></span><span></span>
-      </div>
-    </nav>
-  </header>
-
-  <main class="main">
-    <!-- 1) ABERTURA EM BOXES (sem hero no topo) -->
-    <section class="features" id="chegou-aqui">
-      <div class="container">
-        <div class="section__header">
-          <h1 class="section__title">Se você chegou até aqui...</h1>
-          <p class="section__subtitle">...é porque você quer <strong>matrículas novas</strong> sem afogar sua equipe no WhatsApp. Siga o caminho:</p>
-        </div>
-
-        <!-- usamos features__grid + feature-card já existentes -->
-        <div class="features__grid">
-          <div class="feature-card">
-            <div class="feature-card__icon">1️⃣</div>
-            <h3 class="feature-card__title">Diagnóstico rápido</h3>
-            <p class="feature-card__description">Mapeamos onde o atendimento está travando conversão (horários, planos, follow-up).</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card__icon">2️⃣</div>
-            <h3 class="feature-card__title">Agente no ar</h3>
-            <p class="feature-card__description">Instalamos o Kael no seu WhatsApp <strong>em até 7 dias</strong>, com regras e voz da sua marca.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card__icon">3️⃣</div>
-            <h3 class="feature-card__title">Agenda cheia</h3>
-            <p class="feature-card__description">Capta, qualifica e agenda automaticamente. Sem fila, sem sumiço de lead.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card__icon">4️⃣</div>
-            <h3 class="feature-card__title">Métricas que guiam</h3>
-            <p class="feature-card__description">Você vê o que converte, onde perde e o que priorizar na semana.</p>
+      <div class="top">
+        <div class="brand">
+          <img src="assets/img/tullu.png" alt="Tullu Motion">
+          <div class="name">
+            <strong>Tullu Motion</strong>
+            <span>IA + Automação + CRM</span>
           </div>
         </div>
 
-        <div class="hero__cta" style="margin-top:2rem">
-          <a class="btn btn--primary btn--large" target="_blank" rel="noopener"
-             href="https://wa.me/5511959029428?text=Quero%20simular%20o%20Kael%20na%20minha%20academia">
-            Simular agora
-          </a>
-          <a class="btn btn--outline btn--large" href="#hero-kael">Ver o Kael</a>
-        </div>
+        <div class="pill"><span class="dot"></span>FEED 01 • 2026</div>
       </div>
-    </section>
 
-<!-- 3) HERO NO MEIO DA PÁGINA (com a foto redonda do Kael) -->
-    <section class="hero hero--branch hero--aistudio" id="hero-kael">
-      <div class="container">
-        <div class="hero__content">
-          <!-- avatar redondo reaproveitando classes de agente -->
-        <article class="agent-card">
-  <div class="agent-card__avatar-wrapper">
-    <img src="assets/img/kael.png" alt="Kael — agente de IA para academias" class="agent-card__avatar">
-  </div>
-  <div class="agent-card__body">
-    <h3 class="agent-card__title"><strong>Kael</strong></h3>
-    <p class="agent-card__desc">
-      Direto para <strong>academias</strong> e <strong>boxes</strong>. Responde rápido, agenda e não deixa lead esfriar.
-    </p>
-    <ul class="agent-card__bullets">
-      <li>Triagem de planos/horários</li>
-      <li>Prova social e ofertas pontuais</li>
-      <li>Reengajamento de ex-alunos</li>
-    </ul>
-  </div>
-  <div class="agent-card__footer">
-    <a class="btn btn--primary" href="https://wa.me/5511959029428?text=Quero%20simular%20o%20Kael%20na%20minha%20academia" target="_blank" rel="noopener">
-      Quero simular no meu negócio
-    </a>
-  </div>
-</article>
+      <div class="hero">
+        <!-- Left -->
+        <div>
+          <div class="kicker">O começo do ano decide o resto</div>
 
-          <img src="assets/img/aistudio.png.png" alt="AI Studio" class="hero__logo">
-          <h2 class="hero__title">
-            <span class="gradient-text">O Kael resolve o atendimento</span> que custa matrículas.
-          </h2>
-          <p class="hero__subtitle">
-            Capta, qualifica e <strong>agenda automaticamente</strong> — 24/7 — no tom da sua marca.
+          <h1>
+            2026 é o ano de<br>
+            <span class="grad">fazer o WhatsApp escalar.</span>
+          </h1>
+
+          <p class="sub">
+            Se a operação trava quando tudo depende de você, é hora de ativar
+            <b>atendimento com IA 24/7</b> e organizar o funil no <b>CRM</b>.
           </p>
 
-          <div class="hero__cta">
-            <a href="https://wa.me/5511959029428?text=Quero%20simular%20o%20Kael%20na%20minha%20academia" class="btn btn--primary btn--large" target="_blank" rel="noopener">
-              Testar no meu WhatsApp
-            </a>
-            <a href="#o-que-voce-recebe" class="btn btn--outline btn--large">Ver entregáveis</a>
-          </div>
-        </div>
-      </div>
-    </section>
+          <div class="card">
+            <h2>5 sinais de que seu atendimento está “pedindo IA”</h2>
 
+            <div class="list">
+              <div class="row">
+                <div class="toggle"></div>
+                <p><strong>Você responde tarde</strong> e perde oportunidade no timing.</p>
+              </div>
 
-    <!-- 2) RECURSOS PRINCIPAIS -->
-    <section class="features" id="servicos">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">Feito para a rotina de academia</h2>
-          <p class="section__subtitle">Mais leads qualificados, menos retrabalho operacional.</p>
-        </div>
+              <div class="row">
+                <div class="toggle"></div>
+                <p><strong>Leads chegam sem qualificação</strong> e o time perde tempo.</p>
+              </div>
 
-        <div class="features__grid">
-          <div class="feature-card">
-            <div class="feature-card__icon">💪</div>
-            <h3 class="feature-card__title">Captação que treina junto</h3>
-            <p class="feature-card__description">Campanhas, QR nos equipamentos, bio do Instagram e site — tudo convergindo no Kael.</p>
-          </div>
+              <div class="row">
+                <div class="toggle"></div>
+                <p><strong>Agendamentos viram caos</strong> (ou dependem de uma pessoa só).</p>
+              </div>
 
-          <div class="feature-card">
-            <div class="feature-card__icon">📆</div>
-            <h3 class="feature-card__title">Agenda integrada</h3>
-            <p class="feature-card__description">Aula experimental, personal e avaliação com confirmação + lembretes automáticos.</p>
-          </div>
+              <div class="row">
+                <div class="toggle"></div>
+                <p><strong>Follow-up não acontece</strong> e o funil esfria sozinho.</p>
+              </div>
 
-          <div class="feature-card">
-            <div class="feature-card__icon">🎧</div>
-            <h3 class="feature-card__title">Entende áudio e imagem</h3>
-            <p class="feature-card__description">Voz e fotos de tabela/horários — sem perder contexto.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card__icon">🤝</div>
-            <h3 class="feature-card__title">Handoff humano</h3>
-            <p class="feature-card__description">Transfere ao seu time e envia resumo no CRM para fechar rápido.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card__icon">📈</div>
-            <h3 class="feature-card__title">Métricas que importam</h3>
-            <p class="feature-card__description">Tempo até agendar, canais que mais convertem e motivos de perda.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    
-    <!-- 4) O QUE VOCÊ RECEBE -->
-    <section class="value-cards" id="o-que-voce-recebe">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">O que você recebe na prática</h2>
-          <p class="section__subtitle">Entregáveis claros. Nada nebuloso.</p>
-        </div>
-
-        <div class="value-cards__grid">
-          <div class="value-card">
-            <span class="value-card__tick">✔</span>
-            <h3 class="value-card__title">Painel em tempo real</h3>
-            <p class="value-card__text">Agendamentos, conversas e resultados num só lugar.</p>
-          </div>
-
-          <div class="value-card">
-            <span class="value-card__tick">✔</span>
-            <h3 class="value-card__title">Integrações essenciais</h3>
-            <p class="value-card__text">WhatsApp, CRM, planilhas e sistemas que já usa.</p>
-          </div>
-
-          <div class="value-card">
-            <span class="value-card__tick">✔</span>
-            <h3 class="value-card__title">Relatórios executivos</h3>
-            <p class="value-card__text">Prioridades semanais e próximos passos objetivos.</p>
-          </div>
-
-          <div class="value-card">
-            <span class="value-card__tick">✔</span>
-            <h3 class="value-card__title">Playbooks de automação</h3>
-            <p class="value-card__text">Fluxos prontos para atendimento, agenda e follow-up.</p>
-          </div>
-
-          <div class="value-card">
-            <span class="value-card__tick">✔</span>
-            <h3 class="value-card__title">Suporte de implantação</h3>
-            <p class="value-card__text">Acompanhamento até rodar liso no seu ambiente.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5) COMO FUNCIONA -->
-    <section class="process process--branch" id="como-funciona">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">Como o Kael trabalha por você</h2>
-          <p class="section__subtitle">Fluxo simples, resultado direto.</p>
-        </div>
-
-        <div class="process__timeline">
-          <div class="timeline-item">
-            <div class="timeline-item__number">1</div>
-            <div class="timeline-item__content">
-              <h3>Capta e qualifica</h3>
-              <p>Objetivo, horário, unidade e forma de pagamento — tudo registrado.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-item__number">2</div>
-            <div class="timeline-item__content">
-              <h3>Agenda e confirma</h3>
-              <p>Oferece horários, envia confirmação e lembretes automáticos.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-item__number">3</div>
-            <div class="timeline-item__content">
-              <h3>Entrega o lead pronto</h3>
-              <p>Aciona humano quando necessário, com resumo no CRM.</p>
+              <div class="row">
+                <div class="toggle"></div>
+                <p><strong>As infos ficam espalhadas</strong> e nada vira processo.</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="hero__cta" style="margin-top:2rem">
-          <a href="https://wa.me/5511959029428?text=Quero%20simular%20o%20Kael%20na%20minha%20academia" class="btn btn--primary btn--large" target="_blank" rel="noopener">
-            Testar no meu WhatsApp
-          </a>
-          <a href="#faq" class="btn btn--outline btn--large">Tirar dúvidas</a>
-        </div>
-      </div>
-    </section>
+        <!-- Right -->
+        <div class="side">
+          <div class="appbox">
+            <div class="apphead">
+              <div class="apptxt">
+                <strong>AI Studio</strong>
+                <span>Atendimento + CRM</span>
+              </div>
+              <div class="appicon" aria-label="Ícone do app">
+                <!-- app tullu.png -->
+                <img src="assets/img/app%20tullu.png" alt="App Tullu">
+              </div>
+            </div>
 
-    <!-- 6) FAQ -->
-    <section class="features" id="faq">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">Perguntas frequentes</h2>
-          <p class="section__subtitle">Respostas diretas ao que mais aparece em academias.</p>
-        </div>
-
-        <div class="features__grid">
-          <div class="feature-card">
-            <div class="feature-card__icon">🛠️</div>
-            <h3 class="feature-card__title">Quanto tempo para ativar?</h3>
-            <p class="feature-card__description">Implantação padrão em até 7 dias corridos.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-card__icon">🔗</div>
-            <h3 class="feature-card__title">Precisa trocar meu número?</h3>
-            <p class="feature-card__description">Não. Usamos seu WhatsApp Business/linha nova, você escolhe.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-card__icon">🔒</div>
-            <h3 class="feature-card__title">E os dados dos alunos?</h3>
-            <p class="feature-card__description">Acesso controlado, logs e exportação quando quiser.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-card__icon">💬</div>
-            <h3 class="feature-card__title">Ele “vende” de fato?</h3>
-            <p class="feature-card__description">Qualifica, oferece planos e agenda; chama humano quando preciso.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7) CTA FINAL -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-section__card">
-          <h2 class="cta-section__title">Coloque o Kael para trabalhar hoje</h2>
-          <p class="cta-section__subtitle">Mais matrículas, menos horas no WhatsApp. Simples assim.</p>
-          <div class="cta-section__buttons">
-            <a href="https://wa.me/5511959029428?text=Quero%20simular%20o%20Kael%20na%20minha%20academia" class="btn btn--primary btn--large" target="_blank" rel="noopener">
-              Falar no WhatsApp
-            </a>
-            <a href="#chegou-aqui" class="btn btn--outline btn--large">Voltar ao início</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer (padrão) -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__content">
-        <div class="footer__brand">
-          <div class="footer__logo">
-            <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
-            <span class="footer__logo-text"></span>
-          </div>
-          <p class="footer__description">
-            O motor digital que combina automação, IA e estratégia para acelerar marcas.
-          </p>
-        </div>
-
-        <div class="footer__links">
-          <div class="footer__section">
-            <h4 class="footer__section-title">Navegação</h4>
-            <ul class="footer__list">
-              <li><a href="index.html#servicos" class="footer__link">Recursos</a></li>
-              <li><a href="index.html#como-funciona" class="footer__link">Como funciona</a></li>
-              <li><a href="index.html#cases" class="footer__link">Cases</a></li>
-            </ul>
+            <div class="cta">
+              <a class="btn" href="#" onclick="return false;">
+                Teste grátis no WhatsApp →
+              </a>
+              <div class="link">
+                link na bio: <b>tullumotion.com/aistudio.html</b>
+              </div>
+            </div>
           </div>
 
-          <div class="footer__section">
-            <h4 class="footer__section-title">Contato</h4>
-            <ul class="footer__list">
-              <li><a href="https://wa.me/5511959029428" class="footer__link" target="_blank">WhatsApp</a></li>
-              <li><a href="mailto:contato@tullumotion.com" class="footer__link">E-mail</a></li>
-            </ul>
-          </div>
-
-          <div class="footer__section">
-            <h4 class="footer__section-title">Legal</h4>
-            <ul class="footer__list">
-              <li><a href="#" class="footer__link">Política de Privacidade</a></li>
-              <li><a href="#" class="footer__link">Termos de Uso</a></li>
-            </ul>
+          <div style="
+            width:100%;
+            padding:16px 18px;
+            border-radius:22px;
+            background:rgba(255,255,255,.04);
+            border:1px solid rgba(255,255,255,.08);
+            box-shadow:0 18px 48px rgba(0,0,0,.42);
+            ">
+            <div style="font-weight:900; color:rgba(248,250,252,.92); letter-spacing:-.02em;">
+              Promessa simples:
+            </div>
+            <div style="margin-top:8px; color:rgba(248,250,252,.72); line-height:1.45; font-weight:700;">
+              <span style="color:rgba(14,107,255,.95); font-weight:900;">Você ativa</span>,
+              a IA atende,
+              <span style="color:rgba(14,107,255,.95); font-weight:900;">o CRM organiza</span>.
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="footer__bottom">
-        <p class="footer__copyright">© 2025 Tullu Motion. Todos os direitos reservados.</p>
+      <div class="foot">
+        <div class="small">
+          Sites inteligentes, automação e IA conectadas. Tecnologia que acelera marcas todos os dias.
+          <span style="color:rgba(14,107,255,.9); font-weight:900;">CRM + Atendimento com IA</span>
+        </div>
+
+        <div class="mark">
+          <span class="b">tullu</span><span class="j">journal</span>
+        </div>
       </div>
+
     </div>
-  </footer>
-
-  <!-- JS -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/branch-animations.js"></script>
+  </div>
 </body>
 </html>
