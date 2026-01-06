@@ -14,7 +14,7 @@
   --text:#ffffff;
   --muted:rgba(255,255,255,.92);
   --ink:#0B1220;
-  --pad: clamp(18px, 4vw, 56px);
+  --pad: clamp(14px, 3vw, 32px);
 }
 
 *{box-sizing:border-box}
@@ -31,7 +31,6 @@ body{
   min-height:100vh;
   display:flex;
   justify-content:center;
-  align-items:stretch;
 }
 
 .story{
@@ -60,93 +59,67 @@ body{
   position:absolute;
   inset:-12%;
   background:
-    radial-gradient(900px 700px at 20% 12%, rgba(255,255,255,.18), transparent 65%),
-    radial-gradient(900px 700px at 85% 20%, rgba(34,211,238,.14), transparent 62%),
-    linear-gradient(115deg,
-      rgba(255,255,255,0) 0%,
-      rgba(255,255,255,.10) 28%,
-      rgba(255,255,255,0) 46%,
-      rgba(255,255,255,.08) 62%,
-      rgba(255,255,255,0) 78%
-    );
+    radial-gradient(800px 600px at 20% 10%, rgba(255,255,255,.16), transparent 65%),
+    radial-gradient(800px 600px at 80% 20%, rgba(34,211,238,.12), transparent 62%);
   pointer-events:none;
-}
-
-.story::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255,255,255,.03) 0px,
-      rgba(255,255,255,.03) 1px,
-      rgba(255,255,255,0) 2px,
-      rgba(255,255,255,0) 4px
-    );
-  mix-blend-mode:soft-light;
-  opacity:.22;
 }
 
 .scroll{
   position:relative;
   z-index:1;
   height:100%;
-  overflow:auto;
-  -webkit-overflow-scrolling:touch;
+  overflow:hidden;
 }
 
 .content{
+  height:100%;
   padding:
     calc(var(--pad) + env(safe-area-inset-top))
     var(--pad)
     calc(var(--pad) + env(safe-area-inset-bottom))
     var(--pad);
+
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:22px;
+  gap:14px;
 }
 
 .brand{
   align-self:flex-start;
 }
 .brand img{
-  width:64px;
+  width:48px;
   height:auto;
-  display:block;
-  filter: drop-shadow(0 14px 40px rgba(0,0,0,.22));
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.22));
 }
 
 .h1{
-  max-width:900px;
+  max-width:880px;
   text-align:center;
-  font-size:clamp(36px, 6.8vw, 64px);
+  font-size:clamp(30px, 6vw, 48px);
   font-weight:900;
-  line-height:1.1;
-  letter-spacing:-0.04em;
+  line-height:1.12;
+  letter-spacing:-0.03em;
   color:var(--text);
-  text-shadow:0 16px 50px rgba(0,0,0,.25);
+  text-shadow:0 12px 36px rgba(0,0,0,.25);
 }
 
 .sub{
   width:min(760px, 92%);
-  font-size:clamp(18px, 3.6vw, 26px);
-  font-weight:650;
-  line-height:1.6;
+  font-size:clamp(16px, 3.4vw, 22px);
+  font-weight:600;
+  line-height:1.5;
   color:var(--muted);
   text-align:center;
-  text-wrap:balance;
-  text-shadow:0 14px 40px rgba(0,0,0,.18);
 }
 
 .list{
   width:min(760px, 92%);
   display:flex;
   flex-direction:column;
-  gap:14px;
-  font-size:clamp(18px, 3.6vw, 26px);
+  gap:8px;
+  font-size:clamp(16px, 3.3vw, 22px);
   font-weight:700;
   color:#fff;
   text-align:center;
@@ -154,38 +127,37 @@ body{
 
 .alert{
   width:min(760px, 92%);
-  padding:18px 22px;
-  border-radius:22px;
-  background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.70));
+  padding:14px 18px;
+  border-radius:18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.72));
   color:var(--ink);
   font-weight:800;
-  font-size:clamp(18px, 3.8vw, 26px);
+  font-size:clamp(16px, 3.3vw, 22px);
   text-align:center;
-  box-shadow:0 22px 60px rgba(0,0,0,.18);
+  box-shadow:0 18px 46px rgba(0,0,0,.18);
 }
 
 .footer{
   width:min(760px, 92%);
-  font-size:clamp(18px, 3.6vw, 26px);
+  font-size:clamp(16px, 3.3vw, 22px);
   font-weight:800;
   color:#fff;
   text-align:center;
-  text-wrap:balance;
-  text-shadow:0 14px 40px rgba(0,0,0,.18);
+  line-height:1.45;
 }
 
 .cta{
   width:min(760px, 94%);
-  padding:18px 22px;
+  padding:14px 18px;
   border-radius:999px;
   background: rgba(255,255,255,.18);
   border:1px solid rgba(255,255,255,.35);
   backdrop-filter: blur(12px);
   color:#fff;
   font-weight:800;
-  font-size:clamp(16px, 3.4vw, 22px);
+  font-size:clamp(15px, 3.2vw, 20px);
   text-align:center;
-  box-shadow:0 18px 50px rgba(0,0,0,.16);
+  box-shadow:0 14px 40px rgba(0,0,0,.16);
 }
 </style>
 </head>
@@ -217,14 +189,14 @@ body{
         </div>
 
         <div class="alert">
-          ⚠️ ATENÇÃO, ISSO É IMPORTANTE:<br><br>
-          Antes do lançamento oficial, vamos abrir uma <strong>VERSÃO BETA FECHADA</strong> 😎
+          ⚠️ ATENÇÃO, ISSO É IMPORTANTE:<br>
+          Antes do lançamento oficial, vamos abrir uma<br>
+          <strong>VERSÃO BETA FECHADA</strong> 😎
         </div>
 
         <div class="footer">
-          E quem você acha que vai entrar primeiro?<br><br>
-          👉 Os VIPs. Os visionários.<br>
-          Quem está à frente do jogo. 💥
+          E quem você acha que vai entrar primeiro?<br>
+          👉 Os VIPs. Os visionários. Quem está à frente do jogo. 💥
         </div>
 
         <div class="cta">
