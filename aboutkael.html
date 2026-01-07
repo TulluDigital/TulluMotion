@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Feed 01 — Tullu Motion (1080x1350)</title>
+  <title>Story — Lista IA (1080x1730)</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,11 +13,14 @@
     :root{
       --blue:#0E6BFF;
       --blue2:#2F8CFF;
-      --deep:#0A1C3D;
+      --cyan:#22D3EE;
+
       --ink:#020617;
       --text:#F8FAFC;
       --muted:rgba(248,250,252,.78);
       --muted2:rgba(248,250,252,.62);
+      --card:rgba(255,255,255,.05);
+      --stroke:rgba(255,255,255,.10);
     }
 
     *{box-sizing:border-box}
@@ -30,36 +33,37 @@
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     }
 
+    /* STORY FRAME */
     .frame{
       width:1080px;
-      height:1350px;
+      height:1730px;
       position:relative;
       overflow:hidden;
-      border-radius:28px;
+      border-radius:34px;
       background:
-        radial-gradient(900px 700px at 18% 20%, rgba(14,107,255,.28), transparent 62%),
-        radial-gradient(760px 640px at 86% 80%, rgba(47,140,255,.22), transparent 62%),
-        radial-gradient(520px 520px at 65% 30%, rgba(10,28,61,.75), transparent 64%),
+        radial-gradient(920px 760px at 18% 16%, rgba(14,107,255,.30), transparent 62%),
+        radial-gradient(860px 740px at 88% 84%, rgba(47,140,255,.22), transparent 62%),
+        radial-gradient(520px 520px at 62% 28%, rgba(10,28,61,.75), transparent 64%),
         linear-gradient(135deg, #000 0%, #040818 35%, #060e28 62%, #000 100%);
     }
 
     .streak{
       position:absolute;
-      inset:-120px -240px auto -240px;
-      height:520px;
+      inset:-140px -280px auto -280px;
+      height:580px;
       transform:rotate(-18deg);
       background: radial-gradient(closest-side, rgba(14,107,255,.55), rgba(14,107,255,.08) 55%, transparent 78%);
       filter:blur(2px);
-      opacity:.85;
+      opacity:.88;
       pointer-events:none;
     }
     .streak--2{
       position:absolute;
-      inset:auto -260px -220px -260px;
-      height:620px;
+      inset:auto -320px -260px -320px;
+      height:720px;
       transform:rotate(12deg);
-      background: radial-gradient(closest-side, rgba(47,140,255,.42), rgba(47,140,255,.10) 56%, transparent 80%);
-      opacity:.75;
+      background: radial-gradient(closest-side, rgba(47,140,255,.45), rgba(47,140,255,.10) 56%, transparent 80%);
+      opacity:.78;
       pointer-events:none;
     }
 
@@ -69,22 +73,22 @@
         linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
       background-size:56px 56px;
-      opacity:.12;
-      mask-image:radial-gradient(closest-side at 50% 45%, rgba(0,0,0,.9), transparent 70%);
+      opacity:.11;
+      mask-image:radial-gradient(closest-side at 50% 45%, rgba(0,0,0,.9), transparent 72%);
       pointer-events:none;
     }
 
     .wrap{
       position:absolute;
       inset:0;
-      padding:78px 78px 64px;
+      padding:86px 78px 72px;
       display:flex;
       flex-direction:column;
       gap:18px;
       min-height:0;
     }
 
-    /* topo */
+    /* TOP */
     .top{
       display:flex;
       align-items:center;
@@ -98,10 +102,11 @@
       min-width:0;
     }
     .brand img{
-      width:44px; height:44px;
+      width:46px; height:46px;
       object-fit:contain;
       filter:drop-shadow(0 12px 22px rgba(14,107,255,.20));
     }
+
     .pill{
       display:inline-flex;
       align-items:center;
@@ -124,59 +129,59 @@
       box-shadow:0 0 16px rgba(14,107,255,.65);
     }
 
-    /* content full width */
+    /* HERO */
     .hero{
-      flex:1;              /* <- cresce e empurra footer pra baixo */
-      min-height:0;        /* <- evita overflow bizarro */
+      flex:1;
+      min-height:0;
       display:flex;
       flex-direction:column;
-      gap:16px;
-      padding-top:8px;
+      gap:14px;
+      padding-top:6px;
     }
 
     .kicker{
       font-weight:800;
       font-size:14px;
-      color:rgba(248,250,252,.70);
+      color:rgba(248,250,252,.72);
       letter-spacing:.14em;
       text-transform:uppercase;
-      margin-bottom:8px;
+      margin-bottom:4px;
     }
 
     h1{
       margin:0;
       font-family:Poppins,Inter,sans-serif;
       font-weight:800;
-      font-size:64px;
-      line-height:1.05;
-      letter-spacing:-.04em;
+      font-size:68px;
+      line-height:1.04;
+      letter-spacing:-.045em;
       color:var(--text);
-      max-width:900px;
+      max-width:930px;
     }
     .grad{
-      background:linear-gradient(90deg, var(--blue2), var(--blue));
+      background:linear-gradient(90deg, var(--cyan), var(--blue2), var(--blue));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
 
     .sub{
-      margin:12px 0 0;
-      font-size:18px;
+      margin:10px 0 0;
+      font-size:19px;
       line-height:1.55;
       color:var(--muted);
-      max-width:760px;
+      max-width:860px;
     }
 
     .card{
-      margin-top:14px;
-      padding:20px 20px;
+      margin-top:16px;
+      padding:22px 22px;
       border-radius:22px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
+      background:var(--card);
+      border:1px solid var(--stroke);
       box-shadow:0 22px 60px rgba(0,0,0,.45);
       backdrop-filter: blur(10px);
-      max-width:900px;
+      max-width:980px;
     }
     .card h2{
       margin:0 0 10px;
@@ -204,7 +209,7 @@
     .toggle{
       width:44px; height:26px;
       border-radius:999px;
-      border:1px solid rgba(14,107,255,.20);
+      border:1px solid rgba(14,107,255,.22);
       background:rgba(14,107,255,.10);
       position:relative;
       flex:0 0 auto;
@@ -218,18 +223,26 @@
       transform:translateY(-50%);
       width:18px; height:18px;
       border-radius:99px;
-      background:linear-gradient(180deg, rgba(47,140,255,1), rgba(14,107,255,1));
+      background:linear-gradient(180deg, rgba(34,211,238,1), rgba(14,107,255,1));
       box-shadow:0 0 16px rgba(14,107,255,.55);
     }
     .row p{
       margin:0;
       font-size:15px;
       line-height:1.35;
-      color:rgba(248,250,252,.78);
+      color:rgba(248,250,252,.80);
     }
-    .row p strong{ color:rgba(248,250,252,.95) }
+    .row p strong{ color:rgba(248,250,252,.97) }
 
-    /* footer */
+    .micro{
+      margin-top:14px;
+      font-size:13px;
+      line-height:1.45;
+      color:rgba(248,250,252,.60);
+    }
+    .micro b{ color:rgba(248,250,252,.86) }
+
+    /* CTA FOOT */
     .foot{
       display:flex;
       align-items:flex-end;
@@ -239,27 +252,57 @@
     }
     .foot .small{
       font-size:12px;
-      color:rgba(248,250,252,.55);
+      color:rgba(248,250,252,.58);
       font-weight:700;
       line-height:1.3;
-      max-width:650px;
+      max-width:680px;
     }
-    .foot .mark{
+
+    .cta{
       display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:10px;
+      text-align:right;
+    }
+
+    .btn{
+      display:inline-flex;
       align-items:center;
       gap:10px;
-      padding:10px 12px;
+      padding:14px 18px;
       border-radius:999px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      color:rgba(248,250,252,.78);
-      font-weight:800;
-      font-size:12px;
-      white-space:nowrap;
+      border:1px solid rgba(14,107,255,.26);
+      background:linear-gradient(180deg, rgba(14,107,255,.18), rgba(14,107,255,.08));
+      box-shadow:0 18px 44px rgba(0,0,0,.55), 0 0 0 1px rgba(14,107,255,.10) inset;
+      color:rgba(248,250,252,.92);
+      font-weight:900;
+      letter-spacing:-.01em;
+      text-decoration:none;
+      user-select:none;
     }
-    .foot .mark .b{ color:rgba(248,250,252,.95); letter-spacing:-.02em; }
-    .foot .mark .j{ color:rgba(14,107,255,.95); font-weight:900; }
+    .btn .spark{
+      width:10px;height:10px;border-radius:99px;
+      background:var(--cyan);
+      box-shadow:0 0 18px rgba(34,211,238,.75);
+    }
+    .btn .label{
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
 
+    .link{
+      font-size:12px;
+      color:rgba(14,107,255,.92);
+      font-weight:900;
+      letter-spacing:-.01em;
+      opacity:.95;
+      max-width:320px;
+      word-break:break-all;
+    }
+
+    /* scale on smaller screens */
     @media (max-width: 1100px){
       body{ padding:14px; }
       .frame{ transform: scale(calc((100vw - 28px) / 1080)); transform-origin: top center; }
@@ -268,65 +311,78 @@
 </head>
 
 <body>
-  <div class="frame">
+  <div class="frame" role="img" aria-label="Story Tullu Motion - Lista semanal de IA">
     <div class="streak"></div>
     <div class="streak--2"></div>
     <div class="noise"></div>
 
     <div class="wrap">
 
-      <!-- TOP (AGORA FECHADO DIREITO) -->
       <div class="top">
         <div class="brand">
-          <!-- ajuste o nome do arquivo conforme o real -->
+          <!-- troque pelo seu arquivo real -->
           <img src="assets/img/apptullu.png" alt="Tullu Motion">
         </div>
 
-        <div class="pill"><span class="dot"></span>FEED 01 • 2026</div>
+        <div class="pill"><span class="dot"></span>LISTA IA • GRÁTIS</div>
       </div>
 
-      <!-- CONTENT (FULL WIDTH) -->
       <div class="hero">
-        <div>
-          <div class="kicker">O começo do ano decide o resto</div>
+        <div class="kicker">Pra quem quer ganhar tempo e dinheiro</div>
 
-          <h1>
-            2026 é o ano de<br>
-            <span class="grad">fazer o WhatsApp escalar.</span>
-          </h1>
+        <h1>
+          Receba <span class="grad">toda semana</span><br>
+          como usar IA no seu negócio.
+        </h1>
 
-          <p class="sub">
-            Se a operação trava quando tudo depende de você, é hora de ativar
-            <b>atendimento com IA 24/7</b> e organizar o funil no <b>CRM</b>.
-          </p>
+        <p class="sub">
+          Um resumo prático com <b>prompts</b>, <b>templates</b> e <b>automações</b> que empresas usam pra
+          vender mais e operar com menos fricção.
+        </p>
 
-          <div class="card">
-            <h2>5 sinais de que seu atendimento está “pedindo IA”</h2>
+        <div class="card">
+          <h2>O que você vai receber</h2>
 
-            <div class="list">
-              <div class="row"><div class="toggle"></div><p><strong>Você responde tarde</strong> e perde oportunidade no timing.</p></div>
-              <div class="row"><div class="toggle"></div><p><strong>Leads chegam sem qualificação</strong> e o time perde tempo.</p></div>
-              <div class="row"><div class="toggle"></div><p><strong>Agendamentos viram caos</strong> (ou dependem de uma pessoa só).</p></div>
-              <div class="row"><div class="toggle"></div><p><strong>Follow-up não acontece</strong> e o funil esfria sozinho.</p></div>
-              <div class="row"><div class="toggle"></div><p><strong>As infos ficam espalhadas</strong> e nada vira processo.</p></div>
-            </div>
+          <div class="list">
+            <div class="row"><div class="toggle"></div><p><strong>Prompts prontos</strong> pra atendimento, vendas e suporte.</p></div>
+            <div class="row"><div class="toggle"></div><p><strong>Playbooks reais</strong> (o que funciona no mundo real, não teoria).</p></div>
+            <div class="row"><div class="toggle"></div><p><strong>Stack recomendada</strong> (ferramentas, integrações e automações).</p></div>
+            <div class="row"><div class="toggle"></div><p><strong>“Tubarões” sem enrolação:</strong> ideias com lógica, números e execução.</p></div>
+          </div>
+
+          <div class="micro">
+            <b>Sem spam.</b> Você sai quando quiser. Conteúdo inspirado no que os melhores operadores e mentores
+            usam — traduzido pro <b>Brasil</b> e pro seu dia a dia.
           </div>
         </div>
       </div>
 
-      <!-- FOOTER (sempre embaixo) -->
       <div class="foot">
         <div class="small">
-          Sites inteligentes, automação e IA conectadas. Tecnologia que acelera marcas todos os dias.
-          <span style="color:rgba(14,107,255,.9); font-weight:900;">CRM + Atendimento com IA</span>
+          Tullu Motion • automação, IA e estratégia. Transforme WhatsApp em processo — e processo em escala.
         </div>
 
-        <div class="mark">
-          <span class="b">Teste</span><span class="j">Grátis</span>
+        <div class="cta">
+          <a class="btn" href="LINK_DO_FORM" target="_blank" rel="noopener">
+            <span class="spark"></span>
+            <span class="label">Inscreva-se grátis</span>
+          </a>
+          <div class="link">LINK_DO_FORM</div>
         </div>
       </div>
 
     </div>
   </div>
+
+  <script>
+    // substitui o texto do link exibido no rodapé pelo href real
+    (function(){
+      const a = document.querySelector('.btn');
+      const link = document.querySelector('.link');
+      if(!a || !link) return;
+      const href = a.getAttribute('href') || '';
+      if(href && href !== 'LINK_DO_FORM') link.textContent = href;
+    })();
+  </script>
 </body>
 </html>
