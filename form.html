@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crie seu Formulário + IA de Atendimento | Tullu Motion</title>
+  <meta name="description" content="Ative seu formulário com triagem e IA de atendimento em minutos. Configure seu negócio, personalize cores e publique sua página." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="assets/img/tup.png.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/branch-pages.css">
+
+  <!-- Apenas cores (referência do story) -->
+  <style>
+    :root{
+      --primary: #0E6BFF;
+      --primary-2: #2F8CFF;
+      --cyan: #22D3EE;
+
+      --text: #F8FAFC;
+      --muted: rgba(248,250,252,.85);
+
+      --card: rgba(255,255,255,.07);
+      --stroke: rgba(255,255,255,.14);
+    }
+
+    .req{
+      color:#ff4a4a;
+      font-weight:900;
+      margin-left:6px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" id="header">
+    <nav class="nav container">
+      <div class="nav__logo">
+        <a href="index.html">
+          <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
+          <span class="nav__logo-text">Motion</span>
+        </a>
+      </div>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#onboard" class="nav__link">Começar</a></li>
+          <li class="nav__item"><a href="https://tullumotion.com/suporte.html" class="nav__link">Suporte</a></li>
+        </ul>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="cta-section" id="onboard" style="padding-top:110px;">
+      <div class="container">
+        <div class="form-shell">
+
+          <div class="form-card">
+            <div class="form-header">
+              <div>
+                <h1 class="form-title">
+                  Crie seu <span class="gradient-text">formulário + IA</span> de atendimento
+                </h1>
+                <br>
+                <p class="form-subtitle">
+                  Em poucos minutos você configura seu negócio, personaliza o visual e publica sua página de triagem.
+                  Sem WhatsApp API agora — o lead cai qualificado e você fecha no humano com 1 clique.
+                </p>
+                <br>
+                <div class="badge badge--soft">Ativo SaaS: você cria, publica e testa na hora.</div>
+              </div>
+            </div>
+
+            <div class="stepper" role="tablist" aria-label="Etapas do formulário">
+              <div class="step is-active" data-step-indicator="1" role="tab" aria-selected="true">
+                <span class="step__num">1</span>
+                <span>Seus dados</span>
+              </div>
+              <div class="step" data-step-indicator="2" role="tab" aria-selected="false">
+                <span class="step__num">2</span>
+                <span>Config do negócio</span>
+              </div>
+              <div class="step" data-step-indicator="3" role="tab" aria-selected="false">
+                <span class="step__num">3</span>
+                <span>Branding + publicar</span>
+              </div>
+            </div>
+
+            <div class="progress" aria-label="Progresso">
+              <div class="progress__bar" id="progressBar" style="width:33%;"></div>
+            </div>
+
+            <br>
+
+            <form id="onboardForm" novalidate>
+              <!-- meta -->
+              <input type="hidden" id="source_url" name="source_url" value="">
+              <input type="hidden" id="user_agent" name="user_agent" value="">
+              <input type="hidden" id="ref" name="ref" value="">
+              <input type="hidden" id="campaign" name="campaign" value="">
+
+              <!-- STEP 1 -->
+              <section class="form-step" id="step1" data-step="1">
+                <h2 class="hero3_title" style="margin:0 0 8px;">Seus dados</h2>
+                <p class="help" style="margin-top:0;">
+                  Vamos usar isso para criar seu acesso e te enviar o link da sua página.
+                </p>
+
+                <div class="form-grid form-grid--2">
+                  <div class="field">
+                    <div class="label"><span>Seu nome<span class="req">*</span></span></div>
+                    <input class="input" type="text" id="owner_name" name="owner_name"
+                      placeholder="Ex, Victor Almeida" autocomplete="name" data-required="true" />
+                  </div>
+
+                  <div class="field">
+                    <div class="label"><span>Email<span class="req">*</span></span></div>
+                    <input class="input" type="email" id="owner_email" name="owner_email"
+                      placeholder="voce@empresa.com" autocomplete="email" data-required="true" />
+                  </div>
+
+                  <div class="field">
+                    <div class="label"><span>WhatsApp<span class="req">*</span></span></div>
+                    <input class="input" type="tel" id="owner_whatsapp" name="owner_whatsapp"
+                      placeholder="(11) 99999-9999" autocomplete="tel" data-required="true" />
+                    <div class="help">Usamos para suporte e para confirmar a ativação.</div>
+                  </div>
+
+                  <div class="field">
+                    <div class="label"><span>Segmento<span class="req">*</span></span></div>
+                    <input class="input" type="text" id="owner_segment" name="owner_segment"
+                      placeholder="Ex, móveis, clínica, imobiliária, academia" data-required="true" />
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <span></span>
+                  <button type="button" class="btn btn--primary btn--large" id="nextBtn1">Próximo</button>
+                </div>
+              </section>
+
+              <!-- STEP 2 -->
+              <section class="form-step" id="step2" data-step="2" hidden>
+                <h2 class="hero3_title" style="margin:0 0 8px;">Config do negócio</h2>
+                <p class="help" style="margin-top:0;">
+                  Isso vira a “base” que o seu bot usa para atender e qualificar.
+                </p>
+
+                <div class="form-grid form-grid--2">
+                  <div class="field">
+                    <div class="label"><span>Nome do negócio<span class="req">*</span></span></div>
+                    <input class="input" type="text" id="business_name" name="business_name"
+                      placeholder="Ex, Vitor Cadeiras" autocomplete="organization" data-required="true" />
+                  </div>
+
+                  <div class="field">
+                    <div class="label"><span>WhatsApp do vendedor<span class="req">*</span></span></div>
+                    <input class="input" type="tel" id="sales_whatsapp" name="sales_whatsapp"
+                      placeholder="(11) 98888-7777" autocomplete="tel" data-required="true" />
+                    <div class="help">O bot encaminha o lead para este número.</div>
+                  </div>
+
+                  <div class="field">
+                    <div class="label"><span>O que você vende<span class="req">*</span></span></div>
+                    <input class="input" type="text" id="offer" name="offer"
+                      placeholder="Ex, pintura/restauração de cadeiras e mesas" data-required="true" />
+                  </div>
+
+                  <div class="field">
+                    <div class="label"><span>Público-alvo<span class="req">*</span></span></div>
+                    <input class="input" type="text" id="audience" name="audience"
+                      placeholder="Ex, residências e escritórios em SP" data-required="true" />
+                  </div>
+                </div>
+
+                <div class="field" style="margin-top:14px;">
+                  <div class="label"><span>Perguntas frequentes (FAQ)<span class="req">*</span></span></div>
+                  <div class="example">
+                    <strong>Formato sugerido</strong><br>
+                    1) Qual o prazo? — 3 a 5 dias úteis.<br>
+                    2) Qual o preço? — depende do estado e quantidade.<br>
+                    3) Atende onde? — SP capital e ABC.
+                  </div>
+                  <textarea class="textarea" id="faq" name="faq"
+                    placeholder="Escreva perguntas e respostas. Quanto mais claro, melhor."
+                    data-required="true" data-maxlen="1800"></textarea>
+                  <div class="counter" id="faqCounter">0/1800</div>
+                </div>
+
+                <div class="field" style="margin-top:14px;">
+                  <div class="label"><span>Como deve ser a triagem?<span class="req">*</span></span></div>
+                  <div class="example">
+                    <strong>Exemplo</strong><br>
+                    Perguntar: (1) o que precisa, (2) urgência, (3) cidade/região, (4) orçamento aproximado,
+                    (5) se é para compra agora ou pesquisa. No final, encaminhar pro WhatsApp com resumo.
+                  </div>
+                  <textarea class="textarea" id="triage_rules" name="triage_rules"
+                    placeholder="Descreva as perguntas e critérios de qualificação."
+                    data-required="true" data-maxlen="1800"></textarea>
+                  <div class="counter" id="triageCounter">0/1800</div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn--outline btn--large" id="backBtn2">Voltar</button>
+                  <button type="button" class="btn btn--primary btn--large" id="nextBtn2">Próximo</button>
+                </div>
+              </section>
+
+              <!-- STEP 3 -->
+              <section class="form-step" id="step3" data-step="3" hidden>
+                <h2 class="hero3_title" style="margin:0 0 8px;">Branding + publicar</h2>
+                <p class="help" style="margin-top:0;">
+                  Você escolhe a cor e envia seu logo. A página é publicada com layout padrão e pronta para uso.
+                </p>
+
+                <div class="form-grid form-grid--2">
+                  <div class="field">
+                    <div class="label"><span>Cor principal<span class="req">*</span></span></div>
+
+                    <div class="pills" role="radiogroup" aria-label="Cor principal">
+                      <label class="pill is-active" id="pillColor1">
+                        <input type="radio" name="brand_color" value="#0E6BFF" checked data-required="true">
+                        <span>Azul (padrão)</span>
+                      </label>
+                      <label class="pill" id="pillColor2">
+                        <input type="radio" name="brand_color" value="#2F8CFF" data-required="true">
+                        <span>Azul 2</span>
+                      </label>
+                      <label class="pill" id="pillColor3">
+                        <input type="radio" name="brand_color" value="#22D3EE" data-required="true">
+                        <span>Ciano</span>
+                      </label>
+                    </div>
+
+                    <div class="help">Você pode mudar depois. No MVP, usamos presets.</div>
+                  </div>
+
+                  <div class="field">
+                    <div class="label"><span>Logo (PNG/JPG)<span class="req">*</span></span></div>
+                    <input class="input" type="file" id="logo_file" name="logo_file" accept="image/*" data-required="true" />
+                    <div class="help">O logo será exibido em posição padrão no topo da sua página.</div>
+                  </div>
+                </div>
+
+                <div class="field" style="margin-top:14px;">
+                  <label class="pill" style="align-items:flex-start; border-radius:16px; padding:14px; cursor:pointer;">
+                    <input type="checkbox" id="accept_terms" name="accept_terms" data-required="true" style="margin-top:2px;">
+                    <span style="line-height:1.45;">
+                      Eu aceito os <a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" rel="noopener" style="text-decoration:underline;">Termos</a>
+                      e a <a href="https://tullumotion.com/assets/docs/politica.pdf" target="_blank" rel="noopener" style="text-decoration:underline;">Política</a><span class="req">*</span>
+                    </span>
+                  </label>
+                </div>
+
+                <div class="glow-card" style="margin-top:12px;">
+                  <div class="cards-grid" style="grid-template-columns:1fr; gap:12px;">
+                    <div class="card-base" style="align-items:flex-start;">
+                      <div class="pain-card__icon">⚡</div>
+                      <div>
+                        <strong>Criação instantânea</strong>
+                        <div style="margin-top:.35rem; color: var(--muted);">
+                          Ao enviar, nós geramos seu link e você já testa como se fosse seu cliente.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-base" style="align-items:flex-start;">
+                      <div class="pain-card__icon">🧠</div>
+                      <div>
+                        <strong>Triagem inteligente</strong>
+                        <div style="margin-top:.35rem; color: var(--muted);">
+                          O bot usa suas regras para perguntar o necessário e resumir para o vendedor.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-base" style="align-items:flex-start;">
+                      <div class="pain-card__icon">📲</div>
+                      <div>
+                        <strong>WhatsApp com 1 clique</strong>
+                        <div style="margin-top:.35rem; color: var(--muted);">
+                          Encaminhamento com mensagem pronta (sem WhatsApp API no MVP).
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn--outline btn--large" id="backBtn3">Voltar</button>
+                  <button type="submit" class="btn btn--primary btn--large" id="submitBtn">Publicar minha página</button>
+                </div>
+              </section>
+
+              <!-- SUCCESS -->
+              <section class="form-step" id="successStep" data-step="success" hidden>
+                <h1 class="form-title" style="margin:0 0 8px;">Pronto. Sua página está quase no ar.</h1>
+
+                <p class="form-subtitle" style="margin-top:0;">
+                  Estamos finalizando sua configuração e já vamos liberar seu link.
+                </p>
+
+                <div class="showcase__cta" style="margin-top:12px;">
+                  <a href="#" class="btn btn--primary btn--large" id="goToPageBtn">Ir para minha página</a>
+
+                  <div class="info-bubble info-bubble--blue" style="margin-top:12px;">
+                    * Se o link ainda não estiver pronto, volte em alguns segundos. (MVP)
+                  </div>
+                </div>
+              </section>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
+            <span class="footer__logo-text"></span>
+          </div>
+          <p class="footer__description">
+            Tullu Motion — construtor de formulários com IA de atendimento. Do anúncio ao WhatsApp, com triagem inteligente.
+          </p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__section">
+            <h4 class="footer__section-title">Suporte</h4>
+            <ul class="footer__list">
+              <li><a href="https://tullumotion.com/suporte.html" class="footer__link">Central</a></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Sem WhatsApp API no MVP</span></li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__section-title">Legal</h4>
+            <ul class="footer__list">
+              <li><a href="https://tullumotion.com/assets/docs/politica.pdf" class="footer__link">Política de Privacidade</a></li>
+              <li><a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" class="footer__link">Termos de Uso</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          © 2026 Tullu Motion. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/branch-animations.js"></script>
+
+  <!-- JS do onboarding (vamos criar depois). HTML já fica definitivo. -->
+  <script src="assets/js/onboarding.js"></script>
+</body>
+</html>
