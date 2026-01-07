@@ -17,10 +17,9 @@
 
       --ink:#020617;
       --text:#F8FAFC;
-      --muted:rgba(248,250,252,.78);
-      --muted2:rgba(248,250,252,.62);
-      --card:rgba(255,255,255,.05);
-      --stroke:rgba(255,255,255,.10);
+      --muted:rgba(248,250,252,.80);
+      --card:rgba(255,255,255,.06);
+      --stroke:rgba(255,255,255,.12);
     }
 
     *{box-sizing:border-box}
@@ -41,39 +40,39 @@
       overflow:hidden;
       border-radius:34px;
       background:
-        radial-gradient(920px 760px at 18% 16%, rgba(14,107,255,.30), transparent 62%),
-        radial-gradient(860px 740px at 88% 84%, rgba(47,140,255,.22), transparent 62%),
-        radial-gradient(520px 520px at 62% 28%, rgba(10,28,61,.75), transparent 64%),
+        radial-gradient(920px 760px at 18% 16%, rgba(14,107,255,.32), transparent 62%),
+        radial-gradient(860px 740px at 88% 84%, rgba(47,140,255,.24), transparent 62%),
         linear-gradient(135deg, #000 0%, #040818 35%, #060e28 62%, #000 100%);
     }
 
     .streak{
       position:absolute;
-      inset:-140px -280px auto -280px;
-      height:580px;
+      inset:-160px -300px auto -300px;
+      height:620px;
       transform:rotate(-18deg);
-      background: radial-gradient(closest-side, rgba(14,107,255,.55), rgba(14,107,255,.08) 55%, transparent 78%);
+      background: radial-gradient(closest-side, rgba(14,107,255,.60), rgba(14,107,255,.08) 55%, transparent 78%);
       filter:blur(2px);
-      opacity:.88;
+      opacity:.9;
       pointer-events:none;
     }
+
     .streak--2{
       position:absolute;
-      inset:auto -320px -260px -320px;
-      height:720px;
+      inset:auto -340px -300px -340px;
+      height:760px;
       transform:rotate(12deg);
       background: radial-gradient(closest-side, rgba(47,140,255,.45), rgba(47,140,255,.10) 56%, transparent 80%);
-      opacity:.78;
+      opacity:.85;
       pointer-events:none;
     }
 
     .noise{
       position:absolute; inset:0;
       background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
       background-size:56px 56px;
-      opacity:.11;
+      opacity:.10;
       mask-image:radial-gradient(closest-side at 50% 45%, rgba(0,0,0,.9), transparent 72%);
       pointer-events:none;
     }
@@ -81,82 +80,51 @@
     .wrap{
       position:absolute;
       inset:0;
-      padding:86px 78px 72px;
+      padding:96px 90px 96px;
       display:flex;
       flex-direction:column;
-      gap:18px;
-      min-height:0;
+      justify-content:flex-start;
+      gap:32px;
     }
 
-    /* TOP */
+    /* TOP (somente logo) */
     .top{
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
+      justify-content:flex-start;
     }
     .brand img{
-      width:46px; height:46px;
+      width:54px; height:54px;
       object-fit:contain;
-      filter:drop-shadow(0 12px 22px rgba(14,107,255,.20));
+      filter:drop-shadow(0 12px 22px rgba(14,107,255,.25));
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(14,107,255,.26);
-      background:rgba(14,107,255,.10);
-      box-shadow:0 14px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(14,107,255,.08) inset;
-      font-weight:800;
-      font-size:12px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:rgba(248,250,252,.90);
-      white-space:nowrap;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:99px;
-      background:var(--blue);
-      box-shadow:0 0 16px rgba(14,107,255,.65);
-    }
-
-    /* HERO */
+    /* HERO (ocupando a tela) */
     .hero{
       flex:1;
-      min-height:0;
       display:flex;
       flex-direction:column;
-      gap:14px;
-      padding-top:6px;
+      justify-content:flex-start;
+      gap:26px;
     }
 
     .kicker{
       font-weight:800;
-      font-size:14px;
+      font-size:16px;
       color:rgba(248,250,252,.72);
-      letter-spacing:.14em;
+      letter-spacing:.16em;
       text-transform:uppercase;
-      margin-bottom:4px;
     }
 
     h1{
       margin:0;
       font-family:Poppins,Inter,sans-serif;
       font-weight:800;
-      font-size:68px;
-      line-height:1.04;
-      letter-spacing:-.045em;
+      font-size:84px;
+      line-height:1.02;
+      letter-spacing:-.05em;
       color:var(--text);
-      max-width:930px;
+      max-width:980px;
     }
     .grad{
       background:linear-gradient(90deg, var(--cyan), var(--blue2), var(--blue));
@@ -166,143 +134,86 @@
     }
 
     .sub{
-      margin:10px 0 0;
-      font-size:19px;
-      line-height:1.55;
+      font-size:22px;
+      line-height:1.6;
       color:var(--muted);
-      max-width:860px;
+      max-width:920px;
     }
 
+    /* CARD MAIOR */
     .card{
-      margin-top:16px;
-      padding:22px 22px;
-      border-radius:22px;
+      margin-top:22px;
+      padding:30px 30px;
+      border-radius:26px;
       background:var(--card);
       border:1px solid var(--stroke);
-      box-shadow:0 22px 60px rgba(0,0,0,.45);
+      box-shadow:0 30px 80px rgba(0,0,0,.55);
       backdrop-filter: blur(10px);
-      max-width:980px;
+      max-width:100%;
     }
+
     .card h2{
-      margin:0 0 10px;
+      margin:0 0 18px;
       font-family:Poppins,Inter,sans-serif;
-      font-size:18px;
+      font-size:22px;
       letter-spacing:-.02em;
-      color:rgba(248,250,252,.92);
+      color:rgba(248,250,252,.95);
     }
 
     .list{
       display:flex;
       flex-direction:column;
-      gap:12px;
-      margin-top:14px;
+      gap:18px;
     }
+
     .row{
       display:flex;
       align-items:flex-start;
-      gap:12px;
-      padding:12px 12px;
-      border-radius:16px;
+      gap:14px;
+      padding:16px 16px;
+      border-radius:18px;
       background:rgba(2,6,23,.35);
-      border:1px solid rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
     }
+
     .toggle{
-      width:44px; height:26px;
+      width:48px; height:28px;
       border-radius:999px;
       border:1px solid rgba(14,107,255,.22);
       background:rgba(14,107,255,.10);
       position:relative;
       flex:0 0 auto;
       margin-top:2px;
-      box-shadow:0 10px 24px rgba(0,0,0,.35);
+      box-shadow:0 12px 28px rgba(0,0,0,.35);
     }
     .toggle:before{
       content:"";
       position:absolute;
-      top:50%; left:4px;
+      top:50%; left:5px;
       transform:translateY(-50%);
-      width:18px; height:18px;
+      width:20px; height:20px;
       border-radius:99px;
       background:linear-gradient(180deg, rgba(34,211,238,1), rgba(14,107,255,1));
-      box-shadow:0 0 16px rgba(14,107,255,.55);
+      box-shadow:0 0 16px rgba(14,107,255,.6);
     }
+
     .row p{
       margin:0;
-      font-size:15px;
-      line-height:1.35;
-      color:rgba(248,250,252,.80);
+      font-size:18px;
+      line-height:1.4;
+      color:rgba(248,250,252,.88);
     }
-    .row p strong{ color:rgba(248,250,252,.97) }
+    .row p strong{ color:#fff }
 
     .micro{
-      margin-top:14px;
-      font-size:13px;
-      line-height:1.45;
+      margin-top:20px;
+      font-size:14px;
+      line-height:1.5;
       color:rgba(248,250,252,.60);
     }
-    .micro b{ color:rgba(248,250,252,.86) }
+    .micro b{ color:rgba(248,250,252,.9) }
 
-    /* CTA FOOT */
-    .foot{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:18px;
-      padding-top:18px;
-    }
-    .foot .small{
-      font-size:12px;
-      color:rgba(248,250,252,.58);
-      font-weight:700;
-      line-height:1.3;
-      max-width:680px;
-    }
-
-    .cta{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:10px;
-      text-align:right;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:14px 18px;
-      border-radius:999px;
-      border:1px solid rgba(14,107,255,.26);
-      background:linear-gradient(180deg, rgba(14,107,255,.18), rgba(14,107,255,.08));
-      box-shadow:0 18px 44px rgba(0,0,0,.55), 0 0 0 1px rgba(14,107,255,.10) inset;
-      color:rgba(248,250,252,.92);
-      font-weight:900;
-      letter-spacing:-.01em;
-      text-decoration:none;
-      user-select:none;
-    }
-    .btn .spark{
-      width:10px;height:10px;border-radius:99px;
-      background:var(--cyan);
-      box-shadow:0 0 18px rgba(34,211,238,.75);
-    }
-    .btn .label{
-      font-size:14px;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .link{
-      font-size:12px;
-      color:rgba(14,107,255,.92);
-      font-weight:900;
-      letter-spacing:-.01em;
-      opacity:.95;
-      max-width:320px;
-      word-break:break-all;
-    }
-
-    /* scale on smaller screens */
+    /* RESPONSIVO (preview menor) */
     @media (max-width: 1100px){
       body{ padding:14px; }
       .frame{ transform: scale(calc((100vw - 28px) / 1080)); transform-origin: top center; }
@@ -311,23 +222,23 @@
 </head>
 
 <body>
-  <div class="frame" role="img" aria-label="Story Tullu Motion - Lista semanal de IA">
+  <div class="frame">
     <div class="streak"></div>
     <div class="streak--2"></div>
     <div class="noise"></div>
 
     <div class="wrap">
 
+      <!-- TOPO: só logo -->
       <div class="top">
         <div class="brand">
-          <!-- troque pelo seu arquivo real -->
           <img src="assets/img/apptullu.png" alt="Tullu Motion">
         </div>
-
-        <div class="pill"><span class="dot"></span>LISTA IA • GRÁTIS</div>
       </div>
 
+      <!-- CONTEÚDO PRINCIPAL -->
       <div class="hero">
+
         <div class="kicker">Pra quem quer ganhar tempo e dinheiro</div>
 
         <h1>
@@ -336,53 +247,28 @@
         </h1>
 
         <p class="sub">
-          Um resumo prático com <b>prompts</b>, <b>templates</b> e <b>automações</b> que empresas usam pra
-          vender mais e operar com menos fricção.
+          Um resumo prático com <b>prompts</b>, <b>templates</b> e <b>automações</b> que empresas usam
+          para vender mais e operar com menos fricção.
         </p>
 
         <div class="card">
           <h2>O que você vai receber</h2>
 
           <div class="list">
-            <div class="row"><div class="toggle"></div><p><strong>Prompts prontos</strong> pra atendimento, vendas e suporte.</p></div>
+            <div class="row"><div class="toggle"></div><p><strong>Prompts prontos</strong> para atendimento, vendas e suporte.</p></div>
             <div class="row"><div class="toggle"></div><p><strong>Playbooks reais</strong> (o que funciona no mundo real, não teoria).</p></div>
             <div class="row"><div class="toggle"></div><p><strong>Stack recomendada</strong> (ferramentas, integrações e automações).</p></div>
-            <div class="row"><div class="toggle"></div><p><strong>“Tubarões” sem enrolação:</strong> ideias com lógica, números e execução.</p></div>
+            <div class="row"><div class="toggle"></div><p><strong>“Tubarões” sem enrolação:</strong> lógica, números e execução.</p></div>
           </div>
 
           <div class="micro">
-            <b>Sem spam.</b> Você sai quando quiser. Conteúdo inspirado no que os melhores operadores e mentores
-            usam — traduzido pro <b>Brasil</b> e pro seu dia a dia.
+            <b>Sem spam.</b> Você sai quando quiser. Conteúdo inspirado nos melhores operadores e mentores,
+            traduzido pro <b>Brasil</b> e aplicado ao dia a dia.
           </div>
         </div>
+
       </div>
-
-      <div class="foot">
-        <div class="small">
-          Tullu Motion • automação, IA e estratégia. Transforme WhatsApp em processo — e processo em escala.
-        </div>
-
-        <div class="cta">
-          <a class="btn" href="LINK_DO_FORM" target="_blank" rel="noopener">
-            <span class="spark"></span>
-            <span class="label">Inscreva-se grátis</span>
-          </a>
-          <div class="link">LINK_DO_FORM</div>
-        </div>
-      </div>
-
     </div>
   </div>
-
-  <script>
-    // substitui o texto do link exibido no rodapé pelo href real
-    (function(){
-      const a = document.querySelector('.btn');
-      const link = document.querySelector('.link');
-      if(!a || !link) return;
-      const href = a.getAttribute('href') || '';
-      if(href && href !== 'LINK_DO_FORM') link.textContent = href;
-    })();
-  </script>
 </body>
 </html>
