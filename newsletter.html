@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar na Lista IA — Tullu Motion</title>
+  <meta name="description" content="Entre na Lista IA da Tullu Motion e receba dicas práticas toda semana para acelerar seu negócio com IA." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="assets/img/tup.png.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/branch-pages.css">
+
+  <style>
+    .req{ color:#ff4a4a; font-weight:900; margin-left:6px; }
+    .form-card.is-success .form-shell__hide-on-success{ display:none !important; }
+    .success-step{ padding-top: 8px; }
+    .success-step .info-bubble{ margin-top: 12px; }
+
+    /* deixa o card mais “campanha” */
+    .campaign-badge{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(34,211,238,.10);
+      border:1px solid rgba(34,211,238,.22);
+      color:rgba(248,250,252,.92);
+      font-weight:600;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" id="header">
+    <nav class="nav container">
+      <div class="nav__logo">
+        <a href="index.html">
+          <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
+          <span class="nav__logo-text">Motion</span>
+        </a>
+      </div>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#form" class="nav__link">Entrar na lista</a>
+          </li>
+          <li class="nav__item">
+            <a href="https://tullumotion.com/suporte.html" class="nav__link">Suporte</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="cta-section" id="form" style="padding-top: 110px;">
+      <div class="container">
+        <div class="form-shell">
+
+          <div class="form-card" id="newsletterCard">
+            <div class="form-header form-shell__hide-on-success">
+              <div>
+                <h1 class="form-title">
+                  Entre na <span class="gradient-text">Lista IA</span> da Tullu
+                </h1>
+
+                <div class="campaign-badge">⚡ Dicas práticas, sem teoria</div>
+
+                <p class="form-subtitle" style="margin-top:14px;">
+                  Um resumo semanal com <b>prompts</b>, <b>templates</b> e <b>automações</b> que você aplica no mesmo dia
+                  pra ganhar tempo, vender mais e operar com menos fricção.
+                </p>
+              </div>
+            </div>
+
+            <form id="newsletterForm" novalidate class="form-shell__hide-on-success">
+              <input type="hidden" id="source_url" name="source_url" value="">
+              <input type="hidden" id="user_agent" name="user_agent" value="">
+
+              <div class="form-grid form-grid--2" style="margin-top: 10px;">
+                <div class="field">
+                  <div class="label"><span>Seu nome<span class="req">*</span></span></div>
+                  <input class="input" type="text" id="nome" name="nome"
+                    placeholder="Ex, Rhyan Almeida" autocomplete="name" data-required="true" />
+                </div>
+
+                <div class="field">
+                  <div class="label"><span>Email<span class="req">*</span></span></div>
+                  <input class="input" type="email" id="email" name="email"
+                    placeholder="voce@empresa.com" autocomplete="email" data-required="true" />
+                </div>
+
+                <div class="field">
+                  <div class="label"><span>WhatsApp<span class="req">*</span></span></div>
+                  <input class="input" type="tel" id="whatsapp" name="whatsapp"
+                    placeholder="(11) 99999-9999" autocomplete="tel" data-required="true" />
+                  <div class="help">Vou usar só pra te avisar quando sair a edição da semana (sem spam).</div>
+                </div>
+
+                <div class="field">
+                  <div class="label"><span>Seu segmento (opcional)</span></div>
+                  <input class="input" type="text" id="segmento" name="segmento"
+                    placeholder="Ex, clínica, imobiliária, e-commerce, serviços" data-required="false" />
+                  <div class="help">Ajuda a personalizar exemplos e templates.</div>
+                </div>
+              </div>
+
+              <div class="field" style="margin-top: 14px;">
+                <label class="pill" style="align-items:flex-start; border-radius: 16px; padding: 14px; cursor: pointer;">
+                  <input type="checkbox" id="consent" name="consent" data-required="true" style="margin-top: 2px;">
+                  <span style="line-height: 1.45;">
+                    Eu aceito receber conteúdos da Lista IA por e-mail e WhatsApp<span class="req">*</span>
+                    <div style="margin-top:.35rem; color: var(--muted);">
+                      Você pode sair quando quiser. Não fazemos spam.
+                    </div>
+                  </span>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <span></span>
+                <button type="submit" class="btn btn--primary btn--large" id="submitBtn">
+                  Entrar na Lista IA
+                </button>
+              </div>
+
+              <p class="lgpd-note" style="margin-top: 10px;">
+                <span class="lgpd-asterisk" style="font-size: 12px;">*</span>
+                Ao enviar, você concorda com o tratamento dos dados para cadastro na Lista IA e comunicações relacionadas,
+                conforme a <a href="https://tullumotion.com/assets/docs/politica.pdf" target="_blank" rel="noopener">Política de Privacidade</a>.
+              </p>
+            </form>
+
+            <!-- SUCESSO -->
+            <section id="successStep" class="success-step" hidden>
+              <h1 class="form-title" style="margin:0 0 8px;">Cadastro confirmado ✅</h1>
+
+              <p class="form-subtitle" style="margin-top:0;">
+                Agora você vai receber no seu <b>e-mail</b> e no <b>WhatsApp</b> dicas práticas
+                para a IA acelerar seu negócio — com prompts, templates e automações aplicáveis.
+              </p>
+
+              <div class="glow-card" style="margin-top: 12px;">
+                <div class="cards-grid" style="grid-template-columns: 1fr; gap: 12px;">
+                  <div class="card-base" style="align-items:flex-start;">
+                    <div class="pain-card__icon">📩</div>
+                    <div>
+                      <strong>Entrega simples</strong>
+                      <div style="margin-top:.35rem; color: var(--muted);">
+                        Você recebe a edição da semana e aplica em minutos.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card-base" style="align-items:flex-start;">
+                    <div class="pain-card__icon">🧠</div>
+                    <div>
+                      <strong>Sem enrolação</strong>
+                      <div style="margin-top:.35rem; color: var(--muted);">
+                        Conteúdo direto pro Brasil, com foco em execução.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="info-bubble info-bubble--blue" style="margin-top: 12px;">
+                Dica: salve o contato da Tullu pra não perder os avisos da semana.
+              </div>
+            </section>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
+            <span class="footer__logo-text"></span>
+          </div>
+          <p class="footer__description">
+            Lista IA — prompts, templates e automações para acelerar negócios no Brasil.
+          </p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__section">
+            <h4 class="footer__section-title">Contato</h4>
+            <ul class="footer__list">
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Avisos por e-mail e WhatsApp</span></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Sem spam</span></li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__section-title">Legal</h4>
+            <ul class="footer__list">
+              <li><a href="https://tullumotion.com/assets/docs/politica.pdf" class="footer__link">Política de Privacidade</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          © 2026 Tullu Motion. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/branch-animations.js"></script>
+  <script src="assets/js/formnewsletter.js"></script>
+</body>
+</html>
