@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Gabriel — Futebol e Corinthians</title>
+  <meta name="description" content="Site pessoal do Gabriel: futebol, Corinthians e um visual em azul e branco." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #061425;
+      --card: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.14);
+      --text: #ffffff;
+      --muted: rgba(255,255,255,.78);
+
+      --blue: #2F77F2;
+      --blue-2:#60A5FA;
+
+      --radius: 18px;
+      --shadow: 0 18px 40px rgba(0,0,0,.38);
+      --max: 1080px;
+    }
+
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(47,119,242,.28), transparent 55%),
+        radial-gradient(700px 420px at 85% 25%, rgba(96,165,250,.18), transparent 55%),
+        radial-gradient(900px 520px at 50% 110%, rgba(47,119,242,.18), transparent 60%),
+        linear-gradient(180deg, #040B14, var(--bg));
+    }
+
+    a{ color:inherit; text-decoration:none }
+    .container{ width:min(var(--max), calc(100% - 48px)); margin:0 auto; }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(4,11,20,.6);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .badge{
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background:
+        radial-gradient(120% 120% at 20% 20%, rgba(255,255,255,.18), transparent 55%),
+        linear-gradient(135deg, rgba(47,119,242,1), rgba(96,165,250,1));
+      box-shadow: 0 12px 26px rgba(47,119,242,.25);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .links{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+    }
+    .links a{
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .links a:hover{
+      color: var(--text);
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 56px 0 26px;
+    }
+    .hero__grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .hero__card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+      padding: 28px;
+    }
+    .hero__card::before{
+      content:"";
+      position:absolute;
+      inset: -40px;
+      background:
+        radial-gradient(420px 240px at 20% 20%, rgba(47,119,242,.35), transparent 60%),
+        radial-gradient(420px 240px at 80% 30%, rgba(96,165,250,.22), transparent 60%);
+      pointer-events:none;
+      filter: blur(2px);
+    }
+    .hero__content{ position: relative; }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(47,119,242,.12);
+      border: 1px solid rgba(47,119,242,.35);
+      color: rgba(255,255,255,.92);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .dot{
+      width: 8px; height: 8px; border-radius: 99px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-2));
+      box-shadow: 0 0 0 4px rgba(47,119,242,.18);
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .subtitle{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 58ch;
+    }
+    .cta{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 700;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2); }
+    .btn--primary{
+      background: linear-gradient(135deg, rgba(47,119,242,1), rgba(96,165,250,1));
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 16px 30px rgba(47,119,242,.24);
+    }
+    .btn--primary:hover{ background: linear-gradient(135deg, rgba(47,119,242,.95), rgba(96,165,250,.95)); }
+
+    /* Side card */
+    .side{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      position: relative;
+      overflow:hidden;
+    }
+    .side::before{
+      content:"";
+      position:absolute;
+      inset:-60px;
+      background: radial-gradient(520px 300px at 70% 15%, rgba(47,119,242,.28), transparent 60%);
+      pointer-events:none;
+    }
+    .side__content{ position: relative; }
+    .side h2{
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .side p{
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .chips{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip{
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.9);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* Sections */
+    section{ padding: 26px 0; }
+    .section__header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .section__title{
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    .section__subtitle{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 18px;
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer{
+      padding: 30px 0 46px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 16px;
+      color: rgba(255,255,255,.8);
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero__grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 840px){
+      .grid{ grid-template-columns: 1fr; }
+      .links{ gap: 8px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Ir para o topo">
+          <span class="badge" aria-hidden="true"></span>
+          <span>Gabriel</span>
+        </a>
+
+        <nav class="links" aria-label="Navegação">
+          <a href="#sobre">Sobre</a>
+          <a href="#futebol">Futebol</a>
+          <a href="#corinthians">Corinthians</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__grid">
+        <div class="hero__card">
+          <div class="hero__content">
+            <div class="kicker"><span class="dot" aria-hidden="true"></span> Site pessoal</div>
+            <h1>Eu sou o Gabriel.</h1>
+            <p class="subtitle">
+              Eu gosto de futebol e sou corintiano. Este é um cantinho simples (azul e branco, do jeito certo)
+              pra contar um pouco sobre mim e minhas paixões.
+            </p>
+
+            <div class="cta">
+              <a class="btn btn--primary" href="#corinthians">Ver a parte do Corinthians</a>
+              <a class="btn" href="#futebol">Ir para Futebol</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="side" aria-label="Resumo rápido">
+          <div class="side__content">
+            <h2>Resumo do Gabriel</h2>
+            <p>
+              Futebol como hobby, Corinthians no coração, e um site clean pra apresentar isso sem complicação.
+            </p>
+            <div class="chips">
+              <span class="chip">⚽ Futebol</span>
+              <span class="chip">💙 Azul & Branco</span>
+              <span class="chip">🖤🤍 Corintiano</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+      <div class="section__header">
+        <h2 class="section__title">Sobre</h2>
+        <p class="section__subtitle">
+          Uma mini bio: quem é o Gabriel e o que ele curte.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Quem eu sou</h3>
+          <p>
+            Sou o Gabriel. Curto um visual limpo e direto, e sempre tenho um assunto pra falar quando o tema é futebol.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>O que eu gosto</h3>
+          <p>
+            Futebol é meu esporte favorito — acompanhar jogos, comentar lances e viver aquela emoção de estádio (mesmo de casa).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Meu estilo</h3>
+          <p>
+            Azul e branco como identidade do site: simples, moderno e com uma vibe esportiva.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUTEBOL -->
+    <section id="futebol">
+      <div class="section__header">
+        <h2 class="section__title">Futebol</h2>
+        <p class="section__subtitle">
+          O futebol é mais que jogo: é ritual, conversa, análise e emoção.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>O que eu curto</h3>
+          <p>Assistir aos jogos, ver os melhores momentos e discutir tática (mesmo sem ninguém pedir 😄).</p>
+        </div>
+        <div class="card">
+          <h3>Clima de jogo</h3>
+          <p>Pré-jogo, torcida, tensão, grito de gol — é isso que deixa tudo vivo.</p>
+        </div>
+        <div class="card">
+          <h3>Aprendizado</h3>
+          <p>Todo jogo ensina: disciplina, trabalho em equipe e resiliência quando o placar não ajuda.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORINTHIANS -->
+    <section id="corinthians">
+      <div class="section__header">
+        <h2 class="section__title">Corinthians</h2>
+        <p class="section__subtitle">
+          Ser corintiano é intensidade. Aqui é paixão, história e sofrência (com alegria quando dá).
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Identidade</h3>
+          <p>Corinthians é sentimento. É aquele time que você acompanha no alto e no baixo sem largar a mão.</p>
+        </div>
+        <div class="card">
+          <h3>Torcida</h3>
+          <p>Uma das paradas mais fortes: a torcida e a cultura em volta do clube.</p>
+        </div>
+        <div class="card">
+          <h3>Meu jeito de viver isso</h3>
+          <p>Acompanho os jogos, vibro, reclamo, comemoro — e sigo corintiano do mesmo jeito.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        © <span id="year"></span> Gabriel — Site em azul e branco.
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
