@@ -1,11 +1,13 @@
-<html lang="pt-br"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Story — Lista IA (1080x1730)</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -28,6 +30,18 @@
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     }
 
+    /* ===== VISUALIZAÇÃO PARA PRINT (SIMULA MOBILE) ===== */
+    .preview{
+      width:430px;              /* largura iPhone 14 Pro Max */
+      max-width:100vw;
+      margin:0 auto;
+      padding:16px 0;
+      display:grid;
+      place-items:start center;
+      background:#0b0f1a;
+    }
+
+    /* ===== ARTE REAL ===== */
     .frame{
       width:1080px;
       height:1730px;
@@ -38,6 +52,8 @@
         radial-gradient(920px 760px at 18% 16%, rgba(14,107,255,.34), transparent 62%),
         radial-gradient(860px 740px at 88% 84%, rgba(47,140,255,.26), transparent 62%),
         linear-gradient(135deg, #000 0%, #040818 35%, #060e28 62%, #000 100%);
+      transform: scale(0.398); /* 430 / 1080 ≈ 0.398 */
+      transform-origin: top center;
     }
 
     .streak{
@@ -106,7 +122,7 @@
       margin:0;
       font-family:Poppins,Inter,sans-serif;
       font-weight:800;
-      font-size:98px;      /* ↑ maior */
+      font-size:98px;
       line-height:1.02;
       letter-spacing:-.055em;
       color:var(--text);
@@ -121,7 +137,7 @@
     }
 
     .sub{
-      font-size:26px;      /* ↑ maior */
+      font-size:26px;
       line-height:1.65;
       color:var(--muted);
       max-width:980px;
@@ -129,7 +145,7 @@
 
     .card{
       margin-top:28px;
-      padding:38px 38px;   /* ↑ maior */
+      padding:38px 38px;
       border-radius:28px;
       background:var(--card);
       border:1px solid var(--stroke);
@@ -141,7 +157,7 @@
     .card h2{
       margin:0 0 22px;
       font-family:Poppins,Inter,sans-serif;
-      font-size:26px;     /* ↑ maior */
+      font-size:26px;
       letter-spacing:-.02em;
       color:#fff;
     }
@@ -156,7 +172,7 @@
       display:flex;
       align-items:flex-start;
       gap:18px;
-      padding:18px 20px;  /* ↑ maior */
+      padding:18px 20px;
       border-radius:20px;
       background:rgba(2,6,23,.40);
       border:1px solid rgba(255,255,255,.10);
@@ -186,80 +202,65 @@
 
     .row p{
       margin:0;
-      font-size:20px;     /* ↑ maior */
+      font-size:20px;
       line-height:1.45;
       color:rgba(248,250,252,.92);
     }
-    .row p strong{ color:#fff }
 
     .micro{
       margin-top:24px;
-      font-size:16px;     /* ↑ maior */
+      font-size:16px;
       line-height:1.6;
       color:rgba(248,250,252,.65);
     }
-
-    @media (max-width: 1100px){
-      body{ padding:14px; }
-      .frame{ transform: scale(calc((100vw - 28px) / 1080)); transform-origin: top center; }
-    }
-    html, body {
-  width: 375px;      /* largura de iPhone */
-  max-width: 375px;
-  margin: 0 auto;    /* centraliza na tela */
-  background: #000;  /* fundo escuro para contraste */
-}
-
-    
   </style>
 </head>
 
 <body>
-  <div class="frame">
-    <div class="streak"></div>
-    <div class="streak--2"></div>
-    <div class="noise"></div>
+  <div class="preview">
+    <div class="frame">
+      <div class="streak"></div>
+      <div class="streak--2"></div>
+      <div class="noise"></div>
 
-    <div class="wrap">
-
-      <div class="top">
-        <div class="brand">
-          <img src="assets/img/tullu.png" alt="Tullu Motion">
-        </div>
-      </div>
-
-      <div class="hero">
-
-        <div class="kicker">Pra quem quer ganhar tempo e dinheiro</div>
-
-        <h1>
-          Receba grátis <br><span class="grad">toda semana</span><br>
-          como usar IA no seu negócio &nbsp; ➜
-        </h1>
-
-        <p class="sub">
-          Um resumo prático com <b>prompts</b>, <b>templates</b> e <b>automações</b> que empresas usam
-          para vender mais e operar com menos fricção.
-        </p>
-
-        <div class="card">
-          <h2>O que você vai receber</h2>
-
-          <div class="list">
-            <div class="row"><div class="toggle"></div><p><strong>Prompts prontos</strong> para atendimento, vendas e suporte.</p></div>
-            <div class="row"><div class="toggle"></div><p><strong>Playbooks reais</strong> (o que funciona no mundo real, não teoria).</p></div>
-            <div class="row"><div class="toggle"></div><p><strong>Stack recomendada</strong> (ferramentas, integrações e automações).</p></div>
-            <div class="row"><div class="toggle"></div><p><strong>“Tubarões” sem enrolação:</strong> lógica, números e execução.</p></div>
-          </div>
-
-          <div class="micro">
-            <b>Sem spam.</b> Você sai quando quiser. Conteúdo inspirado nos melhores operadores e mentores,
-            traduzido pro <b>Brasil</b> e aplicado ao dia a dia.
+      <div class="wrap">
+        <div class="top">
+          <div class="brand">
+            <img src="assets/img/tullu.png" alt="Tullu Motion">
           </div>
         </div>
 
+        <div class="hero">
+          <div class="kicker">Pra quem quer ganhar tempo e dinheiro</div>
+
+          <h1>
+            Receba grátis <br><span class="grad">toda semana</span><br>
+            como usar IA no seu negócio &nbsp; ➜
+          </h1>
+
+          <p class="sub">
+            Um resumo prático com <b>prompts</b>, <b>templates</b> e <b>automações</b> que empresas usam
+            para vender mais e operar com menos fricção.
+          </p>
+
+          <div class="card">
+            <h2>O que você vai receber</h2>
+
+            <div class="list">
+              <div class="row"><div class="toggle"></div><p><strong>Prompts prontos</strong> para atendimento, vendas e suporte.</p></div>
+              <div class="row"><div class="toggle"></div><p><strong>Playbooks reais</strong> (o que funciona no mundo real, não teoria).</p></div>
+              <div class="row"><div class="toggle"></div><p><strong>Stack recomendada</strong> (ferramentas, integrações e automações).</p></div>
+              <div class="row"><div class="toggle"></div><p><strong>“Tubarões” sem enrolação:</strong> lógica, números e execução.</p></div>
+            </div>
+
+            <div class="micro">
+              <b>Sem spam.</b> Você sai quando quiser. Conteúdo inspirado nos melhores operadores e mentores,
+              traduzido pro <b>Brasil</b> e aplicado ao dia a dia.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-</body></html>
+</body>
+</html>
