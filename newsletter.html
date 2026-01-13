@@ -16,11 +16,12 @@
 
   <style>
     .req{ color:#ff4a4a; font-weight:900; margin-left:6px; }
+
+    /* mantém backend intacto: apenas visual */
     .form-card.is-success .form-shell__hide-on-success{ display:none !important; }
     .success-step{ padding-top: 8px; }
-    .success-step .info-bubble{ margin-top: 12px; }
 
-    /* deixa o card mais “campanha” */
+    /* badge no estilo do site */
     .campaign-badge{
       display:inline-flex;
       gap:10px;
@@ -33,76 +34,60 @@
       font-weight:600;
       margin-top: 10px;
     }
-    body{
-  margin:0;
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  background:#0b0f1a;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-}
 
-/* CONTAINER DO FUNDO */
-.bg-frame{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  overflow:hidden;
-  background:
-    radial-gradient(920px 760px at 18% 16%, rgba(14,107,255,.34), transparent 62%),
-    radial-gradient(860px 740px at 88% 84%, rgba(47,140,255,.26), transparent 62%),
-    linear-gradient(135deg, #000 0%, #040818 35%, #060e28 62%, #000 100%);
-}
+    /* brilho/halo de fundo no padrão hero (sem mexer no CSS global) */
+    .hero-glow{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+      background:
+        radial-gradient(900px 700px at 18% 16%, rgba(59,130,246,.32), transparent 60%),
+        radial-gradient(860px 720px at 88% 84%, rgba(34,211,238,.18), transparent 62%),
+        linear-gradient(180deg, rgba(9,9,11,1) 0%, rgba(9,9,11,1) 60%, rgba(2,6,23,1) 100%);
+    }
+    .hero-glow__streak{
+      position:absolute;
+      inset:-180px -320px auto -320px;
+      height:640px;
+      transform:rotate(-16deg);
+      background: radial-gradient(closest-side, rgba(59,130,246,.58), rgba(59,130,246,.10) 55%, transparent 78%);
+      opacity:.9;
+      filter: blur(1px);
+    }
+    .hero-glow__streak--2{
+      position:absolute;
+      inset:auto -360px -320px -360px;
+      height:780px;
+      transform:rotate(12deg);
+      background: radial-gradient(closest-side, rgba(34,211,238,.46), rgba(34,211,238,.10) 56%, transparent 80%);
+      opacity:.85;
+    }
+    .hero-glow__noise{
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:56px 56px;
+      opacity:.10;
+      mask-image:radial-gradient(closest-side at 50% 45%, rgba(0,0,0,.9), transparent 72%);
+    }
 
-/* streak superior */
-.bg-streak{
-  position:absolute;
-  inset:-160px -300px auto -300px;
-  height:620px;
-  transform:rotate(-18deg);
-  background: radial-gradient(closest-side, rgba(14,107,255,.62), rgba(14,107,255,.10) 55%, transparent 78%);
-  filter:blur(2px);
-  opacity:.95;
-  pointer-events:none;
-}
-
-/* streak inferior */
-.bg-streak--2{
-  position:absolute;
-  inset:auto -340px -300px -340px;
-  height:760px;
-  transform:rotate(12deg);
-  background: radial-gradient(closest-side, rgba(47,140,255,.48), rgba(47,140,255,.12) 56%, transparent 80%);
-  opacity:.9;
-  pointer-events:none;
-}
-
-/* ruído */
-.bg-noise{
-  position:absolute; 
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size:56px 56px;
-  opacity:.10;
-  mask-image:radial-gradient(closest-side at 50% 45%, rgba(0,0,0,.9), transparent 72%);
-  pointer-events:none;
-}
-.form-actions{
-  display:flex;
-  justify-content:center;
-}
-
+    /* centraliza só os cards do sucesso sem criar CSS novo pesado */
+    .cards-center .card-base{ text-align:center; justify-content:center; }
+    .cards-center .pain-card__icon{ margin-right: 0; }
   </style>
 </head>
 
 <body>
-  <div class="bg-frame">
-  <div class="bg-streak"></div>
-  <div class="bg-streak--2"></div>
-  <div class="bg-noise"></div>
-</div>
+  <!-- brilho de fundo -->
+  <div class="hero-glow" aria-hidden="true">
+    <div class="hero-glow__streak"></div>
+    <div class="hero-glow__streak hero-glow__streak--2"></div>
+    <div class="hero-glow__noise"></div>
+  </div>
 
   <header class="header" id="header">
     <nav class="nav container">
@@ -136,6 +121,8 @@
         <div class="form-shell">
 
           <div class="form-card" id="newsletterCard">
+
+            <!-- topo -->
             <div class="form-header form-shell__hide-on-success">
               <div>
                 <h1 class="form-title">
@@ -144,12 +131,13 @@
 
                 <div class="campaign-badge">⚡ Dicas práticas, sem teoria</div>
 
-                <p class="form-subtitle" style="margin-top:14px; color:white; font-size:20px;">
-                Casos práticos, <b>ferramentas acessíveis</b> e <b>passos claros</b> para aplicar <b>IA no dia a dia: vendas, atendimento, agenda e organização.</b>
+                <p class="form-subtitle" style="margin-top:14px;">
+                  Casos práticos, <b>ferramentas acessíveis</b> e <b>passos claros</b> para aplicar <b>IA no dia a dia: vendas, atendimento, agenda e organização.</b>
                 </p>
               </div>
             </div>
 
+            <!-- FORM (IDs INTACTOS) -->
             <form id="newsletterForm" novalidate class="form-shell__hide-on-success">
               <input type="hidden" id="source_url" name="source_url" value="">
               <input type="hidden" id="user_agent" name="user_agent" value="">
@@ -187,7 +175,7 @@
                   <input type="checkbox" id="consent" name="consent" data-required="true" style="margin-top: 2px;">
                   <span style="line-height: 1.45;">
                     Eu aceito receber conteúdos da newslettter por e-mail e WhatsApp<span class="req">*</span>
-                    <div style="margin-top:.35rem; color: white;">
+                    <div style="margin-top:.35rem; color: var(--muted);">
                       Você pode sair quando quiser. Não fazemos spam.
                     </div>
                   </span>
@@ -208,55 +196,60 @@
               </p>
             </form>
 
-            <!-- SUCESSO -->
-           <section id="successStep" class="success-step" hidden>
+            <!-- SUCESSO (CTA EM BOTÃO) -->
+            <section id="successStep" class="success-step" hidden>
+              <h1 class="form-title" style="margin:0 0 8px; text-align:center;">
+                Cadastro confirmado ✅
+              </h1>
 
-  <h1 class="form-title" style="margin:0 0 8px; text-align:center;">
-    Cadastro confirmado ✅
-  </h1>
+              <p class="form-subtitle" style="margin-top:0; text-align:center;">
+                Aqui você não vai receber teoria sobre IA. Só playbooks, prompts e automações prontas para gerar resultado.
+              </p>
 
-  <p class="form-subtitle" style="margin-top:0; color: white; text-align:center;">
-   Aqui você não vai receber teoria sobre IA. Só playbooks, prompts e automações prontas para gerar resultado.
-  </p>
+              <div class="glow-card" style="margin-top: 12px;">
+                <div class="cards-grid cards-center" style="grid-template-columns: 1fr; gap: 12px;">
+                  <div class="card-base">
+                    <div class="pain-card__icon">⚙️</div>
+                    <div>
+                      <strong>Templates prontos para aplicar</strong>
+                      <div style="margin-top:.35rem; color: var(--muted);">Você recebe e aplica.</div>
+                    </div>
+                  </div>
 
-  <div class="glow-card" style="margin-top: 12px;">
-    <div class="cards-grid cards-center" style="grid-template-columns: 1fr; gap: 12px;">
+                  <div class="card-base">
+                    <div class="pain-card__icon">🧠</div>
+                    <div>
+                      <strong>Casos de uso pra vender mais ou operar melhor</strong>
+                      <div style="margin-top:.35rem; color: var(--muted);">Conteúdo direto pro Brasil, com foco em execução.</div>
+                    </div>
+                  </div>
 
-      <div class="card-base card-center">
-        <div class="pain-card__icon">⚙️</div>
-        <strong>Templates prontos para aplicar</strong>
-        <div style="margin-top:.35rem; color: white;">
-          Você recebe e aplica.
-        </div>
-      </div>
+                  <div class="card-base">
+                    <div class="pain-card__icon">🚫</div>
+                    <div>
+                      <strong>Sem enrolação</strong>
+                      <div style="margin-top:.35rem; color: var(--muted);">Automações reais usadas em empresas.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-      <div class="card-base card-center">
-        <div class="pain-card__icon">🧠</div>
-        <strong>Casos de uso para vender mais ou operar melhor</strong>
-        <div style="margin-top:.35rem; color: white;">
-          Conteúdo direto pro Brasil, com foco em execução.
-        </div>
-      </div>
+              <!-- CTA do grupo/canal em botão (pedido) -->
+              <div class="showcase__cta" style="margin-top: 14px; text-align:center;">
+                <a
+                  class="btn btn--primary btn--large"
+                  href="https://wa.me/5511978217095?text=Quero%20entrar%20no%20canal%2Fgrupo%20da%20newsletter%20da%20Tullu%20no%20WhatsApp."
+                  target="_blank"
+                  rel="noopener"
+                >Entrar no canal do WhatsApp</a>
 
-       <div class="card-base card-center">
-        <div class="pain-card__icon">🧠</div>
-        <strong>Sem enrolação</strong>
-        <div style="margin-top:.35rem; color: white;">
-          Automações reais usadas em empresas.
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="info-bubble info-bubble--blue" style="margin-top: 12px; text-align:center;">
-   <a href="https://tullumotion.com/aistudio.html">Quer receber também no WhatsApp?<br><span>Entrar no canal da Tullu</span></a>
-  </div>
-
-</section>
+                <div class="info-bubble info-bubble--blue" style="margin-top: 12px; text-align:center;">
+                  Você entra no WhatsApp e eu te coloco no canal/grupo da newsletter (sem spam).
+                </div>
+              </div>
+            </section>
 
           </div>
-
         </div>
       </div>
     </section>
@@ -305,8 +298,6 @@
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/branch-animations.js"></script>
-<script src="assets/js/formnewsletter.js"></script>
-
-
+  <script src="assets/js/formnewsletter.js"></script>
 </body>
 </html>
