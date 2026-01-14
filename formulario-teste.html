@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ativar teste grátis, Tullu AI Studio</title>
-  <meta name="description" content="Ative seu teste grátis do Tullu AI Studio, CRM de atendimento com IA no WhatsApp. Preencha o formulário, nós criamos sua conta e liberamos seu acesso ao painel." />
+  <title>Definir DNA do Agente, Tullu AI Studio</title>
+  <meta name="description" content="Defina o DNA do seu agente (tom de voz, regras, palavras proibidas e base de conhecimento) para ativação no WhatsApp. Você preenche e volta para confirmar no WhatsApp." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="assets/img/tup.png.png">
+  <link rel="icon" type="image/png" href="assets/img/tup.png.png">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/branch-pages.css">
 
@@ -34,15 +34,14 @@
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
-  <li class="nav__item">
-    <a href="#form" class="nav__link">Ativar teste</a>
-  </li>
+          <li class="nav__item">
+            <a href="#form" class="nav__link">DNA do agente</a>
+          </li>
 
-  <li class="nav__item">
-    <a href="https://tullumotion.com/suporte.html" class="nav__link">Suporte</a>
-  </li>
-</ul>
-
+          <li class="nav__item">
+            <a href="https://tullumotion.com/suporte.html" class="nav__link">Suporte</a>
+          </li>
+        </ul>
       </div>
 
       <div class="nav__toggle" id="nav-toggle">
@@ -60,11 +59,11 @@
             <div class="form-header">
               <div>
                 <h1 class="form-title">
-                  Bem vindo ao <span class="gradient-text">teste grátis</span> do Tullu AI Studio
+                  Defina o <span class="gradient-text">DNA do seu agente</span>
                 </h1><br>
                 <p class="form-subtitle">
-                  Preencha as informações abaixo para criarmos sua conta de teste, configurar o agente no WhatsApp e liberar seu acesso ao painel.
-                  Sem cobrança automática, ativação somente com autorização.
+                  Aqui você preenche o que não faz sentido coletar em conversa no WhatsApp: tom de voz, regras, termos proibidos, objetivos e base de conhecimento.
+                  Depois, você volta ao WhatsApp para confirmar que o DNA foi enviado.
                 </p><br>
               </div>
             </div>
@@ -72,11 +71,11 @@
             <div class="stepper" role="tablist" aria-label="Etapas do formulário">
               <div class="step is-active" data-step-indicator="1" role="tab" aria-selected="true">
                 <span class="step__num">1</span>
-                <span>Dados da conta</span>
+                <span>Dados base</span>
               </div>
               <div class="step" data-step-indicator="2" role="tab" aria-selected="false">
                 <span class="step__num">2</span>
-                <span>Briefing do atendimento</span>
+                <span>DNA do agente</span>
               </div>
               <div class="step" data-step-indicator="3" role="tab" aria-selected="false">
                 <span class="step__num">3</span>
@@ -95,9 +94,9 @@
               <input type="hidden" id="user_agent" name="user_agent" value="">
 
               <section class="form-step" id="step1" data-step="1">
-                <h2 class="hero3_title" style="margin:0 0 8px;">Dados da conta</h2>
+                <h2 class="hero3_title" style="margin:0 0 8px;">Dados base</h2>
                 <p class="help" style="margin-top:0;">
-                  Esses dados são usados para criar seu acesso no painel e organizar seu teste corretamente.
+                  Esses dados ajudam a organizar sua configuração e identificar o seu negócio no painel.
                 </p>
 
                 <div class="field">
@@ -117,7 +116,7 @@
                   </div>
 
                   <div class="help">
-                    Selecione como você quer ativar o teste, depois o formulário adapta os campos.
+                    Selecione como você vai operar, depois o formulário adapta os campos.
                   </div>
                 </div>
 
@@ -157,7 +156,7 @@
                       <div class="label"><span>Máximo de usuários<span class="req">*</span></span></div>
                       <input class="input" type="number" id="pj_max_users" name="pj_max_users"
                         placeholder="5" min="1" step="1" data-required="true" />
-                      <div class="help">Quantas pessoas do seu time vão acessar o painel durante o teste.</div>
+                      <div class="help">Quantas pessoas do seu time vão acessar o painel.</div>
                     </div>
 
                     <div class="field">
@@ -215,24 +214,26 @@
                 </div>
 
                 <div class="field" style="margin-top: 14px;">
-                  <div class="label"><span>Observações<span class="req">*</span></span></div>
+                  <div class="label"><span>Resumo rápido do DNA (regras + estilo)<span class="req">*</span></span></div>
 
                   <div class="example">
                     <strong>Escreva com detalhe</strong><br>
-                    Ex, atendemos São Paulo e ABC, o objetivo do teste é automatizar agendamento e reduzir no show,
-                    hoje respondemos em até 30 minutos, perdemos leads quando o WhatsApp fica parado, queremos que a IA faça triagem e confirme horários.
+                    Ex: Tom de voz (direto/premium/descontraído), emojis preferidos (🙌🏻🚀), emojis proibidos,
+                    “mantra” (ex: clareza e objetividade), palavras proibidas (ex: “grátis”, “barato”, “promoção”),
+                    como chamar o cliente (você/senhor(a)), assuntos sensíveis, horários de atendimento, região atendida e restrições.
                   </div>
 
                   <textarea class="textarea" id="observacoes" name="observacoes"
-                    placeholder="Escreva tudo que ajude a ativação, objetivo do teste, restrições, região atendida, quem atende hoje, prioridade no teste."
+                    placeholder="Tom de voz, emojis, mantra, palavras proibidas, regras importantes, horários, região e restrições."
                     data-required="true" data-maxlen="800"></textarea>
                   <div class="counter" id="obsCounter">0/800</div>
                 </div>
-<p class="lgpd-note" >
-  <span class="lgpd-asterisk" style="font-size: 12px;">*</span>
-  Ao preencher e avançar, você concorda com a coleta e o tratamento dos dados informados para criar sua conta de teste, configurar seu acesso e viabilizar a ativação do serviço, conforme os
-  <a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" rel="noopener">Termos de Uso</a>.
-</p>
+
+                <p class="lgpd-note" >
+                  <span class="lgpd-asterisk" style="font-size: 12px;">*</span>
+                  Ao preencher e avançar, você concorda com a coleta e o tratamento dos dados informados para configurar o seu agente e viabilizar a ativação do serviço, conforme os
+                  <a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" rel="noopener">Termos de Uso</a>.
+                </p>
 
                 <div class="form-actions">
                   <span></span>
@@ -241,59 +242,58 @@
               </section>
 
               <section class="form-step" id="step2" data-step="2" hidden>
-                <h2 class="hero3_title" style="margin:0 0 8px;">Briefing do atendimento</h2>
+                <h2 class="hero3_title" style="margin:0 0 8px;">DNA do agente</h2>
                 <p class="help" style="margin-top:0;">
-                  Escreva como se estivesse explicando para alguém novo no seu time, nós vamos transformar isso em atendimento no WhatsApp e regras no painel.
+                  Escreva como se estivesse explicando o “manual de operação” do agente: como ele pensa, fala e conduz o cliente até o próximo passo.
                 </p>
 
                 <div class="field">
-                  <div class="label"><span>Descreva seu negócio e seu fluxo atual de atendimento<span class="req">*</span></span></div>
+                  <div class="label"><span>Contexto do negócio e do atendimento (para orientar a IA)<span class="req">*</span></span></div>
 
                   <div class="example">
                     <strong>Modelo para copiar e preencher</strong><br>
-                    Tenho uma empresa de [segmento]. Vendemos [produto ou serviço] com ticket médio de [valor].
-                    Os leads chegam por [canais]. O atendimento funciona assim, primeiro perguntamos [perguntas],
-                    depois classificamos por [critérios], então convertemos por [pix, link, agendamento, contrato].
-                    Hoje quem atende é [pessoa ou time], o tempo médio de resposta é [tempo].
-                    Dúvidas e objeções comuns são [liste]. Dores atuais são [liste].
-                    Regras importantes, horários, região, políticas e formas de pagamento, são [liste].
-                    Tom de voz da marca é [formal, direto, premium, descontraído].
-                    Sucesso no teste significa [meta clara].
+                    Meu negócio é [segmento]. Vendemos [produto/serviço] com ticket médio de [valor].
+                    Os leads chegam por [canais]. O objetivo do agente no WhatsApp é [objetivo principal].
+                    Qualificar significa [critérios]. Próximo passo ideal é [agendar / orçamento / pagamento / visita].
+                    Objeções comuns: [liste]. Regras e políticas: [liste]. Tom de voz: [direto/premium/descontraído].
+                    “Mantra” do agente: [frase curta]. Palavras proibidas: [liste]. Emojis preferidos: [liste].
                   </div>
 
                   <textarea class="textarea" id="briefing_geral" name="briefing_geral"
-                    placeholder="Escreva no formato do modelo acima, quanto mais detalhe, melhor."
+                    placeholder="Quanto mais detalhe, mais preciso fica o agente."
                     data-required="true" data-maxlen="3000"></textarea>
                   <div class="counter" id="briefCounter">0/3000</div>
                 </div>
 
                 <div class="field" style="margin-top: 14px;">
-                  <div class="label"><span>O que a IA deve fazer no WhatsApp, pré venda, durante, pós venda<span class="req">*</span></span></div>
+                  <div class="label"><span>O que o agente deve fazer no WhatsApp (pré, durante e pós)<span class="req">*</span></span></div>
 
                   <div class="example">
                     <strong>Exemplo</strong><br>
-                    Pré venda, triagem com 3 perguntas, filtrar por região e urgência, oferecer planos e coletar dados.
-                    Durante, enviar instruções, acompanhar status e confirmar pagamentos ou agendamentos.
-                    Pós venda, follow up em 24h, reativar leads frios em 3 dias, pedir avaliação e registrar no painel.
+                    Pré: triagem com 3 perguntas, filtrar por região, identificar urgência, capturar nome e intenção.
+                    Durante: orientar, confirmar informações, sugerir horários, registrar tudo e conduzir para o próximo passo.
+                    Pós: follow-up em 24h, reativar em 3 dias, pedir avaliação, manter histórico no painel.
+                    Regras: não prometer X, não usar a palavra Y, sempre encerrar com Z.
                   </div>
 
                   <textarea class="textarea" id="briefing_agente" name="briefing_agente"
-                    placeholder="Escreva em blocos, pré venda, durante, pós venda, com ações e regras claras."
+                    placeholder="Liste ações e regras claras. Inclua limites, frases que deve evitar e como deve concluir cada conversa."
                     data-required="true" data-maxlen="2000"></textarea>
                   <div class="counter" id="agentCounter">0/2000</div>
                 </div>
 
                 <div class="field" style="margin-top: 14px;">
-                  <div class="label"><span>Links e ativos, site, Instagram, agenda, CRM, planilhas, mensagens prontas<span class="req">*</span></span></div>
+                  <div class="label"><span>Base de conhecimento (links, ativos e materiais)<span class="req">*</span></span></div>
 
                   <div class="example">
                     <strong>Exemplo</strong><br>
-                    Site, https://exemplo.com, Instagram, https://instagram.com/exemplo, Agenda, Google Calendar,
-                    CRM atual, planilha de leads no Google Sheets, catálogo em PDF, mensagens prontas, FAQ e links de pagamento.
+                    Site, https://exemplo.com • Instagram, https://instagram.com/exemplo • Catálogo/serviços (PDF)
+                    • FAQ • Políticas • Endereço/horários • Link de pagamento • Agenda • Planilhas • CRM atual.
+                    Se não tiver algo, escreva “não tenho”.
                   </div>
 
                   <textarea class="textarea" id="integracoes_ativos" name="integracoes_ativos"
-                    placeholder="Cole links e descreva o que você já usa, se não tiver, escreva que não usa."
+                    placeholder="Cole links e descreva o que o agente pode usar como referência."
                     data-required="true" data-maxlen="1500"></textarea>
                   <div class="counter" id="assetsCounter">0/1500</div>
                 </div>
@@ -307,7 +307,7 @@
               <section class="form-step" id="step3" data-step="3" hidden>
                 <h2 class="hero3_title" style="margin:0 0 8px;">Termos e envio</h2>
                 <p class="help" style="margin-top:0;">
-                  Após enviar, nós vamos preparar sua ativação, você recebe QR Code, termo de autorização e login do painel.
+                  Ao enviar, você está nos autorizando a usar essas informações para configurar o comportamento do seu agente e a base de conhecimento.
                 </p>
 
                 <div class="glow-card" style="margin-top: 12px;">
@@ -315,9 +315,9 @@
                     <div class="card-base" style="align-items:flex-start;">
                       <div class="pain-card__icon">✅</div>
                       <div>
-                        <strong>Sem cobrança automática</strong>
+                        <strong>Sem enrolação no WhatsApp</strong>
                         <div style="margin-top:.35rem; color: var(--muted);">
-                          Você só ativa de verdade após aceitar o termo de autorização.
+                          O WhatsApp coleta o essencial. Aqui você define o DNA completo sem virar um interrogatório.
                         </div>
                       </div>
                     </div>
@@ -325,9 +325,9 @@
                     <div class="card-base" style="align-items:flex-start;">
                       <div class="pain-card__icon">🔐</div>
                       <div>
-                        <strong>Ativação controlada</strong>
+                        <strong>Configuração guiada</strong>
                         <div style="margin-top:.35rem; color: var(--muted);">
-                          O teste é configurado para seu fluxo e você controla o acesso.
+                          Usamos seu DNA para ajustar tom de voz, regras, limites e conteúdos do agente.
                         </div>
                       </div>
                     </div>
@@ -335,9 +335,9 @@
                     <div class="card-base" style="align-items:flex-start;">
                       <div class="pain-card__icon">🕒</div>
                       <div>
-                        <strong>Prazo padrão</strong>
+                        <strong>Retorno padrão</strong>
                         <div style="margin-top:.35rem; color: var(--muted);">
-                          Retorno em até 24h úteis com QR Code, termo e login do painel.
+                          Retorno em até 24h úteis com a confirmação e próximos passos.
                         </div>
                       </div>
                     </div>
@@ -358,27 +358,27 @@
                   <button type="submit" class="btn btn--primary btn--large" id="submitBtn">Enviar</button>
                 </div>
               </section>
-<section class="form-step" id="successStep" data-step="success" hidden>
-  <h1 class="form-title" style="margin:0 0 8px;">Pronto, recebemos seus dados</h1>
 
-  <p class="form-subtitle" style="margin-top:0;">
-    Em até 24h úteis você recebe QR Code, termo de autorização e login do painel.
-  </p>
+              <section class="form-step" id="successStep" data-step="success" hidden>
+                <h1 class="form-title" style="margin:0 0 8px;">Pronto — recebemos o DNA do seu agente</h1>
 
-  <div class="showcase__cta" style="margin-top: 12px;">
-    <a
-      href="https://wa.me/5511978217095?text=J%C3%A1%20preenchi%20o%20formul%C3%A1rio%2C%20podemos%20dar%20continuidade."
-      class="btn btn--primary btn--large"
-      target="_blank"
-      rel="noopener"
-    >Voltar para o WhatsApp e confirmar envio</a>
+                <p class="form-subtitle" style="margin-top:0;">
+                  Agora volte ao WhatsApp e confirme o envio para seguirmos com a configuração.
+                </p>
 
-    <div class="info-bubble info-bubble--blue" style="margin-top: 12px;">
-      * Você deve clicar no botão e voltar ao WhatsApp com a mensagem de confirmação de envio
-      para que o teste se inicie com sucesso.
-    </div>
-  </div>
-</section>
+                <div class="showcase__cta" style="margin-top: 12px;">
+                  <a
+                    href="https://wa.me/5511978217095?text=J%C3%A1%20preenchi%20o%20DNA%20do%20meu%20agente.%20Podemos%20dar%20continuidade%20na%20ativa%C3%A7%C3%A3o."
+                    class="btn btn--primary btn--large"
+                    target="_blank"
+                    rel="noopener"
+                  >Voltar para o WhatsApp e confirmar envio</a>
+
+                  <div class="info-bubble info-bubble--blue" style="margin-top: 12px;">
+                    * Clique no botão e envie a mensagem no WhatsApp para confirmar que o DNA foi preenchido.
+                  </div>
+                </div>
+              </section>
 
             </form>
           </div>
@@ -388,6 +388,7 @@
     </section>
   </main>
 
+  <!-- (no footer adicione um link para tullu newsletter (https://tullumotion.com/newsletter.html) -->
   <footer class="footer">
     <div class="container">
       <div class="footer__content">
@@ -398,7 +399,7 @@
             <span class="footer__logo-text"></span>
           </div>
           <p class="footer__description">
-            Tullu AI Studio, CRM de atendimento com IA no WhatsApp, teste grátis com ativação guiada.
+            Tullu AI Studio — configuração do DNA do agente (tom de voz, regras e base de conhecimento) para operar no WhatsApp.
           </p>
         </div>
 
@@ -406,8 +407,8 @@
           <div class="footer__section">
             <h4 class="footer__section-title">Suporte</h4>
             <ul class="footer__list">
-              <li><span class="footer__link" style="opacity:.75; cursor: default;">Sem cobrança automática</span></li>
-              <li><span class="footer__link" style="opacity:.75; cursor: default;">Ativação com autorização</span></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Configuração guiada</span></li>
+              <li><span class="footer__link" style="opacity:.75; cursor: default;">Retorno em até 24h úteis</span></li>
             </ul>
           </div>
 
@@ -419,13 +420,14 @@
             </ul>
           </div>
 
-           <div class="footer__section">
-          <h4 class="footer__section-title">Legal</h4>
-          <ul class="footer__list">
-            <li><a href="https://tullumotion.com/assets/docs/politica.pdf" class="footer__link">Política de Privacidade</a></li>
-            <li><a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" class="footer__link">Termos de Uso</a></li>
-          </ul>
-        </div>
+          <div class="footer__section">
+            <h4 class="footer__section-title">Legal</h4>
+            <ul class="footer__list">
+              <li><a href="https://tullumotion.com/newsletter.html" class="footer__link">Tullu Newsletter</a></li>
+              <li><a href="https://tullumotion.com/assets/docs/politica.pdf" class="footer__link">Política de Privacidade</a></li>
+              <li><a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" class="footer__link">Termos de Uso</a></li>
+            </ul>
+          </div>
         </div>
 
       </div>
