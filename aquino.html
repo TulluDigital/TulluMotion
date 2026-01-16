@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aquino Multimarcas — Veículos Seminovos e Novos | Mogi das Cruzes</title>
+  <meta name="description" content="Aquino Multimarcas em Mogi das Cruzes. Veículos novos e seminovos. Financiamento, compra do seu carro à vista e consignação. Confira o estoque disponível." />
+
+  <!-- Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aquino Multimarcas — Mogi das Cruzes" />
+  <meta property="og:description" content="Estoque disponível • Financiamento • Compramos seu carro • Consignação" />
+  <meta property="og:image" content="assets/img/logo-aquino.png" />
+  <meta name="theme-color" content="#0b0b0d" />
+
+  <style>
+    :root{
+      --bg:#07070A;
+      --bg2:#0B0B0F;
+      --card:#0E0F14;
+      --stroke:rgba(255,255,255,.10);
+      --stroke2:rgba(255,255,255,.14);
+      --text:#F5F7FB;
+      --muted:rgba(245,247,251,.70);
+      --muted2:rgba(245,247,251,.55);
+
+      /* Premium gold */
+      --gold:#C7A34B;
+      --gold2:#E6C36A;
+      --goldGlow:rgba(199,163,75,.25);
+
+      --shadow: 0 18px 40px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 14px;
+
+      --container: 1120px;
+      --headerH: 76px;
+    }
+
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(900px 520px at 18% -8%, rgba(199,163,75,.18), transparent 55%),
+        radial-gradient(900px 520px at 82% -8%, rgba(230,195,106,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
+      line-height:1.35;
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none }
+    img{ max-width:100%; display:block }
+    .container{ width:min(var(--container), calc(100% - 40px)); margin:0 auto; }
+
+    /* ---------- Header ---------- */
+    header{
+      position: sticky; top:0; z-index:50;
+      background: rgba(8,8,10,.72);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      height: var(--headerH);
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 180px;
+    }
+    .brand .logo{
+      width: 140px;
+      height: 40px;
+      display:flex; align-items:center;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+    }
+    .brand .logo img{
+      width:100%;
+      height:100%;
+      object-fit: contain;
+    }
+
+    .menu{
+      display:flex; align-items:center; gap:10px;
+    }
+    .menu a{
+      font-size: 14px;
+      color: rgba(245,247,251,.86);
+      padding: 10px 10px;
+      border-radius: 10px;
+      transition: .18s ease;
+      white-space:nowrap;
+    }
+    .menu a:hover{ background: rgba(255,255,255,.06) }
+
+    .actions{
+      display:flex; align-items:center; gap:10px;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 12px 14px;
+      font-weight: 650;
+      letter-spacing: .2px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      cursor:pointer;
+      user-select:none;
+      font-size: 14px;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.18) }
+    .btn--gold{
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      color:#0b0b0d;
+      border-color: transparent;
+      box-shadow: 0 14px 34px rgba(199,163,75,.18);
+    }
+    .btn--ghost{
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+    }
+    .btn--outline{
+      background: transparent;
+      color: rgba(245,247,251,.92);
+    }
+
+    .hamburger{
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      display:none;
+      align-items:center; justify-content:center;
+    }
+    .hamburger svg{ opacity:.9 }
+
+    /* ---------- Mobile menu sheet ---------- */
+    .sheet{
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      opacity:0; pointer-events:none;
+      transition: .18s ease;
+      z-index: 80;
+    }
+    .sheet.is-open{ opacity:1; pointer-events:auto }
+    .sheet__panel{
+      position:absolute; right: 12px; top: 12px;
+      width: min(420px, calc(100% - 24px));
+      background: rgba(10,10,14,.92);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      transform: translateY(-6px);
+      transition: .18s ease;
+    }
+    .sheet.is-open .sheet__panel{ transform: translateY(0) }
+    .sheet__head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 16px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .sheet__head strong{
+      font-size: 14px;
+      color: rgba(245,247,251,.9);
+      letter-spacing:.2px;
+    }
+    .sheet__close{
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .sheet__body{
+      padding: 10px;
+      display:grid;
+      gap: 6px;
+    }
+    .sheet__body a{
+      padding: 12px 12px;
+      border-radius: 12px;
+      color: rgba(245,247,251,.88);
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .sheet__body a:hover{ border-color: rgba(255,255,255,.14) }
+    .sheet__footer{
+      padding: 12px;
+      display:grid;
+      gap: 10px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    /* ---------- Hero ---------- */
+    main{ padding-top: 12px; }
+
+    .hero{
+      padding: 34px 0 22px;
+      position:relative;
+    }
+    .hero__grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .heroCard{
+      background:
+        radial-gradient(1100px 500px at 25% 0%, rgba(199,163,75,.16), transparent 52%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      overflow:hidden;
+      position:relative;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(230,195,106,.92);
+      margin-bottom: 10px;
+    }
+    .kicker .dot{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      box-shadow: 0 0 0 6px rgba(199,163,75,.08);
+    }
+
+    .hero h1{
+      margin: 0 0 10px;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-weight: 700;
+      letter-spacing: .2px;
+      font-size: clamp(28px, 4.2vw, 46px);
+      line-height: 1.05;
+    }
+    .hero p{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 62ch;
+    }
+    .hero__ctas{
+      display:flex; flex-wrap:wrap; gap: 10px;
+      margin-top: 8px;
+    }
+
+    .heroMini{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+      gap: 12px;
+      position:relative;
+      overflow:hidden;
+    }
+    .heroMini::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(520px 220px at 10% 0%, rgba(199,163,75,.18), transparent 55%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .heroMini > *{ position:relative; z-index:1 }
+
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .stat{
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 12px 12px;
+    }
+    .stat strong{
+      display:block;
+      font-size: 18px;
+      letter-spacing:.3px;
+      color: rgba(245,247,251,.92);
+    }
+    .stat span{
+      font-size: 12px;
+      color: rgba(245,247,251,.65);
+      letter-spacing:.14em;
+      text-transform: uppercase;
+    }
+
+    .miniTitle{
+      font-size: 14px;
+      letter-spacing:.14em;
+      text-transform: uppercase;
+      color: rgba(230,195,106,.9);
+      margin: 0;
+    }
+    .miniText{
+      margin: 0;
+      color: rgba(245,247,251,.78);
+      font-size: 14px;
+    }
+
+    /* ---------- Sections ---------- */
+    section{ padding: 34px 0; }
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .sectionKicker{
+      font-size: 12px;
+      letter-spacing:.18em;
+      text-transform: uppercase;
+      color: rgba(230,195,106,.9);
+      margin: 0 0 6px;
+    }
+    .sectionTitle{
+      margin:0;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size: clamp(26px, 3.2vw, 40px);
+      letter-spacing:.2px;
+    }
+    .sectionNote{
+      margin: 0;
+      color: rgba(245,247,251,.62);
+      font-size: 14px;
+      max-width: 56ch;
+    }
+
+    /* ---------- Stock carousel ---------- */
+    .stockWrap{
+      position:relative;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      padding: 16px;
+    }
+    .stockRow{
+      display:flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+      scroll-behavior: smooth;
+    }
+    .stockRow::-webkit-scrollbar{ height: 10px }
+    .stockRow::-webkit-scrollbar-thumb{
+      background: rgba(255,255,255,.12);
+      border-radius: 999px;
+    }
+    .stockRow::-webkit-scrollbar-track{
+      background: rgba(255,255,255,.06);
+      border-radius: 999px;
+    }
+
+    .carCard{
+      min-width: min(360px, 88%);
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      overflow:hidden;
+      scroll-snap-align: start;
+      box-shadow: 0 16px 34px rgba(0,0,0,.45);
+      display:flex;
+      flex-direction:column;
+    }
+    .carMedia{
+      position:relative;
+      height: 220px; /* mantém o quadro sempre igual */
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+    }
+    .carMedia img{
+      width:100%;
+      height:100%;
+      object-fit: cover;   /* IMPORTANT: encaixa qualquer foto no quadro */
+      object-position: center;
+      transform: scale(1.02);
+      filter: contrast(1.02) saturate(1.02);
+    }
+    .badge{
+      position:absolute; left: 12px; top: 12px;
+      display:inline-flex; align-items:center; gap: 8px;
+      background: rgba(10,10,14,.72);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: rgba(245,247,251,.86);
+      backdrop-filter: blur(8px);
+    }
+    .badge i{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      box-shadow: 0 0 0 6px rgba(199,163,75,.10);
+      display:inline-block;
+    }
+
+    .carBody{
+      padding: 14px 14px 14px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      flex: 1;
+    }
+    .carMake{
+      margin:0;
+      font-size: 12px;
+      letter-spacing:.18em;
+      text-transform: uppercase;
+      color: rgba(230,195,106,.92);
+    }
+    .carTitle{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing:.2px;
+      font-weight: 740;
+      line-height: 1.15;
+    }
+    .carMeta{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: rgba(245,247,251,.72);
+      font-size: 13px;
+    }
+    .carMeta span{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+    }
+    .carMeta svg{ opacity:.72 }
+
+    .carPrice{
+      margin-top: 4px;
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .price{
+      font-size: 22px;
+      font-weight: 820;
+      letter-spacing:.3px;
+      color: rgba(245,247,251,.95);
+    }
+    .price small{
+      display:block;
+      font-size: 12px;
+      color: rgba(245,247,251,.55);
+      font-weight: 650;
+      margin-top: 2px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+    }
+
+    .carCtas{
+      display:flex;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .carCtas .btn{ padding: 10px 12px; border-radius: 12px; flex:1; }
+    .btn--tiny{ font-size: 13px; font-weight: 720; }
+
+    .scrollBtns{
+      position:absolute; top: 50%;
+      transform: translateY(-50%);
+      display:flex; justify-content:space-between;
+      inset: 0;
+      pointer-events:none;
+      padding: 0 8px;
+    }
+    .scrollBtn{
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      background: rgba(10,10,14,.62);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(8px);
+      display:flex; align-items:center; justify-content:center;
+      pointer-events:auto;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .scrollBtn:hover{ transform: translateY(-1px); background: rgba(10,10,14,.78) }
+    .scrollBtn svg{ opacity:.86 }
+
+    /* ---------- Services ---------- */
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .service{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      min-height: 160px;
+    }
+    .serviceHead{
+      display:flex; align-items:center; gap: 10px;
+      margin-bottom: 8px;
+    }
+    .icon{
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      background: rgba(199,163,75,.12);
+      border: 1px solid rgba(199,163,75,.22);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 14px 26px rgba(199,163,75,.08);
+    }
+    .service h3{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .service p{
+      margin: 0;
+      color: rgba(245,247,251,.70);
+      font-size: 14px;
+    }
+
+    /* ---------- Testimonials ---------- */
+    .testis{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .tCard{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .stars{
+      display:flex; gap: 6px;
+      margin-bottom: 10px;
+    }
+    .stars svg{ opacity:.95 }
+    .tCard p{
+      margin: 0 0 12px;
+      color: rgba(245,247,251,.78);
+      font-size: 14px;
+    }
+    .tCard strong{
+      display:block;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .tCard span{
+      display:block;
+      color: rgba(245,247,251,.56);
+      font-size: 12px;
+      letter-spacing:.14em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* ---------- Blog ---------- */
+    .blogGrid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .post{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .postCover{
+      height: 170px;
+      background:
+        radial-gradient(600px 240px at 20% 0%, rgba(199,163,75,.16), transparent 58%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .postBody{
+      padding: 16px;
+      display:grid;
+      gap: 8px;
+    }
+    .postBody small{
+      color: rgba(230,195,106,.9);
+      letter-spacing:.18em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .postBody h3{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .postBody p{
+      margin: 0;
+      color: rgba(245,247,251,.70);
+      font-size: 14px;
+    }
+    .postBody button{
+      justify-self: start;
+    }
+
+    /* ---------- Location ---------- */
+    .locGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    .locCard{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display:grid;
+      gap: 12px;
+    }
+    .locItem{
+      display:flex; gap: 12px;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+    }
+    .locItem .ic{
+      width: 46px; height: 46px;
+      border-radius: 16px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(199,163,75,.12);
+      border: 1px solid rgba(199,163,75,.22);
+      flex: 0 0 auto;
+    }
+    .locItem strong{ display:block; font-size: 14px; letter-spacing:.2px }
+    .locItem span{ display:block; color: rgba(245,247,251,.65); font-size: 13px; margin-top: 4px }
+
+    .mapWrap{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      min-height: 320px;
+    }
+    .mapWrap iframe{
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      border: 0;
+      filter: contrast(1.02) saturate(1.05);
+    }
+
+    /* ---------- Footer ---------- */
+    footer{
+      padding: 28px 0 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 10px;
+    }
+    .footerGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .footNote{
+      margin: 10px 0 0;
+      color: rgba(245,247,251,.58);
+      font-size: 13px;
+      max-width: 68ch;
+    }
+    .footLinks{
+      display:grid;
+      gap: 8px;
+      justify-content: end;
+    }
+    .footLinks a{
+      text-align:right;
+      color: rgba(245,247,251,.78);
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+
+    /* ---------- Modal (blog) ---------- */
+    .modal{
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.62);
+      display:none;
+      align-items: center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 90;
+    }
+    .modal.is-open{ display:flex }
+    .modalCard{
+      width: min(860px, 100%);
+      background: rgba(10,10,14,.94);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modalHead{
+      padding: 14px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .modalHead strong{
+      font-size: 14px;
+      letter-spacing:.2px;
+      color: rgba(245,247,251,.90);
+    }
+    .modalClose{
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer;
+    }
+    .modalBody{
+      padding: 16px;
+      color: rgba(245,247,251,.80);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .modalBody h2{
+      margin: 4px 0 10px;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size: 22px;
+      letter-spacing:.2px;
+      color: rgba(245,247,251,.95);
+    }
+    .modalBody p{ margin: 0 0 12px }
+
+    /* ---------- Floating actions ---------- */
+    .float{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 60;
+    }
+    .fab{
+      width: 54px; height: 54px;
+      border-radius: 18px;
+      display:flex; align-items:center; justify-content:center;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(10,10,14,.72);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 40px rgba(0,0,0,.50);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .fab:hover{ transform: translateY(-1px); background: rgba(10,10,14,.84) }
+    .fab--gold{
+      background: linear-gradient(90deg, rgba(199,163,75,.95), rgba(230,195,106,.95));
+      border-color: transparent;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px){
+      .hero__grid{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .testis{ grid-template-columns: 1fr; }
+      .blogGrid{ grid-template-columns: 1fr; }
+      .locGrid{ grid-template-columns: 1fr; }
+      .footLinks{ justify-content: start; }
+      .footLinks a{ text-align:left; }
+    }
+
+    @media (max-width: 860px){
+      .menu{ display:none; }
+      .actions{ display:none; }
+      .hamburger{ display:flex; }
+      .brand .logo{ width: 132px; }
+      .stats{ grid-template-columns: 1fr; }
+      :root{ --headerH: 70px; }
+    }
+
+    @media (max-width: 420px){
+      .carCard{ min-width: 92%; }
+      .carMedia{ height: 210px; }
+      .float{ right: 12px; bottom: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#inicio" aria-label="Aquino Multimarcas">
+        <div class="logo">
+          <!-- Coloque seu logo na pasta assets/img e ajuste o nome aqui -->
+          <img src="assets/img/aquino.png" alt="Aquino Multimarcas" onerror="this.style.opacity=.6; this.alt='Logo Aquino (adicione assets/img/aquino.png)';" />
+        </div>
+      </a>
+
+      <nav class="menu" aria-label="Navegação">
+        <a href="#estoque">Estoque</a>
+        <a href="#financiamento">Financiamento</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#blog">Blog</a>
+        <a href="#localizacao">Localização</a>
+        <a href="admin-login.html">Entrar</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn btn--outline" href="#estoque">Ver estoque</a>
+        <a class="btn btn--gold" href="#financiamento">Simular financiamento</a>
+      </div>
+
+      <button class="hamburger" id="openMenu" aria-label="Abrir menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile sheet -->
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="sheet__head">
+      <strong>Aquino Multimarcas</strong>
+      <button class="sheet__close" id="closeMenu" aria-label="Fechar menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet__body">
+      <a href="#estoque" data-close>Estoque</a>
+      <a href="#financiamento" data-close>Financiamento</a>
+      <a href="#servicos" data-close>Serviços</a>
+      <a href="#depoimentos" data-close>Depoimentos</a>
+      <a href="#blog" data-close>Blog</a>
+      <a href="#localizacao" data-close>Localização</a>
+      <a href="admin-login.html">Entrar</a>
+    </div>
+    <div class="sheet__footer">
+      <a class="btn btn--gold" href="#financiamento" data-close>Simular financiamento</a>
+      <a class="btn btn--ghost" href="#estoque" data-close>Ver estoque completo</a>
+    </div>
+  </div>
+</div>
+
+<main id="inicio">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__grid">
+        <div class="heroCard">
+          <div class="kicker"><span class="dot"></span> Mogi das Cruzes • Loja Premium</div>
+          <h1>Escolha seu próximo carro com segurança e agilidade.</h1>
+          <p>
+            Veículos novos e seminovos, com processo transparente do primeiro contato até a entrega.
+            Financiamento com aprovação facilitada, compra do seu carro à vista e consignação.
+          </p>
+
+          <div class="hero__ctas">
+            <a class="btn btn--gold" href="#financiamento">Simular financiamento</a>
+            <a class="btn btn--ghost" href="#estoque">Ver estoque disponível</a>
+            <a class="btn btn--outline" href="#servicos">Como trabalhamos</a>
+          </div>
+
+          <div class="stats" aria-label="Destaques rápidos">
+            <div class="stat">
+              <strong>Transparência</strong>
+              <span>do início ao fim</span>
+            </div>
+            <div class="stat">
+              <strong>Agilidade</strong>
+              <span>resposta rápida</span>
+            </div>
+            <div class="stat">
+              <strong>Segurança</strong>
+              <span>compra consciente</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="heroMini" id="financiamento">
+          <p class="miniTitle">Financiamento</p>
+     
+
+          <p class="miniText">
+            Faça uma simulação rápida e fale com a gente para encontrar a melhor condição para o seu perfil.
+          </p>
+
+          <div style="display:grid; gap:10px;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+              <div style="display:grid; gap:6px;">
+                <label for="entrada" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: rgba(245,247,251,.65);">Entrada</label>
+                <div style="display:flex; align-items:center; gap:10px; padding:12px; border-radius:14px; background: rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.08);">
+                  <span style="color: rgba(230,195,106,.92); font-weight:800;">R$</span>
+                  <input id="entrada" inputmode="numeric" placeholder="15.000"
+                    style="width:100%; background:transparent; border:0; outline:none; color: rgba(245,247,251,.92); font-weight:700; letter-spacing:.2px;" />
+                </div>
+              </div>
+
+              <div style="display:grid; gap:6px;">
+                <label for="parcelas" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: rgba(245,247,251,.65);">Parcelas</label>
+                <div style="display:flex; align-items:center; gap:10px; padding:12px; border-radius:14px; background: rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.08);">
+                  <span style="color: rgba(230,195,106,.92); font-weight:800;">x</span>
+                  <select id="parcelas"
+                    style="width:100%; background:transparent; border:0; outline:none; color: rgba(245,247,251,.92); font-weight:700; letter-spacing:.2px;">
+                    <option>12</option><option>24</option><option selected>36</option><option>48</option><option>60</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid; gap:6px;">
+              <label for="renda" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: rgba(245,247,251,.65);">Renda mensal</label>
+              <div style="display:flex; align-items:center; gap:10px; padding:12px; border-radius:14px; background: rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.08);">
+                <span style="color: rgba(230,195,106,.92); font-weight:800;">R$</span>
+                <input id="renda" inputmode="numeric" placeholder="6.000"
+                  style="width:100%; background:transparent; border:0; outline:none; color: rgba(245,247,251,.92); font-weight:700; letter-spacing:.2px;" />
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:2px;">
+              <button class="btn btn--gold" id="btnSimular" style="flex:1;">Enviar simulação</button>
+              <a class="btn btn--ghost" href="#estoque" style="flex:1;">Ver estoque</a>
+            </div>
+
+            <p id="simResult" style="margin:0; color: rgba(245,247,251,.62); font-size: 13px; line-height:1.45;">
+              Dica: a simulação é uma pré-triagem para agilizar o atendimento.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTOQUE -->
+  <section id="estoque">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <p class="sectionKicker">destaques</p>
+          <h2 class="sectionTitle">Estoque disponível</h2>
+        </div>
+        <p class="sectionNote">Arraste para o lado ou use as setas. As imagens ficam automaticamente enquadradas no mesmo padrão.</p>
+      </div>
+
+      <div class="stockWrap">
+        <div class="scrollBtns" aria-hidden="false">
+          <button class="scrollBtn" id="prevStock" aria-label="Anterior">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="scrollBtn" id="nextStock" aria-label="Próximo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="stockRow" id="stockRow" aria-label="Carros em destaque">
+
+          <!-- Card 1 -->
+          <article class="carCard">
+            <div class="carMedia">
+              <img src="assets/img/img1.jpg" alt="Veículo 01" onerror="this.src='assets/img/img1.png';" />
+              <div class="badge"><i></i> Disponível</div>
+            </div>
+            <div class="carBody">
+              <p class="carMake">Seminovo</p>
+              <h3 class="carTitle">Hatch 1.0 Turbo • Automático</h3>
+
+              <div class="carMeta">
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 12h10M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  2021/2022
+                </span>
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  42.000 km
+                </span>
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 18h10M8 18l2-12h4l2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Automático
+                </span>
+              </div>
+
+              <div class="carPrice">
+                <div class="price">R$ 79.900 <small>consulte condições</small></div>
+              </div>
+
+              <div class="carCtas">
+                <button class="btn btn--ghost btn--tiny" data-car="Hatch 1.0 Turbo Automático">Ver detalhes</button>
+                <button class="btn btn--gold btn--tiny" data-wa="Quero simular financiamento para o Hatch 1.0 Turbo Automático">Falar no WhatsApp</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="carCard">
+            <div class="carMedia">
+              <img src="assets/img/img2.jpg" alt="Veículo 02" onerror="this.src='assets/img/img2.png';" />
+              <div class="badge"><i></i> Disponível</div>
+            </div>
+            <div class="carBody">
+              <p class="carMake">Seminovo</p>
+              <h3 class="carTitle">SUV Compacto • Automático</h3>
+
+              <div class="carMeta">
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 12h10M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  2020/2021
+                </span>
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  58.000 km
+                </span>
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 18h10M8 18l2-12h4l2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Automático
+                </span>
+              </div>
+
+              <div class="carPrice">
+                <div class="price">R$ 98.900 <small>consulte condições</small></div>
+              </div>
+
+              <div class="carCtas">
+                <button class="btn btn--ghost btn--tiny" data-car="SUV Compacto Automático">Ver detalhes</button>
+                <button class="btn btn--gold btn--tiny" data-wa="Quero simular financiamento para o SUV Compacto Automático">Falar no WhatsApp</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="carCard">
+            <div class="carMedia">
+              <img src="assets/img/img3.jpg" alt="Veículo 03" onerror="this.src='assets/img/img3.png';" />
+              <div class="badge"><i></i> Disponível</div>
+            </div>
+            <div class="carBody">
+              <p class="carMake">Seminovo</p>
+              <h3 class="carTitle">Sedã • Automático</h3>
+
+              <
