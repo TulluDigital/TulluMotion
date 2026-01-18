@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Bot de Pré-Atendimento Grátis | Tullu Motion</title>
+  <meta name="description" content="Crie seu bot de IA para pré-atendimento e qualificação de leads em minutos.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/branch-pages.css">
+</head>
+<body>
+
+<div class="wizard">
+  <div class="wizard__card">
+    <!-- HEADER -->
+    <div class="wizard__header">
+      <h1 class="wizard__title">Criar Bot de IA</h1>
+      <p class="wizard__subtitle">Configure seu bot de pré-atendimento em 3 passos</p>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="wizard__progress">
+      <div class="wizard__progress-step active" id="progress-1"></div>
+      <div class="wizard__progress-step" id="progress-2"></div>
+      <div class="wizard__progress-step" id="progress-3"></div>
+    </div>
+
+    <!-- FORM CONTAINER -->
+    <form id="wizard-form">
+      <!-- STEP 1: SEUS DADOS -->
+      <div class="wizard__step active" id="step-1">
+        <div class="wizard__content">
+          <h2 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 1.5rem;">Seus dados</h2>
+          
+          <div class="form-group required">
+            <label for="name">Nome completo</label>
+            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+            <span class="form-error" id="error-name"></span>
+          </div>
+
+          <div class="form-group required">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            <span class="form-error" id="error-email"></span>
+          </div>
+
+          <div class="form-group required">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
+            <span class="form-error" id="error-whatsapp"></span>
+          </div>
+
+          <div class="form-group required">
+            <label for="segment">Segmento</label>
+            <select id="segment" name="segment" required>
+              <option value="">Selecione seu segmento</option>
+              <option value="saude">Saúde</option>
+              <option value="educacao">Educação</option>
+              <option value="servicos">Serviços</option>
+              <option value="ecommerce">E-commerce</option>
+              <option value="imobiliario">Imobiliário</option>
+              <option value="agencia">Agência</option>
+              <option value="outro">Outro</option>
+            </select>
+            <span class="form-error" id="error-segment"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: CONFIG DO NEGÓCIO -->
+      <div class="wizard__step" id="step-2">
+        <div class="wizard__content">
+          <h2 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 1.5rem;">Configuração do negócio</h2>
+          
+          <div class="form-group required">
+            <label for="business-name">Nome do negócio</label>
+            <input type="text" id="business-name" name="businessName" placeholder="Seu negócio" required>
+            <span class="form-error" id="error-businessName"></span>
+          </div>
+
+          <div class="form-group required">
+            <label for="seller-whatsapp">WhatsApp do vendedor</label>
+            <input type="tel" id="seller-whatsapp" name="sellerWhatsapp" placeholder="(11) 99999-9999" required>
+            <span class="form-error" id="error-sellerWhatsapp"></span>
+          </div>
+
+          <div class="form-group required">
+            <label for="what-sell">O que você vende?</label>
+            <input type="text" id="what-sell" name="whatSell" placeholder="Ex: Serviços de consultoria" required>
+            <span class="form-error" id="error-whatSell"></span>
+          </div>
+
+          <div class="form-group required">
+            <label for="target-audience">Público-alvo</label>
+            <input type="text" id="target-audience" name="targetAudience" placeholder="Ex: Empresas de 10-100 pessoas" required>
+            <span class="form-error" id="error-targetAudience"></span>
+          </div>
+
+          <div class="form-group required">
+            <label for="faq">FAQ (Perguntas Frequentes)</label>
+            <textarea id="faq" name="faq" placeholder="Escreva as perguntas e respostas que seu bot deve saber. Ex: P: Qual é o preço? R: A partir de R$ 100" required></textarea>
+            <span class="form-hint">Use o formato: P: Pergunta? R: Resposta</span>
+            <span class="form-error" id="error-faq"></span>
+          </div>
+
+          <div class="form-group required">
+            <label for="triage-rules">Regras de triagem</label>
+            <textarea id="triage-rules" name="triageRules" placeholder="Defina as perguntas que o bot deve fazer para qualificar o lead. Ex: Qual é seu orçamento? Qual é sua urgência?" required></textarea>
+            <span class="form-hint">Defina 2-4 perguntas principais para qualificar o lead</span>
+            <span class="form-error" id="error-triageRules"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: BRANDING + PUBLICAR -->
+      <div class="wizard__step" id="step-3">
+        <div class="wizard__content">
+          <h2 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 1.5rem;">Branding e publicação</h2>
+          
+          <div class="form-group required">
+            <label>Escolha uma cor para seu bot</label>
+            <div class="color-picker" id="color-picker">
+              <div class="color-option selected" data-color="#0E6BFF" data-name="Azul">
+                <div class="color-option__swatch" style="background: #0E6BFF;"></div>
+                <span class="color-option__label">Azul</span>
+              </div>
+              <div class="color-option" data-color="#22D3EE" data-name="Ciano">
+                <div class="color-option__swatch" style="background: #22D3EE;"></div>
+                <span class="color-option__label">Ciano</span>
+              </div>
+              <div class="color-option" data-color="#2F8CFF" data-name="Azul Claro">
+                <div class="color-option__swatch" style="background: #2F8CFF;"></div>
+                <span class="color-option__label">Azul Claro</span>
+              </div>
+            </div>
+            <span class="form-error" id="error-color"></span>
+          </div>
+
+          <div class="form-group required">
+            <label for="logo">Logo da sua empresa (PNG ou JPG)</label>
+            <div class="logo-upload" id="logo-upload">
+              <div class="logo-upload__icon">📸</div>
+              <div class="logo-upload__text">Clique ou arraste sua logo aqui</div>
+              <div class="logo-upload__hint">Recomendado: 200x100px, máximo 5MB</div>
+            </div>
+            <input type="file" id="logo" name="logo" accept="image/png,image/jpeg" style="display: none;" required>
+            <div class="logo-preview" id="logo-preview" style="display: none;">
+              <img id="logo-preview-img" class="logo-preview__image" alt="Preview da logo">
+            </div>
+            <span class="form-error" id="error-logo"></span>
+          </div>
+
+          <div class="form-group required">
+            <label for="ai-key">Chave da IA (OpenAI ou Gemini)</label>
+            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+              <input type="password" id="ai-key" name="aiKey" placeholder="sk-... ou chave do Gemini" required style="flex: 1;">
+              <button type="button" class="btn btn--secondary btn--small" id="help-btn">Ajuda</button>
+            </div>
+            <span class="form-hint">Sua chave é armazenada com segurança e nunca é exposta publicamente</span>
+            <span class="form-error" id="error-aiKey"></span>
+          </div>
+
+          <div class="checkbox">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">Aceito os <a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" style="color: var(--blue); text-decoration: underline;">Termos de Serviço</a> e <a href="https://tullumotion.com/assets/docs/politica.pdf" target="_blank" style="color: var(--blue); text-decoration: underline;">Política de Privacidade</a></label>
+          </div>
+          <span class="form-error" id="error-terms"></span>
+        </div>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="wizard__buttons">
+        <button type="button" class="btn btn--outline" id="prev-btn" style="display: none;">Voltar</button>
+        <button type="button" class="btn btn--primary" id="next-btn">Próximo</button>
+      </div>
+    </form>
+
+    <!-- SUCCESS SCREEN -->
+    <div id="success-screen" style="display: none;">
+      <div class="success-screen">
+        <div class="success-screen__icon">✅</div>
+        <h2 class="success-screen__title">Pronto, sua página está no ar!</h2>
+        <p class="success-screen__message">Seu bot de IA está pronto para capturar leads. Compartilhe o link abaixo com seus clientes.</p>
+        <div class="success-screen__url" id="success-url">https://seu-dominio.com/c/seu-slug</div>
+        <button type="button" class="btn btn--primary" id="copy-url-btn">Copiar link</button>
+        <button type="button" class="btn btn--secondary" id="open-page-btn" style="margin-left: 0.75rem;">Abrir minha página</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: AJUDA COM CHAVE DE IA -->
+<div class="modal" id="help-modal">
+  <div class="modal__content">
+    <div class="modal__header">
+      <h2 class="modal__title">Como obter sua chave de IA</h2>
+      <button type="button" class="modal__close" id="close-modal">×</button>
+    </div>
+    
+    <div style="color: var(--text); line-height: 1.8;">
+      <h3 style="font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--blue);">OpenAI</h3>
+      <ol style="margin-left: 1.5rem; color: var(--muted);">
+        <li>Acesse <a href="https://platform.openai.com" target="_blank" style="color: var(--blue);">platform.openai.com</a></li>
+        <li>Faça login ou crie uma conta</li>
+        <li>Vá para "API keys" no menu lateral</li>
+        <li>Clique em "Create new secret key"</li>
+        <li>Copie a chave (começa com "sk-")</li>
+      </ol>
+
+      <h3 style="font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--cyan);">Google Gemini</h3>
+      <ol style="margin-left: 1.5rem; color: var(--muted);">
+        <li>Acesse <a href="https://ai.google.dev" target="_blank" style="color: var(--blue);">ai.google.dev</a></li>
+        <li>Clique em "Get API key"</li>
+        <li>Selecione um projeto ou crie um novo</li>
+        <li>Copie a chave gerada</li>
+      </ol>
+
+      <div style="background: rgba(34, 211, 238, 0.1); border: 1px solid var(--stroke); border-radius: 8px; padding: 1rem; margin-top: 1.5rem;">
+        <strong style="color: var(--cyan);">🔒 Segurança:</strong>
+        <p style="margin-top: 0.5rem; color: var(--muted);">Sua chave é armazenada de forma segura e criptografada. Nunca será exposta no navegador do seu cliente.</p>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn--primary" id="close-help-btn" style="width: 100%; margin-top: 1.5rem;">Entendi</button>
+  </div>
+</div>
+
+<script src="../assets/js/onboarding.js"></script>
+</body>
+</html>
