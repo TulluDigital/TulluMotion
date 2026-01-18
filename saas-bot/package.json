@@ -1,0 +1,29 @@
+{
+  "name": "saas-bot-ia",
+  "version": "1.0.0",
+  "description": "Mini-SaaS para criar bots de pré-atendimento com IA",
+  "main": "api/index.ts",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build",
+    "start": "vercel start"
+  },
+  "keywords": [
+    "saas",
+    "bot",
+    "ia",
+    "atendimento",
+    "leads"
+  ],
+  "author": "Tullu Motion",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0",
+    "openai": "^4.28.0",
+    "@google/generative-ai": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
