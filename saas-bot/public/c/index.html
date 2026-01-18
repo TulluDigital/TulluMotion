@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atendimento com IA | Tullu Motion</title>
+  <meta name="description" content="Converse com nosso bot de IA para esclarecer suas dúvidas.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/branch-pages.css">
+  
+  <style>
+    :root {
+      --primary-color: #0E6BFF;
+    }
+    
+    body.color-cyan {
+      --primary-color: #22D3EE;
+    }
+    
+    body.color-blue2 {
+      --primary-color: #2F8CFF;
+    }
+    
+    .page-bg {
+      background: linear-gradient(135deg, rgba(14, 107, 255, 0.05) 0%, rgba(34, 211, 238, 0.05) 100%);
+      transition: background 0.3s ease;
+    }
+    
+    .page-bg.color-cyan {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.05) 0%, rgba(14, 107, 255, 0.05) 100%);
+    }
+    
+    .page-bg.color-blue2 {
+      background: linear-gradient(135deg, rgba(47, 140, 255, 0.05) 0%, rgba(34, 211, 238, 0.05) 100%);
+    }
+  </style>
+</head>
+<body class="page-bg">
+
+<div class="client-page">
+  <div class="client-page__container">
+    <!-- HEADER -->
+    <div class="client-page__header">
+      <img id="client-logo" class="client-page__logo" alt="Logo da empresa" style="display: none;">
+      <h1 class="client-page__title" id="client-title">Carregando...</h1>
+      <p class="client-page__subtitle" id="client-subtitle">Preencha o formulário para começar</p>
+    </div>
+
+    <!-- FORM INICIAL -->
+    <div id="initial-form" class="client-page__form">
+      <div class="form-group required">
+        <label for="lead-name">Seu nome</label>
+        <input type="text" id="lead-name" placeholder="Como você se chama?" required>
+        <span class="form-error" id="error-lead-name"></span>
+      </div>
+
+      <div class="form-group required">
+        <label for="lead-city">Cidade</label>
+        <input type="text" id="lead-city" placeholder="Qual é sua cidade?" required>
+        <span class="form-error" id="error-lead-city"></span>
+      </div>
+
+      <div class="form-group required">
+        <label for="lead-message">O que você procura?</label>
+        <textarea id="lead-message" placeholder="Descreva brevemente o que você está procurando..." required></textarea>
+        <span class="form-error" id="error-lead-message"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="lead-age">Idade (opcional)</label>
+        <input type="number" id="lead-age" placeholder="Sua idade" min="18" max="120">
+      </div>
+
+      <button type="button" class="btn btn--primary btn--large" id="start-chat-btn">Começar conversa</button>
+    </div>
+
+    <!-- CHAT -->
+    <div id="chat-section" style="display: none;">
+      <div class="chat-container">
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-input">
+          <input type="text" id="chat-input" placeholder="Digite sua resposta..." autocomplete="off">
+          <button type="button" class="btn btn--primary" id="send-btn">Enviar</button>
+        </div>
+      </div>
+
+      <!-- BOTÃO WHATSAPP -->
+      <div id="whatsapp-section" style="display: none;">
+        <a href="#" id="whatsapp-btn" class="whatsapp-button" target="_blank">
+          <span>💬</span>
+          <span>Falar no WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div id="loading" style="display: none; text-align: center; padding: 2rem;">
+      <div class="loading"></div>
+      <p style="margin-top: 1rem; color: var(--muted);">Carregando informações...</p>
+    </div>
+
+    <!-- ERROR -->
+    <div id="error-message" style="display: none; background: rgba(255, 107, 107, 0.1); border: 1px solid #FF6B6B; border-radius: 12px; padding: 1.5rem; margin-top: 1rem; color: #FF6B6B;">
+      <strong>Erro ao carregar página</strong>
+      <p id="error-text" style="margin-top: 0.5rem;"></p>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/client-page.js"></script>
+</body>
+</html>
