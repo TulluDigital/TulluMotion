@@ -1,0 +1,454 @@
+/* ===== BRANCH PAGES SPECIFIC STYLES ===== */
+
+/* ===== WIZARD CONTAINER ===== */
+.wizard {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(14, 107, 255, 0.05) 0%, rgba(34, 211, 238, 0.05) 100%);
+}
+
+.wizard__card {
+  width: 100%;
+  max-width: 600px;
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: var(--shadow-elevated);
+}
+
+.wizard__header {
+  margin-bottom: 2rem;
+}
+
+.wizard__title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(120deg, var(--blue), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.wizard__subtitle {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.wizard__progress {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.wizard__progress-step {
+  flex: 1;
+  height: 4px;
+  background: var(--stroke);
+  border-radius: 2px;
+  transition: all var(--transition-smooth);
+}
+
+.wizard__progress-step.active {
+  background: linear-gradient(120deg, var(--blue), var(--cyan));
+}
+
+.wizard__progress-step.completed {
+  background: var(--cyan);
+}
+
+.wizard__content {
+  margin-bottom: 2rem;
+}
+
+.wizard__buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.wizard__buttons .btn {
+  flex: 1;
+}
+
+/* ===== STEP SPECIFIC ===== */
+.wizard__step {
+  display: none;
+}
+
+.wizard__step.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== COLOR PICKER ===== */
+.color-picker {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.color-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.color-option__swatch {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  border: 2px solid var(--stroke);
+  transition: all var(--transition-smooth);
+}
+
+.color-option__label {
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.color-option.selected .color-option__swatch {
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+  transform: scale(1.05);
+}
+
+/* ===== LOGO UPLOAD ===== */
+.logo-upload {
+  border: 2px dashed var(--stroke);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all var(--transition-smooth);
+  cursor: pointer;
+}
+
+.logo-upload:hover {
+  border-color: var(--blue);
+  background: rgba(14, 107, 255, 0.05);
+}
+
+.logo-upload.dragover {
+  border-color: var(--cyan);
+  background: rgba(34, 211, 238, 0.1);
+}
+
+.logo-upload__icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo-upload__text {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.logo-upload__hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.logo-preview {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.logo-preview__image {
+  max-width: 200px;
+  max-height: 100px;
+  border-radius: 8px;
+  border: 1px solid var(--stroke);
+  padding: 0.5rem;
+}
+
+/* ===== SUCCESS SCREEN ===== */
+.success-screen {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.success-screen__icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.success-screen__title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.success-screen__message {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.success-screen__url {
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  word-break: break-all;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: var(--cyan);
+}
+
+.success-screen__copy-btn {
+  margin-top: 1rem;
+}
+
+/* ===== CLIENT PAGE ===== */
+.client-page {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.client-page__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.client-page__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.client-page__logo {
+  max-width: 200px;
+  max-height: 100px;
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+
+.client-page__title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.client-page__subtitle {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.client-page__form {
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* ===== CHAT CONTAINER ===== */
+.chat-container {
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chat-message {
+  display: flex;
+  gap: 0.75rem;
+  animation: slideIn 0.3s ease;
+}
+
+.chat-message.bot {
+  justify-content: flex-start;
+}
+
+.chat-message.user {
+  justify-content: flex-end;
+}
+
+.chat-message__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.chat-message.bot .chat-message__avatar {
+  background: var(--blue);
+}
+
+.chat-message.user .chat-message__avatar {
+  background: var(--cyan);
+}
+
+.chat-message__content {
+  max-width: 70%;
+  padding: 1rem;
+  border-radius: 12px;
+  word-wrap: break-word;
+}
+
+.chat-message.bot .chat-message__content {
+  background: rgba(14, 107, 255, 0.1);
+  border: 1px solid var(--stroke);
+  color: var(--text);
+}
+
+.chat-message.user .chat-message__content {
+  background: linear-gradient(120deg, rgba(14, 107, 255, 0.3), rgba(34, 211, 238, 0.3));
+  border: 1px solid var(--blue);
+  color: var(--text);
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.chat-input input::placeholder {
+  color: var(--muted);
+}
+
+.chat-input input:focus {
+  outline: none;
+  border-color: var(--blue);
+  background: rgba(14, 107, 255, 0.05);
+}
+
+.chat-input button {
+  padding: 12px 24px;
+}
+
+/* ===== WHATSAPP BUTTON ===== */
+.whatsapp-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  width: 100%;
+  padding: 16px 24px;
+  background: #25D366;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.whatsapp-button:hover {
+  background: #1FAE56;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== LOADING ===== */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--stroke);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .wizard__card {
+    padding: 1.5rem;
+  }
+  
+  .wizard__title {
+    font-size: 1.5rem;
+  }
+  
+  .color-picker {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .chat-message__content {
+    max-width: 85%;
+  }
+  
+  .client-page__logo {
+    max-width: 150px;
+    max-height: 75px;
+  }
+  
+  .client-page__title {
+    font-size: 1.5rem;
+  }
+  
+  .wizard__buttons {
+    flex-direction: column;
+  }
+  
+  .wizard__buttons .btn {
+    width: 100%;
+  }
+}
