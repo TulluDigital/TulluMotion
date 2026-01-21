@@ -1,7 +1,7 @@
 /**
  * Tullu – Newsletter
  * Arquivo: /assets/js/formnewsletter.js
- * Envia dados para Google Apps Script atualizado
+ * Envia dados para o novo endpoint do Google Apps Script
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const SUBMIT = document.getElementById("submitBtn");
 
   // SEU NOVO ENDPOINT ATUALIZADO
-  const ENDPOINT = "https://script.google.com/macros/s/AKfycbyhwMFCkOP09-iqeERTQvwXLD6WnjBChYY-ylAl79Lq8aVT61YSaOLN3TjthzoIdQLR/exec";
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbyH3_RwSQohU3XD80na2geBMMmPVmItQc8gRhuVv69RPEFWqtM8wUgCGerCTHcA3Dmi/exec";
 
   // -------- Helpers --------
 
@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const whatsapp = document.getElementById("whatsapp");
     const consent = document.getElementById("consent");
 
-    // limpa estados de erro anteriores
     [nome, email, whatsapp, consent].forEach((f) => f && markError(f, false));
 
     if (!getValue("nome")) { markError(nome, true); ok = false; }
@@ -45,45 +44,44 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!consent || !consent.checked) { markError(consent, true); ok = false; }
 
     if (!ok) {
-      alert("Por favor, preencha os campos obrigatórios para entrar na lista.");
+      alert("Por favor, preencha os campos obrigatórios.");
     }
     return ok;
   }
 
-  // -------- Fluxo de Envio --------
+  // -------- Envio Robustos (Form Data) --------
 
   async function sendPayload(payload) {
-    const body = JSON.stringify(payload);
+    // Transformamos o objeto em formato de formulário para garantir recepção no Google
+    const searchParams = new URLSearchParams();
+    for (const key in payload) {
+      searchParams.append(key, payload[key]);
+    }
 
     try {
-      // Usamos mode: 'no-cors' para evitar problemas de política de origem com o Google
-      // Importante: no-cors não permite ler a resposta do servidor (ok: true), 
-      // então tratamos o sucesso pela ausência de erro de rede.
       await fetch(ENDPOINT, {
         method: "POST",
-        mode: "no-cors",
-        cache: "no-store",
-        body: body,
+        mode: "no-cors", // Necessário para evitar bloqueio de CORS do Google
+        body: searchParams,
         headers: {
-          "Content-Type": "text/plain" // Evita o 'preflight' do CORS
+          "Content-Type": "application/x-www-form-urlencoded"
         }
       });
+      // Com no-cors, o fetch não retorna 'ok', então assumimos sucesso se não houver erro de rede
       return true; 
     } catch (error) {
-      console.error("Erro na requisição:", error);
+      console.error("Erro no envio:", error);
       return false;
     }
   }
 
-  // -------- Submit Event --------
+  // -------- Evento de Submit --------
 
   FORM.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // 1. Validação
     if (!validate()) return;
 
-    // 2. Preparação dos dados
     const payload = {
       nome: getValue("nome"),
       email: getValue("email"),
@@ -94,27 +92,22 @@ document.addEventListener("DOMContentLoaded", () => {
       user_agent: navigator.userAgent
     };
 
-    // 3. UI Status (Enviando...)
-    const prevText = SUBMIT ? SUBMIT.textContent : "";
+    const prevText = SUBMIT ? SUBMIT.textContent : "Entrar na newsletter";
     if (SUBMIT) {
       SUBMIT.disabled = true;
       SUBMIT.textContent = "Enviando...";
     }
 
-    // 4. Execução
     const ok = await sendPayload(payload);
 
-    // 5. Resposta Visual
     if (ok) {
-      // Sucesso
       if (CARD) CARD.classList.add("is-success");
       if (SUCCESS) {
         SUCCESS.hidden = false;
         SUCCESS.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      // Erro
-      alert("Houve um erro técnico. Por favor, tente novamente em alguns instantes.");
+      alert("Erro ao enviar. Tente novamente em instantes.");
       if (SUBMIT) {
         SUBMIT.disabled = false;
         SUBMIT.textContent = prevText;
