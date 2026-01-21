@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const SUBMIT = document.getElementById("submitBtn");
 
   const ENDPOINT =
-    "https://script.google.com/macros/s/AKfycbwx1ENWEX3JMGviJ32sAc4SwycjPXKPeSOUFrMX5jukZJOKAVmvumzht3mMSE7Dw8cM/exec";
+    "https://script.google.com/macros/s/AKfycby6BUzHO9BFrNFtsJAmin4u9KNWHuNv1a-3Blaok4xEREO19hohd-HL_FigLkDkZ5Yq/exec";
 
   // meta
   const sourceUrl = document.getElementById("source_url");
