@@ -54,7 +54,91 @@
     <section class="cta-section" id="form" style="padding-top: 110px;">
       <div class="container">
         <div class="form-shell">
+<!-- Guia rápido (fora do card) -->
+<div class="agent-guide-wrap" aria-label="Ajuda rápida">
+  <button type="button" class="btn btn--primary btn--large agent-guide-btn" id="openAgentGuide">
+    O que é um agente de IA? (guia rápido)
+  </button>
+</div>
 
+<!-- Modal / Pop-up -->
+<div class="agent-guide-overlay" id="agentGuideOverlay" hidden>
+  <div class="agent-guide-modal" role="dialog" aria-modal="true" aria-labelledby="agentGuideTitle">
+    <div class="agent-guide-top">
+      <div>
+        <h3 id="agentGuideTitle" class="agent-guide-title">Guia rápido do formulário</h3>
+        <p class="agent-guide-sub">
+          Leia em 40 segundos. Isso evita respostas vagas e deixa seu agente mais “cirúrgico”.
+        </p>
+      </div>
+
+      <button type="button" class="agent-guide-close" id="closeAgentGuide" aria-label="Fechar guia">
+        ✕
+      </button>
+    </div>
+
+    <div class="agent-guide-body">
+      <div class="agent-guide-grid">
+        <div class="agent-guide-item">
+          <div class="agent-guide-k">Agente de IA</div>
+          <div class="agent-guide-v">
+            É um “atendente inteligente” no WhatsApp que segue regras e conversa no seu estilo para
+            <strong>triagem</strong>, <strong>qualificação</strong> e <strong>próximo passo</strong> (agendar, orçamento, pagamento).
+          </div>
+        </div>
+
+        <div class="agent-guide-item">
+          <div class="agent-guide-k">Tom de voz</div>
+          <div class="agent-guide-v">
+            Jeito de falar: <strong>direto</strong>, <strong>premium</strong>, <strong>descontraído</strong>, formal etc.
+            Ex.: “objetivo, sem enrolar, com educação”.
+          </div>
+        </div>
+
+        <div class="agent-guide-item">
+          <div class="agent-guide-k">Mantra</div>
+          <div class="agent-guide-v">
+            Uma frase que guia o comportamento. Ex.: “clareza + objetividade”, “calma e solução”.
+          </div>
+        </div>
+
+        <div class="agent-guide-item">
+          <div class="agent-guide-k">Palavras proibidas</div>
+          <div class="agent-guide-v">
+            Termos que o agente <strong>nunca</strong> deve usar. Ex.: “barato”, “promoção”, “garantia”.
+          </div>
+        </div>
+
+        <div class="agent-guide-item">
+          <div class="agent-guide-k">Regras e limites</div>
+          <div class="agent-guide-v">
+            O que pode / não pode. Ex.: não prometer prazo, não falar de temas sensíveis, não inventar.
+          </div>
+        </div>
+
+        <div class="agent-guide-item">
+          <div class="agent-guide-k">Base de conhecimento</div>
+          <div class="agent-guide-v">
+            Links e materiais que o agente usa como referência (site, serviços, FAQ, endereço, horários, PDFs).
+            Se não tiver, escreva “não tenho”.
+          </div>
+        </div>
+      </div>
+
+      <div class="agent-guide-tip">
+        <strong>Dica que muda o jogo:</strong> escreva como se você estivesse treinando um funcionário novo.
+        Quanto mais específico, menos “resposta genérica” a IA vai dar.
+      </div>
+    </div>
+
+    <div class="agent-guide-actions">
+      <button type="button" class="btn btn--outline btn--large" id="closeAgentGuide2">Entendi</button>
+      <button type="button" class="btn btn--primary btn--large" id="jumpToForm">
+        Voltar pro formulário
+      </button>
+    </div>
+  </div>
+</div>
           <div class="form-card">
             <div class="form-header">
               <div>
