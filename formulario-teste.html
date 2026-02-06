@@ -527,5 +527,54 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/branch-animations.js"></script>
   <script src="assets/js/testform.js"></script>
+  <script>
+(function(){
+  const openBtn = document.getElementById('openAgentGuide');
+  const overlay = document.getElementById('agentGuideOverlay');
+  const closeBtn = document.getElementById('closeAgentGuide');
+  const closeBtn2 = document.getElementById('closeAgentGuide2');
+  const jumpBtn = document.getElementById('jumpToForm');
+
+  if(!openBtn || !overlay) return;
+
+  const modal = overlay.querySelector('.agent-guide-modal');
+  let lastActive = null;
+
+  function openGuide(){
+    lastActive = document.activeElement;
+    overlay.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    setTimeout(() => {
+      const focusTarget = closeBtn || modal;
+      focusTarget && focusTarget.focus && focusTarget.focus();
+    }, 10);
+  }
+
+  function closeGuide(){
+    overlay.hidden = true;
+    document.documentElement.style.overflow = '';
+    if(lastActive && lastActive.focus) lastActive.focus();
+  }
+
+  openBtn.addEventListener('click', openGuide);
+  closeBtn && closeBtn.addEventListener('click', closeGuide);
+  closeBtn2 && closeBtn2.addEventListener('click', closeGuide);
+
+  jumpBtn && jumpBtn.addEventListener('click', () => {
+    closeGuide();
+    const form = document.getElementById('step1');
+    if(form) form.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if(e.target === overlay) closeGuide();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if(overlay.hidden) return;
+    if(e.key === 'Escape') closeGuide();
+  });
+})();
+</script>
 </body>
 </html>
