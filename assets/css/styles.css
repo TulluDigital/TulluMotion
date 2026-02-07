@@ -4455,3 +4455,55 @@ section[id]{
   margin-left: auto !important;
   margin-right: auto !important;
 }
+/* ===== HERO FIX MASTER ===== */
+
+.hero {
+  padding-top: 40px !important;     /* antes devia estar 120+ */
+  padding-bottom: 60px;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* remove espaço fantasma do container */
+.hero .container,
+.hero-inner,
+.hero-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* ===== IMAGEM ===== */
+.hero-media {
+  width: min(900px, 92%);
+  margin: 10px auto 10px auto;   /* reduz topo */
+  padding: 0;
+  background: none !important;   /* remove fundo duplicado */
+}
+
+.hero-media img {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:768px){
+
+  .hero{
+    padding-top: 20px !important;
+  }
+
+  .hero-media{
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  .hero-media img{
+    max-height: 220px;
+  }
+
+}
