@@ -4434,7 +4434,7 @@ section[id]{
   height: auto;
   max-height: 340px;        /* evita ficar “monstra” no desktop */
   object-fit: contain;
-  border-radius: 18px;   
+  
   margin-bottom:20px;/* combina com teu visual */
 
 }
@@ -4447,7 +4447,7 @@ section[id]{
   }
   .hero-media__img {
     max-height: 220px;
-    border-radius: 16px;
+   
   }
 }
 .hero .hero-inner, .hero .hero-content {
