@@ -4395,3 +4395,57 @@ section[id]{
 }
  
 
+/* ===== HERO: centraliza no desktop + imagem acima do título ===== */
+
+/* Garanta que o container do hero não “puxe” pro lado no desktop */
+.hero,
+.hero .container,
+.hero-inner,
+.hero-content {
+  width: 100%;
+}
+
+.hero .container,
+.hero-inner,
+.hero-content {
+  max-width: 1100px;      /* largura “um pouco menor” que a área total */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Se o seu hero for flex, isso mata o lateralizado */
+.hero-inner,
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Imagem acima do H1 */
+.hero-media {
+  width: min(980px, 92%);   /* desktop: larga, mas não gigante */
+  margin: 0 auto 18px;      /* espaço entre imagem e título */
+}
+
+.hero-media__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 340px;        /* evita ficar “monstra” no desktop */
+  object-fit: contain;
+  border-radius: 18px;      /* combina com teu visual */
+  box-shadow: 0 18px 60px rgba(0,0,0,.45);
+}
+
+/* Mobile: mantém no centro e reduz altura */
+@media (max-width: 768px) {
+  .hero-media {
+    width: 92%;
+    margin-bottom: 14px;
+  }
+  .hero-media__img {
+    max-height: 220px;
+    border-radius: 16px;
+  }
+}
