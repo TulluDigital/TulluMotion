@@ -4434,7 +4434,8 @@ section[id]{
   height: auto;
   max-height: 340px;        /* evita ficar “monstra” no desktop */
   object-fit: contain;
-  border-radius: 18px;      /* combina com teu visual */
+  border-radius: 18px;   
+  margin-bottom:20px;/* combina com teu visual */
 
 }
 
