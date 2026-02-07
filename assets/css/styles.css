@@ -4449,3 +4449,9 @@ section[id]{
     border-radius: 16px;
   }
 }
+.hero .hero-inner, .hero .hero-content {
+  align-items: center !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
