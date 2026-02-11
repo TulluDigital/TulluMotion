@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Tullu Journal — IA no Mercado de Trabalho</title>
-  <meta name="description" content="IA no mercado de trabalho: o que realmente está acontecendo segundo McKinsey, PwC, MIT e World Economic Forum.">
+  <title>Tullu Journal — Fevereiro 2026 | Agentes, produtividade e o novo “trabalho infinito”</title>
+  <meta name="description" content="Fevereiro 2026: agentes de IA entram no modo enterprise, produtividade sobe, e o risco vira intensificação do trabalho. Com links e fontes." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/branch-pages.css">
+
   <style>
     :root{
       --bg:#09090B;
@@ -54,6 +55,7 @@
       align-items:center;
       gap:12px;
       min-width:fit-content;
+      flex-wrap:wrap;
     }
 
     .brand img{height:48px}
@@ -186,15 +188,70 @@
       font-size:.9rem;
     }
 
+    /* Toggle Janeiro (dentro do mesmo HTML) */
+    .toggle-wrap{
+      margin: 60px 0 0;
+      padding: 22px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .toggle-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .btn-lite{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(59,130,246,.12);
+      color: rgba(255,255,255,.92);
+      font-weight:800;
+      font-size:14px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      text-decoration:none;
+    }
+
+    .btn-lite:hover{
+      transform: translateY(-1px);
+      background: rgba(59,130,246,.16);
+      border-color: rgba(34,211,238,.30);
+    }
+
+    .jan-block{
+      display:none;
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .micro{
+      color: rgba(255,255,255,.62);
+      font-size:.95rem;
+      margin-top: 10px;
+    }
+
     @media(max-width:640px){
       .journal-container{
         padding:80px 20px 100px;
       }
       .pill{font-size:13px}
       .brand img{height:44px}
+      .highlight{padding:26px 22px}
     }
   </style>
 </head>
+
 <body>
 
 <main class="journal-container">
@@ -203,282 +260,321 @@
   <div class="top">
     <div class="brand">
       <img src="assets/img/tullu.png" alt="Tullu Motion">
-      <span class="footer__logo-text">Journal</span><br><br>
+      <span class="footer__logo-text">Journal</span>
       <div class="pill">Tullu Journal • Pesquisa & Mercado</div>
     </div>
-    <div class="pill">Próxima atualização: Fev 2026 • Mensal</div>
+    <div class="pill">Edição atual: Fev 2026 • Mensal</div>
   </div>
 
+  <!-- ====== FEVEREIRO 2026 (principal) ====== -->
   <header class="journal-header">
-    <div class="journal-eyebrow">TULLU JOURNAL</div>
+    <div class="journal-eyebrow">TULLU JOURNAL • FEVEREIRO 2026</div>
+
     <h1 class="journal-title">
-      IA no mercado de trabalho:<br>
-      o que realmente está acontecendo
+      Agentes entram no modo enterprise —<br>
+      e o risco vira “trabalho infinito”
     </h1>
 
     <p class="journal-sources">
-      Fontes:
-      <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener noreferrer">McKinsey</a>,
-      <a href="https://www.pwc.com/gx/en/services/ai/ai-jobs-barometer.html" target="_blank" rel="noopener noreferrer">PwC</a>,
-      <a href="https://news.mit.edu/2023/study-finds-chatgpt-boosts-worker-productivity-writing-0714" target="_blank" rel="noopener noreferrer">MIT</a>,
-      <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">World Economic Forum</a>
+      Fontes desta edição:
+      <a href="https://openai.com/index/introducing-openai-frontier/" target="_blank" rel="noopener noreferrer">OpenAI (Frontier)</a>,
+      <a href="https://www.reuters.com/business/finance/openai-unveils-ai-agent-service-part-push-attract-businesses-2026-02-05/" target="_blank" rel="noopener noreferrer">Reuters (Frontier)</a>,
+      <a href="https://hbr.org/2026/02/ai-doesnt-reduce-work-it-intensifies-it" target="_blank" rel="noopener noreferrer">HBR (intensificação)</a>,
+      <a href="https://www.weforum.org/stories/2026/02/ai-improving-wages-job-quality/" target="_blank" rel="noopener noreferrer">WEF (wages/job quality)</a>,
+      <a href="https://www.businessinsider.com/sc/indeed-data-shows-ai-transforms-skills-not-just-jobs-in-workforce-shift" target="_blank" rel="noopener noreferrer">Indeed/Business Insider (skills)</a>,
+      <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act" target="_blank" rel="noopener noreferrer">EU AI Act (timeline oficial)</a>
     </p>
   </header>
 
   <article class="journal-article">
 
     <p>
-      Durante anos, a inteligência artificial foi tratada como promessa futura.
-      Em <strong>2024 e 2025</strong>, ela virou infraestrutura produtiva.
-      As principais pesquisas internacionais convergem em um ponto:
-      <strong>IA não substitui trabalho — ela substitui desperdício.</strong>
-    </p>
-
-    <p>
-      Segundo a
-      <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener noreferrer">McKinsey & Company</a>,
-      empresas que adotaram IA generativa em processos operacionais já observam ganhos médios de
-      <strong>20% a 45%</strong> em produtividade em áreas como atendimento, marketing, operações e vendas.
+      Janeiro foi “IA como produtividade”.
+      Fevereiro virou o mês do <strong>agente como sistema</strong>.
+      A mudança não é estética: é infraestrutura.
+      Quando uma empresa começa a gerir agentes como “força operacional”, o jogo muda —
+      e o mercado de trabalho sente.
     </p>
 
     <div class="highlight">
-      <h2>O dado mais importante não é técnico — é estratégico</h2>
+      <h2>O sinal de Fevereiro: “agent ops” virou produto</h2>
       <p>
-        O tempo economizado está sendo reinvestido em crescimento,
-        não em cortes.
+        A OpenAI anunciou o <strong>Frontier</strong>, uma plataforma para empresas <strong>construírem, implantarem e gerenciarem agentes</strong> com contexto, permissões e governança — e não apenas “usar IA” pontualmente.
+        Isso é o que transforma IA em camada operacional real. 
+      </p>
+      <p style="margin-top:14px; color: rgba(255,255,255,.85);">
+        Leia: <a href="https://openai.com/index/introducing-openai-frontier/" target="_blank" rel="noopener noreferrer">anúncio oficial</a> e cobertura <a href="https://www.reuters.com/business/finance/openai-unveils-ai-agent-service-part-push-attract-businesses-2026-02-05/" target="_blank" rel="noopener noreferrer">Reuters</a>.
       </p>
     </div>
 
-    <p>
-      A lógica mudou. Não se trata de “fazer o mesmo mais rápido”,
-      mas de liberar o humano para decisões de maior valor.
-    </p>
-
-    <div class="section-title">IA como aumento de produção, não como ameaça</div>
+    <div class="section-title">O efeito colateral: AI não reduz trabalho — ela intensifica</div>
     <div class="section-subtitle">
-      Quando máquinas assumem o operacional, humanos assumem o estratégico
+      A produtividade sobe, e a expectativa sobe junto
     </div>
 
     <p>
-      Um estudo divulgado pelo
-      <a href="https://news.mit.edu/2023/study-finds-chatgpt-boosts-worker-productivity-writing-0714" target="_blank" rel="noopener noreferrer">MIT News</a>
-      mostrou que profissionais que utilizam IA no dia a dia entregam tarefas até
-      <strong>~40% mais rápido</strong>, com qualidade superior e menor fadiga cognitiva.
-      Outra leitura complementar aparece no
-      <a href="https://mitsloan.mit.edu/ideas-made-to-matter/how-generative-ai-can-boost-highly-skilled-workers-productivity" target="_blank" rel="noopener noreferrer">MIT Sloan</a>.
-    </p>
-
-    <div class="highlight">
-      <h2>IA não melhora apenas velocidade</h2>
-      <p>Ela melhora clareza.</p>
-    </div>
-
-    <p>Empresas estão usando agentes de IA para:</p>
-
-    <ul class="journal-list">
-      <li>Atendimento 24/7 sem escalar equipe</li>
-      <li>Qualificação automática de leads</li>
-      <li>Follow-ups consistentes</li>
-      <li>Organização de dados e decisões</li>
-    </ul>
-
-    <p>
-      Resultado prático: menos microdecisões humanas,
-      mais foco em estratégia, produto e crescimento.
-    </p>
-
-    <div class="section-title">O empreendedor ganha tempo — e isso muda tudo</div>
-    <div class="section-subtitle">
-      Tempo virou o ativo mais caro da economia digital
-    </div>
-
-    <p>
-      De acordo com a
-      <a href="https://www.pwc.com/gx/en/services/ai/ai-jobs-barometer.html" target="_blank" rel="noopener noreferrer">PwC (Global AI Jobs Barometer 2025)</a>,
-      líderes que adotaram IA como camada operacional relatam uma mudança clara de rotina:
-      menos tempo “apagando incêndio” e mais tempo pensando o negócio.
-      Um complemento sobre produtividade também aparece em
-      <a href="https://www.pwc.com/gx/en/services/ai/ai-and-productivity-report.html" target="_blank" rel="noopener noreferrer">PwC — AI and Productivity</a>.
-    </p>
-
-    <ul class="journal-list">
-      <li>Planejamento estratégico real</li>
-      <li>Criação de novos produtos e ofertas</li>
-      <li>Melhor qualidade de vida do decisor</li>
-    </ul>
-
-    <p>
-      Não é sobre trabalhar mais.
-      É sobre parar de desperdiçar inteligência humana
-      com tarefas repetitivas.
-    </p>
-
-    <div class="section-title">O futuro do trabalho já começou</div>
-    <div class="section-subtitle">E não é distópico</div>
-
-    <p>
-      O
-      <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">World Economic Forum (Future of Jobs Report 2025)</a>
-      aponta que até 2027 funções puramente operacionais tendem a diminuir,
-      enquanto funções híbridas (humano + IA) crescem rapidamente.
+      Um ponto duro apareceu com força nas discussões recentes:
+      em vez de “sobrar tempo”, muitas equipes estão vivendo o contrário —
+      <strong>mais output no mesmo dia</strong>.
+      A Harvard Business Review descreve essa dinâmica como <strong>intensificação do trabalho</strong>:
+      a IA acelera, e o padrão de performance se recalibra para cima. 
+      <a href="https://hbr.org/2026/02/ai-doesnt-reduce-work-it-intensifies-it" target="_blank" rel="noopener noreferrer">HBR (Fev/2026)</a>.
     </p>
 
     <div class="journal-quote">
-      “A maior ameaça ao emprego não é a IA, mas empresas que se recusam a adotá-la.”
+      “O risco não é a IA ‘tomar empregos’ amanhã — é a IA transformar o dia inteiro em uma esteira de demanda.”
     </div>
 
     <p>
-      Ou seja: quem não automatiza hoje, trava amanhã.
+      Isso muda o que a Tullu vende na prática: não é “IA”.
+      É <strong>governança do agente</strong>: regras, limites, tom de voz, base de conhecimento e um playbook de uso.
+      Sem isso, a empresa vira refém do “output infinito”.
     </p>
 
-    <div class="section-title">IA como camada, não como moda</div>
+    <div class="section-title">O mercado não está sumindo — está trocando de pele</div>
     <div class="section-subtitle">
-      Microsoft e OpenAI reforçam a mudança estrutural
+      O foco migra de cargo para habilidade
     </div>
 
     <p>
-      A Microsoft tem reforçado em relatórios recentes que IA está deixando de ser ferramenta isolada
-      para virar <strong>camada operacional invisível</strong>, integrada ao fluxo diário de trabalho.
-      Na prática, isso significa que a IA se aproxima do lugar do e-mail:
-      ninguém “pensa” em usar — ela simplesmente existe no processo.
+      Dados e entrevistas recentes com o ecossistema do Indeed apontam que a IA tende mais a
+      <strong>reconfigurar tarefas e skills</strong> do que “apagar” ocupações inteiras de uma vez. 
+      (E o recorte de adoção ainda é desigual, concentrado em empresas maiores e mais tecnológicas.)
+      <a href="https://www.businessinsider.com/sc/indeed-data-shows-ai-transforms-skills-not-just-jobs-in-workforce-shift" target="_blank" rel="noopener noreferrer">Indeed/Business Insider</a>.
     </p>
 
-    <p>
-      Assim como ninguém “pensa” em usar e-mail hoje —
-      ele simplesmente existe — a IA caminha para o mesmo lugar:
-      <strong>infraestrutura básica de produtividade.</strong>
-    </p>
-
-    <div class="section-title">Fontes e estudos citados</div>
     <ul class="journal-list">
-      <li>
-        McKinsey — <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener noreferrer">
-          The Economic Potential of Generative AI
-        </a> (Customer care: 30–45%)
-      </li>
-      <li>
-        McKinsey (PDF) — <a href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/mckinsey%20digital/our%20insights/the%20economic%20potential%20of%20generative%20ai%20the-next-productivity-frontier/the-economic-potential-of-generative-ai-the-next-productivity-frontier.pdf" target="_blank" rel="noopener noreferrer">
-          The Economic Potential of Generative AI (PDF)
-        </a>
-      </li>
-      <li>
-        MIT News — <a href="https://news.mit.edu/2023/study-finds-chatgpt-boosts-worker-productivity-writing-0714" target="_blank" rel="noopener noreferrer">
-          Study finds ChatGPT boosts worker productivity
-        </a>
-      </li>
-      <li>
-        MIT Sloan — <a href="https://mitsloan.mit.edu/ideas-made-to-matter/how-generative-ai-can-boost-highly-skilled-workers-productivity" target="_blank" rel="noopener noreferrer">
-          How GenAI can boost highly skilled workers’ productivity
-        </a>
-      </li>
-      <li>
-        WEF — <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">
-          Future of Jobs Report 2025 (página)
-        </a>
-      </li>
-      <li>
-        WEF (PDF) — <a href="https://reports.weforum.org/docs/WEF_Future_of_Jobs_Report_2025.pdf" target="_blank" rel="noopener noreferrer">
-          Future of Jobs Report 2025 (PDF)
-        </a>
-      </li>
-      <li>
-        PwC — <a href="https://www.pwc.com/gx/en/services/ai/ai-jobs-barometer.html" target="_blank" rel="noopener noreferrer">
-          2025 Global AI Jobs Barometer
-        </a>
-      </li>
-      <li>
-        PwC — <a href="https://www.pwc.com/gx/en/services/ai/ai-and-productivity-report.html" target="_blank" rel="noopener noreferrer">
-          AI and Productivity report
-        </a>
-      </li>
+      <li><strong>O que cresce:</strong> capacidade de projetar processos + comunicar claramente + validar output</li>
+      <li><strong>O que cai:</strong> tarefas repetitivas sem dono, sem padrão e sem métrica</li>
+      <li><strong>O que vira diferencial:</strong> playbooks, templates e “DNA” (regra + estilo + base)</li>
     </ul>
 
-  </article>
-
-  <footer class="footer footer--journal">
-
-  <div class="container">
-
-    <div class="footer__content">
-
-      <!-- BRAND -->
-      <div class="footer__brand">
-
-        <div class="footer__logo">
-          <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
-          <span class="footer__logo-text">Journal</span>
-        </div>
-
-        <p class="footer__description">
-          O Tullu Journal é o espaço editorial da Tullu Motion para análises estratégicas
-          sobre tecnologia, IA, trabalho e produtividade no mercado real.
-        </p>
-
-      </div>
-
-      <!-- LINKS -->
-      <div class="footer__links">
-
-        <div class="footer__section">
-          <h4 class="footer__section-title">Journal</h4>
-          <ul class="footer__list">
-            <li><a href="journal.html" class="footer__link">Últimas análises</a></li>
-            <li><a href="journal.html#fontes" class="footer__link">Fontes e estudos</a></li>
-          </ul>
-        </div>
-
-        <div class="footer__section">
-          <h4 class="footer__section-title">Tullu Motion</h4>
-          <ul class="footer__list">
-            <li><a href="aistudio.html" class="footer__link">AI Studio</a></li>
-            <li><a href="aistudio.html#faq" class="footer__link">Dúvidas frequentes</a></li>
-          </ul>
-        </div>
-
-        <div class="footer__section">
-          <h4 class="footer__section-title">Contato</h4>
-          <ul class="footer__list">
-            <li>
-              <a
-                href="https://wa.me/5511978217095?text=Li%20um%20artigo%20no%20Tullu%20Journal%20e%20quero%20entender%20como%20a%20IA%20pode%20se%20aplicar%20ao%20meu%20neg%C3%B3cio."
-                class="footer__link"
-                target="_blank"
-              >
-                WhatsApp
-              </a>
-            </li>
-            <li>
-              <a href="mailto:comercial@tullumotion.com" class="footer__link">
-                comercial@tullumotion.com
-              </a>
-            </li>
-          </ul>
-        </div>
-
- <div class="footer__section">
-          <h4 class="footer__section-title">Legal</h4>
-          <ul class="footer__list">
-            <li><a href="https://tullumotion.com/assets/docs/politica.pdf" class="footer__link">Política de Privacidade</a></li>
-            <li><a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" class="footer__link">Termos de Uso</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="footer__bottom">
-      <p class="footer__copyright">
-        © 2026 Tullu Motion. Conteúdo editorial. Todos os direitos reservados.
+    <div class="highlight">
+      <h2>Seu lead não precisa “entender IA”. Ele precisa preencher um manual.</h2>
+      <p>
+        O formulário de DNA é o produto invisível: ele transforma intenção (quero vender/atender) em execução (o agente faz).
+        Quem escreve um DNA fraco não “perde a IA” — perde o resultado.
       </p>
     </div>
 
-  </div>
+    <div class="section-title">Dinheiro: impacto em salários e qualidade do trabalho</div>
+    <div class="section-subtitle">
+      Quem vira “híbrido” (humano + IA) tende a ser melhor precificado
+    </div>
 
-</footer>
+    <p>
+      O WEF publicou análises com gráficos sobre como skills de IA estão afetando
+      <strong>salários, qualidade do trabalho e decisões de contratação</strong>.
+      Aqui está a leitura: 
+      <a href="https://www.weforum.org/stories/2026/02/ai-improving-wages-job-quality/" target="_blank" rel="noopener noreferrer">These 3 charts show how AI is affecting wages, job quality and hiring decisions</a>.
+    </p>
 
+    <div class="section-title">Governança: o “sistema legal” começa a encostar</div>
+    <div class="section-subtitle">
+      Não é medo — é checklist
+    </div>
+
+    <p>
+      Se agente vira operação, compliance vira inevitável.
+      A União Europeia mantém uma timeline oficial de implementação do EU AI Act — útil para empresas que querem operar com agentes e dados com mais segurança (principalmente em contexto corporativo). 
+      <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act" target="_blank" rel="noopener noreferrer">EU AI Act: timeline oficial</a>.
+    </p>
+
+    <div class="section-title">Resumo em 20 segundos</div>
+    <ul class="journal-list">
+      <li><strong>Fevereiro confirmou:</strong> “gestão de agentes” virou produto enterprise (Frontier).</li>
+      <li><strong>O risco real:</strong> intensificação do trabalho sem playbook e limites (HBR).</li>
+      <li><strong>Oportunidade:</strong> transformar IA em camada operacional com DNA + base + regras.</li>
+      <li><strong>O próximo passo da Tullu:</strong> vender “governança do agente” como entrega — não “bot”.</li>
+    </ul>
+
+    <div class="section-title" id="fontes-fev">Fontes desta edição (Fev/2026)</div>
+    <ul class="journal-list">
+      <li>OpenAI — <a href="https://openai.com/index/introducing-openai-frontier/" target="_blank" rel="noopener noreferrer">Introducing OpenAI Frontier</a></li>
+      <li>Reuters — <a href="https://www.reuters.com/business/finance/openai-unveils-ai-agent-service-part-push-attract-businesses-2026-02-05/" target="_blank" rel="noopener noreferrer">OpenAI unveils AI agent service…</a></li>
+      <li>HBR — <a href="https://hbr.org/2026/02/ai-doesnt-reduce-work-it-intensifies-it" target="_blank" rel="noopener noreferrer">AI Doesn’t Reduce Work—It Intensifies It</a></li>
+      <li>WEF — <a href="https://www.weforum.org/stories/2026/02/ai-improving-wages-job-quality/" target="_blank" rel="noopener noreferrer">3 charts: wages, job quality, hiring</a></li>
+      <li>Indeed/BI — <a href="https://www.businessinsider.com/sc/indeed-data-shows-ai-transforms-skills-not-just-jobs-in-workforce-shift" target="_blank" rel="noopener noreferrer">AI muda skills mais que cargos</a></li>
+      <li>EU — <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act" target="_blank" rel="noopener noreferrer">Timeline oficial EU AI Act</a></li>
+    </ul>
+
+    <!-- ====== Botão para revelar Janeiro (mesmo HTML) ====== -->
+    <div class="toggle-wrap" aria-label="Edições anteriores">
+      <div class="toggle-actions">
+        <div>
+          <strong style="font-family:'Poppins',sans-serif; font-size:1.05rem;">Edições anteriores</strong>
+          <div class="micro">A edição de Janeiro (base) fica guardada aqui, sem link externo.</div>
+        </div>
+
+        <button class="btn-lite" type="button" id="toggleJan">
+          Ver edição de Janeiro 2026
+        </button>
+      </div>
+
+      <div class="jan-block" id="janBlock">
+        <!-- ====== JANEIRO 2026 (conteúdo original preservado) ====== -->
+        <div style="margin-top: 20px;">
+          <div class="journal-eyebrow" style="margin-bottom: 12px;">TULLU JOURNAL • JANEIRO 2026 (ARQUIVO)</div>
+          <h2 class="journal-title" style="font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 10px;">
+            IA no mercado de trabalho:<br>o que realmente está acontecendo
+          </h2>
+
+          <p class="journal-sources">
+            Fontes:
+            <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener noreferrer">McKinsey</a>,
+            <a href="https://www.pwc.com/gx/en/services/ai/ai-jobs-barometer.html" target="_blank" rel="noopener noreferrer">PwC</a>,
+            <a href="https://news.mit.edu/2023/study-finds-chatgpt-boosts-worker-productivity-writing-0714" target="_blank" rel="noopener noreferrer">MIT</a>,
+            <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">World Economic Forum</a>
+          </p>
+
+          <!-- Conteúdo de janeiro (o seu, intacto) -->
+          <p>
+            Durante anos, a inteligência artificial foi tratada como promessa futura.
+            Em <strong>2024 e 2025</strong>, ela virou infraestrutura produtiva.
+            As principais pesquisas internacionais convergem em um ponto:
+            <strong>IA não substitui trabalho — ela substitui desperdício.</strong>
+          </p>
+
+          <p>
+            Segundo a
+            <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener noreferrer">McKinsey & Company</a>,
+            empresas que adotaram IA generativa em processos operacionais já observam ganhos médios de
+            <strong>20% a 45%</strong> em produtividade em áreas como atendimento, marketing, operações e vendas.
+          </p>
+
+          <div class="highlight" style="margin: 28px 0;">
+            <h2>O dado mais importante não é técnico — é estratégico</h2>
+            <p>O tempo economizado está sendo reinvestido em crescimento, não em cortes.</p>
+          </div>
+
+          <p>
+            Um estudo divulgado pelo
+            <a href="https://news.mit.edu/2023/study-finds-chatgpt-boosts-worker-productivity-writing-0714" target="_blank" rel="noopener noreferrer">MIT News</a>
+            mostrou que profissionais que utilizam IA no dia a dia entregam tarefas até
+            <strong>~40% mais rápido</strong>, com qualidade superior e menor fadiga cognitiva.
+          </p>
+
+          <ul class="journal-list">
+            <li>Atendimento 24/7 sem escalar equipe</li>
+            <li>Qualificação automática de leads</li>
+            <li>Follow-ups consistentes</li>
+            <li>Organização de dados e decisões</li>
+          </ul>
+
+          <p>
+            O
+            <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener noreferrer">World Economic Forum (Future of Jobs Report 2025)</a>
+            aponta que até 2027 funções puramente operacionais tendem a diminuir,
+            enquanto funções híbridas (humano + IA) crescem rapidamente.
+          </p>
+
+          <div class="journal-quote" style="margin: 36px 0;">
+            “A maior ameaça ao emprego não é a IA, mas empresas que se recusam a adotá-la.”
+          </div>
+
+          <div class="micro">
+            (Arquivo preservado para comparação: Janeiro = “produtividade”; Fevereiro = “governança + intensificação”.)
+          </div>
+        </div>
+        <!-- ====== fim janeiro ====== -->
+      </div>
+    </div>
+
+  </article>
+
+  <!-- Footer original (mantido) -->
+  <footer class="footer footer--journal">
+    <div class="container">
+      <div class="footer__content">
+
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
+            <span class="footer__logo-text">Journal</span>
+          </div>
+
+          <p class="footer__description">
+            O Tullu Journal é o espaço editorial da Tullu Motion para análises estratégicas
+            sobre tecnologia, IA, trabalho e produtividade no mercado real.
+          </p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__section">
+            <h4 class="footer__section-title">Journal</h4>
+            <ul class="footer__list">
+              <li><a href="#" class="footer__link">Últimas análises</a></li>
+              <li><a href="#fontes-fev" class="footer__link">Fontes e estudos</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__section-title">Tullu Motion</h4>
+            <ul class="footer__list">
+              <li><a href="aistudio.html" class="footer__link">AI Studio</a></li>
+              <li><a href="aistudio.html#faq" class="footer__link">Dúvidas frequentes</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__section-title">Contato</h4>
+            <ul class="footer__list">
+              <li>
+                <a
+                  href="https://wa.me/5511978217095?text=Li%20um%20artigo%20no%20Tullu%20Journal%20e%20quero%20entender%20como%20a%20IA%20pode%20se%20aplicar%20ao%20meu%20neg%C3%B3cio."
+                  class="footer__link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  WhatsApp
+                </a>
+              </li>
+              <li>
+                <a href="mailto:comercial@tullumotion.com" class="footer__link">
+                  comercial@tullumotion.com
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__section-title">Legal</h4>
+            <ul class="footer__list">
+              <li><a href="https://tullumotion.com/assets/docs/politica.pdf" class="footer__link">Política de Privacidade</a></li>
+              <li><a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" class="footer__link" rel="noopener">Termos de Uso</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          © 2026 Tullu Motion. Conteúdo editorial. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
 
 </main>
+
+<script>
+  (function(){
+    const btn = document.getElementById('toggleJan');
+    const block = document.getElementById('janBlock');
+    if(!btn || !block) return;
+
+    let open = false;
+    btn.addEventListener('click', function(){
+      open = !open;
+      block.style.display = open ? 'block' : 'none';
+      btn.textContent = open ? 'Ocultar edição de Janeiro 2026' : 'Ver edição de Janeiro 2026';
+      if(open){
+        setTimeout(() => block.scrollIntoView({behavior:'smooth', block:'start'}), 80);
+      }
+    });
+  })();
+</script>
 
 </body>
 </html>
