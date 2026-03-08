@@ -976,15 +976,25 @@ document.addEventListener("DOMContentLoaded", () => {
   if (userAgent) userAgent.value = navigator.userAgent;
 
   const textareas = [
-    { el: document.getElementById("como_ajuda"), counter: document.getElementById("ajudaCounter"), max: 2000 },
-    { el: document.getElementById("porque_tullu"), counter: document.getElementById("fitCounter"), max: 1500 }
+    {
+      el: document.getElementById("como_ajuda"),
+      counter: document.getElementById("ajudaCounter"),
+      max: 2000
+    },
+    {
+      el: document.getElementById("porque_tullu"),
+      counter: document.getElementById("fitCounter"),
+      max: 1500
+    }
   ];
 
   textareas.forEach((item) => {
     if (!item.el || !item.counter) return;
+
     const update = () => {
       item.counter.textContent = `${(item.el.value || "").length}/${item.max}`;
     };
+
     item.el.addEventListener("input", update);
     update();
   });
@@ -1086,6 +1096,7 @@ document.addEventListener("DOMContentLoaded", () => {
         params.append(key, value == null ? "" : String(value));
       });
 
+      console.log("Submit disparado.");
       console.log("Enviando payload:", Object.fromEntries(params.entries()));
 
       await fetch(ENDPOINT, {
@@ -1106,7 +1117,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   FORM.addEventListener("submit", async (e) => {
     e.preventDefault();
-    console.log("Submit disparado.");
 
     if (!validateForm()) return;
 
@@ -1129,12 +1139,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const ok = await sendPayload(payload);
 
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = prevText;
-    }
-
     if (!ok) {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = prevText;
+      }
+
       alert("Não foi possível enviar agora. Tente novamente.");
       return;
     }
@@ -1147,19 +1157,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     textareas.forEach((item) => {
-      if (item.counter) item.counter.textContent = `0/${item.max}`;
+      if (item.counter) {
+        item.counter.textContent = `0/${item.max}`;
+      }
     });
 
-   if (successStep) {
-  successStep.hidden = false;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.style.display = "none";
+    }
 
-  // esconder botão enviar candidatura
-  if (submitBtn) {
-    submitBtn.style.display = "none";
-  }
-
-  successStep.scrollIntoView({ behavior: "smooth", block: "start" });
-}
+    if (successStep) {
+      successStep.hidden = false;
+      successStep.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
 });
 </script>
