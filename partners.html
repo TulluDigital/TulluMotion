@@ -1150,10 +1150,16 @@ document.addEventListener("DOMContentLoaded", () => {
       if (item.counter) item.counter.textContent = `0/${item.max}`;
     });
 
-    if (successStep) {
-      successStep.hidden = false;
-      successStep.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+   if (successStep) {
+  successStep.hidden = false;
+
+  // esconder botão enviar candidatura
+  if (submitBtn) {
+    submitBtn.style.display = "none";
+  }
+
+  successStep.scrollIntoView({ behavior: "smooth", block: "start" });
+}
   });
 });
 </script>
