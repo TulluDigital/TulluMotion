@@ -965,6 +965,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const FORM = document.getElementById("partnerForm");
   if (!FORM) return;
 
+  if (submitBtn) {
+  submitBtn.disabled = true;
+  submitBtn.style.display = "none";
+}
+
   const successStep = document.getElementById("successStep");
   const sourceUrl = document.getElementById("source_url");
   const userAgent = document.getElementById("user_agent");
