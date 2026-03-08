@@ -50,15 +50,30 @@
       background: rgba(255,255,255,.04);
     }
 
+    .partners-subtitle{
+      max-width: 920px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      line-height: 1.75;
+    }
+
     .partner-type-card,
     .partner-benefit-card,
     .partner-step-card,
     .partner-proof-card{
       height:100%;
+      display:flex;
+      flex-direction:column;
       align-items:flex-start;
+      justify-content:flex-start;
+      text-align:left;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+      min-width: 0;
+      overflow: hidden;
+      word-break: break-word;
     }
 
     .partner-type-card.featured{
@@ -69,12 +84,12 @@
 
     .partner-card-top{
       display:flex;
-      align-items:center;
-      justify-content:space-between;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:flex-start;
       width:100%;
-      gap:12px;
+      gap:10px;
       margin-bottom:12px;
-      flex-wrap:wrap;
     }
 
     .partner-card-top .tag{
@@ -83,14 +98,18 @@
 
     .partner-type-title{
       margin:0;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       line-height:1.25;
+      text-align:left;
+      width:100%;
     }
 
     .partner-type-desc{
       margin:0;
       color: var(--muted);
-      line-height:1.6;
+      line-height:1.72;
+      text-align:left;
+      width:100%;
     }
 
     .partner-type-list,
@@ -99,11 +118,14 @@
       padding-left: 1.1rem;
       color: rgba(255,255,255,.82);
       line-height: 1.65;
+      text-align:left;
+      width:100%;
     }
 
     .partner-type-list li,
     .partner-benefit-list li{
       margin-bottom: .45rem;
+      text-align:left;
     }
 
     .partners-mini-proof{
@@ -135,6 +157,11 @@
       margin-top: 1rem;
     }
 
+    .form-intro-grid .card-base{
+      align-items:flex-start;
+      text-align:left;
+    }
+
     .form-success-actions{
       display:flex;
       gap: .9rem;
@@ -161,6 +188,62 @@
       justify-content:center;
     }
 
+    .partners-select{
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-color: rgba(255,255,255,0.02);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.14);
+      background-image:
+        linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.8) 50%),
+        linear-gradient(135deg, rgba(255,255,255,0.8) 50%, transparent 50%);
+      background-position:
+        calc(100% - 18px) calc(50% - 3px),
+        calc(100% - 12px) calc(50% - 3px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 44px;
+    }
+
+    .partners-select option{
+      color:#111722;
+      background:#ffffff;
+    }
+
+    .partner-benefit-card .pain-card__icon,
+    .partner-proof-card .pain-card__icon{
+      margin-bottom: 10px;
+    }
+
+    .partner-step-line{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:16px;
+      margin-top: 1.25rem;
+    }
+
+    .partner-step-line .card-base{
+      display:flex;
+      flex-direction:row;
+      align-items:flex-start;
+      gap:12px;
+      text-align:left;
+      min-width:0;
+      background: rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .partner-step-line .pain-card__icon{
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+
+    .partner-step-line strong{
+      display:block;
+      margin-bottom:4px;
+    }
+
     @media (max-width: 992px){
       .partners-mini-proof,
       .form-intro-grid{
@@ -170,6 +253,10 @@
 
     @media (max-width: 768px){
       .pill-group-grid{
+        grid-template-columns: 1fr;
+      }
+
+      .partner-step-line{
         grid-template-columns: 1fr;
       }
     }
@@ -217,10 +304,10 @@
           Tullu Motion <span class="gradient-text">Venture Partner Program</span>
         </h1>
 
-        <p class="hero__subtitle" style="max-width: 920px;">
-          Estamos abrindo espaço para <strong>Venture Partners, Revenue Partners e Sales Partners</strong>
-          que queiram operar a camada comercial de uma infraestrutura pronta de IA no WhatsApp + CRM.
-          A Tullu já tem produto, estratégia, argumentos, estrutura de implantação e inteligência comercial.
+        <p class="hero__subtitle partners-subtitle">
+          Estamos abrindo espaço para <strong>Venture Partners, Revenue Partners e Sales Partners</strong><br><br>
+          que queiram operar a camada comercial de uma infraestrutura pronta de IA no WhatsApp + CRM.<br><br>
+          A Tullu já tem produto, estratégia, argumentos, estrutura de implantação e inteligência comercial.<br><br>
           O que buscamos agora são parceiros certos para acelerar o fechamento.
         </p>
 
@@ -250,26 +337,17 @@
   <section id="model" class="showcase">
     <div class="container showcase__grid">
       <header class="section__header showcase__text">
-        <div class="hero-media">
-          <img
-            class="hero-media__img"
-            src="assets/img/mockups.png"
-            alt="Infraestrutura da Tullu Motion"
-            loading="lazy"
-            decoding="async"
-            style="width:550px;"
-          />
-        </div>
-
         <h2 class="section__title">
           A Tullu já fez a parte difícil. Agora falta <span class="gradient-text">escala comercial</span>.
         </h2>
 
-        <p class="section__subtitle">
-          O produto está montado. O CRM está pronto. A IA já atua no atendimento e pode apoiar a operação comercial com
-          contexto, argumentos, lógica de qualificação e base de conhecimento. Isso reduz atrito na call e aumenta a
-          velocidade de fechamento. Em outras palavras: não é para o parceiro inventar o processo do zero. É para entrar
-          numa máquina comercial já desenhada.
+        <p class="section__subtitle" style="max-width: 900px; margin-left:auto; margin-right:auto;">
+          O produto está montado.<br><br>
+          O CRM está pronto.<br><br>
+          A IA já atua no atendimento e pode apoiar a operação comercial com contexto, argumentos, lógica de qualificação e base de conhecimento.<br><br>
+          Isso reduz atrito na call e aumenta a velocidade de fechamento.<br><br>
+          Em outras palavras: não é para o parceiro inventar o processo do zero.<br><br>
+          É para entrar numa máquina comercial já desenhada.
         </p>
 
         <div class="badge badge--soft">
@@ -300,12 +378,12 @@
       <div class="section__header">
         <h2 class="section__title">Tipos de <span class="gradient-text">partners</span> que procuramos</h2>
         <p class="section__subtitle">
-          O foco principal da Tullu hoje está em <strong>Venture Partners, Revenue Partners e Sales Partners</strong>.
+          O foco principal da Tullu hoje está em <strong>Venture Partners, Revenue Partners e Sales Partners</strong>.<br><br>
           Mas também estamos abertos a operadores estratégicos que entrem como camada de crescimento e execução.
         </p>
       </div>
 
-      <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr); gap: 18px;">
+      <div class="cards-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px;">
 
         <div class="card-base partner-type-card featured">
           <div class="partner-card-top">
@@ -313,8 +391,7 @@
             <span class="tag tag--ai">Foco principal</span>
           </div>
           <p class="partner-type-desc">
-            Parceiro estratégico que ajuda a escalar a operação comercial com visão de crescimento, rede, posicionamento
-            e capacidade de execução em vendas B2B.
+            Parceiro estratégico que ajuda a escalar a operação comercial com visão de crescimento, rede, posicionamento e capacidade de execução em vendas B2B.
           </p>
           <ul class="partner-type-list">
             <li>Atua como braço de expansão</li>
@@ -329,8 +406,7 @@
             <span class="tag tag--ai">Foco principal</span>
           </div>
           <p class="partner-type-desc">
-            Parceiro orientado a resultado, que participa da receita gerada a partir das implantações e da recorrência dos
-            clientes que ajuda a converter.
+            Parceiro orientado a resultado, que participa da receita gerada a partir das implantações e da recorrência dos clientes que ajuda a converter.
           </p>
           <ul class="partner-type-list">
             <li>Modelo ligado à geração de receita</li>
@@ -345,8 +421,7 @@
             <span class="tag tag--ai">Foco principal</span>
           </div>
           <p class="partner-type-desc">
-            Empresa, closer ou operação comercial que entra como camada de vendas da Tullu para conduzir calls, apresentar
-            a solução e fechar implantações com apoio da estrutura já pronta.
+            Empresa, closer ou operação comercial que entra como camada de vendas da Tullu para conduzir calls, apresentar a solução e fechar implantações com apoio da estrutura já pronta.
           </p>
           <ul class="partner-type-list">
             <li>Conduz reuniões comerciais</li>
@@ -376,8 +451,7 @@
             <span class="tag">Bem-vindo</span>
           </div>
           <p class="partner-type-desc">
-            Parceiro que entra com capacidade real de execução. Menos discurso de palco e mais operação comercial, rotina,
-            processo e consistência.
+            Parceiro que entra com capacidade real de execução. Menos discurso de palco e mais operação comercial, rotina, processo e consistência.
           </p>
           <ul class="partner-type-list">
             <li>Perfil mão na massa</li>
@@ -410,7 +484,7 @@
 
     <style>
       @media (min-width: 769px){
-        #partner-types .cards-grid{ grid-template-columns: repeat(3, 1fr) !important; }
+        #partner-types .cards-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
       }
       @media (max-width: 768px){
         #partner-types .cards-grid{ grid-template-columns: 1fr !important; }
@@ -426,8 +500,9 @@
           Por que a <span class="gradient-text">Tullu</span> é um parceiro forte?
         </h1>
         <p class="cta-section__subtitle" style="max-width: 920px; margin-left:auto; margin-right:auto;">
-          Porque a Tullu não está pedindo que alguém descubra o produto, crie a tese comercial ou invente o argumento na hora.
-          A estrutura já existe. O parceiro entra com tração, presença comercial e execução.
+          Porque a Tullu não está pedindo que alguém descubra o produto, crie a tese comercial ou invente o argumento na hora.<br><br>
+          A estrutura já existe.<br><br>
+          O parceiro entra com tração, presença comercial e execução.
         </p>
 
         <div style="display:flex; gap: .75rem; flex-wrap: wrap; justify-content:center; margin-top: 1rem;">
@@ -439,7 +514,7 @@
 
         <br>
 
-        <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 1100px; margin: 0 auto;">
+        <div class="cards-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; max-width: 1100px; margin: 0 auto;">
           <div class="card-base partner-benefit-card">
             <div class="pain-card__icon">🧠</div>
             <div>
@@ -524,7 +599,7 @@
         </p>
       </div>
 
-      <div class="cards-grid" style="grid-template-columns: repeat(4, 1fr); gap: 16px;">
+      <div class="partner-step-line">
         <div class="card-base partner-step-card">
           <div class="pain-card__icon">01</div>
           <div>
@@ -616,7 +691,7 @@
                 Aplicar para o <span class="gradient-text">Tullu Motion Venture Partner Program</span>
               </h1><br>
               <p class="form-subtitle">
-                Este formulário é para filtrar parceiros com perfil real de operação, crescimento e vendas B2B.
+                Este formulário é para filtrar parceiros com perfil real de operação, crescimento e vendas B2B.<br><br>
                 Se o seu perfil fizer sentido para a etapa atual da Tullu, seguimos para uma conversa estratégica.
               </p>
             </div>
@@ -685,7 +760,7 @@
 
               <div class="field">
                 <div class="label"><span>Você aplica como<span class="req">*</span></span></div>
-                <select class="input" id="tipo_candidato" name="tipo_candidato" data-required="true">
+                <select class="input partners-select" id="tipo_candidato" name="tipo_candidato" data-required="true">
                   <option value="">Selecione</option>
                   <option value="Closer independente">Closer independente</option>
                   <option value="Consultoria comercial">Consultoria comercial</option>
@@ -698,7 +773,7 @@
 
               <div class="field">
                 <div class="label"><span>Partner type com que mais se identifica<span class="req">*</span></span></div>
-                <select class="input" id="partner_type" name="partner_type" data-required="true">
+                <select class="input partners-select" id="partner_type" name="partner_type" data-required="true">
                   <option value="">Selecione</option>
                   <option value="Venture Partner">Venture Partner</option>
                   <option value="Revenue Partner">Revenue Partner</option>
@@ -711,7 +786,7 @@
 
               <div class="field">
                 <div class="label"><span>Experiência com vendas B2B<span class="req">*</span></span></div>
-                <select class="input" id="experiencia_b2b" name="experiencia_b2b" data-required="true">
+                <select class="input partners-select" id="experiencia_b2b" name="experiencia_b2b" data-required="true">
                   <option value="">Selecione</option>
                   <option value="0 a 1 ano">0 a 1 ano</option>
                   <option value="2 a 5 anos">2 a 5 anos</option>
@@ -721,7 +796,7 @@
 
               <div class="field">
                 <div class="label"><span>Ticket médio que costuma vender<span class="req">*</span></span></div>
-                <select class="input" id="ticket_medio" name="ticket_medio" data-required="true">
+                <select class="input partners-select" id="ticket_medio" name="ticket_medio" data-required="true">
                   <option value="">Selecione</option>
                   <option value="Ate 1k">Até 1k</option>
                   <option value="1k a 5k">1k a 5k</option>
@@ -774,8 +849,7 @@
               <div class="label"><span>Como você poderia ajudar a Tullu a escalar comercialmente?<span class="req">*</span></span></div>
               <div class="example">
                 <strong>Exemplo</strong><br>
-                Explique seu modelo de atuação, se entra sozinho ou com equipe, como conduz reuniões, que tipo de empresa já vendeu,
-                como enxerga a Tullu no mercado e onde você acredita que consegue gerar tração.
+                Explique seu modelo de atuação, se entra sozinho ou com equipe, como conduz reuniões, que tipo de empresa já vendeu, como enxerga a Tullu no mercado e onde você acredita que consegue gerar tração.
               </div>
               <textarea
                 class="textarea"
@@ -811,8 +885,7 @@
             </div>
 
             <p class="partner-form-note">
-              Perfis alinhados podem seguir para uma conversa estratégica. O objetivo aqui é encontrar parceiros que realmente
-              consigam operar crescimento e vendas junto com a Tullu.
+              Perfis alinhados podem seguir para uma conversa estratégica. O objetivo aqui é encontrar parceiros que realmente consigam operar crescimento e vendas junto com a Tullu.
             </p>
 
             <div class="form-actions" style="margin-top: 1.25rem;">
@@ -1053,11 +1126,6 @@
     payload.timestamp = new Date().toISOString();
     payload.form_name = 'partners_interest';
 
-    /* 
-      COLE AQUI SEU ENDPOINT DO APPS SCRIPT
-      Exemplo:
-      const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxx/exec';
-    */
     const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxxV8TR84z5H7GjeusgeBpfin4xm8ywb4JOK21CJ4ygCvmCRG6G-Pjc0qVCDqvMkh_m/exec';
 
     try {
