@@ -965,11 +965,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const FORM = document.getElementById("partnerForm");
   if (!FORM) return;
 
-  if (submitBtn) {
-  submitBtn.disabled = true;
-  submitBtn.style.display = "none";
-}
-
   const successStep = document.getElementById("successStep");
   const sourceUrl = document.getElementById("source_url");
   const userAgent = document.getElementById("user_agent");
@@ -1130,8 +1125,6 @@ document.addEventListener("DOMContentLoaded", () => {
     payload.page_name = "partners";
     payload.accept_terms = FORM.querySelector('input[name="accept_terms"]')?.checked ? true : false;
 
-    const prevText = submitBtn ? submitBtn.textContent : "Enviar candidatura";
-
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = "Enviando...";
@@ -1139,12 +1132,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const ok = await sendPayloadNoCors(payload);
 
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = prevText;
-    }
-
     if (!ok) {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar candidatura";
+      }
+
       alert("Não foi possível enviar agora. Tente novamente.");
       return;
     }
@@ -1161,6 +1154,10 @@ document.addEventListener("DOMContentLoaded", () => {
         item.counter.textContent = `0/${item.max}`;
       }
     });
+
+    if (submitBtn) {
+      submitBtn.style.display = "none";
+    }
 
     if (successStep) {
       successStep.hidden = false;
