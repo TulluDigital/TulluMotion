@@ -993,181 +993,203 @@ Buscamos uma rede de partners para acelerar a presença da plataforma em novas e
 <script src="assets/js/branch-animations.js"></script>
 
 <script>
-(function(){
-  const form = document.getElementById('partnerForm');
-  const successStep = document.getElementById('successStep');
-  const sourceUrl = document.getElementById('source_url');
-  const userAgent = document.getElementById('user_agent');
 
-  if(sourceUrl) sourceUrl.value = window.location.href;
-  if(userAgent) userAgent.value = navigator.userAgent;
+document.addEventListener("DOMContentLoaded", () => {
+  const FORM = document.getElementById("partnerForm");
+  if (!FORM) return;
+
+  const successStep = document.getElementById("successStep");
+  const sourceUrl = document.getElementById("source_url");
+  const userAgent = document.getElementById("user_agent");
+  const submitBtn = document.getElementById("submitBtn");
+
+  const ENDPOINT =
+    "https://script.google.com/macros/s/AKfycbxxV8TR84z5H7GjeusgeBpfin4xm8ywb4JOK21CJ4ygCvmCRG6G-Pjc0qVCDqvMkh_m/exec";
+
+  if (sourceUrl) sourceUrl.value = window.location.href;
+  if (userAgent) userAgent.value = navigator.userAgent;
 
   const textareas = [
-    { el: document.getElementById('como_ajuda'), counter: document.getElementById('ajudaCounter'), max: 2000 },
-    { el: document.getElementById('porque_tullu'), counter: document.getElementById('fitCounter'), max: 1500 }
+    { el: document.getElementById("como_ajuda"), counter: document.getElementById("ajudaCounter"), max: 2000 },
+    { el: document.getElementById("porque_tullu"), counter: document.getElementById("fitCounter"), max: 1500 }
   ];
 
-  textareas.forEach(item => {
-    if(!item.el || !item.counter) return;
+  textareas.forEach((item) => {
+    if (!item.el || !item.counter) return;
+
     const update = () => {
-      const len = item.el.value.length;
-      item.counter.textContent = `${len}/${item.max}`;
+      item.counter.textContent = `${(item.el.value || "").length}/${item.max}`;
     };
-    item.el.addEventListener('input', update);
+
+    item.el.addEventListener("input", update);
     update();
   });
 
-  function markPills(){
-    document.querySelectorAll('.pill input[type="radio"], .pill input[type="checkbox"]').forEach(input => {
-      input.addEventListener('change', () => {
+  function setupPills() {
+    document.querySelectorAll('.pill input[type="radio"], .pill input[type="checkbox"]').forEach((input) => {
+      input.addEventListener("change", () => {
         const name = input.name;
-        if(input.type === 'radio'){
-          document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
-            const parent = radio.closest('.pill');
-            if(parent) parent.classList.toggle('is-active', radio.checked);
+
+        if (input.type === "radio") {
+          document.querySelectorAll(`input[name="${name}"]`).forEach((radio) => {
+            const parent = radio.closest(".pill");
+            if (parent) {
+              parent.classList.toggle("is-active", radio.checked);
+              parent.style.borderColor = "";
+            }
           });
         } else {
-          const parent = input.closest('.pill');
-          if(parent) parent.classList.toggle('is-active', input.checked);
+          const parent = input.closest(".pill");
+          if (parent) {
+            parent.classList.toggle("is-active", input.checked);
+            parent.style.borderColor = "";
+          }
         }
       });
     });
   }
 
-  markPills();
+  setupPills();
 
-  function isValidEmail(value){
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+  function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((value || "").trim());
   }
 
-  function validateRadioGroup(name){
+  function validateRadioGroup(name) {
     const radios = document.querySelectorAll(`input[name="${name}"]`);
-    return Array.from(radios).some(r => r.checked);
+    return Array.from(radios).some((r) => r.checked);
   }
 
-  function validateForm(){
+  function validateForm() {
     let valid = true;
 
-    form.querySelectorAll('.input, .textarea').forEach(field => {
-      field.style.borderColor = '';
+    FORM.querySelectorAll(".input, .textarea").forEach((field) => {
+      field.style.borderColor = "";
     });
 
-    form.querySelectorAll('[data-required="true"]').forEach(field => {
-      if(field.type === 'radio') return;
+    FORM.querySelectorAll(".pill").forEach((pill) => {
+      pill.style.borderColor = "";
+    });
 
-      if(field.type === 'checkbox'){
-        if(!field.checked){
+    FORM.querySelectorAll('[data-required="true"]').forEach((field) => {
+      if (field.type === "radio") return;
+
+      if (field.type === "checkbox") {
+        if (!field.checked) {
           valid = false;
-          const pill = field.closest('.pill');
-          if(pill) pill.style.borderColor = 'rgba(255,74,74,.65)';
-        } else {
-          const pill = field.closest('.pill');
-          if(pill) pill.style.borderColor = '';
+          const pill = field.closest(".pill");
+          if (pill) pill.style.borderColor = "rgba(255,74,74,.65)";
         }
         return;
       }
 
-      const value = (field.value || '').trim();
-      if(!value){
+      const value = (field.value || "").trim();
+
+      if (!value) {
         valid = false;
-        field.style.borderColor = 'rgba(255,74,74,.65)';
+        field.style.borderColor = "rgba(255,74,74,.65)";
         return;
       }
 
-      if(field.type === 'email' && !isValidEmail(value)){
+      if (field.type === "email" && !isValidEmail(value)) {
         valid = false;
-        field.style.borderColor = 'rgba(255,74,74,.65)';
+        field.style.borderColor = "rgba(255,74,74,.65)";
       }
     });
 
-    ['atua_vendas', 'tem_equipe'].forEach(groupName => {
-      if(!validateRadioGroup(groupName)){
+    ["atua_vendas", "tem_equipe"].forEach((groupName) => {
+      if (!validateRadioGroup(groupName)) {
         valid = false;
-        document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
-          const pill = input.closest('.pill');
-          if(pill) pill.style.borderColor = 'rgba(255,74,74,.65)';
-        });
-      } else {
-        document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
-          const pill = input.closest('.pill');
-          if(pill) pill.style.borderColor = '';
+        document.querySelectorAll(`input[name="${groupName}"]`).forEach((input) => {
+          const pill = input.closest(".pill");
+          if (pill) pill.style.borderColor = "rgba(255,74,74,.65)";
         });
       }
     });
+
+    if (!valid) {
+      alert("Por favor, preencha todos os campos obrigatórios antes de enviar.");
+    }
 
     return valid;
   }
 
-  form.addEventListener('submit', async function(e){
+  function sendPayloadNoCors(payload) {
+    const body = JSON.stringify(payload);
+
+    if (navigator.sendBeacon) {
+      try {
+        const blob = new Blob([body], { type: "text/plain;charset=UTF-8" });
+        const ok = navigator.sendBeacon(ENDPOINT, blob);
+        if (ok) return Promise.resolve(true);
+      } catch (_) {
+        // cai pro fallback
+      }
+    }
+
+    return fetch(ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      body,
+      cache: "no-store",
+      redirect: "follow"
+    })
+      .then(() => true)
+      .catch(() => false);
+  }
+
+  FORM.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    if(!validateForm()){
-      return;
-    }
-
-    const submitBtn = document.getElementById('submitBtn');
-    if(submitBtn){
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando...';
-    }
+    if (!validateForm()) return;
 
     const payload = {};
-    new FormData(form).forEach((value, key) => {
+    new FormData(FORM).forEach((value, key) => {
       payload[key] = value;
     });
 
     payload.timestamp = new Date().toISOString();
-    payload.form_name = 'partners_interest';
+    payload.form_name = "partners_interest";
+    payload.page_name = "partners";
+    payload.accept_terms = !!FORM.querySelector('input[name="accept_terms"]')?.checked;
 
-    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxxV8TR84z5H7GjeusgeBpfin4xm8ywb4JOK21CJ4ygCvmCRG6G-Pjc0qVCDqvMkh_m/exec';
+    const prevText = submitBtn ? submitBtn.textContent : "";
 
-    try {
-      if(ENDPOINT){
-        const body = JSON.stringify(payload);
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando...";
+    }
 
-        if(navigator.sendBeacon){
-          const blob = new Blob([body], { type: 'text/plain;charset=utf-8' });
-          navigator.sendBeacon(ENDPOINT, blob);
-        } else {
-          await fetch(ENDPOINT, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body
-          });
-        }
-      }
+    const ok = await sendPayloadNoCors(payload);
 
-      form.reset();
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = prevText || "Enviar candidatura";
+    }
 
-      document.querySelectorAll('.pill').forEach(pill => {
-        pill.classList.remove('is-active');
-        pill.style.borderColor = '';
-      });
+    if (!ok) {
+      alert("Não foi possível enviar agora. Tente novamente.");
+      return;
+    }
 
-      if(successStep){
-        successStep.hidden = false;
-        successStep.scrollIntoView({ behavior:'smooth', block:'start' });
-      }
+    FORM.reset();
 
-      if(submitBtn){
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar candidatura';
-      }
+    document.querySelectorAll(".pill").forEach((pill) => {
+      pill.classList.remove("is-active");
+      pill.style.borderColor = "";
+    });
 
-      textareas.forEach(item => {
-        if(item.counter) item.counter.textContent = `0/${item.max}`;
-      });
+    textareas.forEach((item) => {
+      if (item.counter) item.counter.textContent = `0/${item.max}`;
+    });
 
-    } catch (err){
-      if(submitBtn){
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar candidatura';
-      }
-      alert('Não foi possível enviar agora. Tente novamente.');
+    if (successStep) {
+      successStep.hidden = false;
+      successStep.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
-})();
+});
+
 </script>
 
 </body>
