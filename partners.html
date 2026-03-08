@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partners, Venture & Sales Partners | Tullu Motion</title>
+  <meta name="description" content="A Tullu Motion está abrindo sua rede de Venture Partners, Revenue Partners e Sales Partners para escalar implantações de IA no WhatsApp + CRM.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tullumotion.com/partners.html">
+  <meta property="og:title" content="Partners, Venture & Sales Partners | Tullu Motion">
+  <meta property="og:description" content="Entre como parceiro estratégico da Tullu Motion para operar crescimento, vendas e expansão comercial de uma infraestrutura de IA pronta para escalar.">
+  <meta property="og:image" content="assets/img/aistudio.png.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Partners, Venture & Sales Partners | Tullu Motion">
+  <meta property="twitter:description" content="Venture Partners, Revenue Partners e Sales Partners para escalar IA no WhatsApp + CRM.">
+  <meta property="twitter:image" content="assets/img/aistudio.png.png">
+
+  <link rel="icon" type="image/png" href="assets/img/tup.png.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/branch-pages.css">
+
+  <style>
+    .req{
+      color: #ff4a4a;
+      font-weight: 900;
+      margin-left: 6px;
+    }
+
+    .partners-hero-badges{
+      display:flex;
+      gap:.75rem;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:1rem;
+    }
+
+    .partners-hero-badges .tag{
+      border-color: rgba(0,200,255,.22);
+      background: rgba(255,255,255,.04);
+    }
+
+    .partner-type-card,
+    .partner-benefit-card,
+    .partner-step-card,
+    .partner-proof-card{
+      height:100%;
+      align-items:flex-start;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+    }
+
+    .partner-type-card.featured{
+      background: linear-gradient(180deg, rgba(0,140,255,0.18), rgba(0,140,255,0.06));
+      border: 1px solid rgba(0,140,255,0.30);
+      box-shadow: 0 18px 45px rgba(0,140,255,0.16);
+    }
+
+    .partner-card-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      width:100%;
+      gap:12px;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+
+    .partner-card-top .tag{
+      white-space:nowrap;
+    }
+
+    .partner-type-title{
+      margin:0;
+      font-size: 1.05rem;
+      line-height:1.25;
+    }
+
+    .partner-type-desc{
+      margin:0;
+      color: var(--muted);
+      line-height:1.6;
+    }
+
+    .partner-type-list,
+    .partner-benefit-list{
+      margin: 1rem 0 0;
+      padding-left: 1.1rem;
+      color: rgba(255,255,255,.82);
+      line-height: 1.65;
+    }
+
+    .partner-type-list li,
+    .partner-benefit-list li{
+      margin-bottom: .45rem;
+    }
+
+    .partners-mini-proof{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 1.25rem;
+    }
+
+    .partners-mini-proof .card-base{
+      text-align:center;
+      justify-content:center;
+      min-height: 126px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .partners-mini-proof strong{
+      display:block;
+      font-size: clamp(24px, 2.2vw, 34px);
+      line-height:1;
+      margin-bottom: .45rem;
+    }
+
+    .form-intro-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin-top: 1rem;
+    }
+
+    .form-success-actions{
+      display:flex;
+      gap: .9rem;
+      flex-wrap: wrap;
+      justify-content:center;
+      margin-top: 1rem;
+    }
+
+    .partner-form-note{
+      margin-top:.9rem;
+      color: var(--muted);
+      font-size: .96rem;
+      line-height: 1.6;
+    }
+
+    .pill-group-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:10px;
+    }
+
+    .pill-group-grid .pill{
+      width:100%;
+      justify-content:center;
+    }
+
+    @media (max-width: 992px){
+      .partners-mini-proof,
+      .form-intro-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px){
+      .pill-group-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <nav class="nav container">
+    <div class="nav__logo">
+      <a href="index.html">
+        <img src="assets/img/tullu.png" alt="Tullu Motion" class="nav__logo-img">
+        <span class="nav__logo-text">Motion</span>
+      </a>
+    </div>
+
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#model" class="nav__link">Modelo</a></li>
+        <li class="nav__item"><a href="#partner-types" class="nav__link">Partners</a></li>
+        <li class="nav__item"><a href="#why-tullu" class="nav__link">Por que a Tullu?</a></li>
+        <li class="nav__item"><a href="#how-it-works" class="nav__link">Como funciona</a></li>
+        <li class="nav__item"><a href="#form" class="nav__link">Aplicar</a></li>
+      </ul>
+
+      <a href="#form" class="btn btn--primary nav__cta">QUERO APLICAR</a>
+    </div>
+
+    <div class="nav__toggle" id="nav-toggle">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero hero--branch hero--aistudio" id="hero">
+    <div class="container">
+      <div class="hero__content">
+
+        <img src="assets/img/tullu.png" alt="Tullu Motion" class="hero__logo">
+
+        <h1 class="hero__title" style="line-height: 1.2;">
+          Tullu Motion <span class="gradient-text">Venture Partner Program</span>
+        </h1>
+
+        <p class="hero__subtitle" style="max-width: 920px;">
+          Estamos abrindo espaço para <strong>Venture Partners, Revenue Partners e Sales Partners</strong>
+          que queiram operar a camada comercial de uma infraestrutura pronta de IA no WhatsApp + CRM.
+          A Tullu já tem produto, estratégia, argumentos, estrutura de implantação e inteligência comercial.
+          O que buscamos agora são parceiros certos para acelerar o fechamento.
+        </p>
+
+        <div class="partners-hero-badges">
+          <span class="tag tag--ai">Venture Partner</span>
+          <span class="tag tag--ai">Revenue Partner</span>
+          <span class="tag tag--ai">Sales Partner</span>
+          <span class="tag tag--ai">Partner-Led Growth</span>
+          <span class="tag tag--ai">AI-Assisted Sales</span>
+        </div>
+
+        <div class="hero__cta hero__cta--glass" style="margin-top: 1.1rem;">
+          <div class="hero__cta-glass">
+            <span>PRODUTO PRONTO • MATERIAL PRONTO • IA COMO CAMADA DE FECHAMENTO</span>
+          </div>
+        </div><br>
+
+        <div class="hero__cta" style="margin-top: 1.25rem;">
+          <a href="#form" class="btn btn--primary btn--large">Aplicar para parceria</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELO -->
+  <section id="model" class="showcase">
+    <div class="container showcase__grid">
+      <header class="section__header showcase__text">
+        <div class="hero-media">
+          <img
+            class="hero-media__img"
+            src="assets/img/mockups.png"
+            alt="Infraestrutura da Tullu Motion"
+            loading="lazy"
+            decoding="async"
+            style="width:550px;"
+          />
+        </div>
+
+        <h2 class="section__title">
+          A Tullu já fez a parte difícil. Agora falta <span class="gradient-text">escala comercial</span>.
+        </h2>
+
+        <p class="section__subtitle">
+          O produto está montado. O CRM está pronto. A IA já atua no atendimento e pode apoiar a operação comercial com
+          contexto, argumentos, lógica de qualificação e base de conhecimento. Isso reduz atrito na call e aumenta a
+          velocidade de fechamento. Em outras palavras: não é para o parceiro inventar o processo do zero. É para entrar
+          numa máquina comercial já desenhada.
+        </p>
+
+        <div class="badge badge--soft">
+          Menos improviso. Mais call com contexto. Mais chance de fechar.
+        </div>
+
+        <div class="partners-mini-proof">
+          <div class="card-base">
+            <strong>IA</strong>
+            <span>qualifica e organiza</span>
+          </div>
+          <div class="card-base">
+            <strong>CRM</strong>
+            <span>estrutura a operação</span>
+          </div>
+          <div class="card-base">
+            <strong>Partner</strong>
+            <span>entra para vender</span>
+          </div>
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <!-- PARTNER TYPES -->
+  <section class="features" id="partner-types">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Tipos de <span class="gradient-text">partners</span> que procuramos</h2>
+        <p class="section__subtitle">
+          O foco principal da Tullu hoje está em <strong>Venture Partners, Revenue Partners e Sales Partners</strong>.
+          Mas também estamos abertos a operadores estratégicos que entrem como camada de crescimento e execução.
+        </p>
+      </div>
+
+      <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr); gap: 18px;">
+
+        <div class="card-base partner-type-card featured">
+          <div class="partner-card-top">
+            <h3 class="partner-type-title">Venture Partner</h3>
+            <span class="tag tag--ai">Foco principal</span>
+          </div>
+          <p class="partner-type-desc">
+            Parceiro estratégico que ajuda a escalar a operação comercial com visão de crescimento, rede, posicionamento
+            e capacidade de execução em vendas B2B.
+          </p>
+          <ul class="partner-type-list">
+            <li>Atua como braço de expansão</li>
+            <li>Ajuda a abrir mercado e fechar contas</li>
+            <li>Pode evoluir para relação mais estratégica</li>
+          </ul>
+        </div>
+
+        <div class="card-base partner-type-card featured">
+          <div class="partner-card-top">
+            <h3 class="partner-type-title">Revenue Partner</h3>
+            <span class="tag tag--ai">Foco principal</span>
+          </div>
+          <p class="partner-type-desc">
+            Parceiro orientado a resultado, que participa da receita gerada a partir das implantações e da recorrência dos
+            clientes que ajuda a converter.
+          </p>
+          <ul class="partner-type-list">
+            <li>Modelo ligado à geração de receita</li>
+            <li>Interesse alinhado ao crescimento</li>
+            <li>Ideal para operação sem custo fixo pesado</li>
+          </ul>
+        </div>
+
+        <div class="card-base partner-type-card featured">
+          <div class="partner-card-top">
+            <h3 class="partner-type-title">Sales Partner</h3>
+            <span class="tag tag--ai">Foco principal</span>
+          </div>
+          <p class="partner-type-desc">
+            Empresa, closer ou operação comercial que entra como camada de vendas da Tullu para conduzir calls, apresentar
+            a solução e fechar implantações com apoio da estrutura já pronta.
+          </p>
+          <ul class="partner-type-list">
+            <li>Conduz reuniões comerciais</li>
+            <li>Fecha propostas com base validada</li>
+            <li>Opera vendas com mais velocidade</li>
+          </ul>
+        </div>
+
+        <div class="card-base partner-type-card">
+          <div class="partner-card-top">
+            <h3 class="partner-type-title">Go-To-Market Partner</h3>
+            <span class="tag">Bem-vindo</span>
+          </div>
+          <p class="partner-type-desc">
+            Parceiro que ajuda a levar a Tullu ao mercado com posicionamento, canais, abordagem, testes e operação de entrada.
+          </p>
+          <ul class="partner-type-list">
+            <li>Ajuda a destravar distribuição</li>
+            <li>Pode combinar mídia, vendas e operação</li>
+            <li>Útil para expansão setorial</li>
+          </ul>
+        </div>
+
+        <div class="card-base partner-type-card">
+          <div class="partner-card-top">
+            <h3 class="partner-type-title">Operator Partner</h3>
+            <span class="tag">Bem-vindo</span>
+          </div>
+          <p class="partner-type-desc">
+            Parceiro que entra com capacidade real de execução. Menos discurso de palco e mais operação comercial, rotina,
+            processo e consistência.
+          </p>
+          <ul class="partner-type-list">
+            <li>Perfil mão na massa</li>
+            <li>Ajuda a rodar a máquina comercial</li>
+            <li>Pode atuar com equipe própria</li>
+          </ul>
+        </div>
+
+        <div class="card-base partner-type-card">
+          <div class="partner-card-top">
+            <h3 class="partner-type-title">Channel / Distribution Partner</h3>
+            <span class="tag">Bem-vindo</span>
+          </div>
+          <p class="partner-type-desc">
+            Empresa ou rede que já tem acesso a contas B2B e pode distribuir a oferta da Tullu como solução complementar.
+          </p>
+          <ul class="partner-type-list">
+            <li>Aproveita carteira já existente</li>
+            <li>Acrescenta IA e CRM ao portfólio</li>
+            <li>Modelo forte para escala indireta</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="showcase__cta" style="margin-top: 1.5rem;">
+        <a href="#form" class="btn btn--primary btn--large">Quero me candidatar</a>
+      </div>
+    </div>
+
+    <style>
+      @media (min-width: 769px){
+        #partner-types .cards-grid{ grid-template-columns: repeat(3, 1fr) !important; }
+      }
+      @media (max-width: 768px){
+        #partner-types .cards-grid{ grid-template-columns: 1fr !important; }
+      }
+    </style>
+  </section>
+
+  <!-- WHY TULLU -->
+  <section class="cta-section" id="why-tullu">
+    <div class="container">
+      <div class="cta-section__card">
+        <h1 class="hero__title" style="text-align:center;">
+          Por que a <span class="gradient-text">Tullu</span> é um parceiro forte?
+        </h1>
+        <p class="cta-section__subtitle" style="max-width: 920px; margin-left:auto; margin-right:auto;">
+          Porque a Tullu não está pedindo que alguém descubra o produto, crie a tese comercial ou invente o argumento na hora.
+          A estrutura já existe. O parceiro entra com tração, presença comercial e execução.
+        </p>
+
+        <div style="display:flex; gap: .75rem; flex-wrap: wrap; justify-content:center; margin-top: 1rem;">
+          <span class="tag tag--ai">AI-Assisted Sales</span>
+          <span class="tag tag--ai">Material comercial</span>
+          <span class="tag tag--ai">Estratégia pronta</span>
+          <span class="tag tag--ai">Operação desenhada</span>
+        </div>
+
+        <br>
+
+        <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 1100px; margin: 0 auto;">
+          <div class="card-base partner-benefit-card">
+            <div class="pain-card__icon">🧠</div>
+            <div>
+              <strong>Base de conhecimento pronta</strong>
+              <div style="margin-top:.35rem; color: var(--muted);">
+                A proposta, os argumentos, a lógica do produto, os diferenciais e o contexto comercial podem ser apoiados por IA.
+              </div>
+            </div>
+          </div>
+
+          <div class="card-base partner-benefit-card">
+            <div class="pain-card__icon">📊</div>
+            <div>
+              <strong>Oferta com implantação + recorrência</strong>
+              <div style="margin-top:.35rem; color: var(--muted);">
+                Não é só serviço pontual. Existe caixa inicial na implantação e receita recorrente mensal no plano.
+              </div>
+            </div>
+          </div>
+
+          <div class="card-base partner-benefit-card">
+            <div class="pain-card__icon">⚙️</div>
+            <div>
+              <strong>Infraestrutura já construída</strong>
+              <div style="margin-top:.35rem; color: var(--muted);">
+                CRM, IA no WhatsApp, estrutura de atendimento, posicionamento e fluxo comercial já desenhados.
+              </div>
+            </div>
+          </div>
+
+          <div class="card-base partner-benefit-card">
+            <div class="pain-card__icon">🎯</div>
+            <div>
+              <strong>Parceiro entra para vender</strong>
+              <div style="margin-top:.35rem; color: var(--muted);">
+                A energia do parceiro vai para reunião, negociação, fechamento e abertura de mercado.
+              </div>
+            </div>
+          </div>
+
+          <div class="card-base partner-benefit-card">
+            <div class="pain-card__icon">🤝</div>
+            <div>
+              <strong>Modelo sem peso de CLT</strong>
+              <div style="margin-top:.35rem; color: var(--muted);">
+                A lógica é parceria estratégica orientada a performance, não contratação tradicional engessada.
+              </div>
+            </div>
+          </div>
+
+          <div class="card-base partner-benefit-card">
+            <div class="pain-card__icon">🚀</div>
+            <div>
+              <strong>Potencial de expansão real</strong>
+              <div style="margin-top:.35rem; color: var(--muted);">
+                Quem operar bem pode crescer junto com a expansão da Tullu e ganhar espaço mais estratégico no ecossistema.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase__cta" style="margin-top: 1.5rem;">
+          <a href="#form" class="btn btn--primary btn--large">Aplicar para parceria</a>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      @media (max-width: 768px){
+        #why-tullu .cards-grid{ grid-template-columns: 1fr !important; }
+      }
+    </style>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="features" id="how-it-works">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Como a parceria <span class="gradient-text">funciona</span></h2>
+        <p class="section__subtitle">
+          O fluxo é simples: a Tullu prepara a máquina, a IA organiza o contexto e o partner entra para conduzir o fechamento.
+        </p>
+      </div>
+
+      <div class="cards-grid" style="grid-template-columns: repeat(4, 1fr); gap: 16px;">
+        <div class="card-base partner-step-card">
+          <div class="pain-card__icon">01</div>
+          <div>
+            <strong>Lead entra</strong>
+            <div style="margin-top:.35rem; color: var(--muted);">
+              O lead chega via tráfego, conteúdo ou outro ativo de aquisição.
+            </div>
+          </div>
+        </div>
+
+        <div class="card-base partner-step-card">
+          <div class="pain-card__icon">02</div>
+          <div>
+            <strong>IA qualifica</strong>
+            <div style="margin-top:.35rem; color: var(--muted);">
+              A IA coleta contexto, filtra intenção e organiza informações para a call.
+            </div>
+          </div>
+        </div>
+
+        <div class="card-base partner-step-card">
+          <div class="pain-card__icon">03</div>
+          <div>
+            <strong>Partner conduz</strong>
+            <div style="margin-top:.35rem; color: var(--muted);">
+              O parceiro entra com a reunião, argumento, negociação e fechamento usando a estrutura já pronta.
+            </div>
+          </div>
+        </div>
+
+        <div class="card-base partner-step-card">
+          <div class="pain-card__icon">04</div>
+          <div>
+            <strong>Tullu implanta</strong>
+            <div style="margin-top:.35rem; color: var(--muted);">
+              Após o fechamento, a Tullu conduz implantação e o cliente entra na recorrência.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glow-card" style="max-width: 1000px; margin: 1.5rem auto 0;">
+        <div class="cards-grid" style="grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="card-base partner-proof-card">
+            <div class="pain-card__icon">💡</div>
+            <div>
+              <strong>Não é para improvisar a venda</strong>
+              <div style="margin-top:.35rem; color: var(--muted);">
+                A Tullu já possui raciocínio comercial, tese de venda, proposta de valor e apoio de IA para acelerar a call.
+              </div>
+            </div>
+          </div>
+
+          <div class="card-base partner-proof-card">
+            <div class="pain-card__icon">🧬</div>
+            <div>
+              <strong>É para entrar num sistema já desenhado</strong>
+              <div style="margin-top:.35rem; color: var(--muted);">
+                Produto, implantação, recorrência e posicionamento já estão organizados. O parceiro entra para transformar isso em escala.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase__cta" style="margin-top: 1.5rem;">
+        <a href="#form" class="btn btn--primary btn--large">Quero entrar nesse modelo</a>
+      </div>
+    </div>
+
+    <style>
+      @media (max-width: 768px){
+        #how-it-works .cards-grid{
+          grid-template-columns: 1fr !important;
+        }
+      }
+    </style>
+  </section>
+
+  <!-- FORM -->
+  <section class="cta-section" id="form" style="padding-top: 100px;">
+    <div class="container">
+      <div class="form-shell">
+
+        <div class="form-card">
+          <div class="form-header">
+            <div>
+              <h1 class="form-title">
+                Aplicar para o <span class="gradient-text">Tullu Motion Venture Partner Program</span>
+              </h1><br>
+              <p class="form-subtitle">
+                Este formulário é para filtrar parceiros com perfil real de operação, crescimento e vendas B2B.
+                Se o seu perfil fizer sentido para a etapa atual da Tullu, seguimos para uma conversa estratégica.
+              </p>
+            </div>
+          </div>
+
+          <div class="form-intro-grid">
+            <div class="card-base" style="align-items:flex-start;">
+              <div class="pain-card__icon">🎯</div>
+              <div>
+                <strong>Buscamos operadores, não curiosos</strong>
+                <div style="margin-top:.35rem; color: var(--muted);">
+                  Pessoas ou empresas com capacidade real de gerar reuniões, vendas e crescimento.
+                </div>
+              </div>
+            </div>
+
+            <div class="card-base" style="align-items:flex-start;">
+              <div class="pain-card__icon">💼</div>
+              <div>
+                <strong>Parceria orientada a resultado</strong>
+                <div style="margin-top:.35rem; color: var(--muted);">
+                  O modelo é estratégico, comercial e alinhado à geração de receita.
+                </div>
+              </div>
+            </div>
+
+            <div class="card-base" style="align-items:flex-start;">
+              <div class="pain-card__icon">🤝</div>
+              <div>
+                <strong>Depois do formulário, vem a call</strong>
+                <div style="margin-top:.35rem; color: var(--muted);">
+                  Perfis alinhados seguem para uma conversa direta sobre encaixe e operação.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <form id="partnerForm" novalidate>
+            <input type="hidden" id="source_url" name="source_url" value="">
+            <input type="hidden" id="user_agent" name="user_agent" value="">
+            <input type="hidden" id="page_name" name="page_name" value="partners">
+
+            <div class="form-grid form-grid--2">
+
+              <div class="field">
+                <div class="label"><span>Nome completo<span class="req">*</span></span></div>
+                <input class="input" type="text" id="nome" name="nome" placeholder="Seu nome completo" autocomplete="name" data-required="true">
+              </div>
+
+              <div class="field">
+                <div class="label"><span>Email profissional<span class="req">*</span></span></div>
+                <input class="input" type="email" id="email" name="email" placeholder="voce@empresa.com" autocomplete="email" data-required="true">
+              </div>
+
+              <div class="field">
+                <div class="label"><span>WhatsApp<span class="req">*</span></span></div>
+                <input class="input" type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" autocomplete="tel" data-required="true">
+              </div>
+
+              <div class="field">
+                <div class="label"><span>Cidade / Estado<span class="req">*</span></span></div>
+                <input class="input" type="text" id="cidade" name="cidade" placeholder="São Paulo / SP" data-required="true">
+              </div>
+
+              <div class="field">
+                <div class="label"><span>Você aplica como<span class="req">*</span></span></div>
+                <select class="input" id="tipo_candidato" name="tipo_candidato" data-required="true">
+                  <option value="">Selecione</option>
+                  <option value="Closer independente">Closer independente</option>
+                  <option value="Consultoria comercial">Consultoria comercial</option>
+                  <option value="Empresa de vendas">Empresa de vendas</option>
+                  <option value="Agencia com camada comercial">Agência com camada comercial</option>
+                  <option value="Operador de crescimento">Operador de crescimento</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label"><span>Partner type com que mais se identifica<span class="req">*</span></span></div>
+                <select class="input" id="partner_type" name="partner_type" data-required="true">
+                  <option value="">Selecione</option>
+                  <option value="Venture Partner">Venture Partner</option>
+                  <option value="Revenue Partner">Revenue Partner</option>
+                  <option value="Sales Partner">Sales Partner</option>
+                  <option value="Go-To-Market Partner">Go-To-Market Partner</option>
+                  <option value="Operator Partner">Operator Partner</option>
+                  <option value="Channel Partner">Channel Partner</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label"><span>Experiência com vendas B2B<span class="req">*</span></span></div>
+                <select class="input" id="experiencia_b2b" name="experiencia_b2b" data-required="true">
+                  <option value="">Selecione</option>
+                  <option value="0 a 1 ano">0 a 1 ano</option>
+                  <option value="2 a 5 anos">2 a 5 anos</option>
+                  <option value="5+ anos">5+ anos</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label"><span>Ticket médio que costuma vender<span class="req">*</span></span></div>
+                <select class="input" id="ticket_medio" name="ticket_medio" data-required="true">
+                  <option value="">Selecione</option>
+                  <option value="Ate 1k">Até 1k</option>
+                  <option value="1k a 5k">1k a 5k</option>
+                  <option value="5k a 20k">5k a 20k</option>
+                  <option value="20k+">20k+</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label"><span>Você atua com vendas hoje?<span class="req">*</span></span></div>
+                <div class="pill-group-grid" role="radiogroup" aria-label="Atua com vendas hoje">
+                  <label class="pill">
+                    <input type="radio" name="atua_vendas" value="Sim" data-required="true">
+                    <span>Sim</span>
+                  </label>
+                  <label class="pill">
+                    <input type="radio" name="atua_vendas" value="Não" data-required="true">
+                    <span>Não</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="label"><span>Você tem equipe comercial?<span class="req">*</span></span></div>
+                <div class="pill-group-grid" role="radiogroup" aria-label="Tem equipe comercial">
+                  <label class="pill">
+                    <input type="radio" name="tem_equipe" value="Sim" data-required="true">
+                    <span>Sim</span>
+                  </label>
+                  <label class="pill">
+                    <input type="radio" name="tem_equipe" value="Não" data-required="true">
+                    <span>Não</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="label"><span>Quantas reuniões comerciais consegue conduzir por semana?<span class="req">*</span></span></div>
+                <input class="input" type="text" id="reunioes_semana" name="reunioes_semana" placeholder="Ex: 5, 10, 20..." data-required="true">
+              </div>
+
+              <div class="field">
+                <div class="label"><span>LinkedIn, Instagram profissional ou site</span></div>
+                <input class="input" type="text" id="link_profissional" name="link_profissional" placeholder="Cole aqui seu link profissional">
+              </div>
+
+            </div>
+
+            <div class="field" style="margin-top: 14px;">
+              <div class="label"><span>Como você poderia ajudar a Tullu a escalar comercialmente?<span class="req">*</span></span></div>
+              <div class="example">
+                <strong>Exemplo</strong><br>
+                Explique seu modelo de atuação, se entra sozinho ou com equipe, como conduz reuniões, que tipo de empresa já vendeu,
+                como enxerga a Tullu no mercado e onde você acredita que consegue gerar tração.
+              </div>
+              <textarea
+                class="textarea"
+                id="como_ajuda"
+                name="como_ajuda"
+                placeholder="Descreva de forma objetiva como você entraria para operar a camada comercial da Tullu."
+                data-required="true"
+                data-maxlen="2000"
+              ></textarea>
+              <div class="counter" id="ajudaCounter">0/2000</div>
+            </div>
+
+            <div class="field" style="margin-top: 14px;">
+              <div class="label"><span>Por que faz sentido você entrar como partner da Tullu Motion?<span class="req">*</span></span></div>
+              <textarea
+                class="textarea"
+                id="porque_tullu"
+                name="porque_tullu"
+                placeholder="Fale sobre encaixe, visão de mercado, modelo de parceria e o que te chamou atenção."
+                data-required="true"
+                data-maxlen="1500"
+              ></textarea>
+              <div class="counter" id="fitCounter">0/1500</div>
+            </div>
+
+            <div class="field" style="margin-top: 14px;">
+              <label class="pill" style="align-items:flex-start; border-radius: 16px; padding: 14px; cursor: pointer;">
+                <input type="checkbox" id="accept_terms" name="accept_terms" data-required="true" style="margin-top: 2px;">
+                <span style="line-height: 1.45;">
+                  Eu autorizo o contato da Tullu Motion sobre esta candidatura e aceito o tratamento dos dados enviados para avaliação de parceria<span class="req">*</span>
+                </span>
+              </label>
+            </div>
+
+            <p class="partner-form-note">
+              Perfis alinhados podem seguir para uma conversa estratégica. O objetivo aqui é encontrar parceiros que realmente
+              consigam operar crescimento e vendas junto com a Tullu.
+            </p>
+
+            <div class="form-actions" style="margin-top: 1.25rem;">
+              <span></span>
+              <button type="submit" class="btn btn--primary btn--large" id="submitBtn">Enviar candidatura</button>
+            </div>
+
+            <section class="form-step" id="successStep" data-step="success" hidden style="margin-top: 1.25rem;">
+              <h1 class="form-title" style="margin:0 0 8px;">Recebemos seu interesse de parceria</h1>
+
+              <p class="form-subtitle" style="margin-top:0;">
+                Agora clique no botão abaixo para confirmar seu interesse pelo WhatsApp e sinalizar que sua candidatura foi enviada.
+              </p>
+
+              <div class="form-success-actions">
+                <a
+                  href="https://wa.me/5511959029428?text=Olá,%20enviei%20meu%20interesse%20de%20parceria%20da%20página%20Partners%20da%20Tullu%20Motion%20e%20quero%20confirmar%20minha%20inscrição."
+                  class="btn btn--primary btn--large"
+                  target="_blank"
+                  rel="noopener"
+                >Confirmar interesse no WhatsApp</a>
+
+                <a href="#hero" class="btn btn--outline btn--large">Voltar ao topo</a>
+              </div>
+
+              <div class="info-bubble info-bubble--blue" style="margin-top: 12px;">
+                * Clique no botão e envie a mensagem no WhatsApp para confirmar seu interesse de parceria.
+              </div>
+            </section>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__content">
+
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <img src="assets/img/tullu.png" alt="Tullu Motion" class="footer__logo-img">
+          <span class="footer__logo-text"></span>
+        </div>
+
+        <p class="footer__description">
+          O motor digital que combina automação, IA e estratégia para acelerar marcas.
+        </p>
+      </div>
+
+      <div class="footer__links">
+
+        <div class="footer__section">
+          <h4 class="footer__section-title">Navegação</h4>
+          <ul class="footer__list">
+            <li><a href="#partner-types" class="footer__link">Partners</a></li>
+            <li><a href="#why-tullu" class="footer__link">Por que a Tullu?</a></li>
+            <li><a href="#form" class="footer__link">Aplicar</a></li>
+            <li>
+              <a href="https://tullumotion.com/tullujournal.html" class="footer__link">
+                Tullu Journal
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h4 class="footer__section-title">Contato</h4>
+          <ul class="footer__list">
+            <li>
+              <a
+                href="https://wa.me/5511959029428?text=Olá,%20vim%20da%20página%20Partners%20da%20Tullu%20Motion%20e%20quero%20saber%20mais%20sobre%20a%20parceria."
+                class="footer__link"
+                target="_blank"
+              >
+                WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href="mailto:comercial@tullumotion.com" class="footer__link">
+                E-mail
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h4 class="footer__section-title">Legal</h4>
+          <ul class="footer__list">
+            <li><a href="https://tullumotion.com/assets/docs/politica.pdf" class="footer__link">Política de Privacidade</a></li>
+            <li><a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" class="footer__link">Termos de Uso</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        © 2026 Tullu Motion. Todos os direitos reservados.
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/branch-animations.js"></script>
+
+<script>
+(function(){
+  const form = document.getElementById('partnerForm');
+  const successStep = document.getElementById('successStep');
+  const sourceUrl = document.getElementById('source_url');
+  const userAgent = document.getElementById('user_agent');
+
+  if(sourceUrl) sourceUrl.value = window.location.href;
+  if(userAgent) userAgent.value = navigator.userAgent;
+
+  const textareas = [
+    { el: document.getElementById('como_ajuda'), counter: document.getElementById('ajudaCounter'), max: 2000 },
+    { el: document.getElementById('porque_tullu'), counter: document.getElementById('fitCounter'), max: 1500 }
+  ];
+
+  textareas.forEach(item => {
+    if(!item.el || !item.counter) return;
+    const update = () => {
+      const len = item.el.value.length;
+      item.counter.textContent = `${len}/${item.max}`;
+    };
+    item.el.addEventListener('input', update);
+    update();
+  });
+
+  function markPills(){
+    document.querySelectorAll('.pill input[type="radio"], .pill input[type="checkbox"]').forEach(input => {
+      input.addEventListener('change', () => {
+        const name = input.name;
+        if(input.type === 'radio'){
+          document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+            const parent = radio.closest('.pill');
+            if(parent) parent.classList.toggle('is-active', radio.checked);
+          });
+        } else {
+          const parent = input.closest('.pill');
+          if(parent) parent.classList.toggle('is-active', input.checked);
+        }
+      });
+    });
+  }
+
+  markPills();
+
+  function isValidEmail(value){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+  }
+
+  function validateRadioGroup(name){
+    const radios = document.querySelectorAll(`input[name="${name}"]`);
+    return Array.from(radios).some(r => r.checked);
+  }
+
+  function validateForm(){
+    let valid = true;
+
+    form.querySelectorAll('.input, .textarea').forEach(field => {
+      field.style.borderColor = '';
+    });
+
+    form.querySelectorAll('[data-required="true"]').forEach(field => {
+      if(field.type === 'radio') return;
+
+      if(field.type === 'checkbox'){
+        if(!field.checked){
+          valid = false;
+          const pill = field.closest('.pill');
+          if(pill) pill.style.borderColor = 'rgba(255,74,74,.65)';
+        } else {
+          const pill = field.closest('.pill');
+          if(pill) pill.style.borderColor = '';
+        }
+        return;
+      }
+
+      const value = (field.value || '').trim();
+      if(!value){
+        valid = false;
+        field.style.borderColor = 'rgba(255,74,74,.65)';
+        return;
+      }
+
+      if(field.type === 'email' && !isValidEmail(value)){
+        valid = false;
+        field.style.borderColor = 'rgba(255,74,74,.65)';
+      }
+    });
+
+    ['atua_vendas', 'tem_equipe'].forEach(groupName => {
+      if(!validateRadioGroup(groupName)){
+        valid = false;
+        document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
+          const pill = input.closest('.pill');
+          if(pill) pill.style.borderColor = 'rgba(255,74,74,.65)';
+        });
+      } else {
+        document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
+          const pill = input.closest('.pill');
+          if(pill) pill.style.borderColor = '';
+        });
+      }
+    });
+
+    return valid;
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    if(!validateForm()){
+      return;
+    }
+
+    const submitBtn = document.getElementById('submitBtn');
+    if(submitBtn){
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+    }
+
+    const payload = {};
+    new FormData(form).forEach((value, key) => {
+      payload[key] = value;
+    });
+
+    payload.timestamp = new Date().toISOString();
+    payload.form_name = 'partners_interest';
+
+    /* 
+      COLE AQUI SEU ENDPOINT DO APPS SCRIPT
+      Exemplo:
+      const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxx/exec';
+    */
+    const ENDPOINT = '';
+
+    try {
+      if(ENDPOINT){
+        const body = JSON.stringify(payload);
+
+        if(navigator.sendBeacon){
+          const blob = new Blob([body], { type: 'text/plain;charset=utf-8' });
+          navigator.sendBeacon(ENDPOINT, blob);
+        } else {
+          await fetch(ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body
+          });
+        }
+      }
+
+      form.reset();
+
+      document.querySelectorAll('.pill').forEach(pill => {
+        pill.classList.remove('is-active');
+        pill.style.borderColor = '';
+      });
+
+      if(successStep){
+        successStep.hidden = false;
+        successStep.scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+
+      if(submitBtn){
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar candidatura';
+      }
+
+      textareas.forEach(item => {
+        if(item.counter) item.counter.textContent = `0/${item.max}`;
+      });
+
+    } catch (err){
+      if(submitBtn){
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar candidatura';
+      }
+      alert('Não foi possível enviar agora. Tente novamente.');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
