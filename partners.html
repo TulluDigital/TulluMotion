@@ -993,7 +993,6 @@ Buscamos uma rede de partners para acelerar a presença da plataforma em novas e
 <script src="assets/js/branch-animations.js"></script>
 
 <script>
-
 document.addEventListener("DOMContentLoaded", () => {
   const FORM = document.getElementById("partnerForm");
   if (!FORM) return;
@@ -1003,8 +1002,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userAgent = document.getElementById("user_agent");
   const submitBtn = document.getElementById("submitBtn");
 
-  const ENDPOINT =
-    "https://script.google.com/macros/s/AKfycbxxV8TR84z5H7GjeusgeBpfin4xm8ywb4JOK21CJ4ygCvmCRG6G-Pjc0qVCDqvMkh_m/exec";
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbxxV8TR84z5H7GjeusgeBpfin4xm8ywb4JOK21CJ4ygCvmCRG6G-Pjc0qVCDqvMkh_m/exec";
 
   if (sourceUrl) sourceUrl.value = window.location.href;
   if (userAgent) userAgent.value = navigator.userAgent;
@@ -1016,11 +1014,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   textareas.forEach((item) => {
     if (!item.el || !item.counter) return;
-
     const update = () => {
       item.counter.textContent = `${(item.el.value || "").length}/${item.max}`;
     };
-
     item.el.addEventListener("input", update);
     update();
   });
@@ -1114,28 +1110,24 @@ document.addEventListener("DOMContentLoaded", () => {
     return valid;
   }
 
-  function sendPayloadNoCors(payload) {
+  async function sendPayload(payload) {
     const body = JSON.stringify(payload);
 
-    if (navigator.sendBeacon) {
-      try {
-        const blob = new Blob([body], { type: "text/plain;charset=UTF-8" });
-        const ok = navigator.sendBeacon(ENDPOINT, blob);
-        if (ok) return Promise.resolve(true);
-      } catch (_) {
-        // cai pro fallback
-      }
-    }
+    try {
+      await fetch(ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body
+      });
 
-    return fetch(ENDPOINT, {
-      method: "POST",
-      mode: "no-cors",
-      body,
-      cache: "no-store",
-      redirect: "follow"
-    })
-      .then(() => true)
-      .catch(() => false);
+      return true;
+    } catch (err) {
+      console.error("Erro ao enviar:", err);
+      return false;
+    }
   }
 
   FORM.addEventListener("submit", async (e) => {
@@ -1153,18 +1145,18 @@ document.addEventListener("DOMContentLoaded", () => {
     payload.page_name = "partners";
     payload.accept_terms = !!FORM.querySelector('input[name="accept_terms"]')?.checked;
 
-    const prevText = submitBtn ? submitBtn.textContent : "";
+    const prevText = submitBtn ? submitBtn.textContent : "Enviar candidatura";
 
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = "Enviando...";
     }
 
-    const ok = await sendPayloadNoCors(payload);
+    const ok = await sendPayload(payload);
 
     if (submitBtn) {
       submitBtn.disabled = false;
-      submitBtn.textContent = prevText || "Enviar candidatura";
+      submitBtn.textContent = prevText;
     }
 
     if (!ok) {
@@ -1189,7 +1181,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
 </script>
 
 </body>
