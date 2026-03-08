@@ -970,7 +970,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userAgent = document.getElementById("user_agent");
   const submitBtn = document.getElementById("submitBtn");
 
-  const ENDPOINT = "https://script.google.com/macros/s/AKfycbz6LFt-4-kptXgOuH1OI28bWIWlzVoNIapU0k1I705f84y8665pRFZQl1BIc45Mui3E/exec";
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycby8r8mTBVU5YM4lHPLD1TsAWjz1yDhITN4S_zSfuFxc1BSJgpCIz5WXcckasOdLVnLbVw/exec";
 
   if (sourceUrl) sourceUrl.value = window.location.href;
   if (userAgent) userAgent.value = navigator.userAgent;
@@ -1079,16 +1079,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function sendPayload(payload) {
-    const body = JSON.stringify(payload);
-
     try {
+      const params = new URLSearchParams();
+
+      Object.entries(payload).forEach(([key, value]) => {
+        params.append(key, value == null ? "" : String(value));
+      });
+
+      console.log("Enviando payload:", Object.fromEntries(params.entries()));
+
       await fetch(ENDPOINT, {
         method: "POST",
         mode: "no-cors",
         headers: {
-          "Content-Type": "text/plain;charset=utf-8"
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
         },
-        body
+        body: params.toString()
       });
 
       return true;
@@ -1100,6 +1106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   FORM.addEventListener("submit", async (e) => {
     e.preventDefault();
+    console.log("Submit disparado.");
 
     if (!validateForm()) return;
 
@@ -1111,7 +1118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     payload.timestamp = new Date().toISOString();
     payload.form_name = "partners_interest";
     payload.page_name = "partners";
-    payload.accept_terms = !!FORM.querySelector('input[name="accept_terms"]')?.checked;
+    payload.accept_terms = FORM.querySelector('input[name="accept_terms"]')?.checked ? "true" : "false";
 
     const prevText = submitBtn ? submitBtn.textContent : "Enviar candidatura";
 
