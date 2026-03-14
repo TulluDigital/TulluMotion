@@ -260,10 +260,445 @@
         grid-template-columns: 1fr;
       }
     }
+    /* ===== POPUP SALES PARTNERS ===== */
+.sales-popup-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(59,130,246,.22), transparent 34%),
+    radial-gradient(circle at 80% 30%, rgba(34,211,238,.14), transparent 30%),
+    rgba(3, 7, 18, 0.74);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .32s ease;
+}
+
+.sales-popup-overlay.is-open{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sales-popup{
+  position: relative;
+  width: min(1120px, 100%);
+  min-height: min(88vh, 860px);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.09);
+  background:
+    linear-gradient(180deg, rgba(7,12,24,.82), rgba(4,7,15,.92)),
+    radial-gradient(circle at 18% 18%, rgba(59,130,246,.18), transparent 28%),
+    radial-gradient(circle at 82% 22%, rgba(34,211,238,.14), transparent 24%);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.55),
+    0 0 0 1px rgba(59,130,246,.08) inset;
+}
+
+.sales-popup::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at top right, rgba(34,211,238,.12), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(59,130,246,.10), transparent 28%);
+}
+
+.sales-popup-close{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(59,130,246,.30);
+  background: rgba(10,18,35,.75);
+  color: #8fdcff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0,140,255,.18);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.sales-popup-close:hover{
+  transform: scale(1.04);
+  background: rgba(14,24,45,.92);
+  border-color: rgba(34,211,238,.42);
+}
+
+.sales-popup-inner{
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.12fr .88fr;
+  gap: 28px;
+  padding: clamp(26px, 3vw, 42px);
+  min-height: min(88vh, 860px);
+}
+
+.sales-popup-copy{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.sales-popup-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(59,130,246,.24);
+  background: rgba(255,255,255,.04);
+  color: #c8f1ff;
+  font-size: .92rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  margin-bottom: 1rem;
+}
+
+.sales-popup-title{
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2rem, 4.9vw, 4.45rem);
+  line-height: 1.02;
+  letter-spacing: -.03em;
+}
+
+.sales-popup-title .gradient-text{
+  display:inline-block;
+}
+
+.sales-popup-subtitle{
+  margin: 1rem 0 0;
+  max-width: 760px;
+  color: rgba(255,255,255,.78);
+  font-size: clamp(1rem, 1.5vw, 1.22rem);
+  line-height: 1.8;
+}
+
+.sales-popup-proof{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+  margin-top: 1.35rem;
+}
+
+.sales-popup-proof .card-base{
+  min-height: 104px;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+}
+
+.sales-popup-proof strong{
+  display:block;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height:1;
+  margin-bottom: .35rem;
+}
+
+.sales-popup-points{
+  margin: 1.25rem 0 0;
+  padding-left: 1.1rem;
+  color: rgba(255,255,255,.86);
+  line-height: 1.72;
+}
+
+.sales-popup-points li{
+  margin-bottom: .5rem;
+}
+
+.sales-popup-cta{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 1.4rem;
+}
+
+.sales-popup-note{
+  margin-top: .95rem;
+  color: rgba(255,255,255,.62);
+  font-size: .93rem;
+  line-height: 1.65;
+}
+
+.sales-popup-side{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:0;
+}
+
+.sales-popup-showcase{
+  width: 100%;
+  max-width: 430px;
+  border-radius: 28px;
+  padding: 18px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 18px 44px rgba(0,0,0,.28);
+}
+
+.sales-popup-phone{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 70% 18%, rgba(34,211,238,.16), transparent 30%),
+    radial-gradient(circle at 20% 22%, rgba(59,130,246,.18), transparent 28%),
+    linear-gradient(180deg, #09101d 0%, #060b14 100%);
+  padding: 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.sales-popup-mini-badge{
+  align-self:flex-start;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(59,130,246,.28);
+  background: rgba(255,255,255,.04);
+  color: #d8f6ff;
+  font-size: .82rem;
+  font-weight: 600;
+}
+
+.sales-popup-phone-title{
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  line-height: 1.12;
+}
+
+.sales-popup-metrics{
+  display:grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.sales-popup-metric{
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.sales-popup-metric strong{
+  display:block;
+  font-size: 1.2rem;
+  line-height:1;
+  margin-bottom: 6px;
+}
+
+.sales-popup-metric span{
+  color: rgba(255,255,255,.72);
+  font-size: .95rem;
+  line-height: 1.45;
+}
+
+.sales-popup-chipline{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top: 16px;
+}
+
+.sales-popup-chipline .tag{
+  border-color: rgba(255,255,255,.12);
+  background: rgba(255,255,255,.045);
+}
+
+body.popup-open{
+  overflow: hidden;
+}
+
+@media (max-width: 992px){
+  .sales-popup-inner{
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .sales-popup-side{
+    order: -1;
+  }
+
+  .sales-popup-showcase{
+    max-width: 100%;
+  }
+
+  .sales-popup-phone{
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 768px){
+  .sales-popup-overlay{
+    padding: 10px;
+  }
+
+  .sales-popup{
+    min-height: auto;
+    border-radius: 22px;
+  }
+
+  .sales-popup-inner{
+    padding: 20px;
+    gap: 18px;
+  }
+
+  .sales-popup-proof{
+    grid-template-columns: 1fr;
+  }
+
+  .sales-popup-phone{
+    min-height: 360px;
+    aspect-ratio: auto;
+  }
+
+  .sales-popup-title{
+    font-size: clamp(1.7rem, 9vw, 2.8rem);
+  }
+
+  .sales-popup-subtitle{
+    line-height: 1.65;
+  }
+
+  .sales-popup-close{
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+  }
+}
   </style>
 </head>
 <body>
+<!-- POPUP SALES PARTNERS -->
+<div class="sales-popup-overlay" id="salesPopupOverlay" aria-hidden="true">
+  <div class="sales-popup" role="dialog" aria-modal="true" aria-labelledby="salesPopupTitle">
+    <button type="button" class="sales-popup-close" id="salesPopupClose" aria-label="Fechar popup">×</button>
 
+    <div class="sales-popup-inner">
+      <div class="sales-popup-copy">
+        <div class="sales-popup-badge">
+          <span>⚡</span>
+          <span>Programa de Sales Partners • IA + implantação + comissão</span>
+        </div>
+
+        <h2 class="sales-popup-title" id="salesPopupTitle">
+          Quer vender <span class="gradient-text">IA no WhatsApp</span> com estrutura pronta e comissão forte?
+        </h2>
+
+        <p class="sales-popup-subtitle">
+          A Tullu já tem oferta, posicionamento, pitch e operação desenhados.  
+          Se o seu perfil é comercial, você pode entrar direto no grupo de <strong>Sales Partners</strong> e começar a acompanhar a estrutura para vender o <strong>AI Studio</strong>.
+        </p>
+
+        <div class="sales-popup-proof">
+          <div class="card-base">
+            <strong>1 salário mínimo</strong>
+            <span>de comissão por implantação fechada<br>em ofertas elegíveis</span>
+          </div>
+          <div class="card-base">
+            <strong>Produto pronto</strong>
+            <span>IA no WhatsApp + CRM + pitch + materiais</span>
+          </div>
+          <div class="card-base">
+            <strong>Sem inventar moda</strong>
+            <span>você entra para vender uma estrutura já montada</span>
+          </div>
+        </div>
+
+        <ul class="sales-popup-points">
+          <li>Ideal para closers, vendedores B2B, consultores comerciais e operadores de crescimento.</li>
+          <li>Você entra em um grupo focado em venda real, materiais, atualização de oferta e direção comercial.</li>
+          <li>Venture e Revenue Partners seguem por análise estratégica. <strong>Sales Partners podem entrar direto no grupo.</strong></li>
+        </ul>
+
+        <div class="sales-popup-cta">
+          <a
+            href="https://chat.whatsapp.com/DXkbVVeOledD7crKXlqqpb?mode=gi_t"
+            class="btn btn--primary btn--large"
+            target="_blank"
+            rel="noopener"
+          >
+            Entrar no grupo de Sales Partners
+          </a>
+
+          <button type="button" class="btn btn--outline btn--large" id="salesPopupContinue">
+            Continuar no site
+          </button>
+        </div>
+
+        <p class="sales-popup-note">
+          Grupo voltado para perfis comerciais que querem vender uma solução real de IA para empresas.  
+          Sem promessa mágica. Com produto, comissão e operação.
+        </p>
+      </div>
+
+      <div class="sales-popup-side">
+        <div class="sales-popup-showcase">
+          <div class="sales-popup-phone">
+            <div>
+              <div class="sales-popup-mini-badge">Tullu AI Studio • Sales Partners</div>
+
+              <div style="margin-top:18px;">
+                <h3 class="sales-popup-phone-title">
+                  Venda uma solução quente do mercado — não mais um infoproduto reciclado.
+                </h3>
+
+                <div class="sales-popup-metrics">
+                  <div class="sales-popup-metric">
+                    <strong>IA no WhatsApp</strong>
+                    <span>Produto alinhado ao que empresas já querem comprar: atendimento, qualificação e operação.</span>
+                  </div>
+
+                  <div class="sales-popup-metric">
+                    <strong>Comissão forte</strong>
+                    <span>Modelo pensado para implantação + recorrência, com espaço real para vendedor performar.</span>
+                  </div>
+
+                  <div class="sales-popup-metric">
+                    <strong>Grupo comercial</strong>
+                    <span>Entre no squad, acompanhe o movimento e venda com a Tullu como infraestrutura.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sales-popup-chipline">
+              <span class="tag tag--ai">closer</span>
+              <span class="tag tag--ai">sales partner</span>
+              <span class="tag tag--ai">ia</span>
+              <span class="tag tag--ai">comissão</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <header class="header" id="header">
   <nav class="nav container">
     <div class="nav__logo">
@@ -305,8 +740,9 @@
         </h1>
 
         <p class="hero__subtitle partners-subtitle">
-          Estamos abrindo espaço para <strong>Venture Partners, Revenue Partners e Sales Partners</strong>
-<br>Buscamos uma rede de partners para acelerar a presença da plataforma em novas empresas e mercados.
+          Estamos abrindo espaço para <strong>Sales Partners, closers e operadores comerciais</strong> que querem vender uma solução real de IA para empresas.
+<br>
+Com produto, pitch, estrutura e implantação, agora buscamos gente com perfil comercial para transformar em fechamento.
         </p>
 
         <div class="partners-hero-badges">
@@ -1163,6 +1599,50 @@ document.addEventListener("DOMContentLoaded", () => {
       successStep.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
+    /* ===== POPUP SALES PARTNERS ===== */
+  const salesPopupOverlay = document.getElementById("salesPopupOverlay");
+  const salesPopupClose = document.getElementById("salesPopupClose");
+  const salesPopupContinue = document.getElementById("salesPopupContinue");
+
+  function openSalesPopup() {
+    if (!salesPopupOverlay) return;
+    salesPopupOverlay.classList.add("is-open");
+    salesPopupOverlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("popup-open");
+  }
+
+  function closeSalesPopup() {
+    if (!salesPopupOverlay) return;
+    salesPopupOverlay.classList.remove("is-open");
+    salesPopupOverlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("popup-open");
+  }
+
+  if (salesPopupOverlay) {
+    setTimeout(() => {
+      openSalesPopup();
+    }, 2000);
+
+    if (salesPopupClose) {
+      salesPopupClose.addEventListener("click", closeSalesPopup);
+    }
+
+    if (salesPopupContinue) {
+      salesPopupContinue.addEventListener("click", closeSalesPopup);
+    }
+
+    salesPopupOverlay.addEventListener("click", (e) => {
+      if (e.target === salesPopupOverlay) {
+        closeSalesPopup();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && salesPopupOverlay.classList.contains("is-open")) {
+        closeSalesPopup();
+      }
+    });
+  }
 });
 </script>
 
