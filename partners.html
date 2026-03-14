@@ -260,24 +260,24 @@
         grid-template-columns: 1fr;
       }
     }
-    /* ===== POPUP SALES PARTNERS ===== */
+/* ===== POPUP SALES PARTNERS ===== */
 .sales-popup-overlay{
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 99999;
   background:
     radial-gradient(circle at 20% 20%, rgba(59,130,246,.22), transparent 34%),
     radial-gradient(circle at 80% 30%, rgba(34,211,238,.14), transparent 30%),
-    rgba(3, 7, 18, 0.74);
+    rgba(3,7,18,.74);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px;
+  padding: 28px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .32s ease;
+  transition: opacity .28s ease;
 }
 
 .sales-popup-overlay.is-open{
@@ -287,35 +287,25 @@
 
 .sales-popup{
   position: relative;
-  width: min(1120px, 100%);
-  min-height: min(88vh, 860px);
+  width: min(1120px, calc(100vw - 56px));
+  max-height: calc(100vh - 56px);
   border-radius: 28px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.08);
   background:
-    linear-gradient(180deg, rgba(7,12,24,.82), rgba(4,7,15,.92)),
-    radial-gradient(circle at 18% 18%, rgba(59,130,246,.18), transparent 28%),
-    radial-gradient(circle at 82% 22%, rgba(34,211,238,.14), transparent 24%);
+    linear-gradient(180deg, rgba(7,12,24,.9), rgba(4,7,15,.95)),
+    radial-gradient(circle at 18% 18%, rgba(59,130,246,.16), transparent 28%),
+    radial-gradient(circle at 82% 22%, rgba(34,211,238,.12), transparent 24%);
   box-shadow:
     0 30px 80px rgba(0,0,0,.55),
     0 0 0 1px rgba(59,130,246,.08) inset;
 }
 
-.sales-popup::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at top right, rgba(34,211,238,.12), transparent 30%),
-    radial-gradient(circle at bottom left, rgba(59,130,246,.10), transparent 28%);
-}
-
 .sales-popup-close{
   position: absolute;
-  top: 18px;
-  right: 18px;
-  z-index: 3;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
   width: 46px;
   height: 46px;
   border-radius: 999px;
@@ -328,7 +318,6 @@
   font-size: 26px;
   line-height: 1;
   cursor: pointer;
-  box-shadow: 0 12px 30px rgba(0,140,255,.18);
   transition: transform .18s ease, background .18s ease, border-color .18s ease;
 }
 
@@ -339,20 +328,24 @@
 }
 
 .sales-popup-inner{
-  position: relative;
-  z-index: 2;
   display: grid;
-  grid-template-columns: 1.12fr .88fr;
-  gap: 28px;
-  padding: clamp(26px, 3vw, 42px);
-  min-height: min(88vh, 860px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+  gap: 24px;
+  padding: 28px;
+  max-height: calc(100vh - 56px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sales-popup-copy,
+.sales-popup-side{
+  min-width: 0;
 }
 
 .sales-popup-copy{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 0;
 }
 
 .sales-popup-badge{
@@ -360,6 +353,7 @@
   align-items: center;
   gap: 10px;
   width: fit-content;
+  max-width: calc(100% - 64px);
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(59,130,246,.24);
@@ -374,93 +368,84 @@
 .sales-popup-title{
   margin: 0;
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2rem, 4.9vw, 4.45rem);
-  line-height: 1.02;
-  letter-spacing: -.03em;
-}
-
-.sales-popup-title .gradient-text{
-  display:inline-block;
+  font-size: clamp(2rem, 3.4vw, 3.9rem);
+  line-height: .98;
+  letter-spacing: -.04em;
+  max-width: 760px;
 }
 
 .sales-popup-subtitle{
   margin: 1rem 0 0;
   max-width: 760px;
   color: rgba(255,255,255,.78);
-  font-size: clamp(1rem, 1.5vw, 1.22rem);
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.75;
 }
 
 .sales-popup-proof{
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 12px;
-  margin-top: 1.35rem;
+  margin-top: 1.2rem;
 }
 
 .sales-popup-proof .card-base{
-  min-height: 104px;
-  justify-content: center;
-  text-align: center;
+  min-height: 118px;
+  padding: 16px;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start;
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.07);
 }
 
 .sales-popup-proof strong{
   display:block;
-  font-size: clamp(20px, 2vw, 28px);
-  line-height:1;
+  font-size: 1.45rem;
+  line-height: 1;
   margin-bottom: .35rem;
 }
 
 .sales-popup-points{
-  margin: 1.25rem 0 0;
+  margin: 1.1rem 0 0;
   padding-left: 1.1rem;
   color: rgba(255,255,255,.86);
-  line-height: 1.72;
+  line-height: 1.7;
 }
 
 .sales-popup-points li{
-  margin-bottom: .5rem;
+  margin-bottom: .45rem;
 }
 
 .sales-popup-cta{
   display:flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 1.4rem;
+  margin-top: 1.2rem;
 }
 
 .sales-popup-note{
-  margin-top: .95rem;
+  margin-top: .9rem;
   color: rgba(255,255,255,.62);
-  font-size: .93rem;
-  line-height: 1.65;
-}
-
-.sales-popup-side{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-width:0;
+  font-size: .92rem;
+  line-height: 1.6;
 }
 
 .sales-popup-showcase{
   width: 100%;
-  max-width: 430px;
+  max-width: 420px;
+  margin-left: auto;
   border-radius: 28px;
   padding: 18px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
   border: 1px solid rgba(255,255,255,.08);
   box-shadow: 0 18px 44px rgba(0,0,0,.28);
 }
 
 .sales-popup-phone{
-  position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16;
-  border-radius: 26px;
+  min-height: 620px;
+  border-radius: 24px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.08);
   background:
@@ -485,10 +470,10 @@
 }
 
 .sales-popup-phone-title{
-  margin: 0;
+  margin: 18px 0 0;
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1.4rem, 2vw, 2rem);
-  line-height: 1.12;
+  font-size: 2rem;
+  line-height: 1.08;
 }
 
 .sales-popup-metrics{
@@ -506,14 +491,14 @@
 
 .sales-popup-metric strong{
   display:block;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   line-height:1;
   margin-bottom: 6px;
 }
 
 .sales-popup-metric span{
   color: rgba(255,255,255,.72);
-  font-size: .95rem;
+  font-size: .94rem;
   line-height: 1.45;
 }
 
@@ -533,224 +518,146 @@ body.popup-open{
   overflow: hidden;
 }
 
-@media (max-width: 992px){
+/* ===== TABLET ===== */
+@media (max-width: 1024px){
+  .sales-popup{
+    width: min(960px, calc(100vw - 40px));
+    max-height: calc(100vh - 40px);
+  }
+
   .sales-popup-inner{
     grid-template-columns: 1fr;
-    min-height: auto;
   }
 
   .sales-popup-side{
-    order: -1;
+    display: none;
   }
 
-  .sales-popup-showcase{
+  .sales-popup-title{
     max-width: 100%;
+    font-size: clamp(2rem, 5vw, 3.2rem);
   }
 
-  .sales-popup-phone{
-    aspect-ratio: 16 / 10;
+  .sales-popup-subtitle{
+    max-width: 100%;
   }
 }
 
+/* ===== MOBILE ===== */
 @media (max-width: 768px){
   .sales-popup-overlay{
-    padding: 10px;
+    padding: 16px 10px;
   }
 
   .sales-popup{
-    min-height: auto;
+    width: min(392px, calc(100vw - 20px));
+    max-height: calc(100vh - 32px);
     border-radius: 22px;
   }
 
   .sales-popup-inner{
-    padding: 20px;
-    gap: 18px;
+    display: block;
+    padding: 56px 14px 16px;
+    max-height: calc(100vh - 32px);
+  }
+
+  .sales-popup-badge{
+    max-width: calc(100% - 52px);
+    margin: 0 44px 12px 0;
+    padding: 8px 10px;
+    font-size: .72rem;
+    line-height: 1.3;
+  }
+
+  .sales-popup-title{
+    font-size: 1.85rem;
+    line-height: 1;
+    max-width: 100%;
+  }
+
+  .sales-popup-subtitle{
+    margin-top: .85rem;
+    font-size: .92rem;
+    line-height: 1.55;
   }
 
   .sales-popup-proof{
     grid-template-columns: 1fr;
-  }
-
-  .sales-popup-phone{
-    min-height: 360px;
-    aspect-ratio: auto;
-  }
-
-  .sales-popup-title{
-    font-size: clamp(1.7rem, 9vw, 2.8rem);
-  }
-
-  .sales-popup-subtitle{
-    line-height: 1.65;
-  }
-
-  .sales-popup-close{
-    top: 12px;
-    right: 12px;
-    width: 42px;
-    height: 42px;
-  }
-}
-/* ===== POPUP FIX FINAL MOBILE / INSTAGRAM ===== */
-@media (max-width: 768px){
-  .sales-popup-overlay{
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    padding: 22px 10px !important;
-    display: flex;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
-  }
-
-  .sales-popup{
-    width: 100%;
-    max-width: 392px;
-    height: auto;
-    max-height: calc(100vh - 44px);
-    min-height: unset !important;
-    margin: 0 auto !important;
-    border-radius: 24px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transform: translateY(0) !important;
-  }
-
-  .sales-popup-inner{
-    display: block !important;
-    width: 100%;
-    min-height: unset !important;
-    max-height: calc(100vh - 44px);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 58px 15px 18px !important; /* respiro no topo */
-    box-sizing: border-box;
-  }
-
-  .sales-popup-copy{
-    display: block;
-  }
-
-  .sales-popup-side{
-    display: none !important;
-  }
-
-  .sales-popup-badge{
-    display: inline-flex;
-    max-width: calc(100% - 52px);
-    margin: 0 44px 14px 0 !important;
-    padding: 8px 10px !important;
-    font-size: .72rem !important;
-    line-height: 1.3 !important;
-    white-space: normal;
-  }
-
-  .sales-popup-title{
-    margin: 0 !important;
-    font-size: 1.9rem !important;
-    line-height: 0.98 !important;
-    letter-spacing: -.04em;
-    max-width: 100%;
-  }
-
-  .sales-popup-subtitle{
-    margin: .9rem 0 0 !important;
-    font-size: .93rem !important;
-    line-height: 1.55 !important;
-    max-width: 100%;
-  }
-
-  .sales-popup-proof{
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 10px !important;
-    margin-top: 1rem !important;
+    gap: 10px;
+    margin-top: 1rem;
   }
 
   .sales-popup-proof .card-base{
-    min-height: auto !important;
-    padding: 12px 14px !important;
-    border-radius: 18px !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    text-align: left !important;
+    min-height: auto;
+    padding: 12px 14px;
+    border-radius: 18px;
   }
 
   .sales-popup-proof strong{
-    font-size: 1rem !important;
-    line-height: 1.05 !important;
-    margin-bottom: .2rem !important;
+    font-size: 1rem;
   }
 
   .sales-popup-points{
-    margin: 1rem 0 0 !important;
-    padding-left: 1rem !important;
-    font-size: .9rem !important;
-    line-height: 1.5 !important;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    font-size: .9rem;
+    line-height: 1.5;
   }
 
   .sales-popup-points li{
-    margin-bottom: .35rem !important;
+    margin-bottom: .35rem;
   }
 
   .sales-popup-cta{
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    margin-top: 1rem !important;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
   }
 
   .sales-popup-cta .btn{
-    width: 100% !important;
-    min-height: 52px !important;
-    justify-content: center !important;
-    text-align: center !important;
+    width: 100%;
+    min-height: 52px;
+    justify-content: center;
+    text-align: center;
   }
 
   .sales-popup-note{
-    margin-top: .85rem !important;
-    font-size: .84rem !important;
-    line-height: 1.45 !important;
+    margin-top: .85rem;
+    font-size: .84rem;
+    line-height: 1.45;
   }
 
   .sales-popup-close{
-    position: absolute !important;
-    top: 10px !important;
-    right: 10px !important;
-    width: 40px !important;
-    height: 40px !important;
-    font-size: 22px !important;
-    z-index: 10 !important;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
   }
 }
 
 @media (max-width: 430px){
-  .sales-popup-overlay{
-    padding: 18px 8px !important;
-  }
-
   .sales-popup{
-    max-width: 384px;
-    max-height: calc(100vh - 36px);
+    width: calc(100vw - 16px);
+    max-height: calc(100vh - 24px);
+    border-radius: 20px;
   }
 
   .sales-popup-inner{
-    max-height: calc(100vh - 36px);
-    padding: 56px 14px 16px !important;
+    padding: 54px 14px 16px;
+    max-height: calc(100vh - 24px);
   }
 
   .sales-popup-title{
-    font-size: 1.78rem !important;
+    font-size: 1.72rem;
   }
 
   .sales-popup-subtitle{
-    font-size: .9rem !important;
+    font-size: .9rem;
   }
 
   .sales-popup-badge{
-    font-size: .69rem !important;
+    font-size: .69rem;
   }
 }
   </style>
