@@ -816,6 +816,39 @@ body.popup-open{
     font-size: 22px !important;
   }
 }
+    /* ===== MODEL CARDS AJUSTE ===== */
+
+.model-badge{
+  margin:20px auto 30px auto;
+  text-align:center;
+  line-height:1.6;
+}
+
+.model-cards{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.model-card{
+  width:240px;
+  padding:18px;
+  text-align:center;
+  border-radius:18px;
+}
+
+.model-card strong{
+  display:block;
+  font-size:1.05rem;
+  margin-bottom:6px;
+}
+
+.model-card span{
+  font-size:.95rem;
+  opacity:.8;
+}
   </style>
 </head>
 <body>
@@ -993,38 +1026,48 @@ Com produto, pitch, estrutura e implantação, agora buscamos gente com perfil c
     </div>
   </section>
 
-  <!-- MODELO -->
-  <section id="model" class="showcase">
-    <div class="container showcase__grid">
-      <header class="section__header showcase__text">
-     <h2 class="section__title">
-  O <span class="gradient-text">Tullu AI Studio</span> já está estruturado. Agora falta escala comercial.
+ <!-- MODELO -->
+<section id="model" class="showcase">
+  <div class="container showcase__grid">
+    <header class="section__header showcase__text">
+
+<h2 class="section__title">
+  O <span class="gradient-text">Tullu AI Studio</span> já está estruturado.<br>
+  Agora falta escala comercial.
 </h2>
 
 <p class="section__subtitle" style="max-width: 900px; margin-left:auto; margin-right:auto;">
   Estamos procurando partners que atuem como operadores de crescimento, closers ou empresas comerciais para vender o AI Studio em novas contas.
-</p><br>
+</p>
 
-        <div class="badge badge--soft">
-          Menos improviso. Mais call com contexto. Mais chance de fechar.
-        </div><br>
+<div class="badge badge--soft model-badge">
+  Menos improviso.<br>
+  Mais call com contexto.<br>
+  Mais chance de fechar.
+</div>
 
-       <div class="card-base">
-  <strong>IA no WhatsApp</strong>
-  <span>qualifica e atende</span>
+<div class="model-cards">
+
+  <div class="card-base model-card">
+    <strong>IA no WhatsApp</strong>
+    <span>qualifica e atende</span>
+  </div>
+
+  <div class="card-base model-card">
+    <strong>CRM</strong>
+    <span>organiza a operação</span>
+  </div>
+
+  <div class="card-base model-card">
+    <strong>Partner</strong>
+    <span>entra para escalar vendas</span>
+  </div>
+
 </div>
-<div class="card-base">
-  <strong>CRM</strong>
-  <span>organiza a operação</span>
-</div>
-<div class="card-base">
-  <strong>Partner</strong>
-  <span>entra para escalar vendas</span>
-</div>
-        </div>
-      </header>
-    </div>
-  </section>
+
+    </header>
+  </div>
+</section>
 
   <!-- PARTNER TYPES -->
   <section class="features" id="partner-types">
