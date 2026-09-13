@@ -26,7 +26,7 @@ function closeMobileMenu() {
 /* ---------- Smooth scroll anchors ---------- */
 function smoothScrollToAnchor(e) {
   const href = e.currentTarget.getAttribute('href');
-  if (!href || !href.startsWith('#')) return;
+  if (!href || href === '#' || !href.startsWith('#')) return;
   e.preventDefault();
   const el = document.querySelector(href);
   if (!el) return;
@@ -79,13 +79,14 @@ function handleParallax(){
 
 /* ---------- Performance ---------- */
 function optimizePerformance(){
+  if (document.body.classList.contains('clinic-home')) return;
   ['assets/img/tullu.png','assets/img/cobra.png.png','assets/img/weblab.png.png','assets/img/growth.png.png','assets/img/aistudio.png.png']
   .forEach(src=>{const l=document.createElement('link');l.rel='preload';l.as='image';l.href=src;document.head.appendChild(l);});
 }
 
 /* ---------- Acessibilidade ---------- */
 function enhanceAccessibility(){
-  if(navToggle){
+  if(navToggle && navToggle.tagName !== 'BUTTON'){
     navToggle.addEventListener('keydown',e=>{
       if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleMobileMenu();}
     });
@@ -528,3 +529,51 @@ if(typeof module!=='undefined' && module.exports){
   module.exports = { handleHeaderScroll, toggleMobileMenu, smoothScrollToAnchor, animateCounter, trackEvent, initDiagnostico };
 }
 
+
+/* Homepage: clinic context is handed to WhatsApp for review, never sent automatically. */
+(function setupClinicHome() {
+  const form = document.getElementById('clinic-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const fields = ['nome', 'cidade'];
+    fields.forEach((name) => {
+      const field = form.elements.namedItem(name);
+      field.value = field.value.trim();
+    });
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const message = 'Olá! Vim pelo site da Tullu Motion e quero mapear o fluxo da minha clínica.\n\n'
+      + `Nome: ${data.get('nome')}\nClínica: ${data.get('clinica')}\n`
+      + `Cidade: ${data.get('cidade')}\nPrioridade: ${data.get('prioridade')}`;
+    const destination = new URL(form.action);
+    destination.search = new URLSearchParams({ text: message }).toString();
+    window.location.assign(destination.href);
+  });
+
+  // Retain the existing menu controller; expose its state and trap focus on mobile.
+  function syncClinicMenu() {
+    const mobile = window.matchMedia('(max-width: 767px)').matches;
+    const open = navMenu.classList.contains('active');
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    navMenu.inert = mobile && !open;
+  }
+  new MutationObserver(syncClinicMenu).observe(navMenu, { attributes: true, attributeFilter: ['class'] });
+  window.addEventListener('resize', () => {
+    if (!window.matchMedia('(max-width: 767px)').matches) closeMobileMenu();
+    syncClinicMenu();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (!navMenu.classList.contains('active')) return;
+    if (event.key === 'Escape') { closeMobileMenu(); navToggle.focus(); }
+    if (event.key !== 'Tab') return;
+    const focusable = [...navMenu.querySelectorAll('a[href]'), navToggle];
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
+  syncClinicMenu();
+})();
