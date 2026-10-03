@@ -1,0 +1,58 @@
+/* Homepage evolution: scoped additions; shared and secondary-page styles stay intact. */
+.clinic-home .clinic-continuity-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.clinic-home .clinic-continuity-card {
+  display: flex;
+  flex-direction: column;
+}
+.clinic-home .clinic-continuity-card > p:not(.clinic-module-note) {
+  margin-bottom: 24px;
+}
+.clinic-home .clinic-continuity-card .clinic-module-note {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--ring-light);
+  color: var(--primary-2);
+  font-size: .8rem;
+}
+.clinic-home .clinic-custom {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 40px;
+  margin-top: 24px;
+}
+.clinic-home .clinic-custom .clinic-eyebrow {
+  font-size: .75rem;
+  color: var(--primary-2);
+  margin-bottom: 14px;
+}
+.clinic-home .clinic-custom h3 {
+  max-width: 480px;
+  font-size: 1.25rem;
+}
+.clinic-home .clinic-custom-action {
+  border-left: 1px solid var(--ring-light);
+  padding-left: 32px;
+  align-self: center;
+}
+.clinic-home .clinic-custom-action .btn {
+  margin-top: 24px;
+}
+@media (max-width: 767px) {
+  .clinic-home .clinic-continuity-grid,
+  .clinic-home .clinic-custom {
+    grid-template-columns: 1fr;
+  }
+  .clinic-home .clinic-custom {
+    gap: 24px;
+  }
+  .clinic-home .clinic-custom-action {
+    border-left: 0;
+    border-top: 1px solid var(--ring-light);
+    padding: 24px 0 0;
+  }
+  .clinic-home .clinic-custom-action .btn {
+    width: 100%;
+  }
+}

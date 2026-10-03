@@ -1,19 +1,20 @@
+<!DOCTYPE html>
 <html lang="pt-BR"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tullu Motion — Sistema de crescimento para clínicas</title>
-    <meta name="description" content="A Tullu conecta estratégia, conteúdo, tráfego, landing pages, automação, agendamento e CRM em um sistema de crescimento para clínicas.">
+    <meta name="description" content="A Tullu conecta aquisição, atendimento, agendamento, relacionamento e dados em um sistema de crescimento para clínicas, com automação e tecnologia.">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tullumotion.com/">
     <meta property="og:title" content="Tullu Motion — Sistema de crescimento para clínicas">
-    <meta property="og:description" content="A Tullu conecta estratégia, conteúdo, tráfego, landing pages, automação, agendamento e CRM em um sistema de crescimento para clínicas.">
+    <meta property="og:description" content="A Tullu conecta aquisição, atendimento, agendamento, relacionamento e dados em um sistema de crescimento para clínicas, com automação e tecnologia.">
     <meta property="og:image" content="https://tullumotion.com/assets/img/tu.png.png">
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://tullumotion.com/">
     <meta property="twitter:title" content="Tullu Motion — Sistema de crescimento para clínicas">
-    <meta property="twitter:description" content="A Tullu conecta estratégia, conteúdo, tráfego, landing pages, automação, agendamento e CRM em um sistema de crescimento para clínicas.">
+    <meta property="twitter:description" content="A Tullu conecta aquisição, atendimento, agendamento, relacionamento e dados em um sistema de crescimento para clínicas, com automação e tecnologia.">
     <meta property="twitter:image" content="https://tullumotion.com/assets/img/tu.png.png">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/img/tup.png.png">
@@ -23,6 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/clinic-home.css">
   </head>
   <body class="clinic-home"><a href="#hero" class="skip-link" style="position: absolute; top: -40px; left: 6px; background: var(--primary); color: rgb(255, 255, 255); padding: 8px; border-radius: 4px; z-index: 1001; transition: top 0.3s;">Pular para o conteúdo principal</a>
     <header class="header" id="header">
@@ -48,13 +50,13 @@
           <div class="clinic-hero-copy">
             <p class="clinic-eyebrow"><span class="clinic-dot" aria-hidden="true"></span> Tullu Clinic System</p>
             <h1>Sua clínica não precisa de mais marketing. Precisa de um <span class="gradient-text">sistema de crescimento.</span></h1>
-            <p class="clinic-lead">Estratégia, conteúdo, tráfego, landing page, captação, agendamento e CRM conectados em uma única jornada.</p>
+            <p class="clinic-lead">Estratégia, aquisição, atendimento, agendamento e relacionamento conectados em uma única jornada.</p>
             <div class="clinic-actions">
               <a class="btn btn--primary" href="#captacao">Quero estruturar minha captação</a><a class="btn btn--outline" href="#fluxo">Ver o fluxo completo <span aria-hidden="true">↗</span></a>
             </div>
             <p class="clinic-hero-note">Da atenção ao agendamento. Do lead ao paciente.</p>
           </div>
-          <div class="clinic-system" aria-label="Representação do fluxo Tullu Clinic System">
+          <div class="clinic-system" role="group" aria-label="Representação do fluxo Tullu Clinic System">
             <div class="clinic-window-bar">
               <span class="clinic-window-dots" aria-hidden="true">● ● ●</span><span>JORNADA CONECTADA</span><span class="clinic-dot" aria-hidden="true"></span>
             </div>
@@ -84,14 +86,14 @@
                 <li>
                   <span class="clinic-number">03</span>
                   <div>
-                    <h3>Agenda acontece automaticamente</h3>
+                    <h3>Interesse avança para a agenda</h3>
                     <p>Menos trocas de mensagens para confirmar.</p>
                   </div>
                 </li>
                 <li>
                   <span class="clinic-number">04</span>
                   <div>
-                    <h3>Clínica recebe briefing</h3>
+                    <h3>Clínica recebe contexto</h3>
                     <p>A equipe começa a conversa com contexto.</p>
                   </div>
                 </li>
@@ -145,7 +147,7 @@
             <article class="clinic-card">
               <span class="clinic-number">04</span>
               <h3>Dados que não voltam</h3>
-              <p>A clínica não usa o aprendizado das conversões para melhorar campanhas e conteúdo.</p>
+              <p>O aprendizado dos atendimentos e retornos não chega à estratégia.</p>
             </article>
           </div>
         </div>
@@ -154,8 +156,8 @@
         <div class="container">
           <header class="clinic-heading">
             <p class="clinic-eyebrow">02 / A arquitetura do crescimento</p>
-            <h2>Da atenção ao paciente, <span class="gradient-text">um único fluxo.</span></h2>
-            <p>Transformamos a presença digital da sua clínica em um sistema de crescimento.</p>
+            <h2>Da atenção ao retorno, <span class="gradient-text">um único fluxo.</span></h2>
+            <p>Conectamos a aquisição ao que vem depois: atendimento, relacionamento, retorno e dados.</p>
           </header>
           <figure class="clinic-flow-illustration" style="margin: 0 0 32px;">
             <a href="assets/img/tullu-clinic-fluxo-v3.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar a ilustração do fluxo Tullu Clinic System" onclick="this.href = this.querySelector('img').currentSrc">
@@ -193,7 +195,7 @@
                 <li class="clinic-flow-node">
                   <span class="clinic-number">04</span>
                   <h3>Automação + Agenda</h3>
-                  <p>Confirmação e agendamento sem atrito.</p>
+                  <p>Atendimento, agendamento e confirmação conectados.</p>
                   <span class="clinic-connector" aria-hidden="true"></span>
                 </li>
                 <li class="clinic-flow-node">
@@ -205,22 +207,22 @@
                 <li class="clinic-flow-node">
                   <span class="clinic-number">06</span>
                   <h3>Pré-avaliação</h3>
-                  <p>O profissional recebe briefing antes da conversa.</p>
+                  <p>Informações organizadas antes da consulta.</p>
                   <span class="clinic-connector" aria-hidden="true"></span>
                 </li>
                 <li class="clinic-flow-node">
                   <span class="clinic-number">07</span>
                   <h3>Conversão &amp; Retorno</h3>
-                  <p>Follow-up, fechamento, retorno e próximo ciclo.</p>
+                  <p>Pós-atendimento, follow-up e ciclos de retorno.</p>
                 </li>
               </ol>
               <div class="clinic-feedback">
-                <span aria-hidden="true">↻</span> O aprendizado da conversão volta para a estratégia
+                <span aria-hidden="true">↻</span> Os dados da jornada voltam para a estratégia
               </div>
             </div>
-            <figcaption>Menos copiar e colar. Mais contexto, rastreabilidade e continuidade.</figcaption>
+            <figcaption>Menos copiar e colar. Mais contexto e continuidade.</figcaption>
           </figure>
-          <p class="clinic-scope">Cuidamos do sistema que traz e converte demanda para a clínica. A gestão de prontuário, financeiro e ERP continua com as ferramentas da sua operação.</p>
+          <p class="clinic-scope">Cuidamos da estrutura que atrai oportunidades e conecta atendimento, agenda e relacionamento. O prontuário, o ERP e os sistemas clínicos continuam com as ferramentas da sua operação.</p>
         </div>
       </section>
       <section class="clinic-section" id="operacao">
@@ -237,96 +239,85 @@
             </article>
             <article class="clinic-card">
               <span class="clinic-number">02</span>
-              <h3>Conteúdo que gera demanda</h3>
-              <p>Estratégia, roteiro, gravação, edição e calendário.</p>
+              <h3>Conteúdo &amp; Aquisição</h3>
+              <p>Estratégia, conteúdo, Instagram, Meta Ads e presença local no Google.</p>
             </article>
             <article class="clinic-card">
               <span class="clinic-number">03</span>
-              <h3>Aquisição paga</h3>
-              <p>Meta Ads, públicos, testes e remarketing.</p>
+              <h3>Captação</h3>
+              <p>Landing pages e formulários conectam interesse, origem e contexto.</p>
             </article>
             <article class="clinic-card">
               <span class="clinic-number">04</span>
-              <h3>Site / Landing Page</h3>
-              <p>Página com CTA e formulário para captar interesse com contexto.</p>
+              <h3>Atendimento &amp; Automação</h3>
+              <p>WhatsApp, qualificação e CRM conectados, com contexto para a equipe.</p>
             </article>
             <article class="clinic-card">
               <span class="clinic-number">05</span>
-              <h3>Automação &amp; CRM</h3>
-              <p>Agenda, confirmação, contexto, histórico e follow-up.</p>
+              <h3>Agenda &amp; Conversão</h3>
+              <p>Agendamento, confirmação e pré-avaliação para facilitar o próximo passo.</p>
             </article>
             <article class="clinic-card">
               <span class="clinic-number">06</span>
-              <h3>Conversão &amp; Pós-atendimento</h3>
-              <p>Script, acompanhamento, retorno, indicação e novos ciclos.</p>
+              <h3>Relacionamento &amp; Retorno</h3>
+              <p>Pós-atendimento, satisfação, avaliações e indicação alimentam novos ciclos.</p>
             </article>
           </div>
-          <p class="clinic-scope">IA faz parte dessa estrutura: apoia a automação e a organização das informações ao longo da jornada.</p>
+          <p class="clinic-scope">IA entra quando faz sentido: ajuda a responder dúvidas, qualificar e organizar informações. Automação quando ajuda. Pessoas quando importam.</p>
         </div>
       </section>
       <section class="clinic-section clinic-product-section" id="produto">
         <div class="container">
           <header class="clinic-heading">
-            <p class="clinic-eyebrow">04 / Visão de produto</p>
-            <h2>Hoje nós implantamos o sistema.<br>A visão é você operar tudo pela Tullu.</h2>
-            <p>Uma interface para conectar leads, agenda, conteúdo e campanhas. Esta é uma visão em evolução, ainda não um software disponível.</p>
+            <p class="clinic-eyebrow">04 / O sistema continua trabalhando</p>
+            <h2>A captação é só o começo.</h2>
+            <p>Depois que a oportunidade chega, a Tullu conecta atendimento, agendamento, relacionamento e dados para reduzir trabalho manual e ajudar cada oportunidade a avançar.</p>
           </header>
-          <figure class="clinic-os">
-            <div class="clinic-os-header">
-              <div>
-                <span class="clinic-eyebrow">Visão de produto</span>
-                <h3>Tullu Clinic OS</h3>
-              </div>
-              <span class="clinic-badge">Em evolução</span>
+          <div class="clinic-grid clinic-continuity-grid">
+            <article class="clinic-card clinic-continuity-card">
+              <span class="clinic-number">01 — ATENDER</span>
+              <h3>Menos espera entre interesse e atendimento.</h3>
+              <p>WhatsApp, qualificação e contexto trabalham juntos para facilitar a resposta. Quando uma pessoa precisa entrar, a conversa continua com contexto.</p>
+              <p class="clinic-module-note">Automação quando ajuda. Pessoas quando importam.</p>
+            </article>
+            <article class="clinic-card clinic-continuity-card">
+              <span class="clinic-number">02 — AGENDAR</span>
+              <h3>Menos conversa para marcar uma consulta.</h3>
+              <p>Agendamento, confirmação, lembretes, reagendamento e lista de espera podem funcionar como partes do mesmo fluxo.</p>
+              <p class="clinic-module-note">Menos atrito entre interesse e agenda.</p>
+            </article>
+            <article class="clinic-card clinic-continuity-card">
+              <span class="clinic-number">03 — FAZER VOLTAR</span>
+              <h3>O relacionamento não termina na consulta.</h3>
+              <p>Follow-up, pós-atendimento, reativação, avaliações e ciclos de retorno ajudam a transformar a base existente em novas oportunidades.</p>
+              <p class="clinic-module-note">Cada atendimento pode alimentar o próximo ciclo.</p>
+            </article>
+            <article class="clinic-card clinic-continuity-card">
+              <span class="clinic-number">04 — ENXERGAR</span>
+              <h3>Clareza para entender o que acontece.</h3>
+              <p>Origem, agendamento, comparecimento e conversão em um painel de indicadores, com histórico no CRM para enxergar onde as oportunidades avançam — e onde ficam pelo caminho.</p>
+              <p class="clinic-module-note">Decisão com contexto, não com achismo.</p>
+            </article>
+          </div>
+          <aside class="clinic-card clinic-custom" aria-labelledby="clinic-custom-title">
+            <div>
+              <p class="clinic-eyebrow">Sob medida</p>
+              <h3 id="clinic-custom-title">E quando sua clínica precisa de algo que não existe pronto?</h3>
+              <p>A Tullu também constrói integrações, automações e sistemas específicos para processos que fazem sentido para a sua operação.</p>
+              <ul class="clinic-topics" aria-label="Exemplos de soluções sob medida">
+                <li>Portal do paciente</li>
+                <li>Integrações</li>
+                <li>Sistemas internos</li>
+                <li>Automações</li>
+                <li>Agentes especializados</li>
+                <li>Controles operacionais</li>
+              </ul>
             </div>
-            <div class="clinic-os-layout">
-              <div class="clinic-os-sidebar" aria-label="Áreas ilustrativas do produto">
-                <span class="clinic-os-selected">Leads</span><span>Agenda</span><span>Conteúdo</span><span>Campanhas</span>
-              </div>
-              <div class="clinic-os-content">
-                <div class="clinic-os-heading">
-                  <h4>Jornada de relacionamento</h4>
-                  <span>Dados ilustrativos</span>
-                </div>
-                <table class="clinic-os-table">
-                  <caption class="sr-only">Exemplos de interesse, origem e etapa no conceito Tullu Clinic OS</caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">Interesse</th>
-                      <th scope="col">Origem</th>
-                      <th scope="col">Etapa</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td data-label="Interesse">Novo interesse</td>
-                      <td data-label="Origem">Formulário</td>
-                      <td data-label="Etapa"><span class="clinic-status">Pré-avaliação</span></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Interesse">Lead qualificado</td>
-                      <td data-label="Origem">Instagram</td>
-                      <td data-label="Etapa"><span class="clinic-status">Agendado</span></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Interesse">Follow-up</td>
-                      <td data-label="Origem">Campanha</td>
-                      <td data-label="Etapa"><span class="clinic-status">Em contato</span></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Interesse">Retorno</td>
-                      <td data-label="Origem">Base própria</td>
-                      <td data-label="Etapa"><span class="clinic-status">Reativação</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="clinic-os-bottom">
-                  <span class="clinic-dot" aria-hidden="true"></span> Contexto acompanha cada oportunidade
-                </div>
-              </div>
+            <div class="clinic-custom-action">
+              <p>Não pedimos para sua clínica trocar tudo o que já usa. Conectamos, automatizamos e construímos onde existe uma oportunidade real de melhorar a operação.</p>
+              <a class="btn btn--primary" href="#captacao">Mapear minha clínica <span aria-hidden="true">↗</span></a>
             </div>
-            <figcaption>Interface conceitual. As funcionalidades apresentadas representam a visão futura do produto.</figcaption>
-          </figure>
+          </aside>
         </div>
       </section>
       <section class="clinic-section" id="como-funciona">
@@ -344,7 +335,7 @@
             <article class="clinic-card">
               <span class="clinic-number">02</span>
               <h3>Construção</h3>
-              <p>Montamos conteúdo, páginas, formulário, automações, agenda e CRM.</p>
+              <p>Conectamos aquisição, atendimento, agenda, relacionamento e CRM.</p>
             </article>
             <article class="clinic-card">
               <span class="clinic-number">03</span>
@@ -354,7 +345,7 @@
             <article class="clinic-card">
               <span class="clinic-number">04</span>
               <h3>Otimização</h3>
-              <p>Os dados de leads, agendamentos e conversão voltam para a estratégia.</p>
+              <p>Os dados de origem, comparecimento, conversão e retorno orientam os próximos ajustes.</p>
             </article>
           </div>
         </div>
@@ -436,7 +427,7 @@
         <div class="container">
           <p class="clinic-eyebrow">Seu próximo ciclo começa aqui</p>
           <h2>Seu próximo lead não deveria <span class="gradient-text">depender de sorte.</span></h2>
-          <p>Sua clínica cuida do atendimento.<br>A Tullu constrói o sistema que faz mais oportunidades chegarem organizadas até ele.</p>
+          <p>Sua clínica cuida das pessoas.<br>A Tullu conecta a jornada para atrair oportunidades, facilitar o atendimento e manter o relacionamento.</p>
           <a href="https://wa.me/5511959029428?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Tullu%20Motion%20e%20quero%20mapear%20o%20fluxo%20da%20minha%20cl%C3%ADnica." class="btn btn--primary" target="_blank" rel="noopener noreferrer">Falar com a Tullu <span aria-hidden="true">↗</span></a>
         </div>
       </section>
@@ -453,7 +444,7 @@
           </div>
           <div class="footer__links">
             <div class="footer__section">
-              <h4 class="footer__section-title">Navegação</h4>
+              <h3 class="footer__section-title">Navegação</h3>
               <ul class="footer__list">
                 <li><a href="#operacao" class="footer__link">O que implantamos</a></li>
                 <li><a href="#como-funciona" class="footer__link">Como funciona</a></li>
@@ -461,14 +452,14 @@
               </ul>
             </div>
             <div class="footer__section">
-              <h4 class="footer__section-title">Contato</h4>
+              <h3 class="footer__section-title">Contato</h3>
               <ul class="footer__list">
                 <li><a href="https://wa.me/5511959029428" class="footer__link" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                 <li><a href="mailto:contato@tullumotion.com" class="footer__link">E-mail</a></li>
               </ul>
             </div>
             <div class="footer__section">
-              <h4 class="footer__section-title">Legal</h4>
+              <h3 class="footer__section-title">Legal</h3>
               <ul class="footer__list">
                 <li><a href="https://tullumotion.com/assets/docs/politica.pdf" class="footer__link">Política de Privacidade</a></li>
                 <li><a href="https://tullumotion.com/assets/docs/termos.pdf" target="_blank" rel="noopener noreferrer" class="footer__link">Termos de Uso</a></li>
